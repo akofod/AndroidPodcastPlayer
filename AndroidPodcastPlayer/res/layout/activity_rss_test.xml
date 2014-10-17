@@ -1,0 +1,51 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context="edu.franklin.androidpodcastplayer.RssTestActivity" >
+
+    <TextView
+        android:id="@+id/textView1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/hello_rss" />
+
+    <EditText
+        android:id="@+id/urlField"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/textView1"
+        android:layout_alignParentRight="true"
+        android:layout_below="@+id/textView1"
+        android:layout_marginTop="23dp"
+        android:ems="8"
+        android:inputType="textUri|none" >
+
+        <requestFocus />
+    </EditText>
+
+    <Button
+        android:id="@+id/fetchRss"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/urlField"
+        android:layout_alignRight="@+id/urlField"
+        android:layout_below="@+id/urlField"
+        android:layout_marginTop="15dp"
+        android:text="Fetch RSS" 
+        android:onClick="fetchRss"
+        />
+
+    <WebView
+        android:id="@+id/webView1"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignParentLeft="true"
+        android:orientation="vertical"
+        android:layout_below="@+id/fetchRss" />
+
+</RelativeLayout>
