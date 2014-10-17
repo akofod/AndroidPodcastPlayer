@@ -4,8 +4,11 @@ import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 
+import org.xml.sax.helpers.DefaultHandler;
 import org.xmlpull.v1.XmlPullParser;
 import org.xmlpull.v1.XmlPullParserException;
+
+import android.util.Log;
 
 /**
  * This is essentially just a stub to allow other classes to initialize themselves
@@ -15,7 +18,7 @@ import org.xmlpull.v1.XmlPullParserException;
  * @author Ren Hutchinson
  *
  */
-public abstract class XmlSerializable 
+public abstract class XmlSerializable extends DefaultHandler
 {
 	public abstract void initializeFromXmlParser(XmlPullParser xml, String ns) throws XmlPullParserException, IOException;
 	
@@ -30,6 +33,7 @@ public abstract class XmlSerializable
 	{
 	    if (parser.getEventType() != XmlPullParser.START_TAG) 
 	    {
+	    	Log.e("XML Parsing", "Event Type is " + parser.getEventType() + ":" + XmlPullParser.START_TAG);
 	        throw new IllegalStateException();
 	    }
 	    //start with 1, so we enter the skip loop
@@ -90,13 +94,13 @@ public abstract class XmlSerializable
 	
 	private String readText(XmlPullParser xml) throws IOException, XmlPullParserException 
 	{    
-		String result = "";
+		String result = xml.nextText();
 	    
-	    if (xml.next() == XmlPullParser.TEXT)
+		if (xml.getEventType() != XmlPullParser.END_TAG) 
 	    {
-	        result = xml.getText();
-	        xml.nextTag();
+	    	xml.nextTag();
 	    }
+	    
 	    return result;
 	}
 	
@@ -108,6 +112,8 @@ public abstract class XmlSerializable
 	    {
 	        for(int i = 0; i < attributeCount; i++) 
 	        {
+	        	Log.d("XML", "Attribute is " + xml.getAttributeName(i));
+	        	Log.d("XML", "Value is " + xml.getAttributeValue(i));
 	            attributeMap.put(xml.getAttributeName(i), xml.getAttributeValue(i));
 	        }
 	    }

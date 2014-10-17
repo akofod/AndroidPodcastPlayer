@@ -182,4 +182,10 @@ public class Image extends XmlSerializable
 	        }
 	    } 
 	}
+
+	public String toString() 
+	{
+		return " [url=" + url + ", title=" + title + ", link=" + link
+				+ "]";
+	}
 }

@@ -7,6 +7,8 @@ import java.util.List;
 import org.xmlpull.v1.XmlPullParser;
 import org.xmlpull.v1.XmlPullParserException;
 
+import android.util.Log;
+
 public class Channel extends XmlSerializable
 {
 	//some tags we care about
@@ -317,28 +319,34 @@ public class Channel extends XmlSerializable
 	            continue;
 	        }
 	        String name = xml.getName();
+	        Log.d("Channel", "Tag name is " + name);
 	        // Starts by looking for the entry tag
 	        if(name.equals(TITLE))
 	        {
 	        	setTitle(this.getNextString(xml, ns, TITLE));
+	        	Log.d("Channel", "Title is " + title);
 	        }
 	        else if(name.equals(LINK))
 	        {
 	        	setLink(this.getNextString(xml, ns, LINK));
+	        	Log.d("Channel", "Link is " + link);
 	        }
 	        else if(name.equals(DESCRIPTION))
 	        {
 	        	setDescription(this.getNextString(xml, ns, DESCRIPTION));
+	        	Log.d("Channel", "Description is " + description);
 	        }
 	        else if(name.equals(CATEGORY))
 	        {
 	        	category = new Category();
 	        	category.initializeFromXmlParser(xml, ns);
+	        	Log.d("Channel", "Category is " + category);
 	        }
 	        else if(name.equals(IMAGE))
 	        {
 	        	image = new Image();
 	        	image.initializeFromXmlParser(xml, ns);
+	        	Log.d("Channel", "Image is " + image);
 	        }
 	        else if(name.equals(ITEM))
 	        {
@@ -352,5 +360,11 @@ public class Channel extends XmlSerializable
 	        }
 	    }
 		
+	}
+
+	public String toString() 
+	{
+		return "title=" + title + ", \nlink=" + link + ", \ndescription="
+				+ description + (category != null ? ", \ncategory=" + category : "") + ", \nimage=" + image + "\n" + "Item Count=" + itemList.size();
 	}	
 }

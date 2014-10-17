@@ -5,6 +5,8 @@ import java.io.IOException;
 import org.xmlpull.v1.XmlPullParser;
 import org.xmlpull.v1.XmlPullParserException;
 
+import android.util.Log;
+
 public class Item extends XmlSerializable
 {
 	private static final String ITEM = "item";
@@ -185,27 +187,33 @@ public class Item extends XmlSerializable
 	            continue;
 	        }
 	        String name = xml.getName();
+	        Log.d("Item", "Tag name is " + name);
 	        // Starts by looking for the entry tag
 	        if(name.equals(TITLE))
 	        {
 	        	setTitle(this.getNextString(xml, ns, TITLE));
+	        	Log.d("Item", "Title is " + title);
 	        }
-	        if(name.equals(LINK))
+	        else if(name.equals(LINK))
 	        {
-	        	setTitle(this.getNextString(xml, ns, LINK));
+	        	setLink(this.getNextString(xml, ns, LINK));
+	        	Log.d("Item", "Link is " + link);
 	        }
-	        if(name.equals(DESCRIPTION))
+	        else if(name.equals(DESCRIPTION))
 	        {
-	        	setTitle(this.getNextString(xml, ns, DESCRIPTION));
+	        	setDescription(this.getNextString(xml, ns, DESCRIPTION));
+	        	Log.d("Item", "Description is " + description);
 	        }
 	        else if(name.equals(CATEGORY))
 	        {
 	        	Category category = new Category();
 	        	category.initializeFromXmlParser(xml, ns);
 	        	setCategory(category);
+	        	Log.d("Item", "Category is " + category);
 	        }
 	        else
 	        {
+	        	Log.d("Item", "Skipping an unkown tag " + name);
 	        	skip(xml);
 	        }
 	    }

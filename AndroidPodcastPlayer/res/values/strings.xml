@@ -2,7 +2,9 @@
 <resources>
 
     <string name="app_name">AndroidPodcastPlayer</string>
-    <string name="hello_world">Hello world!</string>
+    <string name="hello_world">Hello world! How are you today?</string>
+    <string name="hello_rss">Howdy, Rss:) Enter a URL and press the button.</string>
     <string name="action_settings">Settings</string>
+    <string name="title_activity_rss_test">RssTestActivity</string>
 
 </resources>
