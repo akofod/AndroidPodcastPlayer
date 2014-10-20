@@ -75,14 +75,12 @@ public class MainActivity extends ActionBarActivity {
 		label_title.setTextColor(Color.WHITE); // set the color
 		label_title.setPadding(5, 5, 5, 0); // set the padding (if required)
 		label_title.setTextSize(12);
-//		label_title.str
 		row.addView(label_title); // add the column to the table row here
 		
 		TextView label_saved = new TextView(this);
 		label_saved.setId(21+id);// define id that must be unique
 		label_saved.setText(saved); // set the text for the header
 		label_saved.setTextColor(Color.WHITE); // set the color
-//		label_saved.setWidth(0);
 		label_saved.setPadding(5, 5, 5, 0); // set the padding (if required)
 		row.addView(label_saved); // add the column to the table row here
 		

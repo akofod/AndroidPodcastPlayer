@@ -101,15 +101,11 @@ public class Rss extends XmlSerializable
 		this.ns = namespace;
 	}
 	
-<<<<<<< HEAD
-	@Override
-=======
 	public boolean isInitialized()
 	{
 		return initialized;
 	}
 	
->>>>>>> 26650c0807d32209ac80b371b6ed44c6714ea3b3
 	public void initializeFromXmlParser(XmlPullParser xml, String ns) throws XmlPullParserException, IOException 
 	{
 		xml.require(XmlPullParser.START_TAG, ns, RSS);
