@@ -8,7 +8,9 @@
     <string name="manage_podcasts">Manage Podcasts</string>
     <string name="visit_repository">Visit Podcast Repository</string>
     <string name="new_subscription">New Subscription RSS Feed URL</string>
-    <string name="rss_feed_url">RSS Feed URL</string>               
+    <string name="rss_feed_url">RSS Feed URL</string>
     <string name="title_activity_rss_test">RssTestActivity</string>
+    <string name="action_tests">Tests</string>
+    <string name="title_activity_tests">TestsActivity</string>
 
 </resources>
