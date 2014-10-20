@@ -85,4 +85,9 @@ public class Category extends XmlSerializable
 			e.printStackTrace();
 		}
 	}
+	
+	public String toString()
+	{
+		return category;
+	}
 }
