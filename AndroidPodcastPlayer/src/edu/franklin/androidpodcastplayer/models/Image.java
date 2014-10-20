@@ -100,6 +100,7 @@ public class Image extends XmlSerializable
 		this.description = description;
 	}
 
+	@Override
 	public int hashCode() 
 	{
 		final int prime = 31;
@@ -110,6 +111,7 @@ public class Image extends XmlSerializable
 		return result;
 	}
 
+	@Override
 	public boolean equals(Object obj) 
 	{
 		if (this == obj)
@@ -137,6 +139,7 @@ public class Image extends XmlSerializable
 		return true;
 	}
 	
+	@Override
 	public void initializeFromXmlParser(XmlPullParser xml, String ns) throws XmlPullParserException, IOException
 	{
 		xml.require(XmlPullParser.START_TAG, ns, IMAGE);

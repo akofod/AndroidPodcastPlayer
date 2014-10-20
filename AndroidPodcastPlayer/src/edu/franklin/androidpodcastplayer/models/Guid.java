@@ -41,6 +41,7 @@ public class Guid extends XmlSerializable
 		this.isPermaLink = isPermaLink;
 	}
 
+	@Override
 	public int hashCode() 
 	{
 		final int prime = 31;
@@ -49,6 +50,7 @@ public class Guid extends XmlSerializable
 		return result;
 	}
 
+	@Override
 	public boolean equals(Object obj) 
 	{
 		if (this == obj)
@@ -66,6 +68,7 @@ public class Guid extends XmlSerializable
 		return true;
 	}
 	
+	@Override
 	public void initializeFromXmlParser(XmlPullParser xml, String ns) throws XmlPullParserException, IOException 
 	{
 		

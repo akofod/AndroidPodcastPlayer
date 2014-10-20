@@ -48,6 +48,7 @@ public class Enclosure extends XmlSerializable
 		this.type = type;
 	}
 
+	@Override
 	public int hashCode() 
 	{
 		final int prime = 31;
@@ -58,6 +59,7 @@ public class Enclosure extends XmlSerializable
 		return result;
 	}
 
+	@Override
 	public boolean equals(Object obj) 
 	{
 		if (this == obj)
@@ -82,6 +84,7 @@ public class Enclosure extends XmlSerializable
 		return true;
 	}
 	
+	@Override
 	public void initializeFromXmlParser(XmlPullParser xml, String ns) throws XmlPullParserException, IOException
 	{
 		

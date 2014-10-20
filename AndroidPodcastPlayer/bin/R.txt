@@ -116,10 +116,18 @@ int bool abc_config_actionMenuItemAllCaps 0x7f060005
 int bool abc_config_allowActionMenuItemTextWithIcon 0x7f060004
 int bool abc_config_showMenuShortcutsWhenKeyboardPresent 0x7f060003
 int bool abc_split_action_bar_is_narrow 0x7f060002
-int color abc_search_url_text_holo 0x7f070003
+int color abc_search_url_text_holo 0x7f07000b
 int color abc_search_url_text_normal 0x7f070000
 int color abc_search_url_text_pressed 0x7f070002
 int color abc_search_url_text_selected 0x7f070001
+int color black 0x7f070009
+int color blue 0x7f070003
+int color dark_blue 0x7f07000a
+int color green 0x7f070005
+int color orange 0x7f070006
+int color purple 0x7f070004
+int color red 0x7f070007
+int color white 0x7f070008
 int dimen abc_action_bar_default_height 0x7f080002
 int dimen abc_action_bar_icon_vertical_padding 0x7f080003
 int dimen abc_action_bar_stacked_max_height 0x7f080009
@@ -138,6 +146,12 @@ int dimen abc_search_view_preferred_width 0x7f08000c
 int dimen abc_search_view_text_min_width 0x7f08000b
 int dimen activity_horizontal_margin 0x7f080010
 int dimen activity_vertical_margin 0x7f080011
+int dimen button1 0x7f080016
+int dimen button2 0x7f080017
+int dimen fifteen 0x7f080014
+int dimen thirty 0x7f080012
+int dimen title 0x7f080013
+int dimen zero 0x7f080015
 int drawable abc_ab_bottom_solid_dark_holo 0x7f020000
 int drawable abc_ab_bottom_solid_light_holo 0x7f020001
 int drawable abc_ab_bottom_transparent_dark_holo 0x7f020002
@@ -225,7 +239,10 @@ int drawable abc_textfield_searchview_holo_dark 0x7f020053
 int drawable abc_textfield_searchview_holo_light 0x7f020054
 int drawable abc_textfield_searchview_right_holo_dark 0x7f020055
 int drawable abc_textfield_searchview_right_holo_light 0x7f020056
-int drawable ic_launcher 0x7f020057
+int drawable alt 0x7f020057
+int drawable cleveland 0x7f020058
+int drawable droid 0x7f020059
+int drawable ign 0x7f02005a
 int id action_bar 0x7f05001a
 int id action_bar_activity_content 0x7f050015
 int id action_bar_container 0x7f050019
@@ -239,7 +256,7 @@ int id action_menu_presenter 0x7f050017
 int id action_mode_bar 0x7f05002f
 int id action_mode_bar_stub 0x7f05002e
 int id action_mode_close_button 0x7f050022
-int id action_settings 0x7f050042
+int id action_settings 0x7f050044
 int id activity_chooser_view_content 0x7f050023
 int id always 0x7f05000b
 int id beginning 0x7f050011
@@ -287,6 +304,8 @@ int id showTitle 0x7f050006
 int id split_action_bar 0x7f05001c
 int id submit_area 0x7f05003f
 int id tabMode 0x7f050002
+int id table1 0x7f050043
+int id textView1 0x7f050042
 int id title 0x7f050029
 int id title_container 0x7f050030
 int id top_action_bar 0x7f05001e
@@ -337,6 +356,10 @@ int string abc_shareactionprovider_share_with_application 0x7f0a000b
 int string action_settings 0x7f0a000f
 int string app_name 0x7f0a000d
 int string hello_world 0x7f0a000e
+int string manage_podcasts 0x7f0a0010
+int string new_subscription 0x7f0a0012
+int string rss_feed_url 0x7f0a0013
+int string visit_repository 0x7f0a0011
 int style AppBaseTheme 0x7f0b007f
 int style AppTheme 0x7f0b0080
 int style TextAppearance_AppCompat_Base_CompactMenu_Dialog 0x7f0b0061
@@ -535,7 +558,7 @@ int styleable MenuItem_android_title 7
 int styleable MenuItem_android_titleCondensed 8
 int styleable MenuItem_android_visible 4
 int styleable MenuItem_showAsAction 13
-int[] styleable MenuView { 0x010100ae, 0x0101012c, 0x0101012d, 0x0101012e, 0x0101012f, 0x01010130, 0x01010131, 0x01010435 }
+int[] styleable MenuView { 0x010100ae, 0x0101012c, 0x0101012d, 0x0101012e, 0x0101012f, 0x01010130, 0x01010131, 0x01010438 }
 int styleable MenuView_android_headerBackground 4
 int styleable MenuView_android_horizontalDivider 2
 int styleable MenuView_android_itemBackground 5

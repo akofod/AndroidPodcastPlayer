@@ -274,6 +274,7 @@ public class Channel extends XmlSerializable
 		this.itemList = itemList;
 	}
 
+	@Override
 	public int hashCode() 
 	{
 		final int prime = 31;
@@ -283,6 +284,7 @@ public class Channel extends XmlSerializable
 		return result;
 	}
 
+	@Override
 	public boolean equals(Object obj) 
 	{
 		if (this == obj)
@@ -305,6 +307,7 @@ public class Channel extends XmlSerializable
 		return true;
 	}
 
+	@Override
 	public void initializeFromXmlParser(XmlPullParser xml, String ns) throws XmlPullParserException, IOException
 	{
 		xml.require(XmlPullParser.START_TAG, ns, CHANNEL);

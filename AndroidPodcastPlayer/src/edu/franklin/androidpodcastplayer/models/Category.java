@@ -1,10 +1,8 @@
 package edu.franklin.androidpodcastplayer.models;
 
-import java.io.IOException;
 import java.util.Map;
 
 import org.xmlpull.v1.XmlPullParser;
-import org.xmlpull.v1.XmlPullParserException;
 
 public class Category extends XmlSerializable
 {
@@ -41,6 +39,7 @@ public class Category extends XmlSerializable
 		this.domain = domain;
 	}
 	
+	@Override
 	public int hashCode() 
 	{
 		final int prime = 31;
@@ -49,6 +48,7 @@ public class Category extends XmlSerializable
 		return result;
 	}
 
+	@Override
 	public boolean equals(Object obj) 
 	{
 		if (this == obj)
@@ -66,6 +66,7 @@ public class Category extends XmlSerializable
 		return true;
 	}
 
+	@Override
 	public void initializeFromXmlParser(XmlPullParser xml, String ns) 
 	{
 		try
