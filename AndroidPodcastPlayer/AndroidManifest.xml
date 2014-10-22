@@ -34,6 +34,15 @@
             </intent-filter>
         </activity>
         <activity
+            android:name=".PlayPodcastActivity"
+            android:label="@string/title_activity_media_test" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
             android:name=".TestsActivity"
             android:label="@string/title_activity_tests" >
         </activity>

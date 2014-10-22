@@ -15,4 +15,14 @@
         android:onClick="launchRssTest"
         android:text="@string/title_activity_rss_test" />
 
+    <Button
+        android:id="@+id/buttonTestMedia"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/button1"
+        android:layout_alignBottom="@+id/button1"
+        android:layout_alignParentRight="true"
+        android:onClick="launchMediaTest"
+        android:text="@string/title_activity_media" />
+
 </RelativeLayout>

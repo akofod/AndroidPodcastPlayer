@@ -10,7 +10,16 @@
     <string name="new_subscription">New Subscription RSS Feed URL</string>
     <string name="rss_feed_url">RSS Feed URL</string>
     <string name="title_activity_rss_test">RssTestActivity</string>
+    <string name="title_activity_media_test">MediaPlayerTestActivity</string>
     <string name="action_tests">Tests</string>
     <string name="title_activity_tests">TestsActivity</string>
-
+    <string name="title_activity_media">TestsMedia</string>
+	<string name="now_playing">Now Playing:</string>
+	<string name="inital_time">0:00</string>
+    <string name="current_title">Current Title</string>
+    <string name="album_art_image">Album Art Image</string>
+    <string name="rewind_button_image">Rewind Button Image</string>
+    <string name="play_pause_button_image">Play/Pause Button Image</string>
+    <string name="forward_button_image">Forward Button Image</string>
+    
 </resources>

@@ -1,0 +1,93 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+   xmlns:tools="http://schemas.android.com/tools"
+   android:layout_width="match_parent"
+   android:layout_height="match_parent"
+   android:paddingBottom="@dimen/activity_vertical_margin"
+   android:paddingLeft="@dimen/activity_horizontal_margin"
+   android:paddingRight="@dimen/activity_horizontal_margin"
+   android:paddingTop="@dimen/activity_vertical_margin"
+   tools:context="edu.franklin.androidpodcastplayer.PlayPodcastActivity" >
+    
+     <TextView
+         android:id="@+id/textViewNowPlaying"
+         android:layout_width="wrap_content"
+         android:layout_height="wrap_content"
+         android:layout_alignLeft="@+id/imageViewAlbumArt"
+         android:text="@string/now_playing"
+         android:textAppearance="?android:attr/textAppearanceMedium" />
+     
+     <SeekBar
+       android:id="@+id/seekVolume"
+       android:layout_width="match_parent"
+       android:layout_height="wrap_content"
+       android:layout_alignLeft="@+id/imageViewAlbumArt"
+       android:layout_alignTop="@+id/imageViewAlbumArt" />
+     
+     <ImageView
+         android:id="@+id/imageViewAlbumArt"
+         android:layout_width="match_parent"
+         android:layout_height="match_parent"
+         android:layout_alignParentLeft="true"
+         android:layout_below="@+id/textViewNowPlaying"
+         android:contentDescription="@string/album_art_image"
+         android:src="@drawable/ic_launcher" />
+     
+     <TextView
+       android:id="@+id/textViewTimeElapsed"
+       android:layout_width="wrap_content"
+       android:layout_height="wrap_content"
+       android:layout_alignRight="@+id/imageButtonRewind"
+       android:layout_alignTop="@+id/seekBarTimer"
+       android:text="@string/inital_time"
+       android:textAppearance="?android:attr/textAppearanceSmall" />
+     
+	<SeekBar
+       android:id="@+id/seekBarTimer"
+       android:layout_width="match_parent"
+       android:layout_height="wrap_content"
+       android:layout_above="@+id/imageButtonRewind"
+       android:layout_toLeftOf="@+id/textViewIOverall"
+       android:layout_toRightOf="@+id/textViewTimeElapsed" />
+	
+	<TextView
+	    android:id="@+id/textViewIOverall"
+	    android:layout_width="wrap_content"
+	    android:layout_height="wrap_content"
+	    android:layout_alignLeft="@+id/imageButtonForward"
+	    android:layout_alignTop="@+id/seekBarTimer"
+	    android:text="@string/inital_time"
+	    android:textAppearance="?android:attr/textAppearanceSmall" />
+    
+   <ImageButton
+       android:id="@+id/imageButtonRewind"
+       android:layout_width="wrap_content"
+       android:layout_height="wrap_content"
+       android:layout_alignParentBottom="true"
+       android:layout_alignParentLeft="true"
+       android:layout_marginBottom="14dp"
+       android:onClick="rewind"
+       android:src="@android:drawable/ic_media_rew"
+       android:contentDescription="@string/rewind_button_image" />
+   
+    <ImageButton
+       android:id="@+id/imageButtonPlayPause"
+       android:layout_width="wrap_content"
+       android:layout_height="wrap_content"
+       android:layout_below="@+id/seekBarTimer"
+       android:layout_centerHorizontal="true"
+       android:onClick="play_pause"
+       android:src="@android:drawable/ic_media_play"
+       android:contentDescription="@string/play_pause_button_image" />
+
+   <ImageButton
+       android:id="@+id/imageButtonForward"
+       android:layout_width="wrap_content"
+       android:layout_height="wrap_content"
+       android:layout_alignRight="@+id/imageViewAlbumArt"
+       android:layout_below="@+id/seekBarTimer"
+       android:onClick="forward"
+       android:src="@android:drawable/ic_media_ff"
+       android:contentDescription="@string/forward_button_image" />
+
+   
+</RelativeLayout>

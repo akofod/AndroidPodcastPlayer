@@ -39,4 +39,9 @@ public class TestsActivity extends ActionBarActivity {
 		Intent intent = new Intent(this, RssTestActivity.class);
 		startActivity(intent);
 	}
+	
+	public void launchMediaTest(View view) {
+		Intent intent = new Intent(this, PlayPodcastActivity.class);
+		startActivity(intent);
+	}
 }
