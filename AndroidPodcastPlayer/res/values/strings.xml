@@ -21,5 +21,10 @@
     <string name="rewind_button_image">Rewind Button Image</string>
     <string name="play_pause_button_image">Play/Pause Button Image</string>
     <string name="forward_button_image">Forward Button Image</string>
-    
+    <string name="top_tag1">Top Tag 1</string>
+    <string name="top_tag2">Top Tag 2</string>
+    <string name="top_tag3">Top Tag 3</string>
+    <string name="top_tag4">Top Tag 4</string>
+    <string name="search_lable">Search: </string>
+    <string name="top_tags">Top Hits</string>
 </resources>

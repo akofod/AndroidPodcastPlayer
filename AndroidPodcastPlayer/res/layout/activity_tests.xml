@@ -25,4 +25,14 @@
         android:onClick="launchMediaTest"
         android:text="@string/title_activity_media" />
 
+    <Button
+        android:id="@+id/button2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/button1"
+        android:layout_below="@+id/button1"
+        android:onClick="launchRepTest"
+        android:layout_marginTop="34dp"
+        android:text="Test Repository" />
+
 </RelativeLayout>
