@@ -4,6 +4,9 @@
     <string name="app_name">AndroidPodcastPlayer</string>
     <string name="hello_world">Hello world! How are you today?</string>
     <string name="hello_rss">Howdy, Rss:) Enter a URL and press the button.</string>
+    <string name="hello_fileManager">Hello, File Manager:)</string>
+    <string name="dm_url">Enter a url to fetch</string>
+    <string name="dm_filename">Enter a name for the downloaded file</string>
     <string name="action_settings">Settings</string>
     <string name="manage_podcasts">Manage Podcasts</string>
     <string name="visit_repository">Visit Podcast Repository</string>
@@ -14,6 +17,7 @@
     <string name="action_tests">Tests</string>
     <string name="title_activity_tests">TestsActivity</string>
     <string name="title_activity_media">TestsMedia</string>
+    <string name="title_activity_download">TestDownloadManager</string>
 	<string name="now_playing">Now Playing:</string>
 	<string name="inital_time">0:00</string>
     <string name="current_title">Current Title</string>

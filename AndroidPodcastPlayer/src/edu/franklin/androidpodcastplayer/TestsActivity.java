@@ -49,4 +49,9 @@ public class TestsActivity extends ActionBarActivity {
 		Intent intent = new Intent(this, RepositoryActivity.class);
 		startActivity(intent);
 	}
+	
+	public void launchFileManagerTest(View view) {
+		Intent intent = new Intent(this, DownloadManagerActivity.class);
+		startActivity(intent);
+	}
 }

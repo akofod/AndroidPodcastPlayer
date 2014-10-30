@@ -1,0 +1,78 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context="edu.franklin.androidpodcastplayer.DownloadManagerActivity" >
+
+    <TextView
+        android:id="@+id/dmUrlLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Enter a URL to download:"/>
+
+    <EditText
+        android:id="@+id/dmUrlField"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/dmUrlLabel"
+        android:layout_alignParentRight="true"
+        android:layout_marginTop="14dp"
+        android:ems="8"
+        android:inputType="textUri|none" />
+	<requestFocus />
+	
+	<TextView
+	    android:id="@+id/textView1"
+	    android:layout_width="wrap_content"
+	    android:layout_height="wrap_content"
+	    android:layout_alignLeft="@+id/dmUrlField"
+	    android:layout_alignRight="@+id/dmUrlField"
+	    android:layout_below="@+id/dmUrlField"
+	    android:layout_marginTop="22dp"
+	    android:text="Enter the directory to save in:" />
+	
+	<EditText
+	    android:id="@+id/dmDirField"
+	    android:layout_width="wrap_content"
+	    android:layout_height="wrap_content"
+	    android:layout_alignLeft="@+id/dmFilenameLabel"
+	    android:layout_alignRight="@+id/textView1"
+	    android:layout_below="@+id/textView1"
+	    android:ems="10" 
+	    android:inputType="textUri|none" />
+
+	<TextView
+	    android:id="@+id/dmFilenameLabel"
+	    android:layout_width="wrap_content"
+	    android:layout_height="wrap_content"
+	    android:layout_alignLeft="@+id/dmUrlField"
+	    android:layout_below="@+id/dmUrlField"
+	    android:layout_marginTop="94dp"
+	    android:text="Enter a filename: " />
+
+	<EditText
+	    android:id="@+id/dmFilenameField"
+	    android:layout_width="wrap_content"
+	    android:layout_height="wrap_content"
+	    android:layout_alignLeft="@+id/dmFilenameLabel"
+	    android:layout_alignRight="@+id/dmDirField"
+	    android:layout_below="@+id/dmFilenameLabel"
+	    android:ems="8"
+	    android:inputType="textUri|none" />
+
+	<Button
+	    android:id="@+id/createDummyButton"
+	    android:layout_width="wrap_content"
+	    android:layout_height="wrap_content"
+	    android:layout_alignLeft="@+id/dmFilenameField"
+	    android:layout_alignRight="@+id/dmFilenameField"
+	    android:layout_below="@+id/dmFilenameField"
+	    android:layout_marginTop="39dp"
+	    android:onClick="downloadFile"
+	    android:text="Download File" />
+
+</RelativeLayout>
