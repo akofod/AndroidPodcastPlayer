@@ -6,6 +6,7 @@
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+
     <uses-sdk
         android:minSdkVersion="11"
         android:targetSdkVersion="21" />
@@ -40,8 +41,20 @@
             android:name=".DownloadManagerActivity"
             android:label="@string/title_activity_download" >
         </activity>
-        <service android:name="edu.franklin.androidpodcastplayer.services.DownloadService" ></service>
-    	<service android:name="edu.franklin.androidpodcastplayer.services.FileManager" ></service>
+        <activity
+            android:name=".RepositoryActivity"
+            android:label="@string/title_activity_download" >
+        </activity>
+
+        <service android:name=".services.DownloadService" >
+        </service>
+        <service android:name=".services.FileManager" >
+        </service>
+
+        <activity
+            android:name=".PodcastDetails"
+            android:label="@string/title_activity_podcast_details" >
+        </activity>
     </application>
 
 </manifest>
