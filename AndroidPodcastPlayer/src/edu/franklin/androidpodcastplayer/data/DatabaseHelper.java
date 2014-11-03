@@ -39,7 +39,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 	public static final String EPISODES_COLUMN_IMAGE = "image";
 	public static final String EPISODES_COLUMN_TOTALTIME = "totalTime";
 	public static final String EPISODES_COLUMN_PLAYEDTIME = "playedTime";
-	public static final String EPISODES_COLUMN_NEW = "new";
+	public static final String EPISODES_COLUMN_NEW = "newEpisode";
 	public static final String EPISODES_COLUMN_COMPLETED = "completed";
 
 	public static final String TABLE_CONFIG = "config";
@@ -54,7 +54,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 			"autoDelete INTEGER)";
 	// episodes table create statement
 	private static final String CREATE_TABLE_EPISODES = "CREATE TABLE episodes(episodeId INTEGER PRIMARY KEY AUTOINCREMENT, " +
-			"podcastId INTEGER, name TEXT, filepath TEXT, image TEXT, totalTime INTEGER, playedTime INTEGER, new INTEGER, " +
+			"podcastId INTEGER, name TEXT, filepath TEXT, image TEXT, totalTime INTEGER, playedTime INTEGER, newEpisode INTEGER, " +
 			"completed INTEGER)";
 	// config table create statement
 	private static final String CREATE_TABLE_CONFIG = "CREATE TABLE config(configId INTEGER PRIMARY KEY AUTOINCREMENT, " +
