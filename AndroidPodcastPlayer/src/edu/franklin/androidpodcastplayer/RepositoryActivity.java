@@ -1,10 +1,14 @@
 package edu.franklin.androidpodcastplayer;
 
+import java.io.BufferedInputStream;
 import java.io.BufferedReader;
 import java.io.IOException;
+import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
+import java.net.MalformedURLException;
 import java.net.URL;
+import java.net.URLConnection;
 
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
@@ -14,7 +18,7 @@ import org.apache.http.client.methods.HttpGet;
 import org.apache.http.impl.client.DefaultHttpClient;
 import org.json.JSONArray;
 import org.json.JSONException;
-
+import com.squareup.picasso.Picasso;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.AsyncTask;
@@ -190,17 +194,27 @@ public class RepositoryActivity extends ActionBarActivity
 		{
 			TableRow newRow;
 			TextView tv;
-
+			ImageView img;
+			
 			for(int i = 0; i < result.length(); i++)
 			{
 				try 
 				{
 					newRow = new TableRow(RepositoryActivity.this);
+					img = new ImageView(RepositoryActivity.this);
 					tv = new TextView(RepositoryActivity.this);
+					
+					// Set up Image View for Album Art
+					Picasso.with(RepositoryActivity.this)
+						.load(result.getJSONObject(i).getString("logo_url"))
+						.resize(100, 100)
+						.into(img);
 										
 					// Set up Text View for Title
 					tv = new TextView(RepositoryActivity.this);
+					tv.setTextColor(-1);
 					tv.setText(result.getJSONObject(i).getString("title"));
+					newRow.addView(img);
 					newRow.addView(tv);
 
 					tLayout.addView(newRow);
@@ -213,4 +227,3 @@ public class RepositoryActivity extends ActionBarActivity
 		}
 	}
 }
-
