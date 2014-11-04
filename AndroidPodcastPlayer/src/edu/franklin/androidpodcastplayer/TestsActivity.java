@@ -54,4 +54,9 @@ public class TestsActivity extends ActionBarActivity {
 		Intent intent = new Intent(this, DownloadManagerActivity.class);
 		startActivity(intent);
 	}
+	
+	public void launchSubscriptionSettingsTest(View view) {
+		Intent intent = new Intent(this, SubscriptionSettingsActivity.class);
+		startActivity(intent);
+	}
 }

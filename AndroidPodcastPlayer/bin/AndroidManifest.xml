@@ -5,6 +5,7 @@
     android:versionName="1.0" >
 
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 
     <uses-sdk
         android:minSdkVersion="11"
@@ -27,25 +28,29 @@
         <activity
             android:name=".RssTestActivity"
             android:label="@string/title_activity_rss_test" >
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
         <activity
             android:name=".PlayPodcastActivity"
             android:label="@string/title_activity_media_test" >
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
         <activity
             android:name=".TestsActivity"
             android:label="@string/title_activity_tests" >
         </activity>
-    </application>
+        <activity
+            android:name=".DownloadManagerActivity"
+            android:label="@string/title_activity_download" >
+        </activity>
+        <activity
+            android:name=".SubscriptionSettingsActivity"
+            android:theme="@style/CustomTheme"
+            android:label="@string/title_activity_dsubscription_settings" >
+        </activity>
+
+        <service android:name="edu.franklin.androidpodcastplayer.services.DownloadService" >
+        </service>
+        <service android:name="edu.franklin.androidpodcastplayer.services.FileManager" >
+        </service>
+    </application>    
 
 </manifest>
