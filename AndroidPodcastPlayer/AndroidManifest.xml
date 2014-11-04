@@ -42,17 +42,6 @@
             android:label="@string/title_activity_download" >
         </activity>
         <activity
-            android:name=".SubscriptionSettingsActivity"
-            android:label="@string/title_activity_dsubscription_settings"
-            android:theme="@style/CustomTheme" >
-        </activity>
-
-        <service android:name="edu.franklin.androidpodcastplayer.services.DownloadService" >
-        </service>
-        <service android:name="edu.franklin.androidpodcastplayer.services.FileManager" >
-        </service>
-
-        <activity
             android:name=".RepositoryActivity"
             android:label="@string/title_activity_download" >
         </activity>

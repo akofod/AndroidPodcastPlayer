@@ -44,14 +44,5 @@
         android:layout_toLeftOf="@+id/buttonTestMedia"
         android:onClick="launchFileManagerTest"
         android:text="Test FileManager" />
-    
-    <Button
-        android:id="@+id/buttonTestSettings"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/buttonFileManager"
-        android:layout_marginTop="29dp"
-        android:onClick="launchSubscriptionSettingsTest"
-        android:text="Test SubscriptionSettings" />
 
 </RelativeLayout>
