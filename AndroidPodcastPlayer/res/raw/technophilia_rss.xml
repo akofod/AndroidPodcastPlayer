@@ -1,0 +1,1065 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	xmlns:itunes="http://www.itunes.com/dtds/podcast-1.0.dtd"
+	xmlns:media="http://search.yahoo.com/mrss/"
+>
+
+<channel>
+	<title>The MakeUseOf Technophilia Podcast</title>
+	<atom:link href="http://www.makeuseof.tv/feed/mp3/" rel="self" type="application/rss+xml" />
+	<link>http://www.makeuseof.tv</link>
+	<description>The Internet Leader For All Things Technology</description>
+	<lastBuildDate>Thu, 30 Oct 2014 15:06:01 +0000</lastBuildDate>
+	<language>en-US</language>
+		<sy:updatePeriod>hourly</sy:updatePeriod>
+		<sy:updateFrequency>1</sy:updateFrequency>
+	
+	<copyright>Copyright © Technophilia Podcast 2011 </copyright>
+	<managingEditor>james.bruce@me.com</managingEditor>
+	<webMaster>james.bruce@me.com</webMaster>
+	<ttl>1440</ttl>
+	<image>
+		<url>http://www.makeuseof.tv/wp-content/uploads/2012/04/techophilia-technology-podcast-144.jpg</url>
+		<title>The MakeUseOf Technophilia Podcast</title>
+		<link>http://www.makeuseof.tv</link>
+		<width>144</width>
+		<height>144</height>
+	</image>
+	<itunes:subtitle></itunes:subtitle>
+	<itunes:summary>The Internet Leader For All Things Technology</itunes:summary>
+	<itunes:keywords>tech, technology, gaming, xbox, gadgets, news, apps, applications, iphone, android, mac, PC</itunes:keywords>
+	<itunes:category text="Technology" />
+	<itunes:category text="Technology">
+		<itunes:category text="Tech News" />
+	</itunes:category>
+	<itunes:category text="Games &#38; Hobbies">
+		<itunes:category text="Video Games" />
+	</itunes:category>
+	<itunes:author></itunes:author>
+	<itunes:owner>
+		<itunes:name></itunes:name>
+		<itunes:email>james.bruce@me.com</itunes:email>
+	</itunes:owner>
+	<itunes:block>no</itunes:block>
+	<itunes:explicit>yes</itunes:explicit>
+	<itunes:image href="http://podcast.makeuseoflimited.netdna-cdn.com/wp-content/uploads/2012/04/techophilia-technology-podcast-600.jpg" />
+	<item>
+		<title>Episode 136: Not Episode One</title>
+		<link>http://www.makeuseof.tv/2014/episode-136-episode-one/</link>
+		<comments>http://www.makeuseof.tv/2014/episode-136-episode-one/#comments</comments>
+		<pubDate>Thu, 30 Oct 2014 15:06:01 +0000</pubDate>
+		<dc:creator><![CDATA[jamie]]></dc:creator>
+				<category><![CDATA[Technophilia Technology Podcast]]></category>
+
+		<guid isPermaLink="false">http://www.makeuseof.tv/?p=1325</guid>
+		<description><![CDATA[<div><img width="600" height="420" src="http://podcast.makeuseoflimited.netdna-cdn.com/wp-content/uploads/2014/10/techno136-600x420.jpg" class="attachment-featured wp-post-image" alt="techno136" /></div><p>CVS and other stores are turning off NFC, just to spite Apple. Their game-changing alternative: QR codes. Microstopped: Microsoft may be shutting down negative Windows 8.1 commentary with DMCAs on YouTube. So you should only speak positively of their new OS: Windows 93 Reddit Buys Alien Blue Adobe present different Creative Cloud prices depending on browsers (Safari cheapest, Chrome most expensive). Why? Use TOR? Enjoy that malware being automatically added to binary files by certain exit nodes. Verizon adding tracking cookies to every HTTP request. (ie, your privacy plugins are useless) Verizon launches tech site with US surveillance stories banned....</p><p>Read the full article: <a href='http://www.makeuseof.tv/2014/episode-136-episode-one/'>Episode 136: Not Episode One</a></p>]]></description>
+				<content:encoded><![CDATA[<p>
+<ul>
+<li><a href="http://daringfireball.net/2014/10/nfc_apple_pay">CVS and other stores are turning off NFC, just to spite Apple</a>. Their game-changing alternative: QR codes.</li>
+<li><a href="https://www.youtube.com/watch?v=zA4LIRxICPg">Microstopped</a>: Microsoft <i>may</i> be shutting down negative Windows 8.1 commentary with DMCAs on YouTube.</li>
+<li>So you should only speak positively of their new OS: <a href="http://www.windows93.net/">Windows 93</a></li>
+<li><a href="http://techcrunch.com/2014/10/15/reddit-acquires-alien-blue-the-most-popular-unofficial-reddit-app/">Reddit Buys Alien Blue</a></li>
+<li><a href="http://www.diyphotography.net/adobe-germany-sets-different-creative-cloud-pricing-based-browsers/">Adobe present different Creative Cloud prices depending on browsers</a> (Safari cheapest, Chrome most expensive). Why?</li>
+<li>Use TOR? <a href="http://threatpost.com/researcher-finds-tor-exit-node-adding-malware-to-binaries/109008">Enjoy that malware being automatically added to binary files</a> by certain exit nodes.</li>
+<li><a href="http://www.wired.com/2014/10/verizons-perma-cookie/">Verizon adding tracking cookies to every HTTP request</a>. (ie, your privacy plugins are useless)</li>
+<li>V<a href="http://www.dailydot.com/politics/verizon-sugarstring-us-surveillance-net-neutrality/">erizon launches tech site with US surveillance stories banned</a>.</li>
+<li>Uber is changing the world… <a href="http://inthesetimes.com/working/entry/17279/the_sharing_economy_first_strike_uber_drivers_turn_off_the_app">by paying drivers less than minimum wage</a>.</li>
+<li><a href="http://feedproxy.google.com/~r/hackaday/LgoM/~3/Piwg9Z8zO7Q/">Common USB interface driver</a> was bricking fake devices with windows update.</li>
+<li><a href="http://www.wsj.com/video/youtube-ready-to-eliminate-ads/2A658513-4028-4578-ADD0-242532294D40.html">YouTube readying to turn on subscription model</a></li>
+<li>Remember that episode of Big Bang Theory where they came up with an app to solve algebra equations just by taking a photo? <a href="https://photomath.net">Someone made it</a>.</li>
+<li><a href="http://www.reddit.com/r/excel/comments/2jtd2f/worked_on_a_completely_locked_down_machine_time/">Dude hacked Excel into a fully featured media player</a> because it was the only app permitted to be running</li>
+<li><a href="http://www.npr.org/blogs/alltechconsidered/2014/10/22/357826882/pew-gaming-is-least-welcoming-online-space-for-women?utm_medium=RSS&amp;utm_campaign=news">Gaming is the least welcoming online space for women</a>, according to polls.</li>
+<li><a href="https://www.humblebundle.com/">One of the best Humble Bundles yet is live right now</a>.</li>
+<li><a href="http://toybox.io9.com/research-shows-portal-2-is-better-for-you-than-brain-tr-1641151283">Portal 2 is better at brain training than brain training games</a> (Luminosity)</li>
+</ul>
+]]></content:encoded>
+			<wfw:commentRss>http://www.makeuseof.tv/2014/episode-136-episode-one/feed/</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+			<enclosure url="http://www.makeuseof.tv/podpress_trac/feed/1325/1/tech136.mp3" length="37620215" type="audio/mpeg" />
+		<itunes:duration>1:18:22</itunes:duration>
+		<itunes:subtitle>CVS and other stores are turning off NFC, just to spite Apple. Their game-changing alternative: QR codes. Microstopped: Microsoft may be shutting down negative Windows 8.1 commentary with DMCAs on YouTube. So you should only speak positively of thei[...]</itunes:subtitle>
+		<itunes:summary>CVS and other stores are turning off NFC, just to spite Apple. Their game-changing alternative: QR codes. Microstopped: Microsoft may be shutting down negative Windows 8.1 commentary with DMCAs on YouTube. So you should only speak positively of their new OS: Windows 93 Reddit Buys Alien Blue Adobe present different Creative Cloud prices depending on browsers (Safari cheapest, Chrome most expensive). Why? Use TOR? Enjoy that malware being automatically added to binary files by certain exit nodes. Verizon adding tracking cookies to every HTTP request. (ie, your privacy plugins are useless) Verizon launches tech site with US surveillance stories banned....Read the full article: Episode 136: Not Episode One</itunes:summary>
+		<itunes:author>James Bruce, Justin Pot and Dave LeClair</itunes:author>
+		<itunes:explicit>yes</itunes:explicit>
+		<itunes:block>no</itunes:block>
+	</item>
+		<item>
+		<title>Episode 135: Building LEGOs off-camera</title>
+		<link>http://www.makeuseof.tv/2014/episode-135-building-legos-camera/</link>
+		<comments>http://www.makeuseof.tv/2014/episode-135-building-legos-camera/#comments</comments>
+		<pubDate>Thu, 16 Oct 2014 08:46:24 +0000</pubDate>
+		<dc:creator><![CDATA[jamie]]></dc:creator>
+				<category><![CDATA[Technophilia Technology Podcast]]></category>
+
+		<guid isPermaLink="false">http://www.makeuseof.tv/?p=1321</guid>
+		<description><![CDATA[<div><img width="600" height="420" src="http://podcast.makeuseoflimited.netdna-cdn.com/wp-content/uploads/2014/10/technophilia135-building-legos-off-camera-600x420.jpg" class="attachment-featured wp-post-image" alt="technophilia135---building-legos-off-camera" /></div><p>Tech News Ridiculous cat-ear headphone/speakers with LEDs blast funding goal. The secret to successful Kickstarter: get pretty asian girl to model them. Of course James backed them. This is the best Kickstarter out there right now. HBO without cable will be a reality next year. Why do we even bother? Wikihow article How to pee on a bus gets 150k views. Russians used a flaw in Powerpoint to steal NATO documents. Sarkeesian talk at Utah cancelled to “massacre” death threat. Grow the fuck up, people. Apple and Facebook paying female employees to freeze their eggs. Dropbox wasn’t hacked. Biggest tech...</p><p>Read the full article: <a href='http://www.makeuseof.tv/2014/episode-135-building-legos-camera/'>Episode 135: Building LEGOs off-camera</a></p>]]></description>
+				<content:encoded><![CDATA[<p>
+<h2>Tech News</h2>
+<ul>
+<li><a href="https://www.indiegogo.com/projects/axent-wear-cat-ear-headphones">Ridiculous cat-ear headphone/speakers with LEDs blast funding goal</a>. The secret to successful Kickstarter: get <i>pretty asian girl to model them</i>. Of course James backed them.</li>
+<li><a href="https://www.kickstarter.com/projects/1885543510/the-bandrum-a-new-folk-instrument">This is the best Kickstarter out there right now</a>.</li>
+<li><a href="http://gizmodo.com/yes-hbo-without-a-cable-subscription-is-coming-next-ye-1646609001/+whitsongordon">HBO without cable will be a reality next year</a>.</li>
+<li>Why do we even bother? Wikihow article <a href="http://www.wikihow.com/Control-Your-Bladder-on-a-Bus">How to pee on a bus</a> gets 150k views.</li>
+<li><a href="http://www.npr.org/blogs/alltechconsidered/2014/10/14/356167086/microsoft-windows-flaw-let-russian-hackers-spy-on-nato-report-says?utm_medium=RSS&amp;utm_campaign=news">Russians used a flaw in Powerpoint to steal NATO documents</a>.</li>
+<li><a href="http://arstechnica.com/gaming/2014/10/death-threat-forces-cancellation-of-sarkeesian-university-speech/">Sarkeesian talk at Utah cancelled to “massacre” death threat</a>. Grow the fuck up, people.</li>
+<li><a href="http://www.theverge.com/2014/10/14/6976295/apple-and-facebook-pay-women-employees-egg-freezing">Apple and Facebook paying female employees to freeze their eggs</a>.</li>
+<li><a href="http://www.theverge.com/2014/10/14/6976429/dropbox-says-it-wasnt-hacked-released-passwords-were-stolen-from">Dropbox wasn’t hacked</a>.</li>
+<li><a href="http://www.makeuseof.com/tag/biggest-tech-disappointments-we-ask-you-results/">Biggest tech disappointments</a> &#8211; what’s yours?</li>
+<li><a href="http://valleywag.gawker.com/facebook-and-apple-offer-egg-freezing-perk-so-women-nev-1646097607">Facebook and Apple offer women free egg freezing</a>.</li>
+<li><a href="http://valleywag.gawker.com/doctors-say-google-glass-caused-worse-withdrawal-sympto-1646247892">Google Glass causes withdrawal symptoms worse than booze</a>.</li>
+</ul>
+<h2>Gaming News</h2>
+<ul>
+<li>Coming soon: DOTA2 on a Windows Surface tablet? <i>MAYBE</i>!</li>
+<li><strong><a href="http://arstechnica.com/gaming/2014/10/humble-mozilla-bundle-pushes-webgl-powered-browser-gaming/">Humble Bundle bringing true multiplatform gaming with new webGL wrapper</a>. </strong></li>
+</ul>
+]]></content:encoded>
+			<wfw:commentRss>http://www.makeuseof.tv/2014/episode-135-building-legos-camera/feed/</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+			<enclosure url="http://www.makeuseof.tv/podpress_trac/feed/1321/1/tech135.mp3" length="29298230" type="audio/mpeg" />
+		<itunes:duration>1:01:02</itunes:duration>
+		<itunes:subtitle>Tech News Ridiculous cat-ear headphone/speakers with LEDs blast funding goal. The secret to successful Kickstarter: get pretty asian girl to model them. Of course James backed them. This is the best Kickstarter out there right now. HBO without cable[...]</itunes:subtitle>
+		<itunes:summary>Tech News Ridiculous cat-ear headphone/speakers with LEDs blast funding goal. The secret to successful Kickstarter: get pretty asian girl to model them. Of course James backed them. This is the best Kickstarter out there right now. HBO without cable will be a reality next year. Why do we even bother? Wikihow article How to pee on a bus gets 150k views. Russians used a flaw in Powerpoint to steal NATO documents. Sarkeesian talk at Utah cancelled to “massacre” death threat. Grow the fuck up, people. Apple and Facebook paying female employees to freeze their eggs. Dropbox wasn’t hacked. Biggest tech...Read the full article: Episode 135: Building LEGOs off-camera</itunes:summary>
+		<itunes:author>James Bruce, Justin Pot and Dave LeClair</itunes:author>
+		<itunes:explicit>yes</itunes:explicit>
+		<itunes:block>no</itunes:block>
+	</item>
+		<item>
+		<title>Episode 134: Knittergate</title>
+		<link>http://www.makeuseof.tv/2014/episode-134-knittergate/</link>
+		<comments>http://www.makeuseof.tv/2014/episode-134-knittergate/#comments</comments>
+		<pubDate>Thu, 09 Oct 2014 09:05:47 +0000</pubDate>
+		<dc:creator><![CDATA[jamie]]></dc:creator>
+				<category><![CDATA[Technophilia Technology Podcast]]></category>
+
+		<guid isPermaLink="false">http://www.makeuseof.tv/?p=1313</guid>
+		<description><![CDATA[<div><img width="600" height="420" src="http://podcast.makeuseoflimited.netdna-cdn.com/wp-content/uploads/2014/10/techno134-600x420.jpg" class="attachment-featured wp-post-image" alt="techno134" /></div><p>Tech News We’re number 2! We’re number 2! China overtakes the USA as the world’s biggest economy. Apple blacklisted a German magazine for bending a phone. HP is splitting into two companies: one consumer-facing, one business-facing. Bill Gates: “BitCoin is better than currency” Samsung paid Microsoft $1 billion in Android royalties last year. Google wants to get rid of apps, and have the ultimate monopoly. Twitter is suing the US government. Is that a thing? Hackers stole millions in cash from ATM machines. Comcast got a guy fired for complaining about their service. Gaming News Smash Bros. 3DS is really...</p><p>Read the full article: <a href='http://www.makeuseof.tv/2014/episode-134-knittergate/'>Episode 134: Knittergate</a></p>]]></description>
+				<content:encoded><![CDATA[<p>
+<h2>Tech News</h2>
+<ul>
+<li>We’re number 2! We’re number 2! <a href="http://www.businessinsider.com/china-overtakes-us-as-worlds-largest-economy-2014-10">China overtakes the USA as the world’s biggest economy</a>.</li>
+<li><a href="http://valleywag.gawker.com/apple-blacklisted-europes-biggest-computer-mag-for-bend-1641384571">Apple blacklisted a German magazine for bending a phone</a>.</li>
+<li><a href="http://www.npr.org/2014/10/06/352613333/why-you-should-start-taking-millennials-seriously?utm_medium=RSS&amp;utm_campaign=news">HP is splitting into two companies</a>: one consumer-facing, one business-facing.</li>
+<li>Bill Gates: “<a href="http://www.entrepreneur.com/article/238103">BitCoin is better than currency</a>”</li>
+<li><a href="http://www.theverge.com/2014/10/4/6906789/microsoft-samsung-android-1-billion-royalties">Samsung paid Microsoft $1 billion in Android royalties last year</a>.</li>
+<li><a href="http://www.gosu-tech.com/googles-physical-web-means-apps-hassle/">Google wants to get rid of apps</a>, and have the ultimate monopoly.</li>
+<li><a href="http://www.bbc.co.uk/news/technology-29528665">Twitter is suing the US government</a>. Is that a thing?</li>
+<li><a href="http://www.net-security.org/malware_news.php?id=2880">Hackers stole millions in cash from ATM machines</a>.</li>
+<li><a href="http://rss.slashdot.org/~r/Slashdot/slashdot/~3/1jcTS0IO1c0/story01.htm">Comcast got a guy fired for complaining about their service</a>.</li>
+</ul>
+<h2>Gaming News</h2>
+<ul>
+<li><a href="http://www.gamingcypher.com/super-smash-bros-nintendo-3ds-sold-2-8-million-units-worldwide/">Smash Bros. 3DS is really F’in good, and its sales reflected that. Also, Wii U release date</a></li>
+<li><a href="http://www.videogamer.com/ps4/assassins_creed_unity/news/assassins_creed_unity_is_900p_30fps_on_both_ps4_and_xbox_one.html">Ubisoft makes Assassin’s Creed run the same on Xbox One and PS4</a>. One is being held back.</li>
+</ul>
+]]></content:encoded>
+			<wfw:commentRss>http://www.makeuseof.tv/2014/episode-134-knittergate/feed/</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+			<enclosure url="http://www.makeuseof.tv/podpress_trac/feed/1313/1/tech134.mp3" length="37513218" type="audio/mpeg" />
+		<itunes:duration>1:18:09</itunes:duration>
+		<itunes:subtitle>Tech News We’re number 2! We’re number 2! China overtakes the USA as the world’s biggest economy. Apple blacklisted a German magazine for bending a phone. HP is splitting into two companies: one consumer-facing, one business-facing. Bill Gates: “Bit[...]</itunes:subtitle>
+		<itunes:summary>Tech News We’re number 2! We’re number 2! China overtakes the USA as the world’s biggest economy. Apple blacklisted a German magazine for bending a phone. HP is splitting into two companies: one consumer-facing, one business-facing. Bill Gates: “BitCoin is better than currency” Samsung paid Microsoft $1 billion in Android royalties last year. Google wants to get rid of apps, and have the ultimate monopoly. Twitter is suing the US government. Is that a thing? Hackers stole millions in cash from ATM machines. Comcast got a guy fired for complaining about their service. Gaming News Smash Bros. 3DS is really...Read the full article: Episode 134: Knittergate</itunes:summary>
+		<itunes:author>James Bruce, Justin Pot and Dave LeClair</itunes:author>
+		<itunes:explicit>yes</itunes:explicit>
+		<itunes:block>no</itunes:block>
+	</item>
+		<item>
+		<title>Episode 133 &#8211; Ello, Ello, Ay, Ay</title>
+		<link>http://www.makeuseof.tv/2014/episode-132-ello-ello-ay-ay/</link>
+		<comments>http://www.makeuseof.tv/2014/episode-132-ello-ello-ay-ay/#comments</comments>
+		<pubDate>Thu, 02 Oct 2014 07:17:17 +0000</pubDate>
+		<dc:creator><![CDATA[jamie]]></dc:creator>
+				<category><![CDATA[Technophilia Technology Podcast]]></category>
+
+		<guid isPermaLink="false">http://www.makeuseof.tv/?p=1307</guid>
+		<description><![CDATA[<div><img width="400" height="400" src="http://podcast.makeuseoflimited.netdna-cdn.com/wp-content/uploads/2014/10/tech133.jpg" class="attachment-featured wp-post-image" alt="tech133" /></div><p>Tech News Microsoft decides to skip the traditionally “good’ windows, and go straight to the next bad one with Windows 10. (This is their marketing plan) Microsoft made an April Fools joke come true by doing this. Cheap solar power is terrifying to electric companies. The Thais are building a robot food tester to verify whether Thai food is good or not. #bendgate proved to be BS, thanks to actual testing. Reddit wants to give $5mil in stock to users, with a new cryptocurrency. The FCC killed local blackout rules. The FBI isn’t thrilled about encrypted smartphones. Caffeine underwear doesn’t...</p><p>Read the full article: <a href='http://www.makeuseof.tv/2014/episode-132-ello-ello-ay-ay/'>Episode 133 &#8211; Ello, Ello, Ay, Ay</a></p>]]></description>
+				<content:encoded><![CDATA[<p>
+<h2>Tech News</h2>
+<ul>
+<li>Microsoft decides to skip the traditionally “good’ windows, and go straight to the next bad one <a href="http://www.makeuseof.com/tag/will-windows-10-make-productive-people-even-productive/">with Windows 10</a>. (<a href="https://www.youtube.com/watch?v=0dZIutRz9hw">This is their marketing plan</a>)</li>
+<li>Microsoft made <a href="http://www.infoworld.com/article/2613504/microsoft-windows/microsoft-skips--too-good--windows-9--jumps-to-windows-10.html">an April Fools joke</a> come true by doing this.</li>
+<li><a href="http://www.vox.com/2014/9/29/6849723/solar-power-net-metering-utilities-fight-states">Cheap solar power is terrifying to electric companies.</a></li>
+<li>The Thais are building a <a href="http://www.nytimes.com/2014/09/29/world/asia/bad-thai-food-enter-a-robot-taster.html?_r=0">robot food tester</a> to verify whether Thai food is good or not.</li>
+<li><a href="http://www.consumerreports.org/cro/news/2014/09/consumer-reports-tests-iphone-6-bendgate/index.htm">#bendgate proved to be BS</a>, thanks to actual testing.</li>
+<li><a href="http://techcrunch.com/2014/09/30/reddit-fundraising/">Reddit wants to give $5mil in stock to users</a>, with a new cryptocurrency.</li>
+<li><a href="http://www.washingtonpost.com/blogs/the-switch/wp/2014/09/30/the-fcc-just-sacked-the-sports-blackout-rule/">The FCC killed local blackout rules</a>.</li>
+<li><a href="http://online.wsj.com/articles/fbi-director-raises-concerns-about-smartphone-security-plans-1411671434">The FBI isn’t thrilled about encrypted smartphones</a>.</li>
+<li><a href="http://www.npr.org/blogs/health/2014/09/30/352727644/putting-caffeine-in-your-underwear-wont-make-you-slimmer-alas?utm_medium=RSS&amp;utm_campaign=news">Caffeine underwear doesn’t help you lose weight</a>. There goes my plan…</li>
+<li><a href="http://www.sandisk.com/about-sandisk/press-room/press-releases/2014/sandisk-introduces-worlds-highest-capacity-microsdxc-memory-card-at-128gb/">128 GB microSD card</a>. We’re living in the future.</li>
+<li><a href="http://money.cnn.com/2014/09/26/technology/paypal-bitcoin/index.html">You can now use PayPal to accept BitCoin</a>, for some reason.</li>
+</ul>
+<h2>Gaming</h2>
+<ul>
+<li><a href="http://time.com/3449272/pokemon-tcg-ios/">Nintendo’s first iOS game arrives!</a> Spoiler: it’s a Pokemon CCG.</li>
+<li><a href="http://www.npr.org/blogs/thetwo-way/2014/09/30/352795555/u-s-charges-four-hackers-for-stealing-games-from-microsoft-army?utm_medium=RSS&amp;utm_campaign=news">US charges hackers for stealing games</a> from Microsoft, Epic Games, Valve&#8230;and the US Military.</li>
+<li>Shadow of Mordor is a licensed game that is&#8230;</li>
+</ul>
+]]></content:encoded>
+			<wfw:commentRss>http://www.makeuseof.tv/2014/episode-132-ello-ello-ay-ay/feed/</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+			<enclosure url="http://www.makeuseof.tv/podpress_trac/feed/1307/1/tech133.mp3" length="147945300" type="audio/mpeg" />
+		<itunes:duration>1:17:03</itunes:duration>
+		<itunes:subtitle>Tech News Microsoft decides to skip the traditionally “good’ windows, and go straight to the next bad one with Windows 10. (This is their marketing plan) Microsoft made an April Fools joke come true by doing this. Cheap solar power is terrifying to [...]</itunes:subtitle>
+		<itunes:summary>Tech News Microsoft decides to skip the traditionally “good’ windows, and go straight to the next bad one with Windows 10. (This is their marketing plan) Microsoft made an April Fools joke come true by doing this. Cheap solar power is terrifying to electric companies. The Thais are building a robot food tester to verify whether Thai food is good or not. #bendgate proved to be BS, thanks to actual testing. Reddit wants to give $5mil in stock to users, with a new cryptocurrency. The FCC killed local blackout rules. The FBI isn’t thrilled about encrypted smartphones. Caffeine underwear doesn’t...Read the full article: Episode 133 &#8211; Ello, Ello, Ay, Ay</itunes:summary>
+		<itunes:author>James Bruce, Justin Pot and Dave LeClair</itunes:author>
+		<itunes:explicit>yes</itunes:explicit>
+		<itunes:block>no</itunes:block>
+	</item>
+		<item>
+		<title>Episode 132 &#8211; Windows Phone, we hardly knew ye</title>
+		<link>http://www.makeuseof.tv/2014/episode-132-windows-phone-hardly-knew-ye/</link>
+		<comments>http://www.makeuseof.tv/2014/episode-132-windows-phone-hardly-knew-ye/#comments</comments>
+		<pubDate>Thu, 25 Sep 2014 11:46:46 +0000</pubDate>
+		<dc:creator><![CDATA[jamie]]></dc:creator>
+				<category><![CDATA[Technophilia Technology Podcast]]></category>
+
+		<guid isPermaLink="false">http://www.makeuseof.tv/?p=1300</guid>
+		<description><![CDATA[<div><img width="600" height="420" src="http://podcast.makeuseoflimited.netdna-cdn.com/wp-content/uploads/2014/09/techno132-600x420.jpg" class="attachment-featured wp-post-image" alt="techno132" /></div><p>Tlk.io seems to be down&#8230; again. So here&#8217;s an alternate chat: http://www.e-chat.co/room/28261 Tech News Gold Apple Watches could cost upwards of $5,000 as Apple eyes luxury market. Iran arrested people for appearing in a YouTube video of “Happy” Meanwhile, in the good old US of A, someone is writing Christian Harry Potter fanfiction. This has to be a joke, right? Right? Google app developers will need to publicly share their home address Bend-gate &#8211; apparently, thin Aluminium can be bent. Mind blown. Comcast claims it has plenty of competition, so it should be able to buy Time Warner. James’ Minecraft guide...</p><p>Read the full article: <a href='http://www.makeuseof.tv/2014/episode-132-windows-phone-hardly-knew-ye/'>Episode 132 &#8211; Windows Phone, we hardly knew ye</a></p>]]></description>
+				<content:encoded><![CDATA[<p>
+<p>Tlk.io seems to be down&#8230; again. So here&#8217;s an alternate chat: <a href="http://www.e-chat.co/room/28261">http://www.e-chat.co/room/28261</a></p>
+<h2>Tech News</h2>
+<ul>
+<li><a href="http://daringfireball.net/2014/09/apple_watch">Gold Apple Watches could cost upwards of $5,000</a> as Apple eyes luxury market.</li>
+<li>Iran <a href="http://www.npr.org/blogs/thetwo-way/2014/09/19/349842310/irans-happy-dancers-receive-suspended-sentences?utm_medium=RSS&amp;utm_campaign=news">arrested people for appearing in a YouTube video</a> of “Happy”</li>
+<li>Meanwhile, in the good old US of A, <a href="http://jezebel.com/moms-evangelical-christian-rewrite-of-harry-potter-cann-1638274209/all">someone is writing Christian Harry Potter fanfiction</a>. This has to be a joke, right? Right?</li>
+<li><a href="http://phandroid.com/2014/09/18/google-play-now-requires-devs-to-make-their-home-address-public/">Google app developers will need to publicly share their home address</a></li>
+<li><a href="http://www.redmondpie.com/bendgate-apparently-you-can-bend-iphone-6-plus-with-your-bare-hands-video/">Bend-gate</a> &#8211; apparently, thin Aluminium can be bent. Mind blown.</li>
+<li>Comcast claims it has plenty of competition, so it should be able to buy Time Warner.</li>
+<li><a href="http://www.makeuseof.com/tag/latecomer-beginners-guide-minecraft/">James’ Minecraft guide was published</a>, and it’s awesome. Says James.</li>
+<li><a href="http://www.makeuseof.com/tag/makeuseof-says-goodbye-windows-phone/">Microsoft pumping up articles announcing that Windows Phone isn’t being covered</a>. Guess it’s just happy to be talked about at all.</li>
+<li><a href="http://torrentfreak.com/the-pirate-bay-runs-on-21-raid-proof-virtual-machines-140921/">The Pirate Bay runs on 21 virtual machines</a>, scattered all over the world.</li>
+<li><a href="https://www.kickstarter.com/terms-of-use#section4">Kickstarters must actually follow through on their promises now.</a></li>
+<li><a href="https://www.kickstarter.com/projects/oneirics/oneirics-live-your-dreams">The Ultimate Lucid Dreaming Mask</a>, kickstarting now. (It has EYE TRACKING).</li>
+</ul>
+<h2>Gaming News</h2>
+<ul>
+<li><a href="http://www.dota2.com/rekindlingsoul/">Literally the biggest patch in the history of Dota</a>. They are changing <b>the</b> map!</li>
+<li><a href="http://www.polygon.com/2014/9/23/6833953/blizzard-cancels-titan-next-gen-mmo-pc">Blizzard gives up on its next MMO, Titan, after 7 years in the works</a>.</li>
+<li><a href="http://www.polygon.com/2014/9/22/6829015/new-steam-store-valve-discovery-update">Valve made it easier to find stuff on Steam.</a></li>
+</ul>
+]]></content:encoded>
+			<wfw:commentRss>http://www.makeuseof.tv/2014/episode-132-windows-phone-hardly-knew-ye/feed/</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+			<enclosure url="http://www.makeuseof.tv/podpress_trac/feed/1300/1/tech132.mp3" length="41876294" type="audio/mpeg" />
+		<itunes:duration>1:27:14</itunes:duration>
+		<itunes:subtitle>Tlk.io seems to be down&#8230; again. So here&#8217;s an alternate chat: http://www.e-chat.co/room/28261 Tech News Gold Apple Watches could cost upwards of $5,000 as Apple eyes luxury market. Iran arrested people for appearing in a YouTube video of [...]</itunes:subtitle>
+		<itunes:summary>Tlk.io seems to be down&#8230; again. So here&#8217;s an alternate chat: http://www.e-chat.co/room/28261 Tech News Gold Apple Watches could cost upwards of $5,000 as Apple eyes luxury market. Iran arrested people for appearing in a YouTube video of “Happy” Meanwhile, in the good old US of A, someone is writing Christian Harry Potter fanfiction. This has to be a joke, right? Right? Google app developers will need to publicly share their home address Bend-gate &#8211; apparently, thin Aluminium can be bent. Mind blown. Comcast claims it has plenty of competition, so it should be able to buy Time Warner. James’ Minecraft guide...Read the full article: Episode 132 &#8211; Windows Phone, we hardly knew ye</itunes:summary>
+		<itunes:author>James Bruce, Justin Pot and Dave LeClair</itunes:author>
+		<itunes:explicit>yes</itunes:explicit>
+		<itunes:block>no</itunes:block>
+	</item>
+		<item>
+		<title>Technophilia 131 &#8211; Better Than U2</title>
+		<link>http://www.makeuseof.tv/2014/technophilia-132-better-u2/</link>
+		<comments>http://www.makeuseof.tv/2014/technophilia-132-better-u2/#comments</comments>
+		<pubDate>Thu, 18 Sep 2014 10:37:59 +0000</pubDate>
+		<dc:creator><![CDATA[jamie]]></dc:creator>
+				<category><![CDATA[Technophilia Technology Podcast]]></category>
+
+		<guid isPermaLink="false">http://www.makeuseof.tv/?p=1290</guid>
+		<description><![CDATA[<div><img width="600" height="420" src="http://podcast.makeuseoflimited.netdna-cdn.com/wp-content/uploads/2014/09/Tech131-600x420.jpg" class="attachment-featured wp-post-image" alt="Tech131" /></div><p>Email address doubles: who’s fault is it when someone emails you, confusing you for someone else? Don’t want that crap U2 album? Apple added a 1-click support page to remove it. Thai Math textbook publisher demonstrates why you shouldn’t use Google Image Search for your products iPhone 6 erotic poetry constructed entirely from reviews (we’re totally reading it) 85% of music sales in Japan still CDs Xbox One launch in Japan was atrocious Stupid PS4 / Air Jordans are stupid GTA V coming to Next gen On November 18, 2014 and PC January 27, 2015 Destiny Shipped $0.5 Billion  -...</p><p>Read the full article: <a href='http://www.makeuseof.tv/2014/technophilia-132-better-u2/'>Technophilia 131 &#8211; Better Than U2</a></p>]]></description>
+				<content:encoded><![CDATA[<p>
+<ul>
+<li><a href="http://www.npr.org/blogs/theprotojournalist/2014/09/12/347901040/your-e-mail-double-a-classic-digital-dilemma?utm_medium=RSS&amp;utm_campaign=news">Email address doubles</a>: who’s fault is it when someone emails you, confusing you for someone else?</li>
+<li>Don’t want that crap U2 album? <a href="http://support.apple.com/kb/HT6439">Apple added a 1-click support page to remove it</a>.</li>
+<li>Thai Math textbook publisher <a href="http://gizmodo.com/publisher-accidentally-puts-porn-star-on-math-textbook-1634448261">demonstrates why you shouldn’t use Google Image Search for your products</a></li>
+<li><a href="http://www.theverge.com/2014/9/17/6334173/iphone-6-plus-review-erotic-poetry">iPhone 6 erotic poetry constructed entirely from reviews</a> (we’re totally reading it)</li>
+<li><a href="http://www.theverge.com/2014/9/17/6330039/why-are-people-still-going-crazy-for-music-cds-in-japan">85% of music sales in Japan still CDs</a></li>
+<li><a href="http://www.polygon.com/2014/9/10/6130445/xbox-one-japan-release">Xbox One launch in Japan was atrocious</a></li>
+<li>Stupid <a href="http://www.dualshockers.com/2014/09/15/custom-ps4-air-jordans-cost-950-and-look-awesome/">PS4 / Air Jordans</a> are stupid</li>
+<li><a href="http://www.rockstargames.com/newswire/article/52308/grand-theft-auto-v-release-dates-and-exclusive-content">GTA V coming to Next gen On November 18, 2014 and PC January 27, 2015</a></li>
+<li><a href="http://www.polygon.com/2014/9/10/6130891/destiny-shipped">Destiny Shipped $0.5 Billion  </a>- let’s talk about it. Polygon gave it <a href="http://www.polygon.com/2014/9/12/6138497/destiny-review-no-fate">6/10</a>.</li>
+<li>It’s official: <a href="http://www.polygon.com/2014/9/15/6151813/microsoft-minecraft-mojang-purchase">Microsoft Bought MineCraft for $2.5 billion</a>.</li>
+<li><a href="http://notch.net/2014/09/im-leaving-mojang/">Notch had something to say on the subject.</a></li>
+<li><a href="http://www.polygon.com/2014/9/12/6141515/do-violent-video-games-actually-reduce-real-world-crime">Violent games may reduce real world crime</a></li>
+<li>PSA: <a href="http://www.theverge.com/2014/9/12/6141633/twitch-chat-malware-is-emptying-gamers-steam-accounts">Twitch/Steam malware</a></li>
+</ul>
+]]></content:encoded>
+			<wfw:commentRss>http://www.makeuseof.tv/2014/technophilia-132-better-u2/feed/</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+			<enclosure url="http://www.makeuseof.tv/podpress_trac/feed/1290/1/tech131.mp3" length="31252607" type="audio/mpeg" />
+		<itunes:duration>1:05:06</itunes:duration>
+		<itunes:subtitle>Email address doubles: who’s fault is it when someone emails you, confusing you for someone else? Don’t want that crap U2 album? Apple added a 1-click support page to remove it. Thai Math textbook publisher demonstrates why you shouldn’t use Google [...]</itunes:subtitle>
+		<itunes:summary>Email address doubles: who’s fault is it when someone emails you, confusing you for someone else? Don’t want that crap U2 album? Apple added a 1-click support page to remove it. Thai Math textbook publisher demonstrates why you shouldn’t use Google Image Search for your products iPhone 6 erotic poetry constructed entirely from reviews (we’re totally reading it) 85% of music sales in Japan still CDs Xbox One launch in Japan was atrocious Stupid PS4 / Air Jordans are stupid GTA V coming to Next gen On November 18, 2014 and PC January 27, 2015 Destiny Shipped $0.5 Billion  -...Read the full article: Technophilia 131 &#8211; Better Than U2</itunes:summary>
+		<itunes:author>James Bruce, Justin Pot and Dave LeClair</itunes:author>
+		<itunes:explicit>yes</itunes:explicit>
+		<itunes:block>no</itunes:block>
+	</item>
+		<item>
+		<title>Episode 130: just bcuz mau5</title>
+		<link>http://www.makeuseof.tv/2014/episode-130-just-bcuz-mau5/</link>
+		<comments>http://www.makeuseof.tv/2014/episode-130-just-bcuz-mau5/#comments</comments>
+		<pubDate>Thu, 11 Sep 2014 09:26:11 +0000</pubDate>
+		<dc:creator><![CDATA[jamie]]></dc:creator>
+				<category><![CDATA[Technophilia Technology Podcast]]></category>
+
+		<guid isPermaLink="false">http://www.makeuseof.tv/?p=1283</guid>
+		<description><![CDATA[<div><img width="600" height="420" src="http://podcast.makeuseoflimited.netdna-cdn.com/wp-content/uploads/2014/09/techno130-600x420.jpg" class="attachment-featured wp-post-image" alt="techno130" /></div><p>https://www.youtube.com/watch?v=6dT5qC6RRdI Rant: Fun things to do instead of harassing people on the Internet. Apple announced a bunch of stuff, mostly things everyone knew was coming. People freaked out a lot. Why Apple’s livestream failed so epically. Some employees are living at Google, even though they’re not supposed to. Millions of Gmail passwords leaked, use this tool to check yours. Deadmau5 and Disney are fighting. BBC says VPN users are probably pirates. I say go pirate some BBC material, which my $200 COMPULSORY TAX paid for. PSA: Critical fixes for Internet Explorer and Flash. Yawn. Reasons not to jailbreak your iPhone...</p><p>Read the full article: <a href='http://www.makeuseof.tv/2014/episode-130-just-bcuz-mau5/'>Episode 130: just bcuz mau5</a></p>]]></description>
+				<content:encoded><![CDATA[<p>https://www.youtube.com/watch?v=6dT5qC6RRdI</p>
+<ul>
+<li>Rant: <a href="http://www.makeuseof.com/tag/4-fun-things-instead-harassing-people-internet-opinion/">Fun things to do instead of harassing people on the Internet</a>.</li>
+<li><a href="http://www.makeuseof.com/tag/apple-watch-iphone-6-free-u2-album-tech-news-digest/">Apple announced a bunch of stuff</a>, mostly things everyone knew was coming. People freaked out a lot.</li>
+<li><a href="http://blog.streamingmedia.com/2014/09/why-apples-livestream-failed.html">Why Apple’s livestream failed so epically.</a></li>
+<li><a href="https://finance.yahoo.com/news/googles-perks-amazing-employees-found-002550682.html">Some employees are living at Google</a>, even though they’re not supposed to.</li>
+<li>Millions of Gmail passwords leaked, <a href="https://isleaked.com/en.php">use this tool to check yours.</a></li>
+<li><a href="http://www.theverge.com/2014/9/7/6117403/deadmau5-responds-to-disney-trademark-suit">Deadmau5 and Disney are fighting</a>.</li>
+<li><a href="http://torrentfreak.com/bbc-isps-should-assume-heavy-vpn-users-are-pirates-140908/">BBC says VPN users are probably pirates</a>. I say go pirate some BBC material, which my $200 COMPULSORY TAX paid for.</li>
+<li>PSA: <a href="http://krebsonsecurity.com/2014/09/critical-fixes-for-adobe-microsoft-software/">Critical fixes for Internet Explorer and Flash</a>. Yawn.</li>
+<li><a href="http://www.makeuseof.com/tag/4-compelling-security-reasons-jailbreak-iphone-ipad/">Reasons not to jailbreak your iPhone or iPad</a></li>
+<li><a href="http://www.makeuseof.com/tag/can-upgrade-ms-dos-6-22-windows-8-really-want-stuff-watch/">Upgrading from MS-DOS 6.2 all the way to Windows 8</a>.</li>
+<li><a href="http://online.wsj.com/articles/microsoft-near-deal-to-buy-minecraft-1410300213">Microsoft might buy Minecraft</a>.</li>
+<li><a href="https://storify.com/strictmachine/gameovergate">Zoe Quinn was lurking in the IRC that started #gamergate</a></li>
+</ul>
+]]></content:encoded>
+			<wfw:commentRss>http://www.makeuseof.tv/2014/episode-130-just-bcuz-mau5/feed/</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+			<enclosure url="http://www.makeuseof.tv/podpress_trac/feed/1283/1/tech130.mp3" length="38273486" type="audio/mpeg" />
+		<itunes:duration>1:19:44</itunes:duration>
+		<itunes:subtitle>https://www.youtube.com/watch?v=6dT5qC6RRdI Rant: Fun things to do instead of harassing people on the Internet. Apple announced a bunch of stuff, mostly things everyone knew was coming. People freaked out a lot. Why Apple’s livestream failed so epic[...]</itunes:subtitle>
+		<itunes:summary>https://www.youtube.com/watch?v=6dT5qC6RRdI Rant: Fun things to do instead of harassing people on the Internet. Apple announced a bunch of stuff, mostly things everyone knew was coming. People freaked out a lot. Why Apple’s livestream failed so epically. Some employees are living at Google, even though they’re not supposed to. Millions of Gmail passwords leaked, use this tool to check yours. Deadmau5 and Disney are fighting. BBC says VPN users are probably pirates. I say go pirate some BBC material, which my $200 COMPULSORY TAX paid for. PSA: Critical fixes for Internet Explorer and Flash. Yawn. Reasons not to jailbreak your iPhone...Read the full article: Episode 130: just bcuz mau5</itunes:summary>
+		<itunes:author>James Bruce, Justin Pot and Dave LeClair</itunes:author>
+		<itunes:explicit>yes</itunes:explicit>
+		<itunes:block>no</itunes:block>
+	</item>
+		<item>
+		<title>Technophilia 129 &#8211; OMG! Leak!</title>
+		<link>http://www.makeuseof.tv/2014/technophilia-129-omg-leak/</link>
+		<comments>http://www.makeuseof.tv/2014/technophilia-129-omg-leak/#comments</comments>
+		<pubDate>Thu, 04 Sep 2014 08:33:30 +0000</pubDate>
+		<dc:creator><![CDATA[jamie]]></dc:creator>
+				<category><![CDATA[Technophilia Technology Podcast]]></category>
+
+		<guid isPermaLink="false">http://www.makeuseof.tv/?p=1275</guid>
+		<description><![CDATA[<div><img width="600" height="420" src="http://podcast.makeuseoflimited.netdna-cdn.com/wp-content/uploads/2014/09/129ART-600x420.jpg" class="attachment-featured wp-post-image" alt="129ART" /></div><p>Tech News Apple’s iCloud wasn’t terribly secure (update: it was weak passwords) Iran’s Grand Ayatollah says high speed Internet is “against moral standards”. Ukranian Facebook users are sick of their accounts being blocked because of political statements; moderator for the region is in Russia. They’re writing Zuckerberg directly about this. Microsoft is refusing to hand over emails to the US government. Gaming News The confusing mess of Nintendo’s naming of the new New 3DS XLLLX Zoe Quinn never slept with anyone in exchange for a positive review. The person in question never reviewed the game. How do narratives like this...</p><p>Read the full article: <a href='http://www.makeuseof.tv/2014/technophilia-129-omg-leak/'>Technophilia 129 &#8211; OMG! Leak!</a></p>]]></description>
+				<content:encoded><![CDATA[<p>
+<h2>Tech News</h2>
+<ul>
+<li><a href="http://thenextweb.com/apple/2014/09/01/this-could-be-the-apple-icloud-flaw-that-led-to-celebrity-photos-being-leaked/">Apple’s iCloud wasn’t terribly secure</a> (update: it was <a href="http://www.pocket-lint.com/news/130661-apple-blames-celeb-nude-photo-hack-on-weak-passwords-not-a-breach">weak passwords</a>)</li>
+<li><a href="http://rss.slashdot.org/~r/Slashdot/slashdot/~3/i4dflyO0xHQ/story01.htm">Iran’s Grand Ayatollah says high speed Internet is “against moral standards”. </a></li>
+<li><a href="http://globalvoicesonline.org/2014/08/29/ukraine-russia-facebook-bots-censorship/">Ukranian Facebook users are sick of their accounts being blocked because of political statements</a>; moderator for the region is in Russia. They’re writing Zuckerberg directly about this.</li>
+<li><a href="http://windowsitpro.com/paul-thurrotts-wininfo/microsoft-defies-court-order-will-not-give-emails-us-government">Microsoft is refusing to hand over emails to the US government</a>.</li>
+</ul>
+<h2>Gaming News</h2>
+<ul>
+<li>The confusing mess of <a href="http://www.polygon.com/2014/8/29/6082465/nintendo-new-3ds-strategy-exhausting">Nintendo’s naming of the new New 3DS XLLLX</a></li>
+<li><a href="http://kotaku.com/in-recent-days-ive-been-asked-several-times-about-a-pos-1624707346">Zoe Quinn never slept with anyone in exchange for a positive review.</a> The person in question never reviewed the game. How do narratives like this keep popping up for no reason?</li>
+<li><a href="http://www.polygon.com/2014/9/2/6098171/pewdiepie-youtube-comments">PewDiePie turned off comments</a>. Forever. For good. Completely. Gone.</li>
+<li><a href="http://www.bbc.com/news/technology-29044863">Samsung announces Gear VR in partnership with Oculus</a> (you put your phone in it)</li>
+</ul>
+]]></content:encoded>
+			<wfw:commentRss>http://www.makeuseof.tv/2014/technophilia-129-omg-leak/feed/</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+			<enclosure url="http://www.makeuseof.tv/podpress_trac/feed/1275/1/tech129.mp3" length="45524660" type="audio/mpeg" />
+		<itunes:duration>1:34:50</itunes:duration>
+		<itunes:subtitle>Tech News Apple’s iCloud wasn’t terribly secure (update: it was weak passwords) Iran’s Grand Ayatollah says high speed Internet is “against moral standards”. Ukranian Facebook users are sick of their accounts being blocked because of political state[...]</itunes:subtitle>
+		<itunes:summary>Tech News Apple’s iCloud wasn’t terribly secure (update: it was weak passwords) Iran’s Grand Ayatollah says high speed Internet is “against moral standards”. Ukranian Facebook users are sick of their accounts being blocked because of political statements; moderator for the region is in Russia. They’re writing Zuckerberg directly about this. Microsoft is refusing to hand over emails to the US government. Gaming News The confusing mess of Nintendo’s naming of the new New 3DS XLLLX Zoe Quinn never slept with anyone in exchange for a positive review. The person in question never reviewed the game. How do narratives like this...Read the full article: Technophilia 129 &#8211; OMG! Leak!</itunes:summary>
+		<itunes:author>James Bruce, Justin Pot and Dave LeClair</itunes:author>
+		<itunes:explicit>yes</itunes:explicit>
+		<itunes:block>no</itunes:block>
+	</item>
+		<item>
+		<title>Technophilia 128: Real Gamer</title>
+		<link>http://www.makeuseof.tv/2014/technophilia-128-real-gamer/</link>
+		<comments>http://www.makeuseof.tv/2014/technophilia-128-real-gamer/#comments</comments>
+		<pubDate>Fri, 29 Aug 2014 10:12:21 +0000</pubDate>
+		<dc:creator><![CDATA[jamie]]></dc:creator>
+				<category><![CDATA[Technophilia Technology Podcast]]></category>
+
+		<guid isPermaLink="false">http://www.makeuseof.tv/?p=1270</guid>
+		<description><![CDATA[<div><img width="600" height="420" src="http://podcast.makeuseoflimited.netdna-cdn.com/wp-content/uploads/2014/08/techn128-600x420.jpg" class="attachment-featured wp-post-image" alt="techn128" /></div><p>Guy gets three years in jail for pirating The Fast And The Furious 6. Wait, how are they still making these movies? Semil Shah: iOS First. Android Much, Much Later. Is this still the correct mentality to have? Pfft, what fragmentation? 18,000 distinct Android devices. Only 20% running KitKat. Indian state will prosecute you if they think you’ll pirate or share porn IN THE FUTURE. Dropbox offers 1 TB of storage for $100 a year. MakeUseOf is shutting down Rewards. Gaming Amazon bought Twitch Annoying little kid thinks it’s fun to DDOS a bunch of games and threaten planes Women...</p><p>Read the full article: <a href='http://www.makeuseof.tv/2014/technophilia-128-real-gamer/'>Technophilia 128: Real Gamer</a></p>]]></description>
+				<content:encoded><![CDATA[<p>
+<ul>
+<li><a href="http://arstechnica.com/tech-policy/2014/08/british-man-sentenced-to-nearly-three-years-in-prison-for-movie-piracy/">Guy gets three years in jail for pirating The Fast And The Furious 6</a>. Wait, how are they still making these movies?</li>
+<li>Semil Shah: <a href="http://blog.semilshah.com/2014/08/25/ios-first-android-much-much-later/">iOS First. Android Much, Much Later</a>. Is this still the correct mentality to have?</li>
+<li>Pfft, what fragmentation? <a href="http://opensignal.com/reports/2014/android-fragmentation/">18,000 distinct Android devices</a>. Only 20% running KitKat.</li>
+<li><a href="https://www.techdirt.com/articles/20140824/06590028306/indian-state-passes-law-that-will-let-police-arrest-your-merely-planning-to-share-copyrighted-content.shtml">Indian state will prosecute you</a> if they think you’ll pirate or share porn IN THE FUTURE.</li>
+<li>Dropbox offers <a href="https://www.dropbox.com/upgrade">1 TB of storage for $100 a year.</a></li>
+<li>MakeUseOf is shutting down Rewards.</li>
+</ul>
+<p>Gaming</p>
+<ul>
+<li><a href="http://www.ign.com/articles/2014/08/25/amazon-not-google-in-talks-to-buy-twitch-reports-suggest">Amazon bought Twitch</a></li>
+<li><a href="http://www.shacknews.com/article/85951/blizzard-playstation-network-and-more-under-wide-ddos-attack-update-fbi-now-investigating">Annoying little kid thinks it’s fun to DDOS a bunch of games and threaten planes</a></li>
+<li><a href="http://online.wsj.com/articles/gaming-no-longer-a-mans-world-1408464249?mod=trending_now_1">Women Now Make Up Almost Half of Gamers</a></li>
+</ul>
+]]></content:encoded>
+			<wfw:commentRss>http://www.makeuseof.tv/2014/technophilia-128-real-gamer/feed/</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+			<enclosure url="http://www.makeuseof.tv/podpress_trac/feed/1270/1/tech128.mp3" length="37858034" type="audio/mpeg" />
+		<itunes:duration>1:18:52</itunes:duration>
+		<itunes:subtitle>Guy gets three years in jail for pirating The Fast And The Furious 6. Wait, how are they still making these movies? Semil Shah: iOS First. Android Much, Much Later. Is this still the correct mentality to have? Pfft, what fragmentation? 18,000 distin[...]</itunes:subtitle>
+		<itunes:summary>Guy gets three years in jail for pirating The Fast And The Furious 6. Wait, how are they still making these movies? Semil Shah: iOS First. Android Much, Much Later. Is this still the correct mentality to have? Pfft, what fragmentation? 18,000 distinct Android devices. Only 20% running KitKat. Indian state will prosecute you if they think you’ll pirate or share porn IN THE FUTURE. Dropbox offers 1 TB of storage for $100 a year. MakeUseOf is shutting down Rewards. Gaming Amazon bought Twitch Annoying little kid thinks it’s fun to DDOS a bunch of games and threaten planes Women...Read the full article: Technophilia 128: Real Gamer</itunes:summary>
+		<itunes:author>James Bruce, Justin Pot and Dave LeClair</itunes:author>
+		<itunes:explicit>yes</itunes:explicit>
+		<itunes:block>no</itunes:block>
+	</item>
+		<item>
+		<title>Technophilia 127 &#8211; This Man Is Disingenuous</title>
+		<link>http://www.makeuseof.tv/2014/technophilia-127-man-disingenuous/</link>
+		<comments>http://www.makeuseof.tv/2014/technophilia-127-man-disingenuous/#comments</comments>
+		<pubDate>Fri, 22 Aug 2014 07:15:48 +0000</pubDate>
+		<dc:creator><![CDATA[dave]]></dc:creator>
+				<category><![CDATA[Technophilia Technology Podcast]]></category>
+
+		<guid isPermaLink="false">http://www.makeuseof.tv/?p=1264</guid>
+		<description><![CDATA[<div><img width="600" height="420" src="http://podcast.makeuseoflimited.netdna-cdn.com/wp-content/uploads/2014/08/Technophilia127Art-600x420.jpg" class="attachment-featured wp-post-image" alt="Technophilia127Art" /></div><p>Tech News We’ve really got it in for Microsoft this week! Windows Store exposé &#8211; it’s full of scams, which M$ profits from. Latest IE suffers “consecutive modal dialog boxes” bug (read: infinite popups) after latest automatic update. What do you with a crap product? Rename it! On the plus side, Munich realizes linux o Google wants children to be able to use their services without lying. Facebook is going to tag satire, because people are morons. How the metaverse won’t be like you think. You can’t post football goals to Twitter, LOL. Carnegie Mellon: mapping 3D objects on real...</p><p>Read the full article: <a href='http://www.makeuseof.tv/2014/technophilia-127-man-disingenuous/'>Technophilia 127 &#8211; This Man Is Disingenuous</a></p>]]></description>
+				<content:encoded><![CDATA[<h2>Tech News</h2>
+<ul>
+<li><b>We’ve really got it in for Microsoft this week!</b></li>
+<li><a href="http://www.howtogeek.com/194993/the-windows-store-is-a-cesspool-of-scams-why-doesnt-microsoft-care/">Windows Store exposé</a> &#8211; it’s full of scams, which M$ profits from.</li>
+<li><a href="http://www.onlinenewsheardnow.com/microsoft-latest-updates-causing-ie-users-grief-and-aggravation/3484/">Latest IE suffers “consecutive modal dialog boxes” bug</a> (read: infinite popups) after latest automatic update.</li>
+<li>What do you with a crap product? <a href="http://www.forbes.com/sites/amitchowdhry/2014/08/18/microsoft-considered-renaming-internet-explorer-due-to-negative-perceptions/">Rename it!</a></li>
+<li>On the plus side, <a href="http://arstechnica.com/business/2014/08/linux-on-the-desktop-pioneer-munich-now-considering-a-switch-back-to-windows/">Munich realizes linux o</a></li>
+<li><a href="http://www.makeuseof.com/tag/google-coming-children-facebook-starts-tagging-satire-tech-news-digest/">Google wants children to be able to use their services without lying</a>.</li>
+<li><a href="http://www.cnet.com/news/facebook-testing-satire-tag-for-parody-news-in-the-feed/">Facebook is going to tag satire</a>, because people are morons.</li>
+<li><a href="http://www.makeuseof.com/tag/5-ways-metaverse-wont-like-think/">How the metaverse won’t be like you think</a>.</li>
+<li><a href="http://www.theverge.com/2014/8/15/6005233/premier-league-warns-fans-not-to-post-goals-on-vine-twitter">You can’t post football goals to Twitter</a>, LOL.</li>
+<li><a href="http://www.cs.cmu.edu/news/carnegie-mellon-photo-editing-tool-enables-object-images-be-manipulated-3-d">Carnegie Mellon</a>: mapping 3D objects on real life photos allowing them to be manipulated in 3D.</li>
+<li><a href="http://research.microsoft.com/en-us/um/redmond/projects/hyperlapse/">Microsoft research creates “Hyperlapses”</a><a href="http://arstechnica.com/business/2014/08/linux-on-the-desktop-pioneer-munich-now-considering-a-switch-back-to-windows/"> from 1st person GoPro videosn the desktop sucks</a>.</li>
+</ul>
+<h2>Gaming News</h2>
+<ul>
+<li><a href="http://www.wired.co.uk/news/archive/2014-08/20/lego-fusion">Lego wishes they’d invented Minecraft</a>.</li>
+<li><a href="http://www.gamespot.com/articles/xbox-one-gets-official-reddit-app-available-now-wh/1100-6421801/">Xbox One Gets A Reddit App. Console War’s over</a>.</li>
+<li><a href="http://www.reddit.com/r/gaming/comments/2dzrwf/what_the_hell_is_going_on_serious/">Mass r/gaming censorship thing</a></li>
+</ul>
+<p>
+]]></content:encoded>
+			<wfw:commentRss>http://www.makeuseof.tv/2014/technophilia-127-man-disingenuous/feed/</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+			<enclosure url="http://www.makeuseof.tv/podpress_trac/feed/1264/1/tech127.mp3" length="37263487" type="audio/mpeg" />
+		<itunes:duration>1:17:37</itunes:duration>
+		<itunes:subtitle>Tech News We’ve really got it in for Microsoft this week! Windows Store exposé &#8211; it’s full of scams, which M$ profits from. Latest IE suffers “consecutive modal dialog boxes” bug (read: infinite popups) after latest automatic update. What do y[...]</itunes:subtitle>
+		<itunes:summary>Tech News We’ve really got it in for Microsoft this week! Windows Store exposé &#8211; it’s full of scams, which M$ profits from. Latest IE suffers “consecutive modal dialog boxes” bug (read: infinite popups) after latest automatic update. What do you with a crap product? Rename it! On the plus side, Munich realizes linux o Google wants children to be able to use their services without lying. Facebook is going to tag satire, because people are morons. How the metaverse won’t be like you think. You can’t post football goals to Twitter, LOL. Carnegie Mellon: mapping 3D objects on real...Read the full article: Technophilia 127 &#8211; This Man Is Disingenuous</itunes:summary>
+		<itunes:author>James Bruce, Justin Pot and Dave LeClair</itunes:author>
+		<itunes:explicit>yes</itunes:explicit>
+		<itunes:block>no</itunes:block>
+	</item>
+		<item>
+		<title>Technophilia 126 &#8211; Pizza or WoW?</title>
+		<link>http://www.makeuseof.tv/2014/technophilia-126-pizza-wow/</link>
+		<comments>http://www.makeuseof.tv/2014/technophilia-126-pizza-wow/#comments</comments>
+		<pubDate>Thu, 14 Aug 2014 09:28:18 +0000</pubDate>
+		<dc:creator><![CDATA[jamie]]></dc:creator>
+				<category><![CDATA[Technophilia Technology Podcast]]></category>
+
+		<guid isPermaLink="false">http://www.makeuseof.tv/?p=1257</guid>
+		<description><![CDATA[<div><img width="600" height="420" src="http://podcast.makeuseoflimited.netdna-cdn.com/wp-content/uploads/2014/08/techno126-600x420.jpg" class="attachment-featured wp-post-image" alt="techno126" /></div><p>Tech News An alleged murderer apparently asked Siri where to hide a dead body. Lobbiest pay trolls to comment on articles. It’s the cable companies, of course. Who owns the copyright of a monkey selfie? Comcast is terrible because it’s too big, and grew through a series of tiny acquisitions. 23 million of Twitter’s accounts are bots – around 8.5 per cent. Trolls of Reddit: you can no longer brag about your negative karma. Lyft claims Uber employees have been ordering, then cancelling, rides on their site. I say both of those companies have stupid names. This is why app...</p><p>Read the full article: <a href='http://www.makeuseof.tv/2014/technophilia-126-pizza-wow/'>Technophilia 126 &#8211; Pizza or WoW?</a></p>]]></description>
+				<content:encoded><![CDATA[<h2>Tech News</h2>
+<ul>
+<li>An alleged murderer apparently <a href="http://www.businessinsider.com/murder-suspect-asks-siri-where-to-hide-dead-body-2014-8">asked Siri where to hide a dead body</a>.</li>
+<li><a href="http://www.vice.com/read/trolls-paid-by-a-telecom-lobbying-firm-keep-commenting-on-my-net-neutrality-articles-806">Lobbiest pay trolls to comment on articles</a>. It’s the cable companies, of course.</li>
+<li><a href="http://www.npr.org/blogs/thetwo-way/2014/08/07/338668652/if-a-monkey-takes-a-photo-who-owns-the-copyright?utm_medium=RSS&amp;utm_campaign=news">Who owns the copyright of a monkey selfie</a>?</li>
+<li><a href="http://www.theatlantic.com/business/archive/2014/08/why-is-comcast-so-terrible/375880/">Comcast is terrible because it’s too big</a>, and grew through a series of tiny acquisitions.</li>
+<li><a href="http://www.cnet.com/news/twitter-reveals-23-million-of-accounts-active/#ftag=CAD590a51e">23 million of Twitter’s accounts are bots</a> – around 8.5 per cent.</li>
+<li>Trolls of Reddit: <a href="http://www.webpronews.com/reddit-is-fighting-trolls-by-ripping-off-their-badges-of-honor-2014-08">you can no longer brag about your negative karma</a>.</li>
+<li>Lyft claims <a href="http://www.npr.org/blogs/thetwo-way/2014/08/12/339894792/uber-and-lyft-spar-over-alleged-ride-cancelations?utm_medium=RSS&amp;utm_campaign=news">Uber employees have been ordering, then cancelling, rides on their site</a>. I say both of those companies have stupid names.</li>
+<li><a href="http://codecanyon.net/item/flying-panda-game-for-android-with-admob/5345907">This is why</a> app stores are full of crap and numbers are inflated</li>
+<li><a href="http://www.theverge.com/2014/8/12/5994877/oneplus-holding-sexist-ladies-first-contest-for-smartphone-invites">OnePlus throws a really stupid contest</a>.</li>
+</ul>
+<h2><strong>Gaming News<br />
+</strong></h2>
+<ul>
+<li>Game changer &#8211; <a href="http://www.theverge.com/2014/8/12/5995589/ps4-share-play-is-realization-of-original-xbox-one-dream">Sony announces game sharing</a> to friends (with PSPlus): multiplayer, coop, and “hand over”. Will it work with all games though?</li>
+<li><a href="http://www.polygon.com/2014/8/12/5995227/xbox-one-kinect-gamescom-exclusive">Kinect is dead</a>.</li>
+</ul>
+]]></content:encoded>
+			<wfw:commentRss>http://www.makeuseof.tv/2014/technophilia-126-pizza-wow/feed/</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+			<enclosure url="http://www.makeuseof.tv/podpress_trac/feed/1257/1/tech126.mp3" length="38038383" type="audio/mpeg" />
+		<itunes:duration>1:19:14</itunes:duration>
+		<itunes:subtitle>Tech News An alleged murderer apparently asked Siri where to hide a dead body. Lobbiest pay trolls to comment on articles. It’s the cable companies, of course. Who owns the copyright of a monkey selfie? Comcast is terrible because it’s too big, and [...]</itunes:subtitle>
+		<itunes:summary>Tech News An alleged murderer apparently asked Siri where to hide a dead body. Lobbiest pay trolls to comment on articles. It’s the cable companies, of course. Who owns the copyright of a monkey selfie? Comcast is terrible because it’s too big, and grew through a series of tiny acquisitions. 23 million of Twitter’s accounts are bots – around 8.5 per cent. Trolls of Reddit: you can no longer brag about your negative karma. Lyft claims Uber employees have been ordering, then cancelling, rides on their site. I say both of those companies have stupid names. This is why app...Read the full article: Technophilia 126 &#8211; Pizza or WoW?</itunes:summary>
+		<itunes:author>James Bruce, Justin Pot and Dave LeClair</itunes:author>
+		<itunes:explicit>yes</itunes:explicit>
+		<itunes:block>no</itunes:block>
+	</item>
+		<item>
+		<title>Technophilia 125 &#8211; Half Good</title>
+		<link>http://www.makeuseof.tv/2014/technophilia-125-half-good/</link>
+		<comments>http://www.makeuseof.tv/2014/technophilia-125-half-good/#comments</comments>
+		<pubDate>Thu, 07 Aug 2014 16:10:53 +0000</pubDate>
+		<dc:creator><![CDATA[dave]]></dc:creator>
+				<category><![CDATA[Technophilia Technology Podcast]]></category>
+
+		<guid isPermaLink="false">http://www.makeuseof.tv/?p=1251</guid>
+		<description><![CDATA[<div><img width="600" height="420" src="http://podcast.makeuseoflimited.netdna-cdn.com/wp-content/uploads/2014/08/Technophilia125HalfGood-600x420.jpg" class="attachment-featured wp-post-image" alt="Technophilia125HalfGood" /></div><p>Tech News Comcast’s tricks for talking customers out of disconnection. Snowden taught terrorists how to communicate securely. Protesters place signs on “illegal” AirBNB houses. Countries don’t “own” their top level domain names, according to ICANN. Crap hotel charges $500 fine for bad Yelp reviews. Hotel  says it was a joke. They’re lying. Vigilante Google hands in guy with child abuse images in his Gmail. Good. (Here’s how they do it) Gaming Virtual reality  causes lasting behavioural shifts. Thailand bans Tropico 5. Citizens might realise the similarities, presumably. From MUO Ignore set top boxes, use a PC</p><p>Read the full article: <a href='http://www.makeuseof.tv/2014/technophilia-125-half-good/'>Technophilia 125 &#8211; Half Good</a></p>]]></description>
+				<content:encoded><![CDATA[<p>
+<h2>Tech News</h2>
+<ul>
+<li><a href="http://www.theverge.com/2014/8/4/5967255/this-is-comcasts-internal-handbook-for-talking-customers-out-of">Comcast’s tricks for talking customers out of disconnection</a>.</li>
+<li><a href="http://www.npr.org/blogs/thetwo-way/2014/08/01/336958020/big-data-firm-says-it-can-link-snowden-data-to-changed-terrorist-behavior?ft=1&amp;f=1001">Snowden taught terrorists how to communicate securely</a>.</li>
+<li><a href="http://valleywag.gawker.com/heres-the-warning-sign-activists-stick-on-illegally-con-1613010615">Protesters place signs on “illegal” AirBNB houses</a>.</li>
+<li><a href="http://www.computerworld.com.au/article/551289/countries_don_t_own_their_internet_domains_icann_says/">Countries don’t “own” their top level domain names</a>, according to ICANN.</li>
+<li>Crap hotel <a href="http://www.theverge.com/2014/8/4/5966715/hotel-fines-newlyweds-500-for-negative-yelp-reviews">charges $500 fine for bad Yelp reviews</a>. Hotel <a href="http://arstechnica.com/tech-policy/2014/08/amid-backlash-hotel-rescinds-500-fines-for-negative-online-reviews/"> says it was a joke</a>. They’re <a href="http://www.yelp.com/biz/union-street-guest-house-hudson?q=unless%2Funtil">lying</a>.</li>
+<li><a href="http://www.wfsb.com/story/26201944/google-turns-in-man-with-child-porn-in-his-gmail-account">Vigilante Google hands in guy with child abuse images in his Gmail</a>. Good. (<a href="http://www.theverge.com/2014/8/5/5970141/how-google-scans-your-gmail-for-child-porn">Here’s how they do it</a>)</li>
+</ul>
+<h2>Gaming</h2>
+<ul>
+<li>Virtual reality <a href="http://www.roadtovr.com/exploring-ar-vrs-potential-education-changing-human-behavior-virtual-experiences/?utm_source=rss&amp;utm_medium=rss&amp;utm_campaign=exploring-ar-vrs-potential-education-changing-human-behavior-virtual-experiences"> causes lasting behavioural shifts</a>.</li>
+<li><a href="http://www.polygon.com/2014/8/4/5967033/tropico-five-coup">Thailand bans Tropico 5</a>. Citizens might realise the similarities, presumably.</li>
+</ul>
+<h2>From MUO</h2>
+<p><a href="http://www.makeuseof.com/tag/cord-cutters-ignore-set-boxes-use-pc-instead/">Ignore set top boxes, use a PC</a></p>
+]]></content:encoded>
+			<wfw:commentRss>http://www.makeuseof.tv/2014/technophilia-125-half-good/feed/</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+			<enclosure url="http://www.makeuseof.tv/podpress_trac/feed/1251/1/tech125.mp3" length="30130386" type="audio/mpeg" />
+		<itunes:duration>1:02:46</itunes:duration>
+		<itunes:subtitle>Tech News Comcast’s tricks for talking customers out of disconnection. Snowden taught terrorists how to communicate securely. Protesters place signs on “illegal” AirBNB houses. Countries don’t “own” their top level domain names, according to ICANN. [...]</itunes:subtitle>
+		<itunes:summary>Tech News Comcast’s tricks for talking customers out of disconnection. Snowden taught terrorists how to communicate securely. Protesters place signs on “illegal” AirBNB houses. Countries don’t “own” their top level domain names, according to ICANN. Crap hotel charges $500 fine for bad Yelp reviews. Hotel  says it was a joke. They’re lying. Vigilante Google hands in guy with child abuse images in his Gmail. Good. (Here’s how they do it) Gaming Virtual reality  causes lasting behavioural shifts. Thailand bans Tropico 5. Citizens might realise the similarities, presumably. From MUO Ignore set top boxes, use a PCRead the full article: Technophilia 125 &#8211; Half Good</itunes:summary>
+		<itunes:author>James Bruce, Justin Pot and Dave LeClair</itunes:author>
+		<itunes:explicit>yes</itunes:explicit>
+		<itunes:block>no</itunes:block>
+	</item>
+		<item>
+		<title>Technophilia 124 &#8211; Legitimate Pirate</title>
+		<link>http://www.makeuseof.tv/2014/technophilia-124-legitimate-pirate/</link>
+		<comments>http://www.makeuseof.tv/2014/technophilia-124-legitimate-pirate/#comments</comments>
+		<pubDate>Thu, 31 Jul 2014 06:46:44 +0000</pubDate>
+		<dc:creator><![CDATA[jamie]]></dc:creator>
+				<category><![CDATA[Technophilia Technology Podcast]]></category>
+
+		<guid isPermaLink="false">http://www.makeuseof.tv/?p=1244</guid>
+		<description><![CDATA[<div><img width="600" height="420" src="http://podcast.makeuseoflimited.netdna-cdn.com/wp-content/uploads/2014/07/techno124-600x420.jpg" class="attachment-featured wp-post-image" alt="techno124" /></div><p>Tech News Ford and GM sued for music piracy. You read that correctly. Let’s all move to towns that share our political beliefs. What could possibly go wrong? Time Warner says Google, Netflix and others are the threat to net neutrality. The London police are putting anti-piracy ads up on piracy sites. OK Cupid says every site experiments on people, constantly – even them. Android really sucks. Stop using it. At least stop using third party app stores. Facebook sued for Revenge Porn. Gaming EA launching subscription service for games. Xbox One only. Sony doesn’t think it’s a good deal....</p><p>Read the full article: <a href='http://www.makeuseof.tv/2014/technophilia-124-legitimate-pirate/'>Technophilia 124 &#8211; Legitimate Pirate</a></p>]]></description>
+				<content:encoded><![CDATA[<h2>Tech News</h2>
+<ul>
+<li><a href="http://www.computerworld.com/s/article/9250043/Ford_and_GM_sued_for_millions_over_CD_ripping_tech_in_cars">Ford and GM sued for music piracy</a>. You read that correctly.</li>
+<li><a href="http://www.claritycampaigns.com/townrank">Let’s all move to towns that share our political beliefs</a>. What could possibly go wrong?</li>
+<li><a href="http://bgr.com/2014/07/28/twc-vs-google-netflix/">Time Warner says Google, Netflix and others are the threat to net neutrality.</a></li>
+<li><a href="http://www.bbc.co.uk/news/technology-28523738">The London police are putting anti-piracy ads up on piracy sites</a>.</li>
+<li>OK Cupid says <a href="http://blog.okcupid.com/index.php/we-experiment-on-human-beings/">every site experiments on people</a>, constantly – even them.</li>
+<li><a href="http://www.bbc.co.uk/news/technology-28544443">Android really sucks</a>. Stop using it. At least stop using third party app stores.</li>
+<li><a href="http://www.huffingtonpost.com/2014/07/30/facebook-sued-over-revenge-porn_n_5632865.html">Facebook sued for Revenge Porn.</a></li>
+</ul>
+<h2>Gaming</h2>
+<ul>
+<li><a href="http://www.usatoday.com/story/tech/gaming/2014/07/29/ea-access-xbox-one/13318773/">EA launching subscription service for games</a>. Xbox One only. <a href="http://www.gameinformer.com/b/news/archive/2014/07/30/sony-ea-access-doesn_2700_t-represent-good-value-to-the-playstation-gamer.aspx">Sony doesn’t think it’s a good deal</a>.</li>
+<li><a href="http://www.makeuseof.com/tag/gog-landed-linux-5-best-games-can-get-right-now/">GoG now supports Linux games.</a></li>
+</ul>
+]]></content:encoded>
+			<wfw:commentRss>http://www.makeuseof.tv/2014/technophilia-124-legitimate-pirate/feed/</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+			<enclosure url="http://www.makeuseof.tv/podpress_trac/feed/1244/1/tech124.mp3" length="36884607" type="audio/mpeg" />
+		<itunes:duration>1:16:50</itunes:duration>
+		<itunes:subtitle>Tech News Ford and GM sued for music piracy. You read that correctly. Let’s all move to towns that share our political beliefs. What could possibly go wrong? Time Warner says Google, Netflix and others are the threat to net neutrality. The London po[...]</itunes:subtitle>
+		<itunes:summary>Tech News Ford and GM sued for music piracy. You read that correctly. Let’s all move to towns that share our political beliefs. What could possibly go wrong? Time Warner says Google, Netflix and others are the threat to net neutrality. The London police are putting anti-piracy ads up on piracy sites. OK Cupid says every site experiments on people, constantly – even them. Android really sucks. Stop using it. At least stop using third party app stores. Facebook sued for Revenge Porn. Gaming EA launching subscription service for games. Xbox One only. Sony doesn’t think it’s a good deal....Read the full article: Technophilia 124 &#8211; Legitimate Pirate</itunes:summary>
+		<itunes:author>James Bruce, Justin Pot and Dave LeClair</itunes:author>
+		<itunes:explicit>yes</itunes:explicit>
+		<itunes:block>no</itunes:block>
+	</item>
+		<item>
+		<title>Technophilia 123: This Man Loves Rabbits</title>
+		<link>http://www.makeuseof.tv/2014/technophilia-123-man-loves-rabbits-2/</link>
+		<comments>http://www.makeuseof.tv/2014/technophilia-123-man-loves-rabbits-2/#comments</comments>
+		<pubDate>Thu, 24 Jul 2014 20:38:31 +0000</pubDate>
+		<dc:creator><![CDATA[jamie]]></dc:creator>
+				<category><![CDATA[Technophilia Technology Podcast]]></category>
+
+		<guid isPermaLink="false">http://www.makeuseof.tv/?p=1235</guid>
+		<description><![CDATA[<div><img width="600" height="420" src="http://podcast.makeuseoflimited.netdna-cdn.com/wp-content/uploads/2014/07/Technophilia123-600x420.jpg" class="attachment-featured wp-post-image" alt="Technophilia123" /></div><p>https://www.youtube.com/watch?v=oLZmRjw4qng Tech News Those trolls? Might actually be NSA, manipulating you Blogger fined for writing nasty restaurant review (and ranking for it) Microsoft cutting 18,000 jobs, mostly from Nokia (no more Nokia Android phones) Verizon blamed Netflix for poor speeds in a blog post, but Level Three (a higher-level ISP) took the opportunity to point out that Verizon is full of crap. Verizon argued that killing Net Neutrality would be great for the deaf. Deaf advocacy groups disagree. YouTube make-up tutorials star sued for millions: odd, because they could have just turned on content ID and monetized it. How we’ll get to a future of...</p><p>Read the full article: <a href='http://www.makeuseof.tv/2014/technophilia-123-man-loves-rabbits-2/'>Technophilia 123: This Man Loves Rabbits</a></p>]]></description>
+				<content:encoded><![CDATA[<p>https://www.youtube.com/watch?v=oLZmRjw4qng</p>
+<p>Tech News</p>
+<ul>
+<li>Those trolls? <a href="http://www.theguardian.com/uk-news/2014/jul/14/gchq-tools-manipulate-online-information-leak">Might actually be NSA, manipulating you</a></li>
+<li><a href="http://www.bbc.co.uk/news/technology-28331598">Blogger fined for writing nasty restaurant review</a> (and ranking for it)</li>
+<li><a href="http://www.npr.org/blogs/thetwo-way/2014/07/17/332239436/microsoft-will-cut-as-many-as-18-000-jobs?ft=1&amp;f=1001">Microsoft cutting 18,000 jobs</a>, mostly from Nokia (no more Nokia Android phones)</li>
+<li>Verizon blamed Netflix for poor speeds in <a href="http://publicpolicy.verizon.com/blog/entry/why-is-netflix-buffering-dispelling-the-congestion-myth">a blog post</a>, but Level Three (a higher-level ISP) took the opportunity to point out that <a href="http://blog.level3.com/global-connectivity/verizons-accidental-mea-culpa/">Verizon is full of crap</a>.</li>
+<li>Verizon argued that killing Net Neutrality would be great for the deaf. <a href="http://arstechnica.com/tech-policy/2014/07/deaf-advocacy-groups-to-verizon-dont-kill-net-neutrality-on-our-behalf/">Deaf advocacy groups disagree</a>.</li>
+<li><a href="http://www.bbc.co.uk/news/technology-28418449">YouTube make-up tutorials star sued for millions</a>: odd, because they could have just turned on content ID and monetized it.</li>
+<li><a href="http://www.makeuseof.com/tag/heres-how-well-get-to-a-world-filled-with-driverless-cars/">How we’ll get to a future of driverless cars</a>.</li>
+<li>Don’t expect to change anytime soon: <a href="http://www.bbc.co.uk/news/business-28415508">profits up 51%</a></li>
+</ul>
+<p>Gaming</p>
+<ul>
+<li><a href="http://kotaku.com/how-a-successful-kickstarter-lost-half-a-million-dollar-1608877998">Game raises $500,000, never materializes</a>.</li>
+<li><a href="http://www.superdataresearch.com/blog/us-digital-games-market/">Apparently MMOs aren’t dead, as quite a few still make money.</a></li>
+<li><a href="http://www.thefinalgen.com/news/ea-giving-owners-sims-2-ultimate-collection-free/">EA finally does something nice and gives all Sims 2 expansions away for free.</a></li>
+<li>Dave needs to talk about The International.</li>
+</ul>
+]]></content:encoded>
+			<wfw:commentRss>http://www.makeuseof.tv/2014/technophilia-123-man-loves-rabbits-2/feed/</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+			<enclosure url="http://www.makeuseof.tv/podpress_trac/feed/1235/1/tech123.mp3" length="45181306" type="audio/mpeg" />
+		<itunes:duration>1:34:07</itunes:duration>
+		<itunes:subtitle>https://www.youtube.com/watch?v=oLZmRjw4qng Tech News Those trolls? Might actually be NSA, manipulating you Blogger fined for writing nasty restaurant review (and ranking for it) Microsoft cutting 18,000 jobs, mostly from Nokia (no more Nokia Androi[...]</itunes:subtitle>
+		<itunes:summary>https://www.youtube.com/watch?v=oLZmRjw4qng Tech News Those trolls? Might actually be NSA, manipulating you Blogger fined for writing nasty restaurant review (and ranking for it) Microsoft cutting 18,000 jobs, mostly from Nokia (no more Nokia Android phones) Verizon blamed Netflix for poor speeds in a blog post, but Level Three (a higher-level ISP) took the opportunity to point out that Verizon is full of crap. Verizon argued that killing Net Neutrality would be great for the deaf. Deaf advocacy groups disagree. YouTube make-up tutorials star sued for millions: odd, because they could have just turned on content ID and monetized it. How we’ll get to a future of...Read the full article: Technophilia 123: This Man Loves Rabbits</itunes:summary>
+		<itunes:author>James Bruce, Justin Pot and Dave LeClair</itunes:author>
+		<itunes:explicit>yes</itunes:explicit>
+		<itunes:block>no</itunes:block>
+	</item>
+		<item>
+		<title>Technophilia 122: Comcast For President!</title>
+		<link>http://www.makeuseof.tv/2014/technophilia-122-comcast-president/</link>
+		<comments>http://www.makeuseof.tv/2014/technophilia-122-comcast-president/#comments</comments>
+		<pubDate>Thu, 17 Jul 2014 08:41:51 +0000</pubDate>
+		<dc:creator><![CDATA[jamie]]></dc:creator>
+				<category><![CDATA[Technophilia Technology Podcast]]></category>
+
+		<guid isPermaLink="false">http://www.makeuseof.tv/?p=1228</guid>
+		<description><![CDATA[<div><img width="600" height="420" src="http://podcast.makeuseoflimited.netdna-cdn.com/wp-content/uploads/2014/07/techno122-600x420.jpg" class="attachment-featured wp-post-image" alt="techno122" /></div><p>Blogger Ryan Block tried to cancel Comcast, but Comcast wasn’t having it. Over three million people have listened to this recording. The FCC is extending the deadline for net neutrality submissions. Tell them to classify ISPs as public utilities. Windows 9 will disable metro start screen by default. Lolz. Even stupider than Yo! Meet ping. IBM and Apple are working together, so you’ll see why 2015 will be like 1984. GE is working on a calorie counting machine. Germany contemplates switch to typewriters for security reasons. Unofficial tumblr conference descends into ballpit madness. Gaming James’ top 3 games of all time, since his authority has...</p><p>Read the full article: <a href='http://www.makeuseof.tv/2014/technophilia-122-comcast-president/'>Technophilia 122: Comcast For President!</a></p>]]></description>
+				<content:encoded><![CDATA[<p>
+<ul>
+<li>Blogger Ryan Block tried to cancel Comcast, but <a href="https://soundcloud.com/ryan-block-10/comcastic-service">Comcast wasn’t having it</a>. Over three million people have listened to this recording.</li>
+<li><a href="http://www.washingtonpost.com/blogs/the-switch/wp/2014/07/15/the-fcc-is-so-swamped-with-net-neutrality-comments-its-extending-the-deadline/#oo">The FCC is extending the deadline for net neutrality submissions</a>. Tell them to classify ISPs as public utilities.</li>
+<li><a href="http://www.theverge.com/2014/6/30/5857228/windows-9-preview-desktop-features-rumors">Windows 9 will disable metro start screen by default</a>. Lolz.</li>
+<li>Even stupider than Yo! <a href="http://www.theverge.com/2014/7/11/5890459/tap-for-iphone-and-android-lets-you-ping-friends-by-tapping-twice-on">Meet ping</a>.</li>
+<li><a href="http://www.businessinsider.com/apple-ibm-enterprise-partnership-2014-7#oo">IBM and Apple are working together</a>, so you’ll see why 2015 <i>will</i> be like 1984.</li>
+<li><a href="http://www.npr.org/blogs/thesalt/2014/07/15/331402697/calorie-counting-machine-may-make-dieting-easier-in-the-future?ft=1&amp;f=1001">GE is working on a calorie counting machine</a>.</li>
+<li><a href="http://arstechnica.com/tech-policy/2014/07/in-the-name-of-security-german-nsa-committee-may-turn-to-typewriters/">Germany contemplates switch to typewriters for security reasons</a>.</li>
+<li><a href="http://www.dailydot.com/geek/dashcon-ball-pit-meme/">Unofficial tumblr conference descends into ballpit madness</a>.</li>
+</ul>
+<h2>Gaming</h2>
+<ul>
+<li>James’ top 3 games of all time, since his authority has been called into question.</li>
+</ul>
+<h2>Giveaways</h2>
+<p>Ending soon &#8211; <a href="http://www.makeuseof.com/tag/brydge-ipad-keyboard-review-giveaway/">Brydge+ iPad Keyboard</a>, <a href="http://www.makeuseof.com/tag/microsoft-surface-pro-2-review-and-giveaway/">MS Surface Pro 2</a>, <a href="http://www.makeuseof.com/tag/vidon-av200-android-blu-ray-player-review-giveaway/">VidOn android Blu-Ray player</a>, <a href="http://www.makeuseof.com/tag/msi-gs70-stealthpro-024-gaming-laptop-review-giveaway/">MSI gaming laptop</a>.</p>
+<p>New giveaways &#8211; <a href="http://www.makeuseof.com/tag/steelseries-stratus-ios-game-controller-review-giveaway/">SteelSeries Stratus controller</a>, <a href="http://www.makeuseof.com/tag/bolse-sz-801-smart-nfc-bluetooth-speaker-review-and-giveaway/">Bolse bluetooth speaker</a>.</p>
+]]></content:encoded>
+			<wfw:commentRss>http://www.makeuseof.tv/2014/technophilia-122-comcast-president/feed/</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+			<enclosure url="http://www.makeuseof.tv/podpress_trac/feed/1228/1/tech122.mp3" length="32020607" type="audio/mpeg" />
+		<itunes:duration>1:06:42</itunes:duration>
+		<itunes:subtitle>Blogger Ryan Block tried to cancel Comcast, but Comcast wasn’t having it. Over three million people have listened to this recording. The FCC is extending the deadline for net neutrality submissions. Tell them to classify ISPs as public utilities. Wi[...]</itunes:subtitle>
+		<itunes:summary>Blogger Ryan Block tried to cancel Comcast, but Comcast wasn’t having it. Over three million people have listened to this recording. The FCC is extending the deadline for net neutrality submissions. Tell them to classify ISPs as public utilities. Windows 9 will disable metro start screen by default. Lolz. Even stupider than Yo! Meet ping. IBM and Apple are working together, so you’ll see why 2015 will be like 1984. GE is working on a calorie counting machine. Germany contemplates switch to typewriters for security reasons. Unofficial tumblr conference descends into ballpit madness. Gaming James’ top 3 games of all time, since his authority has...Read the full article: Technophilia 122: Comcast For President!</itunes:summary>
+		<itunes:author>James Bruce, Justin Pot and Dave LeClair</itunes:author>
+		<itunes:explicit>yes</itunes:explicit>
+		<itunes:block>no</itunes:block>
+	</item>
+		<item>
+		<title>Technophilia 121 &#8211; James Loves Justin&#8217;s Face</title>
+		<link>http://www.makeuseof.tv/2014/technophilia-121-james-loves-justins-face/</link>
+		<comments>http://www.makeuseof.tv/2014/technophilia-121-james-loves-justins-face/#comments</comments>
+		<pubDate>Wed, 09 Jul 2014 20:07:33 +0000</pubDate>
+		<dc:creator><![CDATA[dave]]></dc:creator>
+				<category><![CDATA[Technophilia Technology Podcast]]></category>
+
+		<guid isPermaLink="false">http://www.makeuseof.tv/?p=1223</guid>
+		<description><![CDATA[<div><img width="600" height="420" src="http://podcast.makeuseoflimited.netdna-cdn.com/wp-content/uploads/2012/11/Technophilia121-600x420.jpg" class="attachment-featured wp-post-image" alt="Technophilia121" /></div><p>Rant On The Right To Be Forgotten Tech News Concerned about privacy? Congratulations, that puts you on the NSA watchlist! Kids don’t care about cars, says Bob Lefsetz YouTube joins Netflix on the ISP shaming bandwagon. Dead battery? Might just have to leave your device at the airport. Kickstarter Potato Salad campaign raises $60,000 Gaming EA can no longer call Dungeon Hunter free in UK ads. There’s a pretty awesome 2K Humble Bundle going right now. The International 4 is happening right now! Giveaways Brydge+ iPad keyboard VidOn.me’s AV200 Android Blu-ray player</p><p>Read the full article: <a href='http://www.makeuseof.tv/2014/technophilia-121-james-loves-justins-face/'>Technophilia 121 &#8211; James Loves Justin&#8217;s Face</a></p>]]></description>
+				<content:encoded><![CDATA[<p>
+<h2>Rant</h2>
+<p>On The Right To Be Forgotten</p>
+<h2>Tech News</h2>
+<ul>
+<li>Concerned about privacy? <a href="http://daserste.ndr.de/panorama/aktuell/NSA-targets-the-privacy-conscious,nsa230.html">Congratulations, that puts you on the NSA watchlist!</a></li>
+<li><a href="http://lefsetz.com/wordpress/index.php/archives/2014/07/05/kids-dont-care-cars/">Kids don’t care about cars</a>, says Bob Lefsetz</li>
+<li><a href="http://qz.com/230603/youtube-like-netflix-is-now-publicly-shaming-internet-providers-for-slow-video/">YouTube joins Netflix on the ISP shaming bandwagon</a>.</li>
+<li><a href="http://www.engadget.com/2014/07/06/tsa-requires-turning-on-devices-for-some-flights/%20via%20Engadget%20Android/">Dead battery? Might just have to leave your device at the airport</a>.</li>
+<li>Kickstarter Potato Salad campaign <a href="https://www.kickstarter.com/projects/324283889/potato-salad">raises $60,000</a></li>
+</ul>
+<h2>Gaming</h2>
+<ul>
+<li><a href="http://www.kotaku.co.uk/2014/07/02/advertising-standards-agency-agree-dungeon-keeper-ios-rip">EA can no longer call Dungeon Hunter free in UK ads.</a></li>
+<li><a href="https://www.humblebundle.com/">There’s a pretty awesome 2K Humble Bundle going right now</a>.</li>
+<li>The International 4 is happening right now!</li>
+</ul>
+<h2>Giveaways</h2>
+<ul>
+<li><a href="http://www.makeuseof.com/tag/brydge-ipad-keyboard-review-giveaway/">Brydge+ iPad keyboard</a></li>
+<li><a href="http://www.makeuseof.com/tag/vidon-av200-android-blu-ray-player-review-giveaway/">VidOn.me’s AV200 Android Blu-ray player</a></li>
+</ul>
+]]></content:encoded>
+			<wfw:commentRss>http://www.makeuseof.tv/2014/technophilia-121-james-loves-justins-face/feed/</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+			<enclosure url="http://www.makeuseof.tv/podpress_trac/feed/1223/1/tech121.mp3" length="34125032" type="audio/mpeg" />
+		<itunes:duration>1:11:05</itunes:duration>
+		<itunes:subtitle>Rant On The Right To Be Forgotten Tech News Concerned about privacy? Congratulations, that puts you on the NSA watchlist! Kids don’t care about cars, says Bob Lefsetz YouTube joins Netflix on the ISP shaming bandwagon. Dead battery? Might just have [...]</itunes:subtitle>
+		<itunes:summary>Rant On The Right To Be Forgotten Tech News Concerned about privacy? Congratulations, that puts you on the NSA watchlist! Kids don’t care about cars, says Bob Lefsetz YouTube joins Netflix on the ISP shaming bandwagon. Dead battery? Might just have to leave your device at the airport. Kickstarter Potato Salad campaign raises $60,000 Gaming EA can no longer call Dungeon Hunter free in UK ads. There’s a pretty awesome 2K Humble Bundle going right now. The International 4 is happening right now! Giveaways Brydge+ iPad keyboard VidOn.me’s AV200 Android Blu-ray playerRead the full article: Technophilia 121 &#8211; James Loves Justin&#8217;s Face</itunes:summary>
+		<itunes:author>James Bruce, Justin Pot and Dave LeClair</itunes:author>
+		<itunes:explicit>yes</itunes:explicit>
+		<itunes:block>no</itunes:block>
+	</item>
+		<item>
+		<title>Technophilia 120 &#8211; This Man is a Liberal Misanthrope</title>
+		<link>http://www.makeuseof.tv/2014/technophilia-120-man-liberal-misanthrope/</link>
+		<comments>http://www.makeuseof.tv/2014/technophilia-120-man-liberal-misanthrope/#comments</comments>
+		<pubDate>Wed, 02 Jul 2014 20:24:35 +0000</pubDate>
+		<dc:creator><![CDATA[dave]]></dc:creator>
+				<category><![CDATA[Technophilia Technology Podcast]]></category>
+
+		<guid isPermaLink="false">http://www.makeuseof.tv/?p=1217</guid>
+		<description><![CDATA[<div><img width="600" height="420" src="http://podcast.makeuseoflimited.netdna-cdn.com/wp-content/uploads/2014/07/techno120-600x420.jpg" class="attachment-featured wp-post-image" alt="techno120" /></div><p>Tech News This weeks HUGE news: Windows Phone 8.1 Adds Folders Feature. Obviously you should buy one now. Facebook is literally trying to depress you, because science. Cardboard, Google’s dirt cheap answer to Oculus. It’s crap, obviously. Blackberry is getting desperate: launches Fact Check Portal IT’S HAPPENING! Oculus Rift DK2 shipping soon! Kids ditching 3DS in favour of tablets (UK). The MPAA tries to take down a Subreddit and fails. Gaming Steam sale madness! This is your fault, goat sim: Grass Simulator 2014 We’ve gotta talk about this drama at Giant Bomb.</p><p>Read the full article: <a href='http://www.makeuseof.tv/2014/technophilia-120-man-liberal-misanthrope/'>Technophilia 120 &#8211; This Man is a Liberal Misanthrope</a></p>]]></description>
+				<content:encoded><![CDATA[<p>
+<h2>Tech News</h2>
+<ul>
+<li>This weeks HUGE news: <a href="http://www.pocket-lint.com/news/129637-windows-phone-8-1-to-give-android-and-ios-users-further-reason-to-switch-folders">Windows Phone 8.1 Adds Folders Feature</a>. Obviously you should buy one now.</li>
+<li><a href="http://www.bbc.co.uk/news/technology-28051930%20">Facebook is literally trying to depress you</a>, because science.</li>
+<li><a href="http://www.androidguys.com/2014/06/26/get-cardboard-vr-cheap/">Cardboard, Google’s dirt cheap answer to Oculus</a>. It’s crap, obviously.</li>
+<li>Blackberry is getting desperate: launches <a href="http://blogs.blackberry.com/2014/06/migration-myth/">Fact Check Portal</a></li>
+<li>IT’S HAPPENING! <a href="http://www.roadtovr.com/oculus-rift-dk2-development-kit-2-shipping-status-update/">Oculus Rift DK2 shipping soon</a>!</li>
+<li><a href="http://www.pocket-lint.com/news/129626-kids-ditching-nintendo-3ds-in-favour-of-tablets-as-go-to-gaming-devices">Kids ditching 3DS in favour of tablets</a> (UK).</li>
+<li><a href="http://www.makeuseof.com/tag/mpaa-targets-subreddit-opens-everyones-eyes-free-movies/">The MPAA tries to take down a Subreddit and fails.</a></li>
+</ul>
+<h2>Gaming</h2>
+<ul>
+<li>Steam sale madness!</li>
+<li><span>This is your fault, goat sim: <a href="http://steamcommunity.com/sharedfiles/filedetails/?id=276683987">Grass Simulator 2014</a></span></li>
+<li><a href="http://www.8cn.tv/content/giant-bomb-hiring-ignites-gender-issues-games-journalism-debate">We’ve gotta talk about this drama at Giant Bomb.</a></li>
+</ul>
+]]></content:encoded>
+			<wfw:commentRss>http://www.makeuseof.tv/2014/technophilia-120-man-liberal-misanthrope/feed/</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+			<enclosure url="http://www.makeuseof.tv/podpress_trac/feed/1217/1/tech120.mp3" length="38584447" type="audio/mpeg" />
+		<itunes:duration>1:20:23</itunes:duration>
+		<itunes:subtitle>Tech News This weeks HUGE news: Windows Phone 8.1 Adds Folders Feature. Obviously you should buy one now. Facebook is literally trying to depress you, because science. Cardboard, Google’s dirt cheap answer to Oculus. It’s crap, obviously. Blackberry[...]</itunes:subtitle>
+		<itunes:summary>Tech News This weeks HUGE news: Windows Phone 8.1 Adds Folders Feature. Obviously you should buy one now. Facebook is literally trying to depress you, because science. Cardboard, Google’s dirt cheap answer to Oculus. It’s crap, obviously. Blackberry is getting desperate: launches Fact Check Portal IT’S HAPPENING! Oculus Rift DK2 shipping soon! Kids ditching 3DS in favour of tablets (UK). The MPAA tries to take down a Subreddit and fails. Gaming Steam sale madness! This is your fault, goat sim: Grass Simulator 2014 We’ve gotta talk about this drama at Giant Bomb.Read the full article: Technophilia 120 &#8211; This Man is a Liberal Misanthrope</itunes:summary>
+		<itunes:author>James Bruce, Justin Pot and Dave LeClair</itunes:author>
+		<itunes:explicit>yes</itunes:explicit>
+		<itunes:block>no</itunes:block>
+	</item>
+		<item>
+		<title>Technophilia 119 &#8211; Two Fish, One Dave</title>
+		<link>http://www.makeuseof.tv/2014/technophilia-119-two-fish-one-dave/</link>
+		<comments>http://www.makeuseof.tv/2014/technophilia-119-two-fish-one-dave/#comments</comments>
+		<pubDate>Wed, 25 Jun 2014 20:03:09 +0000</pubDate>
+		<dc:creator><![CDATA[dave]]></dc:creator>
+				<category><![CDATA[Technophilia Technology Podcast]]></category>
+
+		<guid isPermaLink="false">http://www.makeuseof.tv/?p=1211</guid>
+		<description><![CDATA[<div><img width="600" height="420" src="http://podcast.makeuseoflimited.netdna-cdn.com/wp-content/uploads/2014/06/art119-600x420.jpg" class="attachment-featured wp-post-image" alt="art119" /></div><p>Aereo Supreme Court Ruling. Social media bullshit now makes up “at least half” of frontline policing work in the UK. Can we PLEASE kill twitter already? Yes, we can, here’s the even stupider replacement: Yo Lock up your passwords: half of all SSH HeartBleed vulnerable servers still not patched. Miyamoto “uneasy” about VR. The end is nigh: college scholarships for League of Legends players. Cruise turns all cars into self-driving cars HitchBOT</p><p>Read the full article: <a href='http://www.makeuseof.tv/2014/technophilia-119-two-fish-one-dave/'>Technophilia 119 &#8211; Two Fish, One Dave</a></p>]]></description>
+				<content:encoded><![CDATA[<p>
+<ul>
+<li><a href="http://www.theverge.com/2014/6/25/5801052/aereo-supreme-court-ruling">Aereo Supreme Court Ruling</a>.</li>
+<li><a href="http://www.bbc.co.uk/news/uk-27949674">Social media bullshit now makes up “at least half” of frontline policing work</a> in the UK. Can we PLEASE kill twitter already?</li>
+<li>Yes, we can, here’s the even stupider replacement: <a href="http://techcrunch.com/2014/06/18/yo-yo/">Yo</a></li>
+<li>Lock up your passwords: <a href="http://www.theverge.com/2014/6/22/5831732/over-300000-servers-vulnerable-to-heartbleed-two-months-later">half of all SSH HeartBleed vulnerable servers still not patched</a>.</li>
+<li><a href="http://www.theverge.com/2014/6/18/5821184/nintendos-top-designer-has-uneasiness-about-virtual-reality">Miyamoto “uneasy” about VR</a>.</li>
+<li>The end is nigh: <a href="http://www.theverge.com/2014/6/19/5826158/college-athletic-scholarships-for-league-of-legends-players">college scholarships for League of Legends players</a>.</li>
+<li><a href="http://www.theverge.com/2014/6/23/5834604/cruise-trying-to-reinvent-cruise-control-to-steer-brake-and-actually-drive-you">Cruise turns all cars into self-driving cars</a></li>
+<li><a href="http://www.theatlantic.com/technology/archive/2014/06/meet-the-cute-wellies-wearing-robot-thats-going-to-hitchhike-across-canada/372677/">HitchBOT</a></li>
+</ul>
+]]></content:encoded>
+			<wfw:commentRss>http://www.makeuseof.tv/2014/technophilia-119-two-fish-one-dave/feed/</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+			<enclosure url="http://www.makeuseof.tv/podpress_trac/feed/1211/1/tech119.mp3" length="35053946" type="audio/mpeg" />
+		<itunes:duration>1:13:01</itunes:duration>
+		<itunes:subtitle>Aereo Supreme Court Ruling. Social media bullshit now makes up “at least half” of frontline policing work in the UK. Can we PLEASE kill twitter already? Yes, we can, here’s the even stupider replacement: Yo Lock up your passwords: half of all SSH He[...]</itunes:subtitle>
+		<itunes:summary>Aereo Supreme Court Ruling. Social media bullshit now makes up “at least half” of frontline policing work in the UK. Can we PLEASE kill twitter already? Yes, we can, here’s the even stupider replacement: Yo Lock up your passwords: half of all SSH HeartBleed vulnerable servers still not patched. Miyamoto “uneasy” about VR. The end is nigh: college scholarships for League of Legends players. Cruise turns all cars into self-driving cars HitchBOTRead the full article: Technophilia 119 &#8211; Two Fish, One Dave</itunes:summary>
+		<itunes:author>James Bruce, Justin Pot and Dave LeClair</itunes:author>
+		<itunes:explicit>yes</itunes:explicit>
+		<itunes:block>no</itunes:block>
+	</item>
+		<item>
+		<title>Technophilia 118 &#8211; World Cupcakes</title>
+		<link>http://www.makeuseof.tv/2014/technophilia-118-world-cupcakes/</link>
+		<comments>http://www.makeuseof.tv/2014/technophilia-118-world-cupcakes/#comments</comments>
+		<pubDate>Thu, 19 Jun 2014 12:42:25 +0000</pubDate>
+		<dc:creator><![CDATA[dave]]></dc:creator>
+				<category><![CDATA[Technophilia Technology Podcast]]></category>
+
+		<guid isPermaLink="false">http://www.makeuseof.tv/?p=1206</guid>
+		<description><![CDATA[<div><img width="600" height="420" src="http://podcast.makeuseoflimited.netdna-cdn.com/wp-content/uploads/2014/06/techno-118-600x420.jpg" class="attachment-featured wp-post-image" alt="techno-118" /></div><p>Facebook is tracking your web browsing to show you ads, which is probably what those “Like” buttons were intended for all along. YouTube is removing the music videos of artists who didn’t sign on for Google’s streaming service. “Don’t Be Evil” is officially a joke. Cryptic YouTube Channel Webdriver Torso turns out to be a quality control tool. Bloomberg is working on using the Oculus for work. The mayor of Peoria sent the cops to raid the house of a guy who ran a parody Twitter account. Xbox ad demonstrating the voice commands keeps turning on people’s Xboxes Sunlight Foundation...</p><p>Read the full article: <a href='http://www.makeuseof.tv/2014/technophilia-118-world-cupcakes/'>Technophilia 118 &#8211; World Cupcakes</a></p>]]></description>
+				<content:encoded><![CDATA[<p>
+<ul>
+<li><a href="http://www.makeuseof.com/tag/facebook-tracking-ads-bitcoin-mining-monopoly-tech-news-digest/">Facebook is tracking your web browsing to show you ads</a>, which is probably what those “Like” buttons were intended for all along.</li>
+<li><a href="http://www.bbc.com/news/technology-27891883">YouTube is removing the music videos of artists who didn’t sign on for Google’s streaming service.</a> “Don’t Be Evil” is officially a joke.</li>
+<li>Cryptic YouTube Channel Webdriver Torso <a href="http://www.onthemedia.org/story/were-happy-report-webdriver-torso-not-viral-advertisement/">turns out to be a quality control tool</a>.</li>
+<li>Bloomberg is working on <a href="http://qz.com/218129/virtual-reality-headset-oculus-rift-meets-the-bloomberg-terminal/">using the Oculus for work</a>.</li>
+<li>The mayor of Peoria sent the cops to raid the house of a guy who <a href="http://www.chicagotribune.com/news/local/breaking/chi-peoria-mayor-twitter-20140612,0,5897217,full.story">ran a parody Twitter account</a>.</li>
+<li>Xbox ad demonstrating the voice commands <a href="http://www.cnet.com/news/breaking-bad-star-aaron-paul-is-controlling-your-xbox-one/">keeps turning on people’s Xboxes</a></li>
+<li><a href="http://www.onthemedia.org/story/your-congressperson-has-email-address-now-whether-they-want-it-or-not/">Sunlight Foundation makes it easier to email your congressman</a>. This shouldn’t be hard to begin with…</li>
+<li>Uber’s CEO Travis Kalanick gave a talk about robots replacing drivers, and <a href="http://valleywag.gawker.com/uber-drivers-protest-their-dick-boss-1592326400">the drivers are upset for some reason</a>. Why might that be?</li>
+<li>For once Nintendo, we agree: <a href="http://www.theverge.com/2014/6/13/5806570/nintendo-wont-add-twitch-streaming-to-wii-u">“What’s fun about streaming to Twitch?”</a></li>
+</ul>
+]]></content:encoded>
+			<wfw:commentRss>http://www.makeuseof.tv/2014/technophilia-118-world-cupcakes/feed/</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+			<enclosure url="http://www.makeuseof.tv/podpress_trac/feed/1206/1/tech118.mp3" length="48507604" type="audio/mpeg" />
+		<itunes:duration>1:07:22</itunes:duration>
+		<itunes:subtitle>Facebook is tracking your web browsing to show you ads, which is probably what those “Like” buttons were intended for all along. YouTube is removing the music videos of artists who didn’t sign on for Google’s streaming service. “Don’t Be Evil” is of[...]</itunes:subtitle>
+		<itunes:summary>Facebook is tracking your web browsing to show you ads, which is probably what those “Like” buttons were intended for all along. YouTube is removing the music videos of artists who didn’t sign on for Google’s streaming service. “Don’t Be Evil” is officially a joke. Cryptic YouTube Channel Webdriver Torso turns out to be a quality control tool. Bloomberg is working on using the Oculus for work. The mayor of Peoria sent the cops to raid the house of a guy who ran a parody Twitter account. Xbox ad demonstrating the voice commands keeps turning on people’s Xboxes Sunlight Foundation...Read the full article: Technophilia 118 &#8211; World Cupcakes</itunes:summary>
+		<itunes:author>James Bruce, Justin Pot and Dave LeClair</itunes:author>
+		<itunes:explicit>yes</itunes:explicit>
+		<itunes:block>no</itunes:block>
+	</item>
+		<item>
+		<title>117 &#8211; Captain Linux: The Norwegian Soldier</title>
+		<link>http://www.makeuseof.tv/2014/technophilia-117-captain-linux-norwegian-soldier/</link>
+		<comments>http://www.makeuseof.tv/2014/technophilia-117-captain-linux-norwegian-soldier/#comments</comments>
+		<pubDate>Fri, 13 Jun 2014 12:16:10 +0000</pubDate>
+		<dc:creator><![CDATA[dave]]></dc:creator>
+				<category><![CDATA[Technophilia Technology Podcast]]></category>
+
+		<guid isPermaLink="false">http://www.makeuseof.tv/?p=1199</guid>
+		<description><![CDATA[<div><img width="600" height="420" src="http://podcast.makeuseoflimited.netdna-cdn.com/wp-content/uploads/2014/06/techno117-600x420.jpg" class="attachment-featured wp-post-image" alt="techno117" /></div><p>Tech News ISP owner: all bandwidth limits are artificial. Startups are increasingly launching small satellites, as launching them becomes cheaper. Verizon and Netflix got beef. Some high school students hacked BMO’s ATMs at lunch, so they wrote a letter for their teachers explaining why there were late: “Please excuse Mr. Caleb Turon and Matthew Hewlett for being late during their lunch hour due to assisting BMO with security.” BitTorrent made this great “Join The Fast Lane” parody of ISPs. But is it the future? Comcast turning routers into public Wi-Fi hotspots without the user’s consent. Popcorn Time for Music has...</p><p>Read the full article: <a href='http://www.makeuseof.tv/2014/technophilia-117-captain-linux-norwegian-soldier/'>117 &#8211; Captain Linux: The Norwegian Soldier</a></p>]]></description>
+				<content:encoded><![CDATA[<p>
+<h2>Tech News</h2>
+<ul>
+<li><a href="http://bgr.com/2014/06/05/sonic-net-ceo-interview/">ISP owner: all bandwidth limits are artificial</a>.</li>
+<li><a href="http://bgr.com/2014/06/05/sonic-net-ceo-interview/">Startups are increasingly launching small satellites</a>, as launching them becomes cheaper.</li>
+<li><a href="http://www.theverge.com/2014/6/5/5783338/verizon-sends-netflix-cease-and-desist-over-congestion-warnings">Verizon and Netflix got beef.</a></li>
+<li><a href="https://twitter.com/pierreletopo/status/476140557291360256">Some high school students hacked BMO’s ATMs at lunch</a>, so they wrote a letter for their teachers explaining why there were late: “Please excuse Mr. Caleb Turon and Matthew Hewlett for being late during their lunch hour due to assisting BMO with security.”</li>
+<li>BitTorrent made this great “<a href="http://jointhefastlane.com/">Join The Fast Lane”</a> parody of ISPs. But is it the future?</li>
+<li><a href="http://beta.slashdot.org/story/203157">Comcast turning routers into public Wi-Fi hotspots without the user’s consent.</a></li>
+<li><a href="http://torrentfreak.com/popcorn-time-music-really-pretty-epic-140608/">Popcorn Time for Music has arrived, and it’s called HipHop</a> (available for Mac users too!)</li>
+<li><a href="http://torrentfreak.com/popcorn-time-gives-users-anonymity-with-a-free-built-in-vpn-140607/">Popcorn Time integrates free VPN for all users</a>. Whoa.</li>
+</ul>
+<h2><b>Gaming:</b></h2>
+<ul>
+<li><a href="http://arstechnica.com/gaming/2014/06/nintendo-closes-european-headquarters-building-sacks-130-employees/">Nintendo closes European headquarters</a></li>
+<li>E3 is happenening, so let’s talk about some stuff.</li>
+</ul>
+]]></content:encoded>
+			<wfw:commentRss>http://www.makeuseof.tv/2014/technophilia-117-captain-linux-norwegian-soldier/feed/</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+			<enclosure url="http://www.makeuseof.tv/podpress_trac/feed/1199/1/tech117.mp3" length="30142298" type="audio/mpeg" />
+		<itunes:duration>1:02:47</itunes:duration>
+		<itunes:subtitle>Tech News ISP owner: all bandwidth limits are artificial. Startups are increasingly launching small satellites, as launching them becomes cheaper. Verizon and Netflix got beef. Some high school students hacked BMO’s ATMs at lunch, so they wrote a le[...]</itunes:subtitle>
+		<itunes:summary>
+Tech News
+
+ISP owner: all bandwidth limits are artificial.
+Startups are increasingly launching small satellites, as launching them becomes cheaper.
+Verizon and Netflix got beef.
+Some high school students hacked BMO’s ATMs at lunch, so they wrote a letter for their teachers explaining why there were late: “Please excuse Mr. Caleb Turon and Matthew Hewlett for being late during their lunch hour due to assisting BMO with security.”
+BitTorrent made this great “Join The Fast Lane” parody of ISPs. But is it the future?
+Comcast turning routers into public Wi-Fi hotspots without the user’s consent.
+Popcorn Time for Music has arrived, and it’s called HipHop (available for Mac users too!)
+Popcorn Time integrates free VPN for all users. Whoa.
+
+Gaming:
+
+Nintendo closes European headquarters
+E3 is happenening, so let’s talk about some stuff.
+
+</itunes:summary>
+		<itunes:keywords>tech, technology, gaming, xbox, gadgets, news, apps, applications, iphone, android, mac, PC</itunes:keywords>
+		<itunes:author>James Bruce, Justin Pot and Dave LeClair</itunes:author>
+		<itunes:explicit>yes</itunes:explicit>
+		<itunes:block>no</itunes:block>
+	</item>
+		<item>
+		<title>Technophilia 116 &#8211; Mute James</title>
+		<link>http://www.makeuseof.tv/2014/technophilia-116-mute-james/</link>
+		<comments>http://www.makeuseof.tv/2014/technophilia-116-mute-james/#comments</comments>
+		<pubDate>Wed, 04 Jun 2014 19:25:58 +0000</pubDate>
+		<dc:creator><![CDATA[dave]]></dc:creator>
+				<category><![CDATA[Technophilia Technology Podcast]]></category>
+
+		<guid isPermaLink="false">http://www.makeuseof.tv/?p=1193</guid>
+		<description><![CDATA[<div><img width="600" height="420" src="http://podcast.makeuseoflimited.netdna-cdn.com/wp-content/uploads/2014/06/Tech116-600x420.jpg" class="attachment-featured wp-post-image" alt="Tech116" /></div><p>Tech News Gangnam Style hits 2 billion views. Who are the people still watching this? Apple officially buys beats for $3 billion, because Oculus was already taken. Steve Balmer is buying the LA Clippers for $2 billion, because Oculus was already taken. John Oliver broke the FCC’s comment page. What’s new in iOS 8? Yosemite is a park known for its sweeping vistas Netflix is slowly ditching Silverlight for HTML5. I can haz Linux support? Apple tells Google to go Bing itself. And makes DuckDuckGo an option for mobile Safari. Most popular mobile porn browser: Safari. 38% on phone, 73%...</p><p>Read the full article: <a href='http://www.makeuseof.tv/2014/technophilia-116-mute-james/'>Technophilia 116 &#8211; Mute James</a></p>]]></description>
+				<content:encoded><![CDATA[<p>
+<p>Tech News</p>
+<ul>
+<li><a href="http://www.npr.org/blogs/thetwo-way/2014/05/31/317700116/a-modern-milestone-psys-gangnam-style-hits-2-billion-views?ft=1&amp;f=1001">Gangnam Style hits 2 billion views</a>. Who are the people still watching this?</li>
+<li>Apple officially buys beats for $3 billion, because Oculus was already taken.</li>
+<li><a href="http://www.npr.org/blogs/thetwo-way/2014/05/30/317328419/shelly-sterling-l-a-clippers-will-be-sold-to-steve-ballmer-for-2-billion?ft=1&amp;f=1001">Steve Balmer is buying the LA Clippers</a> for $2 billion, because Oculus was already taken.</li>
+<li><a href="http://www.dslreports.com/news/129183">John Oliver broke the FCC’s comment page</a>.</li>
+<li><a href="http://www.makeuseof.com/tag/whats-new-ios-8/">What’s new in iOS 8?</a></li>
+<li>Yosemite is a park known for its sweeping vistas</li>
+<li><a href="http://thenextweb.com/insider/2014/06/03/netflix-ditches-silverlight-html5-macs-available-today-safari-os-x-yosemite-beta/">Netflix is slowly ditching Silverlight for HTML5</a>. I can haz Linux support?</li>
+<li><a href="http://www.geekwire.com/2014/confirmed-microsoft-bing-will-default-apples-new-mac-os-x-spotlight/?utm_source=feedburner&amp;utm_medium=feed&amp;utm_campaign=Feed%3A+geekwire+%28GeekWire%29">Apple tells Google to go Bing itself</a>. And makes DuckDuckGo an option for mobile Safari.</li>
+<li><a href="http://arstechnica.com/tech-policy/2014/06/apples-safari-browser-wins-mobile-tablet-porn-watching-crowns/">Most popular mobile porn browser: Safari</a>. 38% on phone, 73% on tablet. Apparently no uses their Android tablet. What a surprise!</li>
+<li><a href="http://www.makeuseof.com/tag/control-virtually-anything-siri-jailbreak-required/">Control anything with Siri, no jailbreak needed</a></li>
+<li>Today is the anniversary of the Tiananmen Square protests. <a href="http://www.npr.org/blogs/thetwo-way/2014/06/04/318756603/25-years-after-tiananmen-protests-chinese-media-keep-it-quiet?ft=1&amp;f=1001">State media there is reporting about Angelina Jolie visiting</a>.</li>
+</ul>
+<p>Been Using</p>
+<ul>
+<li><span><a href="http://www.makeuseof.com/tag/save-videos-from-any-site-even-netflix-with-applians-replay-capture-suite/">Applian can record or download any video</a>. </span></li>
+</ul>
+<p>Gaming</p>
+<ul>
+<li><span>Valve made a way to <a href="http://www.roadtovr.com/new-bits-new-valve-vr-headset-makes-appearance-boston-vr-bender/">stand in the middle of DOTA2 matches</a></span></li>
+<li><span><a href="https://www.youtube.com/watch?v=x6FmIKSqTKo">Mercedez comes to Mario Kart</a></span></li>
+<li><span><a href="http://arstechnica.com/gaming/2014/05/nintendo-announces-plan-to-share-ad-revenue-with-youtube-steamers/">Nintendo finally lets people stream its games, but it takes some of the money.</a></span></li>
+</ul>
+]]></content:encoded>
+			<wfw:commentRss>http://www.makeuseof.tv/2014/technophilia-116-mute-james/feed/</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+			<enclosure url="http://www.makeuseof.tv/podpress_trac/feed/1193/1/tech116.mp3" length="28456460" type="audio/mpeg" />
+		<itunes:duration>0:59:17</itunes:duration>
+		<itunes:subtitle>Tech News Gangnam Style hits 2 billion views. Who are the people still watching this? Apple officially buys beats for $3 billion, because Oculus was already taken. Steve Balmer is buying the LA Clippers for $2 billion, because Oculus was already tak[...]</itunes:subtitle>
+		<itunes:summary>Tech News Gangnam Style hits 2 billion views. Who are the people still watching this? Apple officially buys beats for $3 billion, because Oculus was already taken. Steve Balmer is buying the LA Clippers for $2 billion, because Oculus was already taken. John Oliver broke the FCC’s comment page. What’s new in iOS 8? Yosemite is a park known for its sweeping vistas Netflix is slowly ditching Silverlight for HTML5. I can haz Linux support? Apple tells Google to go Bing itself. And makes DuckDuckGo an option for mobile Safari. Most popular mobile porn browser: Safari. 38% on phone, 73%...Read the full article: Technophilia 116 &#8211; Mute James</itunes:summary>
+		<itunes:author>James Bruce, Justin Pot and Dave LeClair</itunes:author>
+		<itunes:explicit>yes</itunes:explicit>
+		<itunes:block>no</itunes:block>
+	</item>
+		<item>
+		<title>Technophilia 115 &#8211; IT Emergency</title>
+		<link>http://www.makeuseof.tv/2014/technophilia-115-emergency/</link>
+		<comments>http://www.makeuseof.tv/2014/technophilia-115-emergency/#comments</comments>
+		<pubDate>Thu, 29 May 2014 20:17:43 +0000</pubDate>
+		<dc:creator><![CDATA[dave]]></dc:creator>
+				<category><![CDATA[Technophilia Technology Podcast]]></category>
+
+		<guid isPermaLink="false">http://www.makeuseof.tv/?p=1186</guid>
+		<description><![CDATA[<div><img width="600" height="420" src="http://podcast.makeuseoflimited.netdna-cdn.com/wp-content/uploads/2012/11/Technophilia115-600x420.jpg" class="attachment-featured wp-post-image" alt="Technophilia115" /></div><p>Tech News BREAKING NEWS THAT WILL CHANGE YOUR OUTLOOK ON LIFE: You just had to press to press F TOP STORY THIS WEEK: Django (database) coders replace all references to master/slave with leader/follower, because it’s “racially charged”. WTF. We should probably stop calling something a “whitelist” too. And those hardware terms: dongle, plug, jack. All too sexual. Google’s self-driving car prototype is ready to go. Samsung innovates again: planning to launch VR headset. Simple registry hack enables Windows XP updates to continue. Lolwut. Eugh, Google buying connected home webcams to go with their thermostats. The eye of Sauron is truly...</p><p>Read the full article: <a href='http://www.makeuseof.tv/2014/technophilia-115-emergency/'>Technophilia 115 &#8211; IT Emergency</a></p>]]></description>
+				<content:encoded><![CDATA[<p>
+<h2>Tech News</h2>
+<ul>
+<li>BREAKING NEWS THAT WILL CHANGE YOUR OUTLOOK ON LIFE: <a href="http://www.reddit.com/r/gaming/comments/26mgc2/this_was_one_of_the_best_endless_games_in_its/">You just had to press to press F</a></li>
+<li>TOP STORY THIS WEEK<b>: </b><a href="https://github.com/django/django/pull/2692">Django (database) coders replace all references to master/slave with leader/follower</a>, because it’s “racially charged”. WTF. We should probably stop calling something a “whitelist” too. And those hardware terms: dongle, plug, jack. All too sexual.</li>
+<li><a href="http://www.theverge.com/2014/5/27/5756436/this-is-googles-own-self-driving-car">Google’s self-driving car prototype is ready to go</a>.</li>
+<li><a href="http://www.theverge.com/2014/5/22/5741782/samsung-reportedly-building-vr-headset">Samsung innovates again</a>: planning to launch VR headset.</li>
+<li><a href="http://www.makeuseof.com/tag/windows-xp-registry-hack-google-self-driving-cars-apple-ransomware-tech-news-digest/">Simple registry hack enables Windows XP updates to continue</a>. Lolwut.</li>
+<li>Eugh, Google buying <a href="http://www.theverge.com/2014/5/26/5753026/google-and-nest-considering-home-security">connected home webcams to go with their thermostats</a>. The eye of Sauron is truly upon us.</li>
+</ul>
+<h2>From MakeUseOf</h2>
+<ul>
+<li><a href="http://www.makeuseof.com/tag/just-bought-a-raspberry-pi-11-things-you-need-to-know/">James made a video about Raspberry Pi newbie stuff. It’s good</a>.</li>
+<li><a href="http://www.makeuseof.com/tag/3-of-the-most-noob-friendly-dota-2-heroes-and-some-to-avoid/">For you guys who want to get into Dota, Dave wrote this</a>.</li>
+<li><a href="http://www.makeuseof.com/tag/avenger-elite-defcon-f4-review-and-giveaway/">Avenger Elite Defcon F4</a></li>
+<li><a href="http://www.makeuseof.com/tag/photojojo-lens-kit-and-mobislyder-camera-dolly-review-and-giveaway/">Photojojo Lens Kit and Mobislyder Camera Dolly</a></li>
+<li><a href="http://www.makeuseof.com/tag/lazepad-ipad-holder-review-and-giveaway/">LazePad iPad Holder</a></li>
+</ul>
+<h2>Gaming</h2>
+<ul>
+<li>Watch Dogs (is a game)</li>
+</ul>
+]]></content:encoded>
+			<wfw:commentRss>http://www.makeuseof.tv/2014/technophilia-115-emergency/feed/</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+			<enclosure url="http://www.makeuseof.tv/podpress_trac/feed/1186/1/tech115.mp3" length="28703683" type="audio/mpeg" />
+		<itunes:duration>0:59:47</itunes:duration>
+		<itunes:subtitle>Tech News BREAKING NEWS THAT WILL CHANGE YOUR OUTLOOK ON LIFE: You just had to press to press F TOP STORY THIS WEEK: Django (database) coders replace all references to master/slave with leader/follower, because it’s “racially charged”. WTF. We shoul[...]</itunes:subtitle>
+		<itunes:summary>Tech News BREAKING NEWS THAT WILL CHANGE YOUR OUTLOOK ON LIFE: You just had to press to press F TOP STORY THIS WEEK: Django (database) coders replace all references to master/slave with leader/follower, because it’s “racially charged”. WTF. We should probably stop calling something a “whitelist” too. And those hardware terms: dongle, plug, jack. All too sexual. Google’s self-driving car prototype is ready to go. Samsung innovates again: planning to launch VR headset. Simple registry hack enables Windows XP updates to continue. Lolwut. Eugh, Google buying connected home webcams to go with their thermostats. The eye of Sauron is truly...Read the full article: Technophilia 115 &#8211; IT Emergency</itunes:summary>
+		<itunes:author>James Bruce, Justin Pot and Dave LeClair</itunes:author>
+		<itunes:explicit>yes</itunes:explicit>
+		<itunes:block>no</itunes:block>
+	</item>
+		<item>
+		<title>Technophilia 114 &#8211; A &#8220;Real&#8221; Podcast</title>
+		<link>http://www.makeuseof.tv/2014/technophilia-114-real-podcast/</link>
+		<comments>http://www.makeuseof.tv/2014/technophilia-114-real-podcast/#comments</comments>
+		<pubDate>Thu, 22 May 2014 08:52:51 +0000</pubDate>
+		<dc:creator><![CDATA[dave]]></dc:creator>
+				<category><![CDATA[Technophilia Technology Podcast]]></category>
+
+		<guid isPermaLink="false">http://www.makeuseof.tv/?p=1178</guid>
+		<description><![CDATA[<div><img width="600" height="420" src="http://podcast.makeuseoflimited.netdna-cdn.com/wp-content/uploads/2014/05/techno114-600x420.jpg" class="attachment-featured wp-post-image" alt="techno114" /></div><p>Tech News Google Play&#8217;s Ratings suck &#8211; Why has Google not fixed the &#8220;Recommended Apps&#8221; problem? Facebook now allows you to ask someone their relationship status, bringing a whole new level of stalking to the site The greatest Netflix bug of all time. The FCC voted to consider paid priority on the Internet &#8211; what does this mean for users of the Internet? Google is trying to buy Twitch. The Oculus Rift for chickens. It&#8217;s not even optional that we talk about this. How to use Twitter&#8217;s new mute button. Samsung is &#8220;re-branding&#8221; one of Heathrow&#8217;s terminals. Because confusion while travelling makes...</p><p>Read the full article: <a href='http://www.makeuseof.tv/2014/technophilia-114-real-podcast/'>Technophilia 114 &#8211; A &#8220;Real&#8221; Podcast</a></p>]]></description>
+				<content:encoded><![CDATA[<p>
+<h2>Tech News</h2>
+<ul>
+<li><a href="http://www.makeuseof.com/tag/shouldnt-trust-app-ratings-google-play/">Google Play&#8217;s Ratings suck</a> &#8211; Why has Google not fixed the &#8220;Recommended Apps&#8221; problem?</li>
+<li><a href="http://www.telegraph.co.uk/technology/facebook/10841571/Facebook-introduces-ask-button-for-relationship-statuses.html">Facebook now allows you to ask someone their relationship status</a>, bringing a whole new level of stalking to the site</li>
+<li><a href="http://summarybug.com/">The greatest Netflix bug of all time</a>.</li>
+<li><a href="http://www.washingtonpost.com/blogs/the-switch/wp/2014/05/15/fcc-approves-plan-to-allow-for-paid-priority-on-Internet/?tid=pm_pop">The FCC voted to consider paid priority on the Internet</a> &#8211; what does this mean for users of the Internet?</li>
+<li><a href="http://variety.com/2014/digital/news/youtube-to-acquire-videogame-streaming-service-twitch-for-1-billion-sources-1201185204/">Google is trying to buy Twitch</a>.</li>
+<li><a href="http://techcrunch.com/2014/05/15/an-oculus-rift-for-chickens-gives-animals-the-freedom-to-roam-without-the-roaming/">The Oculus Rift for chickens</a>. It&#8217;s not even optional that we talk about this.</li>
+<li><a href="http://www.makeuseof.com/tag/use-mute-button-twitter-weird-wonderful-web/">How to use Twitter&#8217;s new mute button</a>.</li>
+<li><a href="http://www.theverge.com/2014/5/16/5722962/terminal-samsung-galaxy-s5-at-heathrow">Samsung is &#8220;re-branding&#8221; one of Heathrow&#8217;s terminals</a>. Because confusion while travelling makes people like brands.</li>
+<li><a href="http://www.npr.org/blogs/thetwo-way/2014/05/15/312520997/solar-powered-bike-lock-aims-to-be-the-airbnb-of-bike-sharing?ft=1&amp;f=1001">Solar-powered, networked bike lock </a>so you can rent your bike to strangers.</li>
+<li>What happens when Reddit <a href="http://www.onthemedia.org/story/making-twoxchromosomes-default-subreddit-has-not-gone-over-well-everyone/">adds a female perspective to the front page</a>? Trolling.</li>
+</ul>
+<h2>Gaming News</h2>
+<ul>
+<li><a href="http://kotaku.com/what-nintendo-is-doing-right-1578332732">What Nintendo Is Doing Right</a> &#8211; do people not give Nintendo enough credit?</li>
+<li><a href="http://kotaku.com/say-goodbye-to-online-services-on-your-wii-and-ds-games-1578676197">Nintendo has killed Wi-Fi Connection</a> services <a href="http://kotaku.com/nintendo-killing-online-services-for-wii-ds-1532216462">for Wii and the original DS</a> on May 20th &#8211; some games are somewhat crippled, like Professor Layton. Not able to download new content like before, so the game will be a lot shorter.</li>
+<li>Watch_Dogs, out this Tuesday, <a href="http://www.ign.com/articles/2014/05/13/watch-dogs-has-9-special-editions">has NINE different special editions.</a> Some are only available for certain platforms or in certain area. Isn&#8217;t this getting a bit out of hand?</li>
+</ul>
+]]></content:encoded>
+			<wfw:commentRss>http://www.makeuseof.tv/2014/technophilia-114-real-podcast/feed/</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+			<enclosure url="http://www.makeuseof.tv/podpress_trac/feed/1178/1/tech114.mp3" length="35637626" type="audio/mpeg" />
+		<itunes:duration>1:14:14</itunes:duration>
+		<itunes:subtitle>Tech News Google Play&#8217;s Ratings suck &#8211; Why has Google not fixed the &#8220;Recommended Apps&#8221; problem? Facebook now allows you to ask someone their relationship status, bringing a whole new level of stalking to the site The greatest[...]</itunes:subtitle>
+		<itunes:summary>Tech News Google Play&#8217;s Ratings suck &#8211; Why has Google not fixed the &#8220;Recommended Apps&#8221; problem? Facebook now allows you to ask someone their relationship status, bringing a whole new level of stalking to the site The greatest Netflix bug of all time. The FCC voted to consider paid priority on the Internet &#8211; what does this mean for users of the Internet? Google is trying to buy Twitch. The Oculus Rift for chickens. It&#8217;s not even optional that we talk about this. How to use Twitter&#8217;s new mute button. Samsung is &#8220;re-branding&#8221; one of Heathrow&#8217;s terminals. Because confusion while travelling makes...Read the full article: Technophilia 114 &#8211; A &#8220;Real&#8221; Podcast</itunes:summary>
+		<itunes:author>James Bruce, Justin Pot and Dave LeClair</itunes:author>
+		<itunes:explicit>yes</itunes:explicit>
+		<itunes:block>no</itunes:block>
+	</item>
+		<item>
+		<title>Technophilia 113: Mario of War</title>
+		<link>http://www.makeuseof.tv/2014/technophilia-113-mario-war/</link>
+		<comments>http://www.makeuseof.tv/2014/technophilia-113-mario-war/#comments</comments>
+		<pubDate>Thu, 15 May 2014 08:37:18 +0000</pubDate>
+		<dc:creator><![CDATA[jamie]]></dc:creator>
+				<category><![CDATA[Technophilia Technology Podcast]]></category>
+
+		<guid isPermaLink="false">http://www.makeuseof.tv/?p=1172</guid>
+		<description><![CDATA[<div><img width="600" height="420" src="http://podcast.makeuseoflimited.netdna-cdn.com/wp-content/uploads/2014/05/techno-113-600x420.jpg" class="attachment-featured wp-post-image" alt="techno-113" /></div><p>Tech News Apple might be buying Beats By Dre, causing lots of people to say perfectly reasonably things. Apple buying Beats was an April Fool’s Joke just a month ago. Now it’s actually happening. Joel outlined some lesser-known gaming subreddits. What are your favorite subreddits, guys? EU Court: Google must delete personal data when that’s requested. UK ISPs will reluctantly start sending letters to pirates. Toothless though &#8211; no action to be taken after 4 letters, or information passed on to rightholders. We asked readers: should Apple cut its prices? Gaming News Microsoft announces $399 Kinect-less Xbox One. Netflix no...</p><p>Read the full article: <a href='http://www.makeuseof.tv/2014/technophilia-113-mario-war/'>Technophilia 113: Mario of War</a></p>]]></description>
+				<content:encoded><![CDATA[<p>
+<h2>Tech News</h2>
+<ul>
+<li><a href="http://www.economist.com/blogs/schumpeter/2014/05/will-apple-make-phones-call">Apple might be buying Beats By Dre</a>, causing lots of people to say perfectly reasonably things.</li>
+<li><a href="http://lefsetz.com/wordpress/index.php/archives/2014/04/01/apple-buys-beats/">Apple buying Beats was an April Fool’s Joke</a> just a month ago. Now it’s actually happening.</li>
+<li>Joel outlined some <a href="http://www.makeuseof.com/tag/off-the-beaten-path-4-lesser-known-gaming-subreddits/">lesser-known gaming subreddits</a>. What are your favorite subreddits, guys?</li>
+<li><a href="http://www.npr.org/blogs/thetwo-way/2014/05/13/312125549/google-must-delete-personal-data-when-asked-european-court-says?ft=1&amp;f=1001">EU Court: Google must delete personal data when that’s requested</a>.</li>
+<li><a href="http://www.bbc.com/news/technology-27330150">UK ISPs will reluctantly start sending letters to pirates</a>. Toothless though &#8211; no action to be taken after 4 letters, or information passed on to rightholders.</li>
+<li>We asked readers: <a href="http://www.makeuseof.com/tag/apple-cut-prices-ask/">should Apple cut its prices</a>?</li>
+</ul>
+<h2>Gaming News</h2>
+<ul>
+<li><a href="http://news.xbox.com/2014/05/xbox-delivering-more-choices">Microsoft announces $399 Kinect-less Xbox One</a>.</li>
+<li><a href="http://gizmodo.com/streaming-apps-are-finally-coming-out-from-behind-the-x-1575612655/">Netflix no longer requires XBox Live on Microsoft’s console</a>.</li>
+<li>Nintendo says <a href="http://www.bbc.com/news/technology-27321200">no to gay marriage</a> in silly life-sim game.</li>
+<li>Nintendo will<a href="http://thenextweb.com/gadgets/2014/05/08/nintendo-making-new-console-emerging-markets-huge-challenges-involved/"> make another console for cheaper markets</a>.</li>
+<li><a href="https://www.youtube.com/watch?v=2oSE7QugI20">New Unreal Tournament to be crowd-sourced and free</a>.</li>
+</ul>
+<h2>Check Out These Giveaways</h2>
+<ul>
+<li><a href="http://www.makeuseof.com/tag/gridseed-mini-asic-miner-review-and-giveaway/">GridSeed ASICs for mining dogecoins</a>!</li>
+<li><a href="http://www.makeuseof.com/tag/aoc-16-usb-monitor-review-giveaway/">16” USB monitor</a></li>
+<li><span><a href="http://www.makeuseof.com/tag/samsung-gear-fit-smartwatch-review-giveaway/">Samsung Gear Fit</a> &#8211; health monitor and smartwatch</span></li>
+</ul>
+]]></content:encoded>
+			<wfw:commentRss>http://www.makeuseof.tv/2014/technophilia-113-mario-war/feed/</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+			<enclosure url="http://www.makeuseof.tv/podpress_trac/feed/1172/1/tech113.mp3" length="45466772" type="audio/mpeg" />
+		<itunes:duration>1:34:43</itunes:duration>
+		<itunes:subtitle>Tech News Apple might be buying Beats By Dre, causing lots of people to say perfectly reasonably things. Apple buying Beats was an April Fool’s Joke just a month ago. Now it’s actually happening. Joel outlined some lesser-known gaming subreddits. Wh[...]</itunes:subtitle>
+		<itunes:summary>Tech News Apple might be buying Beats By Dre, causing lots of people to say perfectly reasonably things. Apple buying Beats was an April Fool’s Joke just a month ago. Now it’s actually happening. Joel outlined some lesser-known gaming subreddits. What are your favorite subreddits, guys? EU Court: Google must delete personal data when that’s requested. UK ISPs will reluctantly start sending letters to pirates. Toothless though &#8211; no action to be taken after 4 letters, or information passed on to rightholders. We asked readers: should Apple cut its prices? Gaming News Microsoft announces $399 Kinect-less Xbox One. Netflix no...Read the full article: Technophilia 113: Mario of War</itunes:summary>
+		<itunes:author>James Bruce, Justin Pot and Dave LeClair</itunes:author>
+		<itunes:explicit>yes</itunes:explicit>
+		<itunes:block>no</itunes:block>
+	</item>
+		<item>
+		<title>Technophilia 112 &#8211; According To A Study By Everyone&#8217;s Mom</title>
+		<link>http://www.makeuseof.tv/2014/technophilia-112-according-study-everyones-mom/</link>
+		<comments>http://www.makeuseof.tv/2014/technophilia-112-according-study-everyones-mom/#comments</comments>
+		<pubDate>Thu, 08 May 2014 07:04:14 +0000</pubDate>
+		<dc:creator><![CDATA[dave]]></dc:creator>
+				<category><![CDATA[Technophilia Technology Podcast]]></category>
+
+		<guid isPermaLink="false">http://www.makeuseof.tv/?p=1164</guid>
+		<description><![CDATA[<div><img width="360" height="360" src="http://podcast.makeuseoflimited.netdna-cdn.com/wp-content/uploads/2014/05/techno112_360.png" class="attachment-featured wp-post-image" alt="techno112_360" /></div><p>Tech News This guy&#8217;s joke, which he wrote on the toilet, was taken seriously. And made the news. Speaking of jokes, Lenovo is going to make Chromebooks. Touchscreen Chromebooks, because Chrome OS is best with touch. Would you be rather use services anonymously if they were as good as services that required you to sign up? &#8211; Mihir Police using Pinterest to reconnect people with long-lost valuables. 185 Terabytes on a TAPE. You remember those? Google Glass costs $80 to manufacture, sold for $1500. Best retail mark-up, ever. Google was in bed with NSA all along. NSA’s encrypted tweet is...</p><p>Read the full article: <a href='http://www.makeuseof.tv/2014/technophilia-112-according-study-everyones-mom/'>Technophilia 112 &#8211; According To A Study By Everyone&#8217;s Mom</a></p>]]></description>
+				<content:encoded><![CDATA[<p>
+<h2>Tech News</h2>
+<ul>
+<li>This guy&#8217;s joke, <a href="http://earpodsecret.tumblr.com/post/84812960647/sorry">which he wrote on the toilet</a>, was taken seriously. And made the news.</li>
+<li>Speaking of jokes, <a href="http://www.theverge.com/2014/5/6/5681640/lenovo-n20-n20p-chromebooks-announced-pricing">Lenovo is going to make Chromebooks</a>. Touchscreen Chromebooks, because Chrome OS is best with touch.</li>
+<li>Would you be rather <a href="http://www.makeuseof.com/tag/10-common-web-tasks-can-without-signing/">use services anonymously</a> if they were as good as services that required you to sign up? &#8211; Mihir</li>
+<li><a href="http://www.npr.org/blogs/alltechconsidered/2014/05/05/309058202/you-love-pinterest-find-out-why-the-police-do-too?ft=1&amp;f=1001">Police using Pinterest to reconnect people with long-lost valuables</a>.</li>
+<li><a href="http://www.theverge.com/2014/5/4/5681066/sony-blows-away-record-with-185tb-cassette-tape">185 Terabytes on a TAPE</a>. You remember those?</li>
+<li><a href="http://www.pocket-lint.com/news/128719-google-glass-components-cost-less-than-80-google-charges-1500">Google Glass costs $80 to manufacture</a>, sold for $1500. Best retail mark-up, ever.</li>
+<li><a href="http://america.aljazeera.com/articles/2014/5/6/nsa-chief-google.html">Google was in bed with NSA all along</a>.</li>
+<li><a href="http://www.npr.org/blogs/thetwo-way/2014/05/05/309836348/nsas-encrypted-tweet-were-hiring-code-breakers?ft=1&amp;f=1001">NSA’s encrypted tweet is a job posting</a>. Gimmick, or cool?</li>
+<li>Yahoo, one of the first big companies to enable DoNotTrack, <a href="http://www.theverge.com/2014/5/1/5672626/starting-today-yahoo-will-not-honor-do-not-track-settings">is disabling it</a>. Lol.</li>
+<li><a href="http://www.theverge.com/2014/4/24/5647686/russian-law-orders-bloggers-to-register-restricts-pornography-and">Russian bloggers with 3000+ visitors a day need to register with the government</a>. We’ll never be that popular <img src="http://podcast.makeuseoflimited.netdna-cdn.com/wp-includes/images/smilies/icon_sad.gif" alt=":(" class="wp-smiley" /> Plus they’ll be <a href="http://www.bbc.co.uk/news/blogs-news-from-elsewhere-27294848">rooting out swear words</a> with a bot. We’re screwed.</li>
+<li><a href="http://motherboard.vice.com/read/the-feds-accidentally-mailed-their-350k-drone-to-some-college-kid">UPS sent a federal government drone to some college student</a>. Oops.</li>
+<li>The most popular feature on LinkedIn is <a href="http://qz.com/206175/whos-viewed-your-profile-is-linkedins-most-popular-feature-by-a-long-shot/">the “Who’s viewed your profile” page</a>.</li>
+<li><a href="http://www.makeuseof.com/tag/tv-buying-guide-how-to-pick-the-right-tv-for-your-living-room/">Buying a TV</a> and <a href="http://www.makeuseof.com/tag/so-you-got-a-new-tv-how-to-set-it-up-for-the-best-home-viewing/">setting up a TV</a> &#8211; Mihir</li>
+</ul>
+<h2>Gaming News</h2>
+<ul>
+<li><a href="http://www.destructoid.com/3ds-xl-on-top-in-japan-hardware-in-general-doing-poorly-274112.phtml">Hardware sales at an all time low in Japan</a>, 3DS XL on top with &lt; 30k/week. Dave &#8211; why?</li>
+</ul>
+<h2>Listener Feedback</h2>
+<ul>
+<li><a href="http://www.makeuseof.com/tag/beginners-guide-technophilia-weird-wonderful-web/">Beginner’s guide to Technophilia</a>. Give this to all your friends.</li>
+</ul>
+]]></content:encoded>
+			<wfw:commentRss>http://www.makeuseof.tv/2014/technophilia-112-according-study-everyones-mom/feed/</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+			<enclosure url="http://www.makeuseof.tv/podpress_trac/feed/1164/1/tech112.mp3" length="48714106" type="audio/mpeg" />
+		<itunes:duration>1:41:29</itunes:duration>
+		<itunes:subtitle>Tech News This guy&#8217;s joke, which he wrote on the toilet, was taken seriously. And made the news. Speaking of jokes, Lenovo is going to make Chromebooks. Touchscreen Chromebooks, because Chrome OS is best with touch. Would you be rather use ser[...]</itunes:subtitle>
+		<itunes:summary>Tech News This guy&#8217;s joke, which he wrote on the toilet, was taken seriously. And made the news. Speaking of jokes, Lenovo is going to make Chromebooks. Touchscreen Chromebooks, because Chrome OS is best with touch. Would you be rather use services anonymously if they were as good as services that required you to sign up? &#8211; Mihir Police using Pinterest to reconnect people with long-lost valuables. 185 Terabytes on a TAPE. You remember those? Google Glass costs $80 to manufacture, sold for $1500. Best retail mark-up, ever. Google was in bed with NSA all along. NSA’s encrypted tweet is...Read the full article: Technophilia 112 &#8211; According To A Study By Everyone&#8217;s Mom</itunes:summary>
+		<itunes:author>James Bruce, Justin Pot and Dave LeClair</itunes:author>
+		<itunes:explicit>yes</itunes:explicit>
+		<itunes:block>no</itunes:block>
+	</item>
+	</channel>
+</rss>
+
+<!-- Performance optimized by W3 Total Cache. Learn more: http://www.w3-edge.com/wordpress-plugins/
+
+Content Delivery Network via podcast.makeuseoflimited.netdna-cdn.com
+
+ Served from: www.makeuseof.tv @ 2014-11-05 15:19:05 by W3 Total Cache -->
