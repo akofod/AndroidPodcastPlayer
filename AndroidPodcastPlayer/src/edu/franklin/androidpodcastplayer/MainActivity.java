@@ -1,5 +1,6 @@
 package edu.franklin.androidpodcastplayer;
 
+import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.Drawable;
@@ -12,9 +13,16 @@ import android.widget.ImageView;
 import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
+import edu.franklin.androidpodcastplayer.data.ConfigData;
+import edu.franklin.androidpodcastplayer.data.EpisodesData;
+import edu.franklin.androidpodcastplayer.data.PodcastData;
 
 public class MainActivity extends ActionBarActivity {
 	TableLayout table1;
+	Context context = this;
+	ConfigData configData = new ConfigData(context);
+	PodcastData podcastData = new PodcastData(this);
+	EpisodesData episodesData = new EpisodesData(this);
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -31,6 +39,10 @@ public class MainActivity extends ActionBarActivity {
 		this.addRow("@drawable/droid", "Android Central", "3","3","yes" ,4);
 		this.addRow("@drawable/cleveland", "Cleveland Browns", "3","3","Yes", 5);
 		this.addRow("@drawable/ign", "IGN Gaing News","0", "512", "No", 6);
+		
+		configData.open();
+		podcastData.open();
+		episodesData.open();
 	}
 	
 	

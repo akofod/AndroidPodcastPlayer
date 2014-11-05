@@ -2,26 +2,26 @@ package edu.franklin.androidpodcastplayer.models;
 
 public class Episode {
 	
-	private int episodeId;
-	private int podcastId;
+	private long episodeId;
+	private long podcastId;
 	private String name;
 	private String filepath; //the filepath to the stored episode
 	private String image; //the filepath to the episode's image, if different from podcast image
-	private int totalTime; //the total time of the episode
-	private int playedTime; //time stamp of the farthest point that the episode has played to
+	private long totalTime; //the total time of the episode
+	private long playedTime; //time stamp of the farthest point that the episode has played to
 	private boolean newEpisode; //true if the episode has not been played yet
 	private boolean completed; //true if the episode has played all the way through
 	
-	public int getEpisodeId() {
+	public long getEpisodeId() {
 		return episodeId;
 	}
-	public void setEpisodeId(int episodeId) {
+	public void setEpisodeId(long episodeId) {
 		this.episodeId = episodeId;
 	}
-	public int getPodcastId() {
+	public long getPodcastId() {
 		return podcastId;
 	}
-	public void setPodcastId(int podcastId) {
+	public void setPodcastId(long podcastId) {
 		this.podcastId = podcastId;
 	}
 	public String getName() {
@@ -42,16 +42,16 @@ public class Episode {
 	public void setImage(String image) {
 		this.image = image;
 	}
-	public int getTotalTime() {
+	public long getTotalTime() {
 		return totalTime;
 	}
-	public void setTotalTime(int totalTime) {
+	public void setTotalTime(long totalTime) {
 		this.totalTime = totalTime;
 	}
-	public int getPlayedTime() {
+	public long getPlayedTime() {
 		return playedTime;
 	}
-	public void setPlayedTime(int playedTime) {
+	public void setPlayedTime(long playedTime) {
 		this.playedTime = playedTime;
 	}
 	public boolean isNewEpisode() {

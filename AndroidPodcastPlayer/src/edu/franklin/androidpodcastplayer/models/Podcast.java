@@ -1,23 +1,26 @@
 package edu.franklin.androidpodcastplayer.models;
 
+import java.util.ArrayList;
+
 public class Podcast {
 	
-	private int podcastId;
+	private long podcastId;
 	private String name;
 	private String description;
 	private String image; //the filepath to the podcast image
-	private String numEpisodes; //the number of episodes stored on the device
+	private long numEpisodes; //the number of episodes stored on the device
 	private String feedUrl;
 	private String dir; //the file directory for this podcast
 	private boolean oldestFirst; //config setting to determine if episodes should be displayed oldest to newest or newest to oldest
 	private boolean autoDownload; //config setting to determine if new episodes should download automatically
 	private boolean autoDelete; //config setting to determine if episodes should be deleted once they have been completed
+	private ArrayList<Episode> episodes;
 	
 	
-	public int getPodcastId() {
+	public long getPodcastId() {
 		return podcastId;
 	}
-	public void setPodcastId(int podcastId) {
+	public void setPodcastId(long podcastId) {
 		this.podcastId = podcastId;
 	}
 	public String getName() {
@@ -38,10 +41,10 @@ public class Podcast {
 	public void setImage(String image) {
 		this.image = image;
 	}
-	public String getNumEpisodes() {
+	public long getNumEpisodes() {
 		return numEpisodes;
 	}
-	public void setNumEpisodes(String numEpisodes) {
+	public void setNumEpisodes(long numEpisodes) {
 		this.numEpisodes = numEpisodes;
 	}
 	public String getFeedUrl() {
@@ -73,5 +76,11 @@ public class Podcast {
 	}
 	public void setAutoDelete(boolean autoDelete) {
 		this.autoDelete = autoDelete;
+	}
+	public ArrayList<Episode> getEpisodes() {
+		return episodes;
+	}
+	public void setEpisodes(ArrayList<Episode> episodes) {
+		this.episodes = episodes;
 	}
 }
