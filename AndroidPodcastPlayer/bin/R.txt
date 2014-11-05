@@ -400,7 +400,11 @@ int layout support_simple_spinner_dropdown_item 0x7f030020
 int menu main 0x7f0f0000
 int menu podcast_details 0x7f0f0001
 int menu tests 0x7f0f0002
-int raw test_cbr 0x7f060000
+int raw androd_dev_backstage_rss 0x7f060000
+int raw coder_radio_rss 0x7f060001
+int raw java_posse_rss 0x7f060002
+int raw technophilia_rss 0x7f060003
+int raw test_cbr 0x7f060004
 int string abc_action_bar_home_description 0x7f0c0001
 int string abc_action_bar_up_description 0x7f0c0002
 int string abc_action_menu_overflow_description 0x7f0c0003

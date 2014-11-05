@@ -1186,7 +1186,11 @@ containing a value of this type.
         public static final int tests=0x7f0f0002;
     }
     public static final class raw {
-        public static final int test_cbr=0x7f060000;
+        public static final int androd_dev_backstage_rss=0x7f060000;
+        public static final int coder_radio_rss=0x7f060001;
+        public static final int java_posse_rss=0x7f060002;
+        public static final int technophilia_rss=0x7f060003;
+        public static final int test_cbr=0x7f060004;
     }
     public static final class string {
         /**  Content description for the action bar "home" affordance. [CHAR LIMIT=NONE] 
