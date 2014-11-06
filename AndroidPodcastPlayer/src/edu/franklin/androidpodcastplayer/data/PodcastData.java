@@ -32,7 +32,7 @@ public class PodcastData {
 	 */
 	public PodcastData(Context context) {
 		dbHelper = new DatabaseHelper(context);
-		episodesData.open();
+		episodesData =  new EpisodesData(context);
 	}
 
 	/**
