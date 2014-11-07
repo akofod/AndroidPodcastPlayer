@@ -112,8 +112,8 @@ public abstract class XmlSerializable extends DefaultHandler
 	    {
 	        for(int i = 0; i < attributeCount; i++) 
 	        {
-	        	Log.d("XML", "Attribute is " + xml.getAttributeName(i));
-	        	Log.d("XML", "Value is " + xml.getAttributeValue(i));
+//	        	Log.d("XML", "Attribute is " + xml.getAttributeName(i));
+//	        	Log.d("XML", "Value is " + xml.getAttributeValue(i));
 	            attributeMap.put(xml.getAttributeName(i), xml.getAttributeValue(i));
 	        }
 	    }

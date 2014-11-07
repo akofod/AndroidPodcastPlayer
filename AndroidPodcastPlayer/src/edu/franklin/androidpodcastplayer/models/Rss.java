@@ -126,7 +126,7 @@ public class Rss extends XmlSerializable
 	            continue;
 	        }
 	        String name = xml.getName();
-	        Log.d("RSS", "Rss Tage name is " + name);
+//	        Log.d("RSS", "Rss Tage name is " + name);
 	        // Starts by looking for the entry tag
 	        if(name.equals(CHANNEL))
 	        {

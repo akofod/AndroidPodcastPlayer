@@ -322,34 +322,34 @@ public class Channel extends XmlSerializable
 	            continue;
 	        }
 	        String name = xml.getName();
-	        Log.d("Channel", "Tag name is " + name);
+//	        Log.d("Channel", "Tag name is " + name);
 	        // Starts by looking for the entry tag
 	        if(name.equals(TITLE))
 	        {
 	        	setTitle(this.getNextString(xml, ns, TITLE));
-	        	Log.d("Channel", "Title is " + title);
+//	        	Log.d("Channel", "Title is " + title);
 	        }
 	        else if(name.equals(LINK))
 	        {
 	        	setLink(this.getNextString(xml, ns, LINK));
-	        	Log.d("Channel", "Link is " + link);
+//	        	Log.d("Channel", "Link is " + link);
 	        }
 	        else if(name.equals(DESCRIPTION))
 	        {
 	        	setDescription(this.getNextString(xml, ns, DESCRIPTION));
-	        	Log.d("Channel", "Description is " + description);
+//	        	Log.d("Channel", "Description is " + description);
 	        }
 	        else if(name.equals(CATEGORY))
 	        {
 	        	category = new Category();
 	        	category.initializeFromXmlParser(xml, ns);
-	        	Log.d("Channel", "Category is " + category);
+//	        	Log.d("Channel", "Category is " + category);
 	        }
 	        else if(name.equals(IMAGE))
 	        {
 	        	image = new Image();
 	        	image.initializeFromXmlParser(xml, ns);
-	        	Log.d("Channel", "Image is " + image);
+//	        	Log.d("Channel", "Image is " + image);
 	        }
 	        else if(name.equals(ITEM))
 	        {
