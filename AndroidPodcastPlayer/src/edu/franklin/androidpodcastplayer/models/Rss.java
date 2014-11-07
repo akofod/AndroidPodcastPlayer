@@ -3,6 +3,8 @@ package edu.franklin.androidpodcastplayer.models;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.io.Reader;
 import java.io.StringReader;
 import java.util.concurrent.ExecutionException;
@@ -61,6 +63,12 @@ public class Rss extends XmlSerializable
 	public void initializeFromFile(String filename) throws IOException, XmlPullParserException
 	{
 		BufferedReader reader = new BufferedReader(new FileReader(filename));
+		initializeFromReader(reader);
+	}
+	
+	public void initializeFromRaw(InputStream stream) throws IOException, XmlPullParserException
+	{
+		InputStreamReader reader = new InputStreamReader(stream);
 		initializeFromReader(reader);
 	}
 	

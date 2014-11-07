@@ -1,11 +1,15 @@
 package edu.franklin.androidpodcastplayer;
 
+import java.io.InputStream;
+
 import android.content.Context;
 import android.content.Intent;
+import android.content.res.Resources;
 import android.graphics.Color;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.ViewGroup.LayoutParams;
@@ -16,6 +20,8 @@ import android.widget.TextView;
 import edu.franklin.androidpodcastplayer.data.ConfigData;
 import edu.franklin.androidpodcastplayer.data.EpisodesData;
 import edu.franklin.androidpodcastplayer.data.PodcastData;
+import edu.franklin.androidpodcastplayer.models.Podcast;
+import edu.franklin.androidpodcastplayer.models.Rss;
 
 public class MainActivity extends ActionBarActivity {
 	TableLayout table1;
@@ -40,9 +46,41 @@ public class MainActivity extends ActionBarActivity {
 		this.addRow("@drawable/cleveland", "Cleveland Browns", "3","3","Yes", 5);
 		this.addRow("@drawable/ign", "IGN Gaing News","0", "512", "No", 6);
 		
+		
 		configData.open();
 		podcastData.open();
 		episodesData.open();
+		
+		try
+		{
+			//something to fetch the raw junk with
+			Resources resources = getResources();
+			//the ids we want to fetch
+			int[] rawFeeds = new int[]{
+				R.raw.androd_dev_backstage_rss,
+				R.raw.coder_radio_rss,
+				R.raw.java_posse_rss,
+				R.raw.technophilia_rss
+			};
+			//now go over the feed ids and initialize an Rss object from the xml
+			for(int id : rawFeeds)
+			{
+				Rss rss = new Rss();
+				rss.initializeFromRaw(resources.openRawResource(id));
+				Log.i("Raw Rss Test", "Got back an Rss object!\n" + rss.toString());
+				Podcast pc = new Podcast();
+				pc.setFeedUrl(rss.getChannel().getLink());
+				
+//				podcastData.createPodcast(pc);
+			}
+		}
+		catch(Exception e)
+		{
+			Log.e("Raw RSS", "Could not load the raw rss stuff", e);
+		}
+		
+		
+		
 	}
 	
 	
