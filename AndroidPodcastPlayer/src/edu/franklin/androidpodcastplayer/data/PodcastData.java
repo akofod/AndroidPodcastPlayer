@@ -51,9 +51,11 @@ public class PodcastData {
 		dbHelper.close();
 	}
 	
-	public Podcast createPodcast(Podcast podcast) {
-		
-		if(!foundPodcast(podcast.getName())) {
+	public Podcast createPodcast(Podcast podcast) 
+	{	
+		Podcast pd = retrievePodcastByName(podcast.getName());
+		//could not find it, so make one
+		if(pd == null) {
 			ContentValues values = new ContentValues();
 			values.put(DatabaseHelper.PODCAST_COLUMN_NAME, podcast.getName());
 			values.put(DatabaseHelper.PODCAST_COLUMN_DESCRIPTION, podcast.getDescription());
@@ -93,31 +95,27 @@ public class PodcastData {
 			Cursor cursor = db.query(DatabaseHelper.TABLE_PODCAST, allColumns, 
 					DatabaseHelper.PODCAST_COLUMN_PODCASTID + " = " + insertId, null, null, null, null);
 			cursor.moveToFirst();
-			Podcast newPodcast = cursorToPodcast(cursor);
+			pd = cursorToPodcast(cursor);
 			cursor.close();
-			return newPodcast;
 		}
-		else {
-			Podcast oldPodcast = retrievePodcastByName(podcast.getName());
-			return oldPodcast;
-		}
+		//return either the newly created podcast, or the old one.
+		return pd;
 	}
 	
 	private Podcast retrievePodcastByName(String podcastName) {
+		Podcast podcast = null;
 		SQLiteDatabase readDB = dbHelper.getReadableDatabase();
 		Cursor cursor = readDB.query(DatabaseHelper.TABLE_PODCAST, allColumns, 
 					DatabaseHelper.PODCAST_COLUMN_NAME + " = " + podcastName, null, null, null, null);
-		cursor.moveToFirst();
-		Podcast podcast = cursorToPodcast(cursor);
-		cursor.close();
+		if(cursor.getCount() > 0){
+			cursor.moveToFirst();
+			podcast = cursorToPodcast(cursor);
+			cursor.close();
+		}
+		
 		return podcast;
 	}
 
-	public boolean foundPodcast(String podcastName) {
-		
-		return false;
-	}
-	
 	public Podcast cursorToPodcast(Cursor cursor) {
 		Podcast podcast = new Podcast();
 		long podcastId = cursor.getLong(0);

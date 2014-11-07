@@ -11,9 +11,9 @@ public class Podcast {
 	private long numEpisodes; //the number of episodes stored on the device
 	private String feedUrl;
 	private String dir; //the file directory for this podcast
-	private boolean oldestFirst; //config setting to determine if episodes should be displayed oldest to newest or newest to oldest
-	private boolean autoDownload; //config setting to determine if new episodes should download automatically
-	private boolean autoDelete; //config setting to determine if episodes should be deleted once they have been completed
+	private boolean oldestFirst = true; //config setting to determine if episodes should be displayed oldest to newest or newest to oldest
+	private boolean autoDownload = false; //config setting to determine if new episodes should download automatically
+	private boolean autoDelete = false; //config setting to determine if episodes should be deleted once they have been completed
 	private ArrayList<Episode> episodes;
 	
 	

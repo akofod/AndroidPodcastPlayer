@@ -26,7 +26,6 @@ public class DownloadManagerActivity extends ActionBarActivity
 	
 	private ServiceConnection mConnection = new ServiceConnection() 
 	{
-
 		public void onServiceConnected(ComponentName className, IBinder service) {
 			// We've bound to fileManager, cast the IBinder and get
 			// fileManager instance

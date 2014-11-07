@@ -108,7 +108,11 @@ public class FileManager extends Service
 		//need to make the path in case it isn't there
 		File directory = getDirectory(dirname);
 		directory.mkdirs();
-		return directory.getAbsolutePath() + "/" + filename;
+		if(filename != null)
+		{
+			return directory.getAbsolutePath() + "/" + filename;
+		}
+		return directory.getAbsolutePath();
 	}
 	
 	private File getFile(String dirname, String filename)
