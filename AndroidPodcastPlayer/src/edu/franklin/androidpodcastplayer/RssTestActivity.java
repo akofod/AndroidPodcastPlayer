@@ -1,5 +1,6 @@
 package edu.franklin.androidpodcastplayer;
 
+import android.content.res.Resources;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 import android.util.Log;
@@ -9,6 +10,7 @@ import android.view.View;
 import android.webkit.WebView;
 import android.widget.EditText;
 import android.widget.Toast;
+import edu.franklin.androidpodcastplayer.models.Podcast;
 import edu.franklin.androidpodcastplayer.models.Rss;
 
 public class RssTestActivity extends ActionBarActivity 
@@ -18,6 +20,32 @@ public class RssTestActivity extends ActionBarActivity
 	{
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_rss_test);
+		try
+		{
+			//something to fetch the raw junk with
+			Resources resources = getResources();
+			//the ids we want to fetch
+			int[] rawFeeds = new int[]{
+				R.raw.androd_dev_backstage_rss,
+				R.raw.coder_radio_rss,
+				R.raw.java_posse_rss,
+				R.raw.technophilia_rss
+			};
+			//now go over the feed ids and initialize an Rss object from the xml
+			for(int id : rawFeeds)
+			{
+				Rss rss = new Rss();
+				rss.initializeFromRaw(resources.openRawResource(id));
+				Log.i("Raw Rss Test", "Got back an Rss object!\n" + rss.toString());
+				//fill in the podcast details here.
+				Podcast pc = new Podcast();
+				pc.setFeedUrl(rss.getChannel().getLink());				
+			}
+		}
+		catch(Exception e)
+		{
+			Log.e("Raw RSS", "Could not load the raw rss stuff", e);
+		}
 	}
 
 	public boolean onCreateOptionsMenu(Menu menu) 
