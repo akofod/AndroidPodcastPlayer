@@ -1,5 +1,6 @@
 package edu.franklin.androidpodcastplayer;
 
+import java.io.File;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -194,7 +195,7 @@ public class RssTestActivity extends ActionBarActivity
 		Uri uri = Uri.parse(url);
 		Request request = new Request(uri);
         Long queuedId = Long.valueOf(dm.enqueue(request));
-        downloadMap.put(queuedId, file);
+        downloadMap.put(queuedId, dir + ":" + file);
 	}
 
 	public boolean onCreateOptionsMenu(Menu menu) 
@@ -250,6 +251,14 @@ public class RssTestActivity extends ActionBarActivity
 		return PODCASTS + "/" + dir;
 	}
 	
+	private void showDownloadStatus(String filename, boolean success)
+	{
+		Toast.makeText(getApplicationContext(), success ? 
+			filename + " has been downloaded!" :
+			filename + " failed to download. Checl the logs to see what blew up.", 
+			Toast.LENGTH_SHORT).show();
+	}
+	
 	private BroadcastReceiver receiver = new BroadcastReceiver() 
 	{
 		public void onReceive(Context context, Intent intent) 
@@ -269,18 +278,45 @@ public class RssTestActivity extends ActionBarActivity
                 }
                 query.setFilterById(idArray);
                 Cursor c = dm.query(query);
-                if (c.moveToFirst()) 
+                //anything to look at?
+                if(c.getCount() > 0)
                 {
-                    int statusIndex = c.getColumnIndex(DownloadManager.COLUMN_STATUS);
-                    int status = c.getInt(statusIndex);
-                    
-                    if (DownloadManager.STATUS_SUCCESSFUL == c.getInt(statusIndex)) 
-                    {
-                    	int locationIndex = c.getColumnIndex(DownloadManager.COLUMN_LOCAL_FILENAME);
-                    	String downloadLocation = c.getString(locationIndex);
-                    	Toast.makeText(getApplicationContext(), ("Downloaded " + downloadMap.get(downloadId)), Toast.LENGTH_SHORT);
-                    }
+                	//set initial cursor spot
+                	c.moveToFirst();
+                	do
+                	{
+                		int statusIndex = c.getColumnIndex(DownloadManager.COLUMN_STATUS);
+                        int status = c.getInt(statusIndex);
+                        int fileLocationIndex = c.getColumnIndex(DownloadManager.COLUMN_LOCAL_FILENAME);
+                        String fileLocation = c.getString(fileLocationIndex);
+                        Log.d("Rss Sub Download", "Status of " + fileLocation + " is " + status);
+                        if (DownloadManager.STATUS_SUCCESSFUL == status) 
+                        {
+                        	String fileInfo = downloadMap.get(Long.valueOf(downloadId));
+                        	if(fileInfo != null)
+                        	{
+                        		String[] tokens = fileInfo.split(":");
+                        		String dir = tokens[0];
+                        		String file = tokens[1];
+                        		//put the downloaded file into our storage
+                        		boolean moved = fileManager.moveFile(fileLocation, dir, file);
+                        		Log.d("Rss Sub Download", 
+                        				fileLocation + " moved to " + 
+                						fileManager.getAbsoluteFilePath(dir, file) + " = " + moved);
+                        		//remove this entry from the ones we are waiting on...it is done
+                            	downloadMap.remove(downloadId);
+                            	showDownloadStatus(file, moved);
+                        	}
+                        }
+                	}
+                	while(c.moveToNext());
                 }
+                else
+                {
+                	Log.d("Rss Sub Download", "Got a download event, but no rows were returned");
+                }
+                //now close up the cursor
+                c.close();
             }
 		}
 	};

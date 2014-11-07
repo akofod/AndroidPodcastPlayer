@@ -1,6 +1,8 @@
 package edu.franklin.androidpodcastplayer.services;
 
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
 
 import android.app.Service;
 import android.content.Intent;
@@ -101,6 +103,57 @@ public class FileManager extends Service
 			Log.e("FileManager", "Could not get the directory list", e);
 		}
 		return files;
+	}
+	
+	public boolean moveFile(String absolutePath, String dir, String file)
+	{
+		return copyFile(absolutePath, dir, file, true);
+	}
+	
+	public boolean copyFile(String absolutePath, String dir, String file)
+	{
+		return copyFile(absolutePath, dir, file, false);
+	}
+	
+	private boolean copyFile(String absolutePath, String dir, String file, boolean remove)
+	{
+		try
+		{
+			File source = new File(absolutePath);
+			//anything to copy?
+			if(!source.exists())
+			{
+				return false;
+			}
+			File dest = new File(getAbsoluteFilePath(dir, file));
+			//about to clobber this guy, so get rid of him
+			if(dest.exists())
+			{
+				dest.delete();
+			}
+			FileInputStream inputStream = new FileInputStream(source);
+			FileOutputStream outputStream = new FileOutputStream(dest);
+			int read;
+			//now copy the bytes
+			while((read = inputStream.read()) != -1)
+			{
+				outputStream.write(read);
+			}
+			//close em up
+			inputStream.close();
+			outputStream.close();
+			//get rid of the source?
+			if(remove)
+			{
+				source.delete();
+			}
+		}
+		catch(Exception e)
+		{
+			Log.e("FileManager", "Could not copy the file", e);
+			return false;
+		}
+		return true;
 	}
 	
 	public String getAbsoluteFilePath(String dirname, String filename)
