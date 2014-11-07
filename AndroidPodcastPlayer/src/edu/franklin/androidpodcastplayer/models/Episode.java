@@ -5,12 +5,13 @@ public class Episode {
 	private long episodeId;
 	private long podcastId;
 	private String name;
-	private String filepath; //the filepath to the stored episode
-	private String image; //the filepath to the episode's image, if different from podcast image
-	private long totalTime; //the total time of the episode
-	private long playedTime; //time stamp of the farthest point that the episode has played to
-	private boolean newEpisode; //true if the episode has not been played yet
-	private boolean completed; //true if the episode has played all the way through
+	private String url;
+	private String filepath = ""; //the filepath to the stored episode
+	private String image = ""; //the filepath to the episode's image, if different from podcast image
+	private long totalTime = 0L; //the total time of the episode
+	private long playedTime = 0L; //time stamp of the farthest point that the episode has played to
+	private boolean newEpisode = true; //true if the episode has not been played yet
+	private boolean completed = false; //true if the episode has played all the way through
 	
 	public long getEpisodeId() {
 		return episodeId;
@@ -21,6 +22,15 @@ public class Episode {
 	public long getPodcastId() {
 		return podcastId;
 	}
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((name == null) ? 0 : name.hashCode());
+		result = prime * result + (int) (podcastId ^ (podcastId >>> 32));
+		return result;
+	}
+
 	public void setPodcastId(long podcastId) {
 		this.podcastId = podcastId;
 	}
@@ -29,6 +39,12 @@ public class Episode {
 	}
 	public void setName(String name) {
 		this.name = name;
+	}
+	public String getUrl() {
+		return url;
+	}
+	public void setUrl(String url) {
+		this.url = url;
 	}
 	public String getFilepath() {
 		return filepath;
@@ -65,5 +81,23 @@ public class Episode {
 	}
 	public void setCompleted(boolean completed) {
 		this.completed = completed;
+	}
+	
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Episode other = (Episode) obj;
+		if (name == null) {
+			if (other.name != null)
+				return false;
+		} else if (!name.equals(other.name))
+			return false;
+		if (podcastId != other.podcastId)
+			return false;
+		return true;
 	}
 }

@@ -13,8 +13,9 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 	// Logcat tag
 	private static final String LOG = "DatabaseHelper";
 
-	// Database Version
-	private static final int DATABASE_VERSION = 1;
+	// Database Version,
+	//bump the version because we altered the episodes table
+	private static final int DATABASE_VERSION = 2;
 	// Database Name
 	private static final String DATABASE_NAME = "PodcastPlayer.db";
 
@@ -35,6 +36,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 	public static final String EPISODES_COLUMN_EPISODEID = "episodeId";
 	public static final String EPISODES_COLUMN_PODCASTID = "podcastId";
 	public static final String EPISODES_COLUMN_NAME = "name";
+	public static final String EPISODES_COLUMN_URL = "url";
 	public static final String EPISODES_COLUMN_FILEPATH = "filepath";
 	public static final String EPISODES_COLUMN_IMAGE = "image";
 	public static final String EPISODES_COLUMN_TOTALTIME = "totalTime";
@@ -54,7 +56,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 			"autoDelete INTEGER)";
 	// episodes table create statement
 	private static final String CREATE_TABLE_EPISODES = "CREATE TABLE episodes(episodeId INTEGER PRIMARY KEY AUTOINCREMENT, " +
-			"podcastId INTEGER, name TEXT, filepath TEXT, image TEXT, totalTime INTEGER, playedTime INTEGER, newEpisode INTEGER, " +
+			"podcastId INTEGER, name TEXT, url TEXT, filepath TEXT, image TEXT, totalTime INTEGER, playedTime INTEGER, newEpisode INTEGER, " +
 			"completed INTEGER)";
 	// config table create statement
 	private static final String CREATE_TABLE_CONFIG = "CREATE TABLE config(configId INTEGER PRIMARY KEY AUTOINCREMENT, " +

@@ -94,8 +94,10 @@ public class PodcastData {
 			long insertId = db.insert(DatabaseHelper.TABLE_PODCAST, null, values);
 			Cursor cursor = db.query(DatabaseHelper.TABLE_PODCAST, allColumns, 
 					DatabaseHelper.PODCAST_COLUMN_PODCASTID + " = " + insertId, null, null, null, null);
-			cursor.moveToFirst();
-			pd = cursorToPodcast(cursor);
+			if(cursor.moveToFirst())
+			{
+				pd = cursorToPodcast(cursor);
+			}
 			cursor.close();
 		}
 		//return either the newly created podcast, or the old one.
@@ -106,12 +108,13 @@ public class PodcastData {
 		Podcast podcast = null;
 		SQLiteDatabase readDB = dbHelper.getReadableDatabase();
 		Cursor cursor = readDB.query(DatabaseHelper.TABLE_PODCAST, allColumns, 
-					DatabaseHelper.PODCAST_COLUMN_NAME + " = " + podcastName, null, null, null, null);
+					DatabaseHelper.PODCAST_COLUMN_NAME + " = '" + podcastName + "'", null, null, null, null);
 		if(cursor.getCount() > 0){
 			cursor.moveToFirst();
 			podcast = cursorToPodcast(cursor);
-			cursor.close();
 		}
+		
+		cursor.close();
 		
 		return podcast;
 	}

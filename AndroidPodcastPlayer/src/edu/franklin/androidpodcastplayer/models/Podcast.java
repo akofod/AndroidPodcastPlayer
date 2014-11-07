@@ -14,7 +14,7 @@ public class Podcast {
 	private boolean oldestFirst = true; //config setting to determine if episodes should be displayed oldest to newest or newest to oldest
 	private boolean autoDownload = false; //config setting to determine if new episodes should download automatically
 	private boolean autoDelete = false; //config setting to determine if episodes should be deleted once they have been completed
-	private ArrayList<Episode> episodes;
+	private ArrayList<Episode> episodes = new ArrayList<Episode>();
 	
 	
 	public long getPodcastId() {
@@ -82,5 +82,16 @@ public class Podcast {
 	}
 	public void setEpisodes(ArrayList<Episode> episodes) {
 		this.episodes = episodes;
+	}
+	
+	public void addEpisode(Episode episode)
+	{
+		//get rid of any old version of this episode
+		if(episodes.contains(episode))
+		{
+			episodes.remove(episode);
+		}
+		//add it in
+		episodes.add(episode);
 	}
 }

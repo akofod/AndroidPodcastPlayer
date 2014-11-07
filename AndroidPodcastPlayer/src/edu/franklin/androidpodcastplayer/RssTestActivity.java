@@ -2,6 +2,7 @@ package edu.franklin.androidpodcastplayer;
 
 import java.io.File;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import android.app.DownloadManager;
@@ -30,7 +31,9 @@ import edu.franklin.androidpodcastplayer.data.ConfigData;
 import edu.franklin.androidpodcastplayer.data.EpisodesData;
 import edu.franklin.androidpodcastplayer.data.PodcastData;
 import edu.franklin.androidpodcastplayer.models.Channel;
+import edu.franklin.androidpodcastplayer.models.Episode;
 import edu.franklin.androidpodcastplayer.models.Image;
+import edu.franklin.androidpodcastplayer.models.Item;
 import edu.franklin.androidpodcastplayer.models.Podcast;
 import edu.franklin.androidpodcastplayer.models.Rss;
 import edu.franklin.androidpodcastplayer.services.DownloadService;
@@ -125,6 +128,10 @@ public class RssTestActivity extends ActionBarActivity
 		episodesData.open();
 	}
 	
+	// TODO - this is just a test to see if rss can be parse and
+	// podcast/episode data can be added to the database and filesystem.
+	// once the screens are created to handle browsing and subscribing to rss feeds
+	// is ready, this stuff can be moved or deleted.
 	private void subscribeToRawRssFeeds()
 	{
 		try
@@ -185,9 +192,44 @@ public class RssTestActivity extends ActionBarActivity
 		pc.setFeedUrl(channel.getLink());
 		pc.setDir(fileManager.getAbsoluteFilePath(podcastHomeDir, null));
 		//that should be enough to persist this guy
-		//TODO, the sqlite is throwing an exception here...
-//		pc = podcastData.createPodcast(pc);
-//		Toast.makeText(getApplicationContext(), podcastTitle + " is in the database", Toast.LENGTH_SHORT);
+		pc = podcastData.createPodcast(pc);
+		if(pc != null)
+		{
+			Toast.makeText(getApplicationContext(), podcastTitle + " is in the database!", Toast.LENGTH_SHORT).show();
+			//the podcast is in the db...add in the episode info
+			for(Item item : channel.getItemList())
+			{
+				Episode e = new Episode();
+				e.setPodcastId(pc.getPodcastId());
+				e.setCompleted(false);
+				//we haven't downloaded it yet
+				e.setFilepath("");
+				//item objects don't have images
+				e.setImage("");
+				e.setName(item.getTitle());
+				e.setUrl(item.getLink());
+				e.setNewEpisode(true);
+				e.setPlayedTime(0);
+				//I think we can only know this once the file has been fetched
+				e.setTotalTime(0);
+				e = episodesData.createEpisode(e);
+				if(e != null)
+				{
+					pc.addEpisode(e);
+					Log.d("Raw Rss Sub", "Added an episode for " + pc.getName() + ", called " + e.getName() + " into the database!");
+				}
+				else
+				{
+					Log.d("Raw Rss Sub", "Episode could not be added to the database !");
+				}
+			}
+			Toast.makeText(getApplicationContext(), podcastTitle + " now has " + pc.getEpisodes().size() + " episodes in the database!", Toast.LENGTH_SHORT).show();
+		}
+		else
+		{
+			Toast.makeText(getApplicationContext(), podcastTitle + " could not be inserted into the database! Check logs...", Toast.LENGTH_LONG).show();
+		}
+		
 	}
 	
 	public void downloadFile(String dir, String file, String url)

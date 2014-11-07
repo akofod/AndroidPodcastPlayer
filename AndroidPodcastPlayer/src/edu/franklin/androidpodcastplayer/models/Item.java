@@ -14,6 +14,8 @@ public class Item extends XmlSerializable
 	private static final String LINK = "link";
 	private static final String DESCRIPTION = "description";
 	private static final String CATEGORY = "category";
+	private static final String GUID = "guid";
+	private static final String PUB_DATE = "pubDate";
 	
 	//Required fields At least one of title or description must be set
 	private String title;
@@ -213,6 +215,15 @@ public class Item extends XmlSerializable
 	        	setCategory(category);
 //	        	Log.d("Item", "Category is " + category);
 	        }
+	        else if(name.equals(GUID))
+	        {
+	        	Guid guid = new Guid(this.getNextString(xml, ns, GUID));
+	        	setGuid(guid);
+	        }
+	        else if(name.equals(PUB_DATE))
+    		{
+	        	setPubDate(this.getNextString(xml, ns, PUB_DATE));
+    		}
 	        else
 	        {
 //	        	Log.d("Item", "Skipping an unkown tag " + name);
