@@ -6,6 +6,7 @@ import java.io.FileOutputStream;
 
 import android.app.Service;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Binder;
 import android.os.IBinder;
 import android.util.Log;
@@ -168,6 +169,12 @@ public class FileManager extends Service
 		return directory.getAbsolutePath();
 	}
 	
+	public Uri getUriFromPath(String filePath)
+	{
+		File file = new File(filePath);
+		return Uri.fromFile(file);
+	}
+	
 	private File getFile(String dirname, String filename)
 	{
 		return new File(getBasePath() + "/" + dirname + "/" + filename);
@@ -175,6 +182,7 @@ public class FileManager extends Service
 	
 	private File getDirectory(String dirname)
 	{
+		File f = new File(dirname);
 		return new File(getBasePath() + "/" + dirname);
 	}
 	

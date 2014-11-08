@@ -1,8 +1,6 @@
 package edu.franklin.androidpodcastplayer;
 
-import java.io.File;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 import android.app.DownloadManager;
@@ -348,6 +346,9 @@ public class RssTestActivity extends ActionBarActivity
                         		//remove this entry from the ones we are waiting on...it is done
                             	downloadMap.remove(downloadId);
                             	showDownloadStatus(file, moved);
+                            	//either way, remove the file from the download manager because
+                            	//it is done.
+                            	dm.remove(downloadId);
                         	}
                         }
                 	}
