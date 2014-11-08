@@ -1,6 +1,7 @@
 package edu.franklin.androidpodcastplayer.data;
 
 import android.content.Context;
+import android.database.DatabaseUtils;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
@@ -103,5 +104,10 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 		if (db != null && db.isOpen())
 			db.close();
 	}
-
+	
+	public String escapeString(String value)
+	{
+		//sqlite appears to break on single quotes when inserting
+		return value != null ? DatabaseUtils.sqlEscapeString(value) : "";
+	}
 }

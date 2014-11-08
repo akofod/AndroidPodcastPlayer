@@ -57,12 +57,12 @@ public class PodcastData {
 		//could not find it, so make one
 		if(pd == null) {
 			ContentValues values = new ContentValues();
-			values.put(DatabaseHelper.PODCAST_COLUMN_NAME, podcast.getName());
-			values.put(DatabaseHelper.PODCAST_COLUMN_DESCRIPTION, podcast.getDescription());
-			values.put(DatabaseHelper.PODCAST_COLUMN_IMAGE, podcast.getImage());
+			values.put(DatabaseHelper.PODCAST_COLUMN_NAME, dbHelper.escapeString(podcast.getName()));
+			values.put(DatabaseHelper.PODCAST_COLUMN_DESCRIPTION, dbHelper.escapeString(podcast.getDescription()));
+			values.put(DatabaseHelper.PODCAST_COLUMN_IMAGE, dbHelper.escapeString(podcast.getImage()));
 			values.put(DatabaseHelper.PODCAST_COLUMN_NUMEPISODES, podcast.getNumEpisodes());
-			values.put(DatabaseHelper.PODCAST_COLUMN_FEEDURL, podcast.getFeedUrl());
-			values.put(DatabaseHelper.PODCAST_COLUMN_DIR, podcast.getDir());
+			values.put(DatabaseHelper.PODCAST_COLUMN_FEEDURL, dbHelper.escapeString(podcast.getFeedUrl()));
+			values.put(DatabaseHelper.PODCAST_COLUMN_DIR, dbHelper.escapeString(podcast.getDir()));
 			
 			int oldestFirst;
 			if (podcast.isOldestFirst()) {
@@ -108,7 +108,7 @@ public class PodcastData {
 		Podcast podcast = null;
 		SQLiteDatabase readDB = dbHelper.getReadableDatabase();
 		Cursor cursor = readDB.query(DatabaseHelper.TABLE_PODCAST, allColumns, 
-					DatabaseHelper.PODCAST_COLUMN_NAME + " = '" + podcastName + "'", null, null, null, null);
+					DatabaseHelper.PODCAST_COLUMN_NAME + " = ?", new String[]{podcastName}, null, null, null);
 		if(cursor.getCount() > 0){
 			cursor.moveToFirst();
 			podcast = cursorToPodcast(cursor);

@@ -56,11 +56,11 @@ public class EpisodesData {
 		if(ep == null)
 		{
 			ContentValues values = new ContentValues();
-			values.put(DatabaseHelper.EPISODES_COLUMN_NAME, episode.getName());
-			values.put(DatabaseHelper.EPISODES_COLUMN_URL, episode.getUrl());
+			values.put(DatabaseHelper.EPISODES_COLUMN_NAME, dbHelper.escapeString(episode.getName()));
+			values.put(DatabaseHelper.EPISODES_COLUMN_URL, dbHelper.escapeString(episode.getUrl()));
 			values.put(DatabaseHelper.EPISODES_COLUMN_COMPLETED, (episode.getPlayedTime() == episode.getTotalTime() && episode.getTotalTime() != 0));
-			values.put(DatabaseHelper.EPISODES_COLUMN_FILEPATH, episode.getFilepath());
-			values.put(DatabaseHelper.EPISODES_COLUMN_IMAGE, episode.getImage());
+			values.put(DatabaseHelper.EPISODES_COLUMN_FILEPATH, dbHelper.escapeString(episode.getFilepath()));
+			values.put(DatabaseHelper.EPISODES_COLUMN_IMAGE, dbHelper.escapeString(episode.getImage()));
 			values.put(DatabaseHelper.EPISODES_COLUMN_PLAYEDTIME, episode.getPlayedTime());
 			values.put(DatabaseHelper.EPISODES_COLUMN_PODCASTID, episode.getPodcastId());
 			values.put(DatabaseHelper.EPISODES_COLUMN_TOTALTIME, episode.getTotalTime());
@@ -91,13 +91,18 @@ public class EpisodesData {
 		return episodes;
 	}
 	
+	public void purgeEpisodes(Long podcastId)
+	{
+		dbHelper.getWritableDatabase().delete(DatabaseHelper.TABLE_EPISODES, 
+			DatabaseHelper.EPISODES_COLUMN_PODCASTID + "=" + podcastId.longValue(), null);
+	}
 	private Episode retrieveEpisodeByName(Long podcastId, String episodeName) 
 	{
 		Episode episode = null;
 		SQLiteDatabase readDB = dbHelper.getReadableDatabase();
 		Cursor cursor = readDB.query(DatabaseHelper.TABLE_EPISODES, allColumns, 
 			DatabaseHelper.EPISODES_COLUMN_PODCASTID + " = " + podcastId.longValue() + " AND " +
-			DatabaseHelper.EPISODES_COLUMN_NAME + " = '" + episodeName + "'", null, null, null, null);
+			DatabaseHelper.EPISODES_COLUMN_NAME + " = ?", new String[]{episodeName}, null, null, null);
 		if(cursor.getCount() > 0)
 		{
 			cursor.moveToFirst();
