@@ -1,12 +1,20 @@
 package edu.franklin.androidpodcastplayer.models;
 
 import java.io.IOException;
+import java.util.Map;
 
 import org.xmlpull.v1.XmlPullParser;
 import org.xmlpull.v1.XmlPullParserException;
 
+import android.util.Log;
+
 public class Enclosure extends XmlSerializable
 {
+	private static final String ENCLOSURE = "enclosure";
+	private static final String URL = "url";
+	private static final String LENGTH = "length";
+	private static final String TYPE = "type";
+	
 	private String url;
 	//how many bytes is it?
 	private long length = 0;
@@ -48,7 +56,6 @@ public class Enclosure extends XmlSerializable
 		this.type = type;
 	}
 
-	@Override
 	public int hashCode() 
 	{
 		final int prime = 31;
@@ -59,7 +66,6 @@ public class Enclosure extends XmlSerializable
 		return result;
 	}
 
-	@Override
 	public boolean equals(Object obj) 
 	{
 		if (this == obj)
@@ -84,11 +90,30 @@ public class Enclosure extends XmlSerializable
 		return true;
 	}
 	
-	@Override
 	public void initializeFromXmlParser(XmlPullParser xml, String ns) throws XmlPullParserException, IOException
 	{
-		
+		xml.require(XmlPullParser.START_TAG, ns, ENCLOSURE);
+
+        try
+	    {
+	    	Map<String, String> attributeMap = this.getAttributeMap(xml);
+			//set the domain to what was in the map
+			setLength(Long.parseLong(attributeMap.get(LENGTH)));
+			setType(attributeMap.get(TYPE));
+			setUrl(attributeMap.get(URL));
+			//try to advance?
+			xml.next();
+			xml.require(XmlPullParser.END_TAG, ns, ENCLOSURE);
+	    }
+	    catch(Exception e)
+	    {
+	    	
+	    }
 	}
-	
+
+	public String toString() {
+		return "Enclosure [url=" + url + ", length=" + length + ", type="
+				+ type + "]";
+	}
 	
 }

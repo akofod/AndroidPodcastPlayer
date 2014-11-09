@@ -208,8 +208,8 @@ public class RssTestActivity extends ActionBarActivity
 				e.setUrl(item.getLink());
 				e.setNewEpisode(true);
 				e.setPlayedTime(0);
-				//I think we can only know this once the file has been fetched
-				e.setTotalTime(0);
+				//Use the duration if it was provided by the file.
+				e.setTotalTime(item.getDuration());
 				e = episodesData.createEpisode(e);
 				if(e != null)
 				{

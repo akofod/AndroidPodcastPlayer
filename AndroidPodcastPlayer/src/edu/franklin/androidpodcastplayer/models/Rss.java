@@ -160,6 +160,6 @@ public class Rss extends XmlSerializable
 	
 	public String toString() 
 	{
-		return "Rss \n\tChannel\n" + channel;
+		return "Rss \nChannel\n" + channel;
 	}
 }

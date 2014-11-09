@@ -16,6 +16,8 @@ public class Item extends XmlSerializable
 	private static final String CATEGORY = "category";
 	private static final String GUID = "guid";
 	private static final String PUB_DATE = "pubDate";
+	private static final String ENCLOSURE = "enclosure";
+	private static final String DURATION = "duration";
 	
 	//Required fields At least one of title or description must be set
 	private String title;
@@ -45,6 +47,9 @@ public class Item extends XmlSerializable
 	//if present, indicates the url of the comments page to leave comments abut
 	//the feed...we will probably ignore this.
 	private String comments = "";
+	//the duration of the item (only makes sense for a podcast...and is sometimes
+	//provided by a special tag that itunes will include
+	private long duration = 0;
 	
 	public Item()
 	{
@@ -151,6 +156,14 @@ public class Item extends XmlSerializable
 		this.comments = comments;
 	}
 
+	public long getDuration() {
+		return duration;
+	}
+
+	public void setDuration(long duration) {
+		this.duration = duration;
+	}
+
 	@Override
 	public int hashCode() 
 	{
@@ -224,11 +237,38 @@ public class Item extends XmlSerializable
     		{
 	        	setPubDate(this.getNextString(xml, ns, PUB_DATE));
     		}
+	        else if(name.equals(ENCLOSURE))
+	        {
+	        	Enclosure enclosure = new Enclosure();
+	        	enclosure.initializeFromXmlParser(xml, ns);
+	        	setEnclosure(enclosure);
+	        }
+	        else if(name.endsWith(DURATION))
+	        {
+	        	long dur = 0L;
+	        	String duration = getNextString(xml, ns, name);
+	        	if(duration != null && duration != "0")
+	        	{
+	        		String[] tokens = duration.split(":");
+	        		for(int i = 0; i < tokens.length; i++)
+	        		{
+	        			dur = (dur * 60) + (Integer.parseInt(tokens[i])); 
+	        		}
+	        		setDuration(dur);
+	        	}
+//	        	Log.d("Duration Test", "Looks like the duration of this guy is " + duration + " and the dur is " + dur);
+	        }
 	        else
 	        {
 //	        	Log.d("Item", "Skipping an unkown tag " + name);
 	        	skip(xml);
 	        }
 	    }
+	}
+
+	public String toString() {
+		return "Item [title=" + title + ", link=" + link + ",duration=" + duration + ", description="
+				+ description + ", category=" + category + ", enclosure="
+				+ enclosure + ", guid=" + guid + ", pubDate=" + pubDate + "]";
 	}	
 }

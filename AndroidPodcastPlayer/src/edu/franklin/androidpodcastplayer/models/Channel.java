@@ -368,6 +368,7 @@ public class Channel extends XmlSerializable
 	public String toString() 
 	{
 		return "title=" + title + ", \nlink=" + link + ", \ndescription="
-				+ description + (category != null ? ", \ncategory=" + category : "") + ", \nimage=" + image + "\n" + "Item Count=" + itemList.size();
+				+ description + (category != null ? ", \ncategory=" + category : "") + 
+				", \nimage=" + image + "\n" + "Item Count=" + itemList.size();
 	}	
 }
