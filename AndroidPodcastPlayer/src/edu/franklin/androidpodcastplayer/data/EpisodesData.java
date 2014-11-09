@@ -9,6 +9,7 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
+import android.util.Log;
 
 public class EpisodesData {
 
@@ -102,11 +103,13 @@ public class EpisodesData {
 		SQLiteDatabase readDB = dbHelper.getReadableDatabase();
 		Cursor cursor = readDB.query(DatabaseHelper.TABLE_EPISODES, allColumns, 
 			DatabaseHelper.EPISODES_COLUMN_PODCASTID + " = " + podcastId.longValue() + " AND " +
-			DatabaseHelper.EPISODES_COLUMN_NAME + " = ?", new String[]{episodeName}, null, null, null);
+			DatabaseHelper.EPISODES_COLUMN_NAME + " = ?", 
+			new String[]{dbHelper.escapeString(episodeName)}, null, null, null);
 		if(cursor.getCount() > 0)
 		{
 			cursor.moveToFirst();
 			episode = cursorToEpisode(cursor);
+			Log.d("PodcastData", "Found matching episode for " + podcastId + ":" + episodeName);
 		}
 		cursor.close();
 		
@@ -117,10 +120,10 @@ public class EpisodesData {
 		Episode episode = new Episode();
 		episode.setEpisodeId(cursor.getLong(0));
 		episode.setPodcastId(cursor.getLong(1));
-		episode.setName(cursor.getString(2));
-		episode.setUrl(cursor.getString(3));
-		episode.setFilepath(cursor.getString(4));
-		episode.setImage(cursor.getString(5));
+		episode.setName(dbHelper.unescapeString(cursor.getString(2)));
+		episode.setUrl(dbHelper.unescapeString(cursor.getString(3)));
+		episode.setFilepath(dbHelper.unescapeString(cursor.getString(4)));
+		episode.setImage(dbHelper.unescapeString(cursor.getString(5)));
 		episode.setTotalTime(cursor.getLong(6));
 		episode.setPlayedTime(cursor.getLong(7));
 		

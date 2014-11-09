@@ -110,4 +110,13 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 		//sqlite appears to break on single quotes when inserting
 		return value != null ? DatabaseUtils.sqlEscapeString(value) : "";
 	}
+	
+	public String unescapeString(String value)
+	{
+		//if we have null or just an empty string, just return empty string
+		if(value == null || value.equals("''")) return "";
+		if(value.startsWith("'")) value = value.substring(1);
+		if(value.endsWith("'")) value = value.substring(0, value.length() - 2);
+		return value;
+	}
 }

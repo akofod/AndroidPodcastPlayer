@@ -7,6 +7,7 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
+import android.util.Log;
 import edu.franklin.androidpodcastplayer.models.Episode;
 import edu.franklin.androidpodcastplayer.models.Podcast;
 
@@ -108,10 +109,12 @@ public class PodcastData {
 		Podcast podcast = null;
 		SQLiteDatabase readDB = dbHelper.getReadableDatabase();
 		Cursor cursor = readDB.query(DatabaseHelper.TABLE_PODCAST, allColumns, 
-					DatabaseHelper.PODCAST_COLUMN_NAME + " = ?", new String[]{podcastName}, null, null, null);
+					DatabaseHelper.PODCAST_COLUMN_NAME + " = ?", 
+					new String[]{dbHelper.escapeString(podcastName)}, null, null, null);
 		if(cursor.getCount() > 0){
 			cursor.moveToFirst();
 			podcast = cursorToPodcast(cursor);
+			Log.d("PodcastData", "Found matching podcast for " + podcastName);
 		}
 		
 		cursor.close();
@@ -123,12 +126,12 @@ public class PodcastData {
 		Podcast podcast = new Podcast();
 		long podcastId = cursor.getLong(0);
 		podcast.setPodcastId(podcastId);
-		podcast.setName(cursor.getString(1));
-		podcast.setDescription(cursor.getString(2));
-		podcast.setImage(cursor.getString(3));
+		podcast.setName(dbHelper.unescapeString(cursor.getString(1)));
+		podcast.setDescription(dbHelper.unescapeString(cursor.getString(2)));
+		podcast.setImage(dbHelper.unescapeString(cursor.getString(3)));
 		podcast.setNumEpisodes(cursor.getLong(4));
-		podcast.setFeedUrl(cursor.getString(5));
-		podcast.setDir(cursor.getString(6));
+		podcast.setFeedUrl(dbHelper.unescapeString(cursor.getString(5)));
+		podcast.setDir(dbHelper.unescapeString(cursor.getString(6)));
 		
 		boolean oldestFirst = false;
 		if (cursor.getLong(7) == 1) {
