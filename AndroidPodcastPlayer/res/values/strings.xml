@@ -45,4 +45,8 @@
     <string name="pref_update_frequency_summary">Set the update frequency</string>
     <string name="pref_update_setting">Update Settings</string>
     <string name="title_activity_podcast_details">Podcast Details</string>
+    <string name="user_settings_fix">User Settings</string>
+    <string name="ext_storage">Store on sdCard</string>
+    <string name="wifi_only">Only Download when WiFi is available</string>
+    <string name="save_changes">Save Changes</string>
 </resources>
