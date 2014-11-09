@@ -70,15 +70,16 @@
        android:contentDescription="@string/rewind_button_image" />
    
     <ImageButton
-       android:id="@+id/imageButtonPlayPause"
-       android:layout_width="wrap_content"
-       android:layout_height="wrap_content"
-       android:layout_below="@+id/seekBarTimer"
-       android:layout_centerHorizontal="true"
-       android:onClick="play_pause"
-       android:src="@android:drawable/ic_media_play"
-       android:contentDescription="@string/play_pause_button_image" />
-
+        android:id="@+id/imageButtonPlayPause"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/imageViewAlbumArt"
+        android:layout_below="@+id/seekBarTimer"
+        android:layout_centerHorizontal="true"
+        android:contentDescription="@string/play_pause_button_image"
+        android:onClick="MediaControl"
+        android:src="@drawable/ic_media_play" />
+    
    <ImageButton
        android:id="@+id/imageButtonForward"
        android:layout_width="wrap_content"
@@ -88,6 +89,5 @@
        android:onClick="forward"
        android:src="@android:drawable/ic_media_ff"
        android:contentDescription="@string/forward_button_image" />
-
    
 </RelativeLayout>

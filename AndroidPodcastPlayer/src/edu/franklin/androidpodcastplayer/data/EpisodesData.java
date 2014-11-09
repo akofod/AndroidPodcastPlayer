@@ -97,7 +97,7 @@ public class EpisodesData {
 		dbHelper.getWritableDatabase().delete(DatabaseHelper.TABLE_EPISODES, 
 			DatabaseHelper.EPISODES_COLUMN_PODCASTID + "=" + podcastId.longValue(), null);
 	}
-	private Episode retrieveEpisodeByName(Long podcastId, String episodeName) 
+	public Episode retrieveEpisodeByName(Long podcastId, String episodeName) 
 	{
 		Episode episode = null;
 		SQLiteDatabase readDB = dbHelper.getReadableDatabase();
@@ -141,6 +141,4 @@ public class EpisodesData {
 		
 		return episode;
 	}
-	
-	
 }

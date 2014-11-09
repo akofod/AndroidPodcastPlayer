@@ -1,6 +1,10 @@
 package edu.franklin.androidpodcastplayer;
 
+import java.io.IOException;
 import java.util.concurrent.TimeUnit;
+
+import edu.franklin.androidpodcastplayer.data.EpisodesData;
+import edu.franklin.androidpodcastplayer.models.Episode;
 
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
@@ -23,6 +27,9 @@ public class PlayPodcastActivity extends ActionBarActivity
 	
 	private Handler appHandler = new Handler();
 	
+	private long episodeID;
+	private String episodeName;
+	
 	// UI Controls
 	private TextView nowPlayingText;
 	private TextView timeElapsedText;
@@ -31,8 +38,7 @@ public class PlayPodcastActivity extends ActionBarActivity
 	private SeekBar volumeControl;
 	private SeekBar timeElapsedControl;
 	
-	private ImageButton play_pauseButton;
-
+	private ImageButton playPauseButton;
 	
 	// Timers
 	private long currentTime;
@@ -43,38 +49,35 @@ public class PlayPodcastActivity extends ActionBarActivity
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_playpodcast);
 		
-		audioManager = (AudioManager)getSystemService(Context.AUDIO_SERVICE);
-		mediaPlayer = MediaPlayer.create(this, R.raw.test_cbr);
+		episodeID = getIntent().getExtras().getLong("ID");
+		episodeName = getIntent().getExtras().getString("NAME");
 		
-		// set up timers
-		overallTime = mediaPlayer.getDuration();
-		currentTime = 0;
+		getMediaInfo(episodeID, episodeName);
 		
 		setControls();
 		setTimerControl("CURRENT", currentTime);
 		setTimerControl("OVERALL", overallTime);
 		setTimeControl();
-		setTitle("Test Title");
 		setVolumeControl();
 		
 		appHandler.postDelayed(UpdateProgress, 250);
 	}
 	
-	
-	public void play_pause(View view)
+	public void MediaControl(View view)
 	{
 		if (mediaPlayer.isPlaying())
 		{
 			mediaPlayer.pause();
-			play_pauseButton.setBackgroundResource(R.drawable.ic_media_play);
+			playPauseButton.setImageResource(R.drawable.ic_media_play);
 		}
 		else
 		{
 			mediaPlayer.start();
-			play_pauseButton.setBackgroundResource(R.drawable.ic_media_pause);
+			playPauseButton.setImageResource(R.drawable.ic_media_pause);
 		}
 	}
 	
+
 	/**
 	 * Method to rewind the media by 15 seconds;
 	 * @param view
@@ -154,7 +157,7 @@ public class PlayPodcastActivity extends ActionBarActivity
 		nowPlayingText = (TextView)findViewById(R.id.textViewNowPlaying);
 		timeElapsedText = (TextView)findViewById(R.id.textViewTimeElapsed);
 		overallTimeText = (TextView)findViewById(R.id.textViewIOverall);	
-		play_pauseButton = (ImageButton)findViewById(R.id.imageButtonPlayPause);
+		playPauseButton = (ImageButton)findViewById(R.id.imageButtonPlayPause);
 		volumeControl = (SeekBar)findViewById(R.id.seekVolume);
 		timeElapsedControl = (SeekBar)findViewById(R.id.seekBarTimer);
 	}
@@ -198,4 +201,39 @@ public class PlayPodcastActivity extends ActionBarActivity
 			appHandler.postDelayed(this, 500);
 		}
 	};
+	
+	public void getMediaInfo(long id, String name)
+	{
+		EpisodesData episodeData = new EpisodesData(getApplicationContext());
+		Episode episode = episodeData.retrieveEpisodeByName(id, name);
+		
+		audioManager = (AudioManager)getSystemService(Context.AUDIO_SERVICE);
+		mediaPlayer = new MediaPlayer();
+		try 
+		{
+			mediaPlayer.setDataSource(episode.getFilepath());
+			mediaPlayer.prepare();
+			
+			// set up timers
+			overallTime = episode.getTotalTime();
+			currentTime = episode.getPlayedTime();
+			
+			setTitle(episode.getName());
+		} 
+		catch (IllegalArgumentException e) 
+		{
+			e.printStackTrace();
+		} 
+		catch (SecurityException e) 
+		{
+			e.printStackTrace();
+		} 
+		catch (IllegalStateException e) 
+		{
+			e.printStackTrace();
+		} catch (IOException e) 
+		{
+			e.printStackTrace();
+		}
+	}
 }
