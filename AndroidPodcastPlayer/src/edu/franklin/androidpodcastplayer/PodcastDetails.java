@@ -97,45 +97,9 @@ public class PodcastDetails extends ActionBarActivity
 			//now make rows for each of the episodes
 			for(Episode e : podcast.getEpisodes())
 			{
-				TableRow row = new TableRow(this);
-				row.setLayoutParams(new LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.WRAP_CONTENT));
-				row.setId((int)e.getEpisodeId());
-				
-				TextView episodeTitle = new TextView(this);
-				String title = e.getName().length() > 100 ? e.getName().substring(0, 100) : e.getName();
-				episodeTitle.setId(1);
-				episodeTitle.setText(title);
-				episodeTitle.setPadding(5, 5, 5, 5);
-				episodeTitle.setTextSize(10);
-				row.addView(episodeTitle);
-				
-				TextView episodeDuration = new TextView(this);
-				episodeDuration.setId(2);
-				episodeDuration.setText(getDurationString(e.getTotalTime()));
-				episodeDuration.setPadding(5, 5, 5, 5);
-				episodeDuration.setTextSize(10);
-				episodeDuration.setWidth(64);
-				row.addView(episodeDuration);
-				
+				EpisodeRow row = new EpisodeRow(this, e);
 				episodeTable.addView(row);
 			}
 		}
-	}
-	
-	private String getDurationString(long duration)
-	{
-		final int MINUTE = 60;
-		final int HOUR = 60 * MINUTE;
-		if(duration > 0)
-		{
-			int hours = (int) duration / HOUR;
-			duration -= HOUR * hours;
-			int minutes = (int) duration / MINUTE;
-			duration -= MINUTE * minutes;
-			int seconds = (int)duration;
-			String timeString = String.format("%02d:%02d:%02d", hours, minutes, seconds);
-			return timeString;
-		}
-		return "-";
 	}
 }
