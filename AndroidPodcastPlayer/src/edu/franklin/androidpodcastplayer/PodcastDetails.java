@@ -5,6 +5,7 @@ import java.io.File;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -25,6 +26,9 @@ public class PodcastDetails extends ActionBarActivity
 {
 	private TableLayout episodeTable = null;
 	private ImageView view = null;
+	private TextView titleView = null;
+	private TextView authorView = null;
+	private TextView episodeCountView = null;
 	private PodcastData podcastData = new PodcastData(this);
 	
 	protected void onCreate(Bundle savedInstanceState) 
@@ -33,6 +37,9 @@ public class PodcastDetails extends ActionBarActivity
 		setContentView(R.layout.activity_podcast_details);
 		episodeTable = (TableLayout) findViewById(R.id.episodeTable);
 		view = (ImageView)findViewById(R.id.podcastImage);
+		titleView = (TextView)findViewById(R.id.podcastTitle);
+		authorView = (TextView)findViewById(R.id.podcastAuthor);
+		episodeCountView = (TextView)findViewById(R.id.podcastEpisodes);
 		podcastData.open();
 		//grab a podcast and see if we can load it?
 		Podcast podcast = podcastData.retrievePodcastByName("Coder Radio MP3");
@@ -42,6 +49,7 @@ public class PodcastDetails extends ActionBarActivity
 	protected void onDestroy()
 	{
 		podcastData.close();
+		super.onDestroy();
 	}
 
 	public boolean onCreateOptionsMenu(Menu menu) 
@@ -66,7 +74,7 @@ public class PodcastDetails extends ActionBarActivity
 	
 	public void subscribeToPodcast(View view)
 	{
-		Toast.makeText(getApplicationContext(), "Subscribe to this podcast!", Toast.LENGTH_SHORT).show();
+		Toast.makeText(getApplicationContext(), "Implement Subscribe to this podcast!", Toast.LENGTH_SHORT).show();
 	}
 	
 	private void setPodcast(Podcast podcast)
@@ -78,10 +86,14 @@ public class PodcastDetails extends ActionBarActivity
 			//load the image using an image loader
 			if(imagePath.length() > 0)
 			{
-				Toast.makeText(this, "Trying to load " + imagePath, Toast.LENGTH_LONG).show();
 				Picasso.with(this).load(new File(imagePath)).
 				resize(128, 128).centerCrop().into(view);
 			}
+			//set the text views for this podcast
+			titleView.setText(podcast.getName());
+			//no author for now...maybe add one to the parsing and db
+			authorView.setText("");
+			episodeCountView.setText(podcast.getEpisodes().size() + " Episodes");
 			//now make rows for each of the episodes
 			for(Episode e : podcast.getEpisodes())
 			{
@@ -93,19 +105,37 @@ public class PodcastDetails extends ActionBarActivity
 				String title = e.getName().length() > 100 ? e.getName().substring(0, 100) : e.getName();
 				episodeTitle.setId(1);
 				episodeTitle.setText(title);
-				episodeTitle.setPadding(5, 5, 5, 0);
-				episodeTitle.setTextSize(12);
+				episodeTitle.setPadding(5, 5, 5, 5);
+				episodeTitle.setTextSize(10);
 				row.addView(episodeTitle);
 				
 				TextView episodeDuration = new TextView(this);
 				episodeDuration.setId(2);
-				episodeDuration.setText(e.getTotalTime() + "");
-				episodeDuration.setPadding(5, 5, 5, 0);
-				episodeDuration.setTextSize(12);
+				episodeDuration.setText(getDurationString(e.getTotalTime()));
+				episodeDuration.setPadding(5, 5, 5, 5);
+				episodeDuration.setTextSize(10);
+				episodeDuration.setWidth(64);
 				row.addView(episodeDuration);
 				
 				episodeTable.addView(row);
 			}
 		}
+	}
+	
+	private String getDurationString(long duration)
+	{
+		final int MINUTE = 60;
+		final int HOUR = 60 * MINUTE;
+		if(duration > 0)
+		{
+			int hours = (int) duration / HOUR;
+			duration -= HOUR * hours;
+			int minutes = (int) duration / MINUTE;
+			duration -= MINUTE * minutes;
+			int seconds = (int)duration;
+			String timeString = String.format("%02d:%02d:%02d", hours, minutes, seconds);
+			return timeString;
+		}
+		return "-";
 	}
 }
