@@ -62,9 +62,9 @@
     <ScrollView
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/subscribeToPodcast"
+        android:layout_alignParentBottom="false"
+        android:layout_below="@+id/subscribeButton"
         android:fillViewport="false"
-        android:paddingTop="180dp"
         android:scrollbars="none" >
 
         <!-- android:layout_weight="1" -->
