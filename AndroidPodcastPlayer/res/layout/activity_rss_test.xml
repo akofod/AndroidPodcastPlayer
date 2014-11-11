@@ -9,7 +9,7 @@
     tools:context="edu.franklin.androidpodcastplayer.RssTestActivity" >
 
     <TextView
-        android:id="@+id/textView1"
+        android:id="@+id/podcastTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/hello_rss" />
@@ -18,9 +18,9 @@
         android:id="@+id/urlField"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/textView1"
+        android:layout_alignLeft="@+id/podcastTitle"
         android:layout_alignParentRight="true"
-        android:layout_below="@+id/textView1"
+        android:layout_below="@+id/podcastTitle"
         android:layout_marginTop="23dp"
         android:ems="8"
         android:inputType="textUri|none" >

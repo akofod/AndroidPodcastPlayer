@@ -45,6 +45,11 @@ public class TestsActivity extends ActionBarActivity {
 		startActivity(intent);
 	}
 	
+	public void launchPodcastViewTest(View view) {
+		Intent intent = new Intent(this, PodcastDetails.class);
+		startActivity(intent);
+	}
+	
 	public void launchRepTest(View view) {
 		Intent intent = new Intent(this, RepositoryActivity.class);
 		startActivity(intent);

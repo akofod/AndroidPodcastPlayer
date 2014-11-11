@@ -105,7 +105,7 @@ public class PodcastData {
 		return pd;
 	}
 	
-	private Podcast retrievePodcastByName(String podcastName) {
+	public Podcast retrievePodcastByName(String podcastName) {
 		Podcast podcast = null;
 		SQLiteDatabase readDB = dbHelper.getReadableDatabase();
 		Cursor cursor = readDB.query(DatabaseHelper.TABLE_PODCAST, allColumns, 

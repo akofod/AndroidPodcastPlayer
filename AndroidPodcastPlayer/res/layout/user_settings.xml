@@ -9,7 +9,7 @@
     tools:context=".UserSettings" >
 
     <TextView
-        android:id="@+id/textView1"
+        android:id="@+id/podcastTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
@@ -22,8 +22,8 @@
         android:id="@+id/checkBox1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/textView1"
-        android:layout_below="@+id/textView1"
+        android:layout_alignLeft="@+id/podcastTitle"
+        android:layout_below="@+id/podcastTitle"
         android:layout_marginTop="66dp"
         android:text="@string/ext_storage" />
 

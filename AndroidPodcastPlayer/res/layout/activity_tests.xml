@@ -54,4 +54,15 @@
         android:onClick="launchSubscriptionSettingsTest"
         android:text="Test SubscriptionSettings" />
 
+    <Button
+        android:id="@+id/buttonTestPodcastView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/buttonFileManager"
+        android:layout_below="@+id/buttonTestSettings"
+        android:layout_marginTop="27dp"
+        android:onClick="launchPodcastViewTest"
+        android:layout_toLeftOf="@+id/buttonTestMedia"
+        android:text="Test View Podcast" />
+
 </RelativeLayout>
