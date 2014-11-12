@@ -4,20 +4,17 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 
-import android.app.Service;
-import android.content.Intent;
+import android.content.Context;
 import android.net.Uri;
-import android.os.Binder;
-import android.os.IBinder;
 import android.util.Log;
 
-public class FileManager extends Service
+public class FileManager
 {
-	private IBinder binder = new FileManagerBinder();
+	private Context context = null;
 	
-	public FileManager()
+	public FileManager(Context context)
 	{
-		super();
+		this.context = context;
 	}
 	
 	public boolean deleteFile(String dirname, String filename)
@@ -106,14 +103,34 @@ public class FileManager extends Service
 		return files;
 	}
 	
+	public boolean moveFile(String absoluteSourcePath, String absoluteDestinationPath)
+	{
+		String[] tokens = breakFilePath(absoluteDestinationPath);
+		return moveFile(absoluteSourcePath, tokens[0], tokens[1]);
+	}
+	
 	public boolean moveFile(String absolutePath, String dir, String file)
 	{
 		return copyFile(absolutePath, dir, file, true);
 	}
 	
+	public boolean copyFile(String absoluteSourcePath, String absoluteDestinationPath)
+	{
+		String[] tokens = breakFilePath(absoluteDestinationPath);
+		return copyFile(absoluteSourcePath, tokens[0], tokens[1]);
+	}
+	
 	public boolean copyFile(String absolutePath, String dir, String file)
 	{
 		return copyFile(absolutePath, dir, file, false);
+	}
+	
+	private String[] breakFilePath(String path)
+	{
+		String[] pathTokens = new String[2];
+		pathTokens[0] = path.substring(0, path.lastIndexOf("/"));
+		pathTokens[1] = path.substring(path.lastIndexOf("/") + 1);
+		return pathTokens;
 	}
 	
 	private boolean copyFile(String absolutePath, String dir, String file, boolean remove)
@@ -161,11 +178,16 @@ public class FileManager extends Service
 	{
 		//need to make the path in case it isn't there
 		File directory = getDirectory(dirname);
-		directory.mkdirs();
+		if(!directory.exists())
+		{
+			directory.mkdirs();
+		}
 		if(filename != null)
 		{
+			Log.d("FM", "Getting absoluteFilePath for " + dirname + " and " + filename + " + is returning " + directory.getAbsolutePath() + "/" + filename);
 			return directory.getAbsolutePath() + "/" + filename;
 		}
+		Log.d("FM", "Getting absoluteFilePath for " + dirname + " + is returning " + directory.getAbsoluteFile());
 		return directory.getAbsolutePath();
 	}
 	
@@ -200,7 +222,7 @@ public class FileManager extends Service
 		//only one configured for now.
 		if(useInternal)
 		{
-			path = getFilesDir().getAbsolutePath();
+			path = context.getFilesDir().getAbsolutePath();
 		}
 		else if(useExternalShared)
 		{
@@ -211,18 +233,5 @@ public class FileManager extends Service
 			
 		}
 		return path;
-	}
-	
-	public IBinder onBind(Intent intent) 
-	{
-		return binder;
-	}
-
-	public class FileManagerBinder extends Binder 
-	{
-		public FileManager getService() 
-		{
-			return FileManager.this;
-		}
 	}
 }

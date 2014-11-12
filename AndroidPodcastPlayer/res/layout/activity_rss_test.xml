@@ -28,24 +28,32 @@
         <requestFocus />
     </EditText>
 
-    <Button
-        android:id="@+id/fetchRss"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/urlField"
-        android:layout_alignRight="@+id/urlField"
-        android:layout_below="@+id/urlField"
-        android:layout_marginTop="15dp"
-        android:text="Fetch RSS" 
-        android:onClick="fetchRss"
-        />
-
     <WebView
         android:id="@+id/webView1"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_alignParentLeft="true"
-        android:orientation="vertical"
-        android:layout_below="@+id/fetchRss" />
+        android:layout_below="@+id/button1"
+        android:orientation="vertical" />
+
+    <Button
+        android:id="@+id/fetchRss"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/urlField"
+        android:layout_alignRight="@+id/webView1"
+        android:layout_below="@+id/urlField"
+        android:onClick="fetchRss"
+        android:text="Fetch RSS" />
+
+    <Button
+        android:id="@+id/button1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/webView1"
+        android:layout_alignRight="@+id/webView1"
+        android:layout_below="@id/fetchRss"
+        android:onClick="subscribeToRawRssFeeds"
+        android:text="Parse Raw RSS" />
 
 </RelativeLayout>

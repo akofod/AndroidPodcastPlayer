@@ -1,16 +1,10 @@
 package edu.franklin.androidpodcastplayer;
 
-import edu.franklin.androidpodcastplayer.services.DownloadService;
-import edu.franklin.androidpodcastplayer.services.FileManager;
-import edu.franklin.androidpodcastplayer.services.FileManager.FileManagerBinder;
 import android.content.BroadcastReceiver;
-import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
-import android.content.ServiceConnection;
 import android.os.Bundle;
-import android.os.IBinder;
 import android.support.v7.app.ActionBarActivity;
 import android.util.Log;
 import android.view.Menu;
@@ -18,32 +12,17 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
+import edu.franklin.androidpodcastplayer.services.DownloadService;
+import edu.franklin.androidpodcastplayer.services.FileManager;
 
 public class DownloadManagerActivity extends ActionBarActivity 
 {
 	private FileManager fileManager = null;
-	private boolean bound = false;
-	
-	private ServiceConnection mConnection = new ServiceConnection() 
-	{
-		public void onServiceConnected(ComponentName className, IBinder service) {
-			// We've bound to fileManager, cast the IBinder and get
-			// fileManager instance
-			FileManagerBinder binder = (FileManagerBinder) service;
-			fileManager = binder.getService();
-			bound = true;
-		}
-
-		public void onServiceDisconnected(ComponentName componentName) 
-		{
-			bound = false;
-		}
-	};
-
 
 	protected void onCreate(Bundle savedInstanceState) 
 	{
 		super.onCreate(savedInstanceState);
+		fileManager = new FileManager(this);
 		setContentView(R.layout.activity_downloadmanager_test);
 	}
 	
@@ -58,25 +37,6 @@ public class DownloadManagerActivity extends ActionBarActivity
 		super.onPause();
 		unregisterReceiver(receiver);
 	}
-	
-	protected void onStart() 
-	{
-		super.onStart();
-		// Bind to the FileManager
-		Intent intent = new Intent(this, FileManager.class);
-		bindService(intent, mConnection, Context.BIND_AUTO_CREATE);
-	}
-
-	protected void onStop() 
-	{
-		super.onStop();
-		// Unbind from the FileManager
-		if (bound) {
-			unbindService(mConnection);
-			bound = false;
-		}
-	}
-
 
 	public boolean onCreateOptionsMenu(Menu menu) 
 	{
@@ -114,10 +74,10 @@ public class DownloadManagerActivity extends ActionBarActivity
 			String dirString = dirText.getText().toString();
 			String filenameString = fileNameText.getText().toString();
 			
-			String filePath = fileManager.getAbsoluteFilePath(dirString, filenameString);
 			Intent intent = new Intent(this, DownloadService.class);
 			intent.putExtra(DownloadService.URL, urlString);
-		    intent.putExtra(DownloadService.FILEPATH, filePath);
+			intent.putExtra(DownloadService.DIR, dirString);
+		    intent.putExtra(DownloadService.FILE, filenameString);
 		    startService(intent);
 		    
 			// show what we are doing
@@ -140,12 +100,14 @@ public class DownloadManagerActivity extends ActionBarActivity
 			Bundle bundle = intent.getExtras();
 			if (bundle != null) 
 			{
-				String string = bundle.getString(DownloadService.FILEPATH);
+				String d = bundle.getString(DownloadService.DIR);
+				String f = bundle.getString(DownloadService.FILE);
+				String fileDest = fileManager.getAbsoluteFilePath(d, f);
 				int resultCode = bundle.getInt(DownloadService.RESULT);
 				if (resultCode == RESULT_OK) 
 				{
 					Toast.makeText(DownloadManagerActivity.this,
-							"Download complete. Download URI: " + string,
+							"Download complete. Download URI: " + fileDest,
 							Toast.LENGTH_LONG).show();
 				} 
 				else 

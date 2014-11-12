@@ -7,16 +7,13 @@ import android.app.DownloadManager;
 import android.app.DownloadManager.Query;
 import android.app.DownloadManager.Request;
 import android.content.BroadcastReceiver;
-import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
-import android.content.ServiceConnection;
 import android.content.res.Resources;
 import android.database.Cursor;
 import android.net.Uri;
 import android.os.Bundle;
-import android.os.IBinder;
 import android.support.v7.app.ActionBarActivity;
 import android.util.Log;
 import android.view.Menu;
@@ -36,7 +33,6 @@ import edu.franklin.androidpodcastplayer.models.Podcast;
 import edu.franklin.androidpodcastplayer.models.Rss;
 import edu.franklin.androidpodcastplayer.services.DownloadService;
 import edu.franklin.androidpodcastplayer.services.FileManager;
-import edu.franklin.androidpodcastplayer.services.FileManager.FileManagerBinder;
 
 public class RssTestActivity extends ActionBarActivity 
 {
@@ -51,31 +47,8 @@ public class RssTestActivity extends ActionBarActivity
 	//need to save off the images and episodes we fetch
 	private FileManager fileManager = null;
 	private DownloadManager dm = null;
-	//we bind to the file manager so we can use it directly.
-	private boolean bound = false;
 	//a map of queued downloads to thier file names
 	Map<Long, String> downloadMap = new HashMap<Long, String>();
-	
-	//to be bound, we need to create a service connection
-	private ServiceConnection mConnection = new ServiceConnection() 
-	{
-
-		public void onServiceConnected(ComponentName className, IBinder service) {
-			// We've bound to fileManager, cast the IBinder and get
-			// fileManager instance
-			FileManagerBinder binder = (FileManagerBinder) service;
-			fileManager = binder.getService();
-			bound = true;
-			//once we are bound to the filemanager service, 
-			//we can try to subscribe
-			subscribeToRawRssFeeds();
-		}
-
-		public void onServiceDisconnected(ComponentName componentName) 
-		{
-			bound = false;
-		}
-	};
 	
 	protected void onResume() 
 	{
@@ -89,23 +62,10 @@ public class RssTestActivity extends ActionBarActivity
 		super.onPause();
 		unregisterReceiver(receiver);
 	}
-	
-	protected void onStart() 
-	{
-		super.onStart();
-		// Bind to the FileManager
-		Intent intent = new Intent(this, FileManager.class);
-		bindService(intent, mConnection, Context.BIND_AUTO_CREATE);
-	}
 
 	protected void onStop() 
 	{
 		super.onStop();
-		// Unbind from the FileManager
-		if (bound) {
-			unbindService(mConnection);
-			bound = false;
-		}
 		//close down the db stuff?
 		configData.close();
 		podcastData.close();
@@ -118,6 +78,7 @@ public class RssTestActivity extends ActionBarActivity
 		setContentView(R.layout.activity_rss_test);
 		//get a ref to the download manager
 		dm = (DownloadManager)getSystemService(DOWNLOAD_SERVICE);
+		fileManager = new FileManager(this);
 		//listen for finishing downloads...
 		registerReceiver(receiver, new IntentFilter(DownloadManager.ACTION_DOWNLOAD_COMPLETE));
 		//open up the data helpers into the database
@@ -130,7 +91,7 @@ public class RssTestActivity extends ActionBarActivity
 	// podcast/episode data can be added to the database and filesystem.
 	// once the screens are created to handle browsing and subscribing to rss feeds
 	// is ready, this stuff can be moved or deleted.
-	private void subscribeToRawRssFeeds()
+	public void subscribeToRawRssFeeds(View view)
 	{
 		try
 		{
@@ -303,7 +264,7 @@ public class RssTestActivity extends ActionBarActivity
 	{
 		public void onReceive(Context context, Intent intent) 
 		{
-//			Bundle bundle = intent.getExtras();
+			Bundle bundle = intent.getExtras();
 			String action = intent.getAction();
 			Log.d("Rss Sub Download", "Got back an action " + action);
             if (DownloadManager.ACTION_DOWNLOAD_COMPLETE.equals(action)) {

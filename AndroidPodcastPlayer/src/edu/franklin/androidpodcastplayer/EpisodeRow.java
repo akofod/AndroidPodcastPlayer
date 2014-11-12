@@ -1,5 +1,6 @@
 package edu.franklin.androidpodcastplayer;
 
+import android.app.DownloadManager;
 import android.content.Context;
 import android.view.View;
 import android.widget.Button;
@@ -15,6 +16,9 @@ public class EpisodeRow extends TableRow
 	private TextView durationView = null;
 	private Button button = null;
 	private Episode episode = null;
+	//in case the user wants to fetch the episode
+	private DownloadManager dm = null;
+	//in case the user fetches the episode
 	
 	public EpisodeRow(Context context, Episode e) 
 	{
