@@ -137,6 +137,21 @@ public class PodcastData {
 		
 		return podcast;
 	}
+	
+	public ArrayList<Podcast> getAllPodcasts() {
+		ArrayList<Podcast> allPodcasts = new ArrayList<Podcast>();
+		SQLiteDatabase readDB = dbHelper.getReadableDatabase();
+		Cursor cursor = readDB.query(DatabaseHelper.TABLE_PODCAST, allColumns, 
+				null, null, null, null, null);
+		cursor.moveToFirst();
+		while(!cursor.isAfterLast()) {
+			Podcast podcast = cursorToPodcast(cursor);
+			allPodcasts.add(podcast);
+			cursor.moveToNext();
+		}
+		cursor.close();
+		return allPodcasts;
+	}
 
 	public Podcast cursorToPodcast(Cursor cursor) {
 		Podcast podcast = new Podcast();
