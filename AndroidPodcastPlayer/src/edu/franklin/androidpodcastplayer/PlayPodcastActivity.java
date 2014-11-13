@@ -34,7 +34,7 @@ public class PlayPodcastActivity extends ActionBarActivity
 	
 	private Handler appHandler = new Handler();
 	
-	private long episodeID;
+	private long podcastId;
 	private String episodeName;
 	
 	// UI Controls
@@ -58,11 +58,10 @@ public class PlayPodcastActivity extends ActionBarActivity
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_playpodcast);
 		setControls();
-		episodeID = getIntent().getExtras().getLong("ID");
+		podcastId = getIntent().getExtras().getLong("ID");
 		episodeName = getIntent().getExtras().getString("NAME");
-		
-		getMediaInfo(episodeID, episodeName);
-		
+		Log.i("Player", "Loading media player with podcastID " + podcastId + " and episode name " + episodeName);
+		getMediaInfo(podcastId, episodeName);
 		
 		setTimerControl("CURRENT", currentTime);
 		setTimerControl("OVERALL", overallTime);
@@ -218,8 +217,9 @@ public class PlayPodcastActivity extends ActionBarActivity
 	{
 		EpisodesData episodeData = new EpisodesData(getApplicationContext());
 		Episode episode = episodeData.retrieveEpisodeByName(id, name);
+		Log.i("Player", "Fetching episode using " + id + ":" + name + " and got back " + episode);
 		PodcastData podcastData = new PodcastData(getApplicationContext());
-		Podcast podcast = podcastData.getPodcastById(episode.getPodcastId());
+		Podcast podcast = podcastData.getPodcastById(id);
 		//set the image for the podcast if we have it
 		String imagePath = podcast.getImage();
 		//load the image using an image loader

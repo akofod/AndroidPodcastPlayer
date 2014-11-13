@@ -32,7 +32,6 @@ import edu.franklin.androidpodcastplayer.models.Image;
 import edu.franklin.androidpodcastplayer.models.Item;
 import edu.franklin.androidpodcastplayer.models.Podcast;
 import edu.franklin.androidpodcastplayer.models.Rss;
-import edu.franklin.androidpodcastplayer.services.DownloadService;
 import edu.franklin.androidpodcastplayer.services.FileManager;
 
 public class RssTestActivity extends ActionBarActivity 
@@ -50,28 +49,6 @@ public class RssTestActivity extends ActionBarActivity
 	//a map of queued downloads to thier file names
 	Map<Long, String> downloadMap = new HashMap<Long, String>();
 	
-	protected void onResume() 
-	{
-		super.onResume();
-		//if we got paused, re-register for notifications
-		registerReceiver(receiver, new IntentFilter(DownloadService.NOTIFICATION));
-	}
-
-	protected void onPause() 
-	{
-		super.onPause();
-		unregisterReceiver(receiver);
-	}
-
-	protected void onStop() 
-	{
-		super.onStop();
-		//close down the db stuff?
-		configData.close();
-		podcastData.close();
-		episodesData.close();
-	}
-	
 	protected void onCreate(Bundle savedInstanceState) 
 	{
 		super.onCreate(savedInstanceState);
@@ -87,6 +64,16 @@ public class RssTestActivity extends ActionBarActivity
 		episodesData.open();
 	}
 	
+	protected void onStop() 
+	{
+		//close down the db stuff?
+		configData.close();
+		podcastData.close();
+		episodesData.close();
+		unregisterReceiver(receiver);
+		super.onStop();
+	}
+	
 	// TODO - this is just a test to see if rss can be parse and
 	// podcast/episode data can be added to the database and filesystem.
 	// once the screens are created to handle browsing and subscribing to rss feeds
@@ -99,10 +86,9 @@ public class RssTestActivity extends ActionBarActivity
 			Resources resources = getResources();
 			//the ids we want to fetch
 			int[] rawFeeds = new int[]{
-//				R.raw.androd_dev_backstage_rss,
-				R.raw.coder_radio_rss
-//				R.raw.java_posse_rss,
-//				R.raw.technophilia_rss
+				R.raw.coder_radio_rss,
+				R.raw.java_posse_rss,
+				R.raw.technophilia_rss
 			};
 			//now go over the feed ids and initialize an Rss object from the xml
 			for(int id : rawFeeds)
@@ -156,7 +142,6 @@ public class RssTestActivity extends ActionBarActivity
 		{
 			Toast.makeText(getApplicationContext(), podcastTitle + " is in the database!", Toast.LENGTH_SHORT).show();
 			//the podcast is in the db...add in the episode info
-			int index = 0;
 			for(Item item : channel.getItemList())
 			{
 				Episode e = new Episode();
@@ -174,17 +159,8 @@ public class RssTestActivity extends ActionBarActivity
 					link = enc.getUrl().length() > 0 ? enc.getUrl() : link;
 				}
 				e.setUrl(link);
-				if(index++ == 0 && link.length() > 0)
-				{
-					String eName = link.substring(link.lastIndexOf("/") + 1);
-					downloadFile(podcastHomeDir, eName, link);
-					e.setFilepath(fileManager.getAbsoluteFilePath(podcastHomeDir, eName));
-				}
-				else
-				{
-					//we haven't downloaded it yet
-					e.setFilepath("");
-				}
+				//we haven't downloaded it yet
+				e.setFilepath("");
 				e.setNewEpisode(true);
 				e.setPlayedTime(0);
 				//Use the duration if it was provided by the file.
@@ -278,7 +254,6 @@ public class RssTestActivity extends ActionBarActivity
 	{
 		public void onReceive(Context context, Intent intent) 
 		{
-			Bundle bundle = intent.getExtras();
 			String action = intent.getAction();
 			Log.d("Rss Sub Download", "Got back an action " + action);
             if (DownloadManager.ACTION_DOWNLOAD_COMPLETE.equals(action)) {

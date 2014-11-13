@@ -103,6 +103,12 @@ public class FileManager
 		return files;
 	}
 	
+	public boolean fileExists(String dir, String file)
+	{
+		File f = new File(getAbsoluteFilePath(dir, file));
+		return f.exists();
+	}
+	
 	public boolean moveFile(String absoluteSourcePath, String absoluteDestinationPath)
 	{
 		String[] tokens = breakFilePath(absoluteDestinationPath);

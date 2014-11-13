@@ -61,6 +61,7 @@ public class Episode {
 	public long getTotalTime() {
 		return totalTime;
 	}
+	
 	public void setTotalTime(long totalTime) {
 		this.totalTime = totalTime;
 	}
@@ -99,5 +100,12 @@ public class Episode {
 		if (podcastId != other.podcastId)
 			return false;
 		return true;
+	}
+	public String toString() {
+		return "Episode [episodeId=" + episodeId + ", podcastId=" + podcastId
+				+ ", name=" + name + ", url=" + url + ", filepath=" + filepath
+				+ ", image=" + image + ", totalTime=" + totalTime
+				+ ", playedTime=" + playedTime + ", newEpisode=" + newEpisode
+				+ ", completed=" + completed + "]";
 	}
 }
