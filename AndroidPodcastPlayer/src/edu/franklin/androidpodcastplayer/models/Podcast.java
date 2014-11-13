@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 public class Podcast {
 	
+	public static final String PODCASTS = "podcast_subscriptions";
 	private long podcastId;
 	private String name;
 	private String description;
@@ -93,5 +94,10 @@ public class Podcast {
 		}
 		//add it in
 		episodes.add(episode);
+	}
+	
+	public static String getPodcastDirectory(String dir)
+	{
+		return Podcast.PODCASTS + "/" + dir;
 	}
 }

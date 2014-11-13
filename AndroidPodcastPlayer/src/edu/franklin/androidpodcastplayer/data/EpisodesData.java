@@ -109,11 +109,20 @@ public class EpisodesData {
 		{
 			cursor.moveToFirst();
 			episode = cursorToEpisode(cursor);
-			Log.d("PodcastData", "Found matching episode for " + podcastId + ":" + episodeName);
 		}
 		cursor.close();
 		
 		return episode;
+	}
+	
+	public boolean updateFilePath(Long podId, Long epId, String filePath)
+	{
+		ContentValues values = new ContentValues();
+		values.put(DatabaseHelper.EPISODES_COLUMN_FILEPATH, dbHelper.escapeString(filePath));
+		int rows = db.update(DatabaseHelper.TABLE_EPISODES, values, 
+			DatabaseHelper.EPISODES_COLUMN_PODCASTID + " = " + podId.longValue() + " AND " +
+			DatabaseHelper.EPISODES_COLUMN_EPISODEID + " = " + epId.longValue()	, null);
+		return rows == 1;
 	}
 
 	private Episode cursorToEpisode(Cursor cursor) {

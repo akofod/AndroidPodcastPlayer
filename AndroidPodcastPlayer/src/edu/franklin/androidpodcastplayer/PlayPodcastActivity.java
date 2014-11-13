@@ -1,16 +1,23 @@
 package edu.franklin.androidpodcastplayer;
 
+import java.io.File;
 import java.io.IOException;
 import java.util.concurrent.TimeUnit;
 
+import com.squareup.picasso.Picasso;
+
 import edu.franklin.androidpodcastplayer.data.EpisodesData;
+import edu.franklin.androidpodcastplayer.data.PodcastData;
 import edu.franklin.androidpodcastplayer.models.Episode;
+import edu.franklin.androidpodcastplayer.models.Podcast;
 
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.os.Handler;
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.SeekBar;
 import android.widget.TextView;
 import android.content.Context;
@@ -39,6 +46,8 @@ public class PlayPodcastActivity extends ActionBarActivity
 	private SeekBar timeElapsedControl;
 	
 	private ImageButton playPauseButton;
+	//album art
+	private ImageView albumView = null;
 	
 	// Timers
 	private long currentTime;
@@ -48,13 +57,13 @@ public class PlayPodcastActivity extends ActionBarActivity
 	{
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_playpodcast);
-		
+		setControls();
 		episodeID = getIntent().getExtras().getLong("ID");
 		episodeName = getIntent().getExtras().getString("NAME");
 		
 		getMediaInfo(episodeID, episodeName);
 		
-		setControls();
+		
 		setTimerControl("CURRENT", currentTime);
 		setTimerControl("OVERALL", overallTime);
 		setTimeControl();
@@ -113,17 +122,19 @@ public class PlayPodcastActivity extends ActionBarActivity
 	{
 		if(timer.equalsIgnoreCase("CURRENT"))
 		{
-			timeElapsedText.setText(String.format("%02d:%02d", 
-					TimeUnit.MILLISECONDS.toMinutes(currentTime),
-					TimeUnit.MILLISECONDS.toSeconds(currentTime) -
-					TimeUnit.MINUTES.toSeconds(TimeUnit.MILLISECONDS.toMinutes(currentTime))));
+			timeElapsedText.setText(String.format("%02d:%02d:%02d", 
+					TimeUnit.SECONDS.toHours(currentTime), 
+					TimeUnit.SECONDS.toMinutes(currentTime),
+					TimeUnit.SECONDS.toSeconds(currentTime) -
+					TimeUnit.MINUTES.toSeconds(TimeUnit.SECONDS.toMinutes(currentTime))));
 		}
 		else if(timer.equalsIgnoreCase("OVERALL"))
 		{
-			overallTimeText.setText(String.format("%02d:%02d", 
-					TimeUnit.MILLISECONDS.toMinutes(overallTime),
-					TimeUnit.MILLISECONDS.toSeconds(overallTime) -
-					TimeUnit.MINUTES.toSeconds(TimeUnit.MILLISECONDS.toMinutes(overallTime))));
+			overallTimeText.setText(String.format("%02d:%02d:%02d", 
+					TimeUnit.SECONDS.toHours(overallTime), 
+					TimeUnit.SECONDS.toMinutes(overallTime),
+					TimeUnit.SECONDS.toSeconds(overallTime) -
+					TimeUnit.MINUTES.toSeconds(TimeUnit.SECONDS.toMinutes(overallTime))));
 		}
 		
 	}
@@ -160,6 +171,7 @@ public class PlayPodcastActivity extends ActionBarActivity
 		playPauseButton = (ImageButton)findViewById(R.id.imageButtonPlayPause);
 		volumeControl = (SeekBar)findViewById(R.id.seekVolume);
 		timeElapsedControl = (SeekBar)findViewById(R.id.seekBarTimer);
+		albumView = (ImageView)findViewById(R.id.imageViewAlbumArt);
 	}
 	
 	private void setTitle(String title)
@@ -191,7 +203,7 @@ public class PlayPodcastActivity extends ActionBarActivity
 	private Runnable UpdateProgress = new Runnable() {
 		public void run()
 		{
-			currentTime = mediaPlayer.getCurrentPosition();
+			currentTime = mediaPlayer.getCurrentPosition() / 1000;
 			if (currentTime == overallTime)
 			{
 				mediaPlayer.stop();
@@ -206,7 +218,16 @@ public class PlayPodcastActivity extends ActionBarActivity
 	{
 		EpisodesData episodeData = new EpisodesData(getApplicationContext());
 		Episode episode = episodeData.retrieveEpisodeByName(id, name);
-		
+		PodcastData podcastData = new PodcastData(getApplicationContext());
+		Podcast podcast = podcastData.getPodcastById(episode.getPodcastId());
+		//set the image for the podcast if we have it
+		String imagePath = podcast.getImage();
+		//load the image using an image loader
+		if(imagePath.length() > 0)
+		{
+			Picasso.with(this).load(new File(imagePath)).into(albumView);
+		}
+		Log.i("PodcastPlayer", "Hopefully have an episode " + episode.getName() + ":" + episode.getFilepath() + ":" + episode.getTotalTime());
 		audioManager = (AudioManager)getSystemService(Context.AUDIO_SERVICE);
 		mediaPlayer = new MediaPlayer();
 		try 

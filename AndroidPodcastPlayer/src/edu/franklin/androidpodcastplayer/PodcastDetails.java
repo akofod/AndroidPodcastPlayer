@@ -14,18 +14,21 @@ import android.widget.Toast;
 
 import com.squareup.picasso.Picasso;
 
+import edu.franklin.androidpodcastplayer.data.EpisodesData;
 import edu.franklin.androidpodcastplayer.data.PodcastData;
 import edu.franklin.androidpodcastplayer.models.Episode;
 import edu.franklin.androidpodcastplayer.models.Podcast;
 
 public class PodcastDetails extends ActionBarActivity 
 {
+	public static final String PODCAST_NAME = "podcastName";
 	private TableLayout episodeTable = null;
 	private ImageView view = null;
 	private TextView titleView = null;
 	private TextView authorView = null;
 	private TextView episodeCountView = null;
 	private PodcastData podcastData = new PodcastData(this);
+	private EpisodesData episodeData = new EpisodesData(this);
 	
 	protected void onCreate(Bundle savedInstanceState) 
 	{
@@ -36,16 +39,18 @@ public class PodcastDetails extends ActionBarActivity
 		titleView = (TextView)findViewById(R.id.podcastTitle);
 		authorView = (TextView)findViewById(R.id.podcastAuthor);
 		episodeCountView = (TextView)findViewById(R.id.podcastEpisodes);
+		episodeData.open();
 		podcastData.open();
 		//grab a podcast and see if we can load it?
 		Podcast podcast = podcastData.retrievePodcastByName("Coder Radio MP3");
 		setPodcast(podcast);
 	}
 	
-	protected void onDestroy()
+	protected void onStop()
 	{
 		podcastData.close();
-		super.onDestroy();
+		episodeData.close();
+		super.onStop();
 	}
 
 	public boolean onCreateOptionsMenu(Menu menu) 
@@ -93,7 +98,7 @@ public class PodcastDetails extends ActionBarActivity
 			//now make rows for each of the episodes
 			for(Episode e : podcast.getEpisodes())
 			{
-				EpisodeRow row = new EpisodeRow(this, e);
+				EpisodeRow row = new EpisodeRow(this, e, podcast, episodeData);
 				episodeTable.addView(row);
 			}
 		}

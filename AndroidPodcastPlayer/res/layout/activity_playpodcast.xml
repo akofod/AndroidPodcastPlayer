@@ -1,12 +1,11 @@
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-   xmlns:tools="http://schemas.android.com/tools"
+<RelativeLayout xmlns:tools="http://schemas.android.com/tools"
    android:layout_width="match_parent"
    android:layout_height="match_parent"
    android:paddingBottom="@dimen/activity_vertical_margin"
    android:paddingLeft="@dimen/activity_horizontal_margin"
    android:paddingRight="@dimen/activity_horizontal_margin"
    android:paddingTop="@dimen/activity_vertical_margin"
-   tools:context="edu.franklin.androidpodcastplayer.PlayPodcastActivity" >
+   tools:context="edu.franklin.androidpodcastplayer.PlayPodcastActivity" xmlns:android="http://schemas.android.com/apk/res/android">
     
      <TextView
          android:id="@+id/textViewNowPlaying"
@@ -14,23 +13,17 @@
          android:layout_height="wrap_content"
          android:layout_alignLeft="@+id/imageViewAlbumArt"
          android:text="@string/now_playing"
-         android:textAppearance="?android:attr/textAppearanceMedium" />
+         android:textSize="12sp"
+          />
      
      <SeekBar
-       android:id="@+id/seekVolume"
-       android:layout_width="match_parent"
-       android:layout_height="wrap_content"
-       android:layout_alignLeft="@+id/imageViewAlbumArt"
-       android:layout_alignTop="@+id/imageViewAlbumArt" />
-     
-     <ImageView
-         android:id="@+id/imageViewAlbumArt"
+         android:id="@+id/seekVolume"
          android:layout_width="match_parent"
-         android:layout_height="match_parent"
-         android:layout_alignParentLeft="true"
-         android:layout_below="@+id/textViewNowPlaying"
-         android:contentDescription="@string/album_art_image"
-         android:src="@drawable/ic_launcher" />
+         android:layout_height="wrap_content"
+         android:layout_alignLeft="@+id/imageViewAlbumArt"
+         android:layout_alignTop="@id/textViewNowPlaying"
+         android:layout_marginBottom="15dp"
+         android:layout_marginTop="15dp" />
      
      <TextView
        android:id="@+id/textViewTimeElapsed"
@@ -39,15 +32,28 @@
        android:layout_alignRight="@+id/imageButtonRewind"
        android:layout_alignTop="@+id/seekBarTimer"
        android:text="@string/inital_time"
+       android:textSize="10sp"
        android:textAppearance="?android:attr/textAppearanceSmall" />
      
+     <ImageView
+         android:id="@+id/imageViewAlbumArt"
+         android:layout_width="match_parent"
+         android:layout_height="wrap_content"
+         android:layout_above="@id/seekBarTimer"
+         android:layout_alignParentLeft="true"
+         android:layout_below="@+id/seekVolume"
+         android:contentDescription="@string/album_art_image"
+         android:src="@drawable/ic_launcher" />
+     
 	<SeekBar
-       android:id="@+id/seekBarTimer"
-       android:layout_width="match_parent"
-       android:layout_height="wrap_content"
-       android:layout_above="@+id/imageButtonRewind"
-       android:layout_toLeftOf="@+id/textViewIOverall"
-       android:layout_toRightOf="@+id/textViewTimeElapsed" />
+	    android:id="@+id/seekBarTimer"
+	    android:layout_width="match_parent"
+	    android:layout_height="wrap_content"
+	    android:layout_above="@+id/imageButtonRewind"
+	    android:layout_marginBottom="15dp"
+	    android:layout_marginTop="15dp"
+	    android:layout_toLeftOf="@+id/textViewIOverall"
+	    android:layout_toRightOf="@+id/textViewTimeElapsed" />
 	
 	<TextView
 	    android:id="@+id/textViewIOverall"
@@ -56,6 +62,7 @@
 	    android:layout_alignLeft="@+id/imageButtonForward"
 	    android:layout_alignTop="@+id/seekBarTimer"
 	    android:text="@string/inital_time"
+	    android:textSize="10sp"
 	    android:textAppearance="?android:attr/textAppearanceSmall" />
     
    <ImageButton
@@ -68,17 +75,6 @@
        android:onClick="rewind"
        android:src="@android:drawable/ic_media_rew"
        android:contentDescription="@string/rewind_button_image" />
-   
-    <ImageButton
-        android:id="@+id/imageButtonPlayPause"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignBottom="@+id/imageViewAlbumArt"
-        android:layout_below="@+id/seekBarTimer"
-        android:layout_centerHorizontal="true"
-        android:contentDescription="@string/play_pause_button_image"
-        android:onClick="MediaControl"
-        android:src="@drawable/ic_media_play" />
     
    <ImageButton
        android:id="@+id/imageButtonForward"
@@ -89,5 +85,15 @@
        android:onClick="forward"
        android:src="@android:drawable/ic_media_ff"
        android:contentDescription="@string/forward_button_image" />
+
+   <ImageButton
+       android:id="@+id/imageButtonPlayPause"
+       android:layout_width="wrap_content"
+       android:layout_height="wrap_content"
+       android:layout_below="@+id/textViewIOverall"
+       android:layout_centerHorizontal="true"
+       android:contentDescription="@string/play_pause_button_image"
+       android:onClick="MediaControl"
+       android:src="@drawable/ic_media_play" />
    
 </RelativeLayout>

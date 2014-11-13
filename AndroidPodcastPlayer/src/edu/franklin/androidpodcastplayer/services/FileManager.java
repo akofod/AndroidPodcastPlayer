@@ -184,10 +184,8 @@ public class FileManager
 		}
 		if(filename != null)
 		{
-			Log.d("FM", "Getting absoluteFilePath for " + dirname + " and " + filename + " + is returning " + directory.getAbsolutePath() + "/" + filename);
 			return directory.getAbsolutePath() + "/" + filename;
 		}
-		Log.d("FM", "Getting absoluteFilePath for " + dirname + " + is returning " + directory.getAbsoluteFile());
 		return directory.getAbsolutePath();
 	}
 	

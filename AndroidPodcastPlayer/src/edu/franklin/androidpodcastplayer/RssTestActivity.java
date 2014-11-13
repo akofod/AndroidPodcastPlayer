@@ -26,6 +26,7 @@ import edu.franklin.androidpodcastplayer.data.ConfigData;
 import edu.franklin.androidpodcastplayer.data.EpisodesData;
 import edu.franklin.androidpodcastplayer.data.PodcastData;
 import edu.franklin.androidpodcastplayer.models.Channel;
+import edu.franklin.androidpodcastplayer.models.Enclosure;
 import edu.franklin.androidpodcastplayer.models.Episode;
 import edu.franklin.androidpodcastplayer.models.Image;
 import edu.franklin.androidpodcastplayer.models.Item;
@@ -37,7 +38,6 @@ import edu.franklin.androidpodcastplayer.services.FileManager;
 public class RssTestActivity extends ActionBarActivity 
 {
 	//the top level folder for the subscriptions
-	private static final String PODCASTS = "podcast_subscriptions";
 	private Context context = this;
 	//we are going to ignore the config stuff for now...but a real
 	//subscription would want to be able to set user preferences
@@ -99,10 +99,10 @@ public class RssTestActivity extends ActionBarActivity
 			Resources resources = getResources();
 			//the ids we want to fetch
 			int[] rawFeeds = new int[]{
-				R.raw.androd_dev_backstage_rss,
-				R.raw.coder_radio_rss,
-				R.raw.java_posse_rss,
-				R.raw.technophilia_rss
+//				R.raw.androd_dev_backstage_rss,
+				R.raw.coder_radio_rss
+//				R.raw.java_posse_rss,
+//				R.raw.technophilia_rss
 			};
 			//now go over the feed ids and initialize an Rss object from the xml
 			for(int id : rawFeeds)
@@ -126,7 +126,7 @@ public class RssTestActivity extends ActionBarActivity
 		Channel channel = rss.getChannel();
 		Image image = channel.getImage();
 		String podcastTitle = channel.getTitle();
-		String podcastHomeDir = getPodcastDirectory(podcastTitle);
+		String podcastHomeDir = Podcast.getPodcastDirectory(podcastTitle);
 		Podcast pc = new Podcast();
 		//fetch the actual image from the webs
 		if(image != null)
@@ -156,17 +156,35 @@ public class RssTestActivity extends ActionBarActivity
 		{
 			Toast.makeText(getApplicationContext(), podcastTitle + " is in the database!", Toast.LENGTH_SHORT).show();
 			//the podcast is in the db...add in the episode info
+			int index = 0;
 			for(Item item : channel.getItemList())
 			{
 				Episode e = new Episode();
 				e.setPodcastId(pc.getPodcastId());
 				e.setCompleted(false);
-				//we haven't downloaded it yet
-				e.setFilepath("");
+				
 				//item objects don't have images
 				e.setImage("");
 				e.setName(item.getTitle());
-				e.setUrl(item.getLink());
+				String link = item.getLink();
+				//if there is an enclosure, use that for the url
+				if(item.getEnclosure() != null)
+				{
+					Enclosure enc = item.getEnclosure();
+					link = enc.getUrl().length() > 0 ? enc.getUrl() : link;
+				}
+				e.setUrl(link);
+				if(index++ == 0 && link.length() > 0)
+				{
+					String eName = link.substring(link.lastIndexOf("/") + 1);
+					downloadFile(podcastHomeDir, eName, link);
+					e.setFilepath(fileManager.getAbsoluteFilePath(podcastHomeDir, eName));
+				}
+				else
+				{
+					//we haven't downloaded it yet
+					e.setFilepath("");
+				}
 				e.setNewEpisode(true);
 				e.setPlayedTime(0);
 				//Use the duration if it was provided by the file.
@@ -193,6 +211,7 @@ public class RssTestActivity extends ActionBarActivity
 	
 	public void downloadFile(String dir, String file, String url)
 	{
+		Log.d("Rss------", "Downloading " + dir + ":" + file + " located at : " + url);
 		Uri uri = Uri.parse(url);
 		Request request = new Request(uri);
         Long queuedId = Long.valueOf(dm.enqueue(request));
@@ -247,11 +266,6 @@ public class RssTestActivity extends ActionBarActivity
 		}
 	}
 	
-	private String getPodcastDirectory(String dir)
-	{
-		return PODCASTS + "/" + dir;
-	}
-	
 	private void showDownloadStatus(String filename, boolean success)
 	{
 		Toast.makeText(getApplicationContext(), success ? 
@@ -268,52 +282,45 @@ public class RssTestActivity extends ActionBarActivity
 			String action = intent.getAction();
 			Log.d("Rss Sub Download", "Got back an action " + action);
             if (DownloadManager.ACTION_DOWNLOAD_COMPLETE.equals(action)) {
-                long downloadId = intent.getLongExtra(
-                        DownloadManager.EXTRA_DOWNLOAD_ID, 0);
-                Query query = new Query();
-                long[] idArray = new long[downloadMap.size()];
-                int index = 0;
-                for(Long idLong : downloadMap.keySet())
+                long downloadId = intent.getLongExtra(DownloadManager.EXTRA_DOWNLOAD_ID, 0);
+                if(downloadMap.get(Long.valueOf(downloadId)) == null)
                 {
-                	idArray[index++] = idLong.longValue();
+                	return;
                 }
-                query.setFilterById(idArray);
+                Query query = new Query();
+                query.setFilterById(downloadId);
                 Cursor c = dm.query(query);
                 //anything to look at?
                 if(c.getCount() > 0)
                 {
                 	//set initial cursor spot
                 	c.moveToFirst();
-                	do
-                	{
-                		int statusIndex = c.getColumnIndex(DownloadManager.COLUMN_STATUS);
-                        int status = c.getInt(statusIndex);
-                        int fileLocationIndex = c.getColumnIndex(DownloadManager.COLUMN_LOCAL_FILENAME);
-                        String fileLocation = c.getString(fileLocationIndex);
-                        Log.d("Rss Sub Download", "Status of " + fileLocation + " is " + status);
-                        if (DownloadManager.STATUS_SUCCESSFUL == status) 
-                        {
-                        	String fileInfo = downloadMap.get(Long.valueOf(downloadId));
-                        	if(fileInfo != null)
-                        	{
-                        		String[] tokens = fileInfo.split(":");
-                        		String dir = tokens[0];
-                        		String file = tokens[1];
-                        		//put the downloaded file into our storage
-                        		boolean moved = fileManager.moveFile(fileLocation, dir, file);
-                        		Log.d("Rss Sub Download", 
-                        				fileLocation + " moved to " + 
-                						fileManager.getAbsoluteFilePath(dir, file) + " = " + moved);
-                        		//remove this entry from the ones we are waiting on...it is done
-                            	downloadMap.remove(downloadId);
-                            	showDownloadStatus(file, moved);
-                            	//either way, remove the file from the download manager because
-                            	//it is done.
-                            	dm.remove(downloadId);
-                        	}
-                        }
-                	}
-                	while(c.moveToNext());
+            		int statusIndex = c.getColumnIndex(DownloadManager.COLUMN_STATUS);
+                    int status = c.getInt(statusIndex);
+                    int fileLocationIndex = c.getColumnIndex(DownloadManager.COLUMN_LOCAL_FILENAME);
+                    String fileLocation = c.getString(fileLocationIndex);
+                    Log.d("Rss Sub Download", "Status of " + fileLocation + " is " + status);
+                    if (DownloadManager.STATUS_SUCCESSFUL == status) 
+                    {
+                    	String fileInfo = downloadMap.get(Long.valueOf(downloadId));
+                    	if(fileInfo != null)
+                    	{
+                    		String[] tokens = fileInfo.split(":");
+                    		String dir = tokens[0];
+                    		String file = tokens[1];
+                    		//put the downloaded file into our storage
+                    		boolean moved = fileManager.moveFile(fileLocation, dir, file);
+                    		Log.d("Rss Sub Download", 
+                    				fileLocation + " moved to " + 
+            						fileManager.getAbsoluteFilePath(dir, file) + " = " + moved);
+                    		//remove this entry from the ones we are waiting on...it is done
+                        	downloadMap.remove(downloadId);
+                        	showDownloadStatus(file, moved);
+                        	//either way, remove the file from the download manager because
+                        	//it is done.
+                        	dm.remove(downloadId);
+                    	}
+                    }
                 }
                 else
                 {

@@ -114,7 +114,23 @@ public class PodcastData {
 		if(cursor.getCount() > 0){
 			cursor.moveToFirst();
 			podcast = cursorToPodcast(cursor);
-			Log.d("PodcastData", "Found matching podcast for " + podcastName);
+		}
+		
+		cursor.close();
+		
+		return podcast;
+	}
+	
+	public Podcast getPodcastById(Long id)
+	{
+		Podcast podcast = null;
+		SQLiteDatabase readDB = dbHelper.getReadableDatabase();
+		Cursor cursor = readDB.query(DatabaseHelper.TABLE_PODCAST, allColumns, 
+					DatabaseHelper.PODCAST_COLUMN_PODCASTID + " = " + id.longValue(), 
+					null, null, null, null);
+		if(cursor.getCount() > 0){
+			cursor.moveToFirst();
+			podcast = cursorToPodcast(cursor);
 		}
 		
 		cursor.close();
@@ -156,5 +172,4 @@ public class PodcastData {
 		
 		return podcast;
 	}
-	
 }
