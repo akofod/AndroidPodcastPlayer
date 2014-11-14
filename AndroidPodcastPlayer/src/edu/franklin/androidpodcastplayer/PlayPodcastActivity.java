@@ -50,29 +50,35 @@ public class PlayPodcastActivity extends ActionBarActivity
 	private ImageView albumView = null;
 	
 	// Timers
-	private long currentTime;
-	private long overallTime;
+	private long currentTime = 0;
+	private long overallTime = 0;
+	private boolean episodeLoaded = false;
+	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) 
 	{
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_playpodcast);
 		setControls();
-		podcastId = getIntent().getExtras().getLong("ID");
-		episodeName = getIntent().getExtras().getString("NAME");
-		Log.i("Player", "Loading media player with podcastID " + podcastId + " and episode name " + episodeName);
-		getMediaInfo(podcastId, episodeName);
+		if(getIntent().getExtras() != null)
+		{
+			podcastId = getIntent().getExtras().getLong("ID");
+			episodeName = getIntent().getExtras().getString("NAME");
+			Log.i("Player", "Loading media player with podcastID " + podcastId + " and episode name " + episodeName);
+			getMediaInfo(podcastId, episodeName);	
+			setTimeControl();
+			setVolumeControl();
+			appHandler.postDelayed(UpdateProgress, 250);
+		}
 		
 		setTimerControl("CURRENT", currentTime);
 		setTimerControl("OVERALL", overallTime);
-		setTimeControl();
-		setVolumeControl();
-		
-		appHandler.postDelayed(UpdateProgress, 250);
 	}
 	
 	public void MediaControl(View view)
 	{
+		if(!episodeLoaded) return;
+		
 		if (mediaPlayer.isPlaying())
 		{
 			mediaPlayer.pause();
@@ -92,6 +98,8 @@ public class PlayPodcastActivity extends ActionBarActivity
 	 */
 	public void rewind(View view)
 	{
+		if(!episodeLoaded) return;
+		
 		if (mediaPlayer.getCurrentPosition() - rewindTime < 0)
 		{
 			mediaPlayer.seekTo(0);
@@ -109,6 +117,8 @@ public class PlayPodcastActivity extends ActionBarActivity
 	 */
 	public void forward(View view)
 	{
+		if(!episodeLoaded) return;
+		
 		mediaPlayer.seekTo(mediaPlayer.getCurrentPosition() + forwardTime);
 	}
 	
@@ -187,7 +197,7 @@ public class PlayPodcastActivity extends ActionBarActivity
 			@Override
 			public void onStopTrackingTouch(SeekBar seekBar) 
 			{
-				mediaPlayer.seekTo(timeElapsedControl.getProgress());
+				if(episodeLoaded) mediaPlayer.seekTo(timeElapsedControl.getProgress());
 			}
 
 			@Override
@@ -220,6 +230,7 @@ public class PlayPodcastActivity extends ActionBarActivity
 		Log.i("Player", "Fetching episode using " + id + ":" + name + " and got back " + episode);
 		PodcastData podcastData = new PodcastData(getApplicationContext());
 		Podcast podcast = podcastData.getPodcastById(id);
+		episodeLoaded = episode != null;
 		//set the image for the podcast if we have it
 		String imagePath = podcast.getImage();
 		//load the image using an image loader
