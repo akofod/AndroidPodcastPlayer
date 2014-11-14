@@ -49,8 +49,8 @@ public class PodcastDetails extends ActionBarActivity
 	
 	protected void onStop()
 	{
-		podcastData.close();
-		episodeData.close();
+		//podcastData.close();
+		//episodeData.close();
 		super.onStop();
 	}
 

@@ -9,10 +9,13 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.database.Cursor;
+import android.graphics.Point;
 import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Display;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
@@ -39,6 +42,10 @@ public class EpisodeRow extends TableRow
 	private FileManager fileManager = null;
 	private long downloadId = 0L;
 	
+	//Screen dimensions for more exact positioning
+	private int screenHeight;
+	private int screenWidth;
+	
 	public EpisodeRow(Context context, Episode e, Podcast pc, EpisodesData data) 
 	{
 		super(context);
@@ -47,9 +54,16 @@ public class EpisodeRow extends TableRow
 		this.podcast = pc;
 		this.data = data;
 		
+		WindowManager wm = (WindowManager) context.getSystemService(Context.WINDOW_SERVICE);
+		Display display = wm.getDefaultDisplay();
+		Point size = new Point();
+		display.getSize(size);
+		screenWidth = size.x;
+		screenHeight = size.y;
+		
 		//create the relative layout to hold the rest
 		RelativeLayout rl = new RelativeLayout(context);
-		rl.setLayoutParams(new LayoutParams(288, 30));
+		rl.setLayoutParams(new LayoutParams(screenWidth - 10, 50)); //TODO: CHANGED
 
 		titleView = new TextView(context);
 		titleView.setId(1);
@@ -63,10 +77,10 @@ public class EpisodeRow extends TableRow
 		durationView = new TextView(context);
 		durationView.setId(2);
 		durationView.setTextSize(8);
-		durationView.setPadding(0, 11, 0, 0);
+		durationView.setPadding(0, 11, 0, 10); //TODO: CHANGED
 		RelativeLayout.LayoutParams durationLayout = new RelativeLayout.LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT);
 		durationLayout.addRule(RelativeLayout.ALIGN_PARENT_LEFT, 1);
-		durationLayout.addRule(RelativeLayout.BELOW, 2);
+		durationLayout.addRule(RelativeLayout.ALIGN_PARENT_BOTTOM, 1); //TODO: CHANGED
 		rl.addView(durationView, durationLayout);
 		
 		button = new Button(context);
