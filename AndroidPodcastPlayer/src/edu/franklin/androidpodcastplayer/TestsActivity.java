@@ -47,6 +47,8 @@ public class TestsActivity extends ActionBarActivity {
 	
 	public void launchPodcastViewTest(View view) {
 		Intent intent = new Intent(this, PodcastDetails.class);
+		intent.putExtra("podcastName","Coder Radio MP3");
+
 		startActivity(intent);
 	}
 	

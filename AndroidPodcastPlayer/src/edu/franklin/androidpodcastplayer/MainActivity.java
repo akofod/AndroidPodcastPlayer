@@ -3,8 +3,6 @@ package edu.franklin.androidpodcastplayer;
 import java.io.File;
 import java.util.ArrayList;
 
-import com.squareup.picasso.Picasso;
-
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
@@ -13,11 +11,16 @@ import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.view.View.OnClickListener;
 import android.view.ViewGroup.LayoutParams;
 import android.widget.ImageView;
 import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
+
+import com.squareup.picasso.Picasso;
+
 import edu.franklin.androidpodcastplayer.data.ConfigData;
 import edu.franklin.androidpodcastplayer.data.EpisodesData;
 import edu.franklin.androidpodcastplayer.data.PodcastData;
@@ -42,9 +45,7 @@ public class MainActivity extends ActionBarActivity {
 		podcastData.open();
 		episodesData.open();
 		
-		podcasts = podcastData.getAllPodcasts();
-		System.out.println("Size: " + podcasts.size());
-		System.out.println("here" + podcasts.toString());
+		podcasts = podcastData.getAllPodcasts();		
 		if(podcasts.size()>0){
 			for(Podcast currentPodcast: podcasts){
 				String automaticallyDownload = currentPodcast.isAutoDownload()?"yes":"No";
@@ -136,6 +137,16 @@ public class MainActivity extends ActionBarActivity {
 		label_is_auto.setTextColor(Color.WHITE); // set the color
 		label_is_auto.setPadding(5, 5, 5, 0); // set the padding 
 		row.addView(label_is_auto); // add the column to the table row 
+		final String rowTitle = title;
+		final Intent intent = new Intent(this, PodcastDetails.class);
+		row.setOnClickListener(new OnClickListener() {				
+			@Override
+			public void onClick(View v) {
+				System.out.println("clicked " + rowTitle);	
+				intent.putExtra("podcastName",rowTitle);
+				startActivity(intent);
+			}
+		});
 		table1.addView(row);
 	}
 }

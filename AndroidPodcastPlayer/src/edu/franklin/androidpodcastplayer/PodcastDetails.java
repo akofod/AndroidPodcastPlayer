@@ -41,8 +41,9 @@ public class PodcastDetails extends ActionBarActivity
 		episodeCountView = (TextView)findViewById(R.id.podcastEpisodes);
 		episodeData.open();
 		podcastData.open();
-		//grab a podcast and see if we can load it?
-		Podcast podcast = podcastData.retrievePodcastByName("Coder Radio MP3");
+		//grab a podcast and load it. The name of the podcast is passed through the intent"
+		String podcastName = getIntent().getExtras().getString("podcastName");		
+		Podcast podcast = podcastData.retrievePodcastByName(podcastName);
 		setPodcast(podcast);
 	}
 	
