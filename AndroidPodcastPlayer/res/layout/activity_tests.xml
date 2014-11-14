@@ -31,9 +31,20 @@
         android:layout_height="wrap_content"
         android:layout_alignLeft="@+id/button1"
         android:layout_below="@+id/button1"
-        android:onClick="launchRepTest"
         android:layout_marginTop="34dp"
+        android:onClick="launchRepTest"
         android:text="Test Repository" />
+
+    <Button
+        android:id="@+id/buttonTestMain"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_below="@+id/buttonTestMedia"
+        android:layout_marginTop="34dp"
+        android:layout_toRightOf="@+id/button2"
+        android:onClick="launchMainTest"
+        android:text="TestMain" />
 
     <Button
         android:id="@+id/buttonFileManager"
@@ -44,7 +55,7 @@
         android:layout_toLeftOf="@+id/buttonTestMedia"
         android:onClick="launchFileManagerTest"
         android:text="Test FileManager" />
-    
+
     <Button
         android:id="@+id/buttonTestSettings"
         android:layout_width="wrap_content"
@@ -61,8 +72,8 @@
         android:layout_alignLeft="@+id/buttonFileManager"
         android:layout_below="@+id/buttonTestSettings"
         android:layout_marginTop="27dp"
-        android:onClick="launchPodcastViewTest"
         android:layout_toLeftOf="@+id/buttonTestMedia"
+        android:onClick="launchPodcastViewTest"
         android:text="Test View Podcast" />
 
 </RelativeLayout>
