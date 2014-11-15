@@ -2,6 +2,7 @@ package edu.franklin.androidpodcastplayer;
 
 import java.io.File;
 
+import android.R.attr;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
@@ -90,6 +91,18 @@ public class PodcastDetails extends ActionBarActivity
 			{
 				Picasso.with(this).load(new File(imagePath)).
 				resize(128, 128).centerCrop().into(view);
+			}
+			String podcastName = podcast.getName();
+			int length = podcastName.length();
+			//adjust the font if the name is a bit big
+			if(length > 20)
+			{
+				titleView.setTextSize(18);
+			}
+			//if it is way too big, truncate it
+			if(length > 30)
+			{
+				podcastName = podcastName.substring(0, 30) + "...";
 			}
 			//set the text views for this podcast
 			titleView.setText(podcast.getName());

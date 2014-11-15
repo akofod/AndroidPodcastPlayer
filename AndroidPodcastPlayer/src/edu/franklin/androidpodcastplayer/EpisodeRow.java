@@ -1,5 +1,8 @@
 package edu.franklin.androidpodcastplayer;
 
+import android.R.attr;
+import android.R.color;
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.app.DownloadManager;
 import android.app.DownloadManager.Query;
@@ -9,13 +12,11 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.database.Cursor;
-import android.graphics.Point;
+import android.graphics.Typeface;
 import android.net.Uri;
-import android.os.Bundle;
+import android.text.TextUtils.TruncateAt;
 import android.util.Log;
-import android.view.Display;
 import android.view.View;
-import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
@@ -46,7 +47,7 @@ public class EpisodeRow extends TableRow
 	private int screenHeight;
 	private int screenWidth;
 	
-	public EpisodeRow(Context context, Episode e, Podcast pc, EpisodesData data) 
+	@SuppressLint("NewApi") public EpisodeRow(Context context, Episode e, Podcast pc, EpisodesData data) 
 	{
 		super(context);
 		fileManager = new FileManager(context);
@@ -54,41 +55,15 @@ public class EpisodeRow extends TableRow
 		this.podcast = pc;
 		this.data = data;
 		
-		WindowManager wm = (WindowManager) context.getSystemService(Context.WINDOW_SERVICE);
-		Display display = wm.getDefaultDisplay();
-		Point size = new Point();
-		display.getSize(size);
-		screenWidth = size.x;
-		screenHeight = size.y;
-		
 		//create the relative layout to hold the rest
 		RelativeLayout rl = new RelativeLayout(context);
-		rl.setLayoutParams(new LayoutParams(screenWidth - 10, 50)); //TODO: CHANGED
-
-		titleView = new TextView(context);
-		titleView.setId(1);
-		titleView.setTextSize(10);
-		RelativeLayout.LayoutParams titleLayout = new RelativeLayout.LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT);
-		titleLayout.addRule(RelativeLayout.ALIGN_PARENT_LEFT, 1);
-		titleLayout.addRule(RelativeLayout.ALIGN_PARENT_RIGHT, 1);
-		titleLayout.addRule(RelativeLayout.ALIGN_PARENT_TOP, 1);
-		rl.addView(titleView, titleLayout);
-		
-		durationView = new TextView(context);
-		durationView.setId(2);
-		durationView.setTextSize(8);
-		durationView.setPadding(0, 11, 0, 10); //TODO: CHANGED
-		RelativeLayout.LayoutParams durationLayout = new RelativeLayout.LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT);
-		durationLayout.addRule(RelativeLayout.ALIGN_PARENT_LEFT, 1);
-		durationLayout.addRule(RelativeLayout.ALIGN_PARENT_BOTTOM, 1); //TODO: CHANGED
-		rl.addView(durationView, durationLayout);
+		rl.setLayoutParams(new LayoutParams(LayoutParams.WRAP_CONTENT, 50));
 		
 		button = new Button(context);
 		button.setId(3);
 		button.setTextSize(10);
-		RelativeLayout.LayoutParams buttonLayout = new RelativeLayout.LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT);
+		RelativeLayout.LayoutParams buttonLayout = new RelativeLayout.LayoutParams(LayoutParams.WRAP_CONTENT, 40);
 		buttonLayout.addRule(RelativeLayout.ALIGN_PARENT_RIGHT, 1);
-		buttonLayout.addRule(RelativeLayout.CENTER_VERTICAL, 1);
 		rl.addView(button, buttonLayout);
 		button.setOnClickListener(new OnClickListener()
 		{
@@ -97,12 +72,31 @@ public class EpisodeRow extends TableRow
 				handleEpisode(v);
 			}
 		});
+
+		titleView = new TextView(context);
+		titleView.setId(1);
+		titleView.setTextSize(12);
+		titleView.setEllipsize(TruncateAt.END);
+		titleView.setLines(2);
+		RelativeLayout.LayoutParams titleLayout = new RelativeLayout.LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT);
+		titleLayout.addRule(RelativeLayout.ALIGN_PARENT_LEFT, 1);
+		titleLayout.addRule(RelativeLayout.ALIGN_PARENT_TOP, 1);
+		titleLayout.addRule(RelativeLayout.LEFT_OF, 3);
+		rl.addView(titleView, titleLayout);
+		
+		durationView = new TextView(context);
+		durationView.setId(2);
+		durationView.setTextSize(10);
+		durationView.setPadding(0, 12, 0, 5); //TODO: CHANGED
+		RelativeLayout.LayoutParams durationLayout = new RelativeLayout.LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT);
+		durationLayout.addRule(RelativeLayout.ALIGN_PARENT_LEFT, 1);
+		durationLayout.addRule(RelativeLayout.ALIGN_PARENT_BOTTOM, 1); //TODO: CHANGED
+		rl.addView(durationView, durationLayout);
 		
 		downloadProgress = new ProgressBar(context);
 		downloadProgress.setId(4);
-		RelativeLayout.LayoutParams progressLayout = new RelativeLayout.LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT);
-		progressLayout.addRule(RelativeLayout.LEFT_OF, 3);
-		progressLayout.addRule(RelativeLayout.CENTER_VERTICAL, 1);
+		RelativeLayout.LayoutParams progressLayout = new RelativeLayout.LayoutParams(LayoutParams.WRAP_CONTENT, 40);
+		progressLayout.addRule(RelativeLayout.ALIGN_PARENT_RIGHT, 3);
 		//assume not visible unless we are actually downloading something
 		downloadProgress.setVisibility(INVISIBLE);
 		rl.addView(downloadProgress, progressLayout);
