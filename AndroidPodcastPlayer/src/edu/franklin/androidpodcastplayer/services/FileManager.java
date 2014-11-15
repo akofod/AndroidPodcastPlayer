@@ -159,9 +159,11 @@ public class FileManager
 			FileOutputStream outputStream = new FileOutputStream(dest);
 			int read;
 			//now copy the bytes
-			while((read = inputStream.read()) != -1)
+			//use a buffer, dummy.
+			byte[] data = new byte[2048];
+			while((read = inputStream.read(data)) != -1)
 			{
-				outputStream.write(read);
+				outputStream.write(data, 0, read);
 			}
 			//close em up
 			inputStream.close();
