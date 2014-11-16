@@ -1,14 +1,8 @@
 package edu.franklin.androidpodcastplayer;
 
-import java.io.BufferedInputStream;
 import java.io.BufferedReader;
 import java.io.IOException;
-import java.io.InputStream;
 import java.io.InputStreamReader;
-import java.net.HttpURLConnection;
-import java.net.MalformedURLException;
-import java.net.URL;
-import java.net.URLConnection;
 
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
@@ -18,14 +12,18 @@ import org.apache.http.client.methods.HttpGet;
 import org.apache.http.impl.client.DefaultHttpClient;
 import org.json.JSONArray;
 import org.json.JSONException;
+import org.json.JSONObject;
+
 import com.squareup.picasso.Picasso;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
+
+import android.app.AlertDialog;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.view.View.OnClickListener;
 import android.widget.ImageView;
 import android.widget.TableLayout;
 import android.widget.TableRow;
@@ -45,8 +43,13 @@ public class RepositoryActivity extends ActionBarActivity
 	// JSON Call to get top 4 tags
 	private final String jsonGetTop4Tags = 
 			"https://gpodder.net/api/2/tags/4.json";
+	// JSON Call to get top 50 podcasts
 	private final String jsonGetTop50 =
 			"https://gpodder.net/toplist/50.json";
+	// JSON Call to get Podcast Details
+	private String jsonGetDetails = 
+			"https://gpodder.net/api/2/data/podcast.json?url={url}";
+	
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -216,14 +219,107 @@ public class RepositoryActivity extends ActionBarActivity
 					tv.setText(result.getJSONObject(i).getString("title"));
 					newRow.addView(img);
 					newRow.addView(tv);
+					
+					// Store the URL in a hidden field
+					final String url= result.getJSONObject(i).getString("url");
+
+					newRow.setOnClickListener(new OnClickListener()
+							{
+								@Override
+								public void onClick(View v) 
+								{
+									new JSONGetDetails().execute(url);
+								}
+							});
 
 					tLayout.addView(newRow);
+					
 				} 
 				catch (JSONException e) 
 				{
 					e.printStackTrace();
 				} 
 			}
+		}
+	}
+	
+	private class JSONGetDetails extends AsyncTask<String, Void, JSONObject>
+	{
+
+		@Override
+		protected JSONObject doInBackground(String... params) 
+		{
+			StringBuffer sb = new StringBuffer();
+			String line = "";
+			int statusCode;
+			
+			jsonGetDetails = jsonGetDetails.replace("{url}", params[0]);
+			
+			httpClient = new DefaultHttpClient();
+			httpGet = new HttpGet(jsonGetDetails);
+			
+			try
+			{
+				httpResponse = httpClient.execute(httpGet);
+				statusCode = httpResponse.getStatusLine().getStatusCode();
+				if (statusCode == 200)
+				{
+					httpEntity = httpResponse.getEntity();
+					reader = new BufferedReader(new InputStreamReader(httpEntity.getContent()));
+					
+					while ((line = reader.readLine()) != null)
+					{
+						sb.append(line);
+					}
+					return new JSONObject(sb.toString());
+				}
+			}
+			catch (ClientProtocolException e) 
+			{
+				e.printStackTrace();
+			} 
+			catch (IOException e) 
+			{
+			      e.printStackTrace();
+			} 
+			catch (JSONException e) 
+			{
+				e.printStackTrace();
+			} 
+			
+			return null;
+		}
+	
+		@Override
+		protected void onPostExecute(JSONObject result)
+		{
+			StringBuffer sb = new StringBuffer();
+			try 
+			{	
+				// Get the Img URL
+				sb.append(result.getString("logo_url"));
+				sb.append("/n");
+				// Get The Pod Cast Title
+				sb.append(result.getString("title"));
+				sb.append("\n");
+				
+				// Get The Podcast Description
+				sb.append(result.getString("description"));
+				sb.append("\n");
+				
+				// Get the CUrrent Subscribers 
+				sb.append(result.getString("subscribers"));
+				sb.append("\n");
+				
+				AlertDialog.Builder ab = new AlertDialog.Builder(RepositoryActivity.this);
+				
+				ab.setMessage(sb.toString());
+				ab.show();
+			} 
+			catch (JSONException e) 
+			{
+				e.printStackTrace();
+			} 
 		}
 	}
 }
