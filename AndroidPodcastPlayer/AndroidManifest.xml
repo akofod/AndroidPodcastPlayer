@@ -45,6 +45,9 @@
             android:label="@string/title_activity_dsubscription_settings"
             android:theme="@style/CustomTheme" >
         </activity>
+        <activity
+            android:name=".UserSettingsActivity">
+        </activity>
 
         <service android:name="edu.franklin.androidpodcastplayer.services.DownloadService" >
         </service>

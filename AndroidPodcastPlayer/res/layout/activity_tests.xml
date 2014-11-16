@@ -76,4 +76,14 @@
         android:onClick="launchPodcastViewTest"
         android:text="Test View Podcast" />
 
+    <Button
+        android:id="@+id/buttonUserSettings"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/buttonTestPodcastView"
+        android:layout_alignParentBottom="true"
+        android:layout_marginLeft="22dp"
+        android:onClick="launchUserSettingsTest"
+        android:text="@string/btn_usr_settings" />
+
 </RelativeLayout>

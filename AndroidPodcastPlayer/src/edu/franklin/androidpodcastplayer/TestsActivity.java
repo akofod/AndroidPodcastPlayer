@@ -71,4 +71,9 @@ public class TestsActivity extends ActionBarActivity {
 		Intent intent = new Intent(this, MainActivity.class);
 		startActivity(intent);
 	}
+	
+	public void launchUserSettingsTest(View view) {
+		Intent intent = new Intent(this, UserSettingsActivity.class);
+		startActivity(intent);
+	}
 }
