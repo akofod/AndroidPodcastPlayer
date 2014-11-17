@@ -47,7 +47,7 @@ public class RepositoryActivity extends ActionBarActivity
 	private final String jsonGetTop50 =
 			"https://gpodder.net/toplist/50.json";
 	// JSON Call to get Podcast Details
-	private String jsonGetDetails = 
+	private final String jsonGetDetails = 
 			"https://gpodder.net/api/2/data/podcast.json?url={url}";
 	
 	
@@ -252,11 +252,13 @@ public class RepositoryActivity extends ActionBarActivity
 			StringBuffer sb = new StringBuffer();
 			String line = "";
 			int statusCode;
+			String jsonDetails;
 			
-			jsonGetDetails = jsonGetDetails.replace("{url}", params[0]);
+			
+			jsonDetails = jsonGetDetails.replace("{url}", params[0]);
 			
 			httpClient = new DefaultHttpClient();
-			httpGet = new HttpGet(jsonGetDetails);
+			httpGet = new HttpGet(jsonDetails);
 			
 			try
 			{
