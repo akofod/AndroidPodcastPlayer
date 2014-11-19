@@ -11,18 +11,19 @@
 
     <EditText
         android:id="@+id/editTextSearch"
+        android:textColor="@color/white"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_marginLeft="27dp"
-        android:layout_toRightOf="@+id/textViewSearch"
+        android:layout_toRightOf="@+id/btnSearch"
         android:ems="10" >
 
         <requestFocus />
     </EditText>
 
-    <TextView
-        android:id="@+id/textViewSearch"
+    <Button
+        android:id="@+id/btnSearch"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignBaseline="@+id/editTextSearch"
@@ -30,7 +31,8 @@
         android:layout_alignParentLeft="true"
         android:text="@string/search_lable"
         android:textColor="@color/white"
-        android:textSize="18sp" />
+        android:textSize="18sp"
+        android:onClick="search" />
 
     <TextView
         android:id="@+id/textViewTopHits"
@@ -41,7 +43,7 @@
         android:layout_marginTop="19dp"
         android:text="@string/top_tags"
         android:textColor="@color/white"
-        android:textSize="48sp" />
+        android:textSize="36sp" />
 
     <TextView
         android:id="@+id/textViewTop1"

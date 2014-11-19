@@ -24,6 +24,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TableLayout;
 import android.widget.TableRow;
@@ -39,6 +40,10 @@ public class RepositoryActivity extends ActionBarActivity
 	private BufferedReader reader;
 	
 	private TableLayout tLayout;
+	private EditText search;
+	private JSONArray currentPodcasts;
+	
+	private int currentIndex;
 	
 	// JSON Call to get top 4 tags
 	private final String jsonGetTop4Tags = 
@@ -49,19 +54,133 @@ public class RepositoryActivity extends ActionBarActivity
 	// JSON Call to get Podcast Details
 	private final String jsonGetDetails = 
 			"https://gpodder.net/api/2/data/podcast.json?url={url}";
+	private final String jsonSearch =
+			"https://gpodder.net/search.json?q={query}";
 	
+	
+	public void setCurrentPodcasts(JSONArray podcast)
+	{
+		currentPodcasts = podcast;
+	}
+	
+	public JSONArray getCurrentPodcasts()
+	{
+		return currentPodcasts;
+	}
 	
 	@Override
-	protected void onCreate(Bundle savedInstanceState) {
+	protected void onCreate(Bundle savedInstanceState) 
+	{
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_repository);
 		
 		tLayout = (TableLayout)findViewById(R.id.tableLayout);
+		currentIndex = 0;
 		
 		new JSONParseTopTags().execute();
-		new JSONParseTopFifty().execute();
+		new JSONParseTopPodcasts(RepositoryActivity.this).execute();
 	}
 
+	private void clearList()
+	{
+		tLayout.removeAllViews();
+		currentIndex = 0;
+	}
+	
+	private void addHasMore()
+	{
+		if (currentIndex < getCurrentPodcasts().length())
+		{
+			TableRow newRow = new TableRow(RepositoryActivity.this);
+			TextView text = new TextView(RepositoryActivity.this);
+			text.setText("Click for More");
+			text.setTextColor(-1);
+			newRow.addView(text);
+			tLayout.addView(newRow);
+		}
+	}
+	
+	private void populateList(JSONArray result)
+	{
+		TableRow newRow;
+		TextView tv;
+		ImageView img;
+		
+		int endIndex = currentIndex + 10;
+		
+		if (endIndex > result.length())
+		{
+			endIndex = result.length();
+		}
+		
+		for(int i = currentIndex; i < endIndex; i++)
+		{
+			try 
+			{
+				newRow = new TableRow(RepositoryActivity.this);
+				img = new ImageView(RepositoryActivity.this);
+				tv = new TextView(RepositoryActivity.this);
+				
+				// Set up Image View for Album Art
+				Picasso.with(RepositoryActivity.this)
+					.load(result.getJSONObject(i).getString("logo_url"))
+					.resize(100, 100)
+					.into(img);
+									
+				// Set up Text View for Title
+				tv = new TextView(RepositoryActivity.this);
+				tv.setTextColor(-1);
+				tv.setText(result.getJSONObject(i).getString("title"));
+				newRow.addView(img);
+				newRow.addView(tv);
+				
+				// Store the URL in a hidden field
+				final String url= result.getJSONObject(i).getString("url");
+
+				newRow.setOnClickListener(new OnClickListener()
+						{
+							@Override
+							public void onClick(View v) 
+							{
+								new JSONGetDetails().execute(url);
+							}
+						});
+
+				tLayout.addView(newRow);
+				
+			}
+			catch (JSONException e) 
+			{
+				e.printStackTrace();
+			} 
+		}
+		if (endIndex < currentPodcasts.length())
+		{
+			currentIndex += 10;
+		}		
+	}
+	
+	private void populateTags()
+	{
+		TextView tv1 = (TextView)findViewById(R.id.textViewTop1);
+		TextView tv2 = (TextView)findViewById(R.id.textViewTop2);
+		TextView tv3 = (TextView)findViewById(R.id.textViewTop3);
+		TextView tv4 = (TextView)findViewById(R.id.textViewTop4);
+		
+		try
+		{
+			tv1.setText(currentPodcasts.getJSONObject(0).getString("tag"));
+			tv2.setText(currentPodcasts.getJSONObject(1).getString("tag"));
+			tv3.setText(currentPodcasts.getJSONObject(2).getString("tag"));
+			tv4.setText(currentPodcasts.getJSONObject(3).getString("tag"));
+			currentPodcasts = null;
+		}
+		catch (JSONException e)
+		{
+			e.printStackTrace();
+		}
+	}
+	
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 		// Inflate the menu; this adds items to the action bar if it is present.
@@ -69,6 +188,46 @@ public class RepositoryActivity extends ActionBarActivity
 		return true;
 	}
 
+	private JSONArray jsonConnect(String query)
+	{
+		StringBuffer sb = new StringBuffer();
+		String line = "";
+		int statusCode;
+		
+		httpClient = new DefaultHttpClient();
+		httpGet = new HttpGet(query);
+		
+		try
+		{
+			httpResponse = httpClient.execute(httpGet);
+			statusCode = httpResponse.getStatusLine().getStatusCode();
+			if (statusCode == 200)
+			{
+				httpEntity = httpResponse.getEntity();
+				reader = new BufferedReader(new InputStreamReader(httpEntity.getContent()));
+				
+				while ((line = reader.readLine()) != null)
+				{
+					sb.append(line);
+				}
+				return new JSONArray(sb.toString()); 
+			}
+		}
+		catch (ClientProtocolException e) 
+		{
+			e.printStackTrace();
+		} 
+		catch (IOException e) 
+		{
+		      e.printStackTrace();
+		} 
+		catch (JSONException e) 
+		{
+			e.printStackTrace();
+		}
+		return null;
+	}
+	
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {
 		// Handle action bar item clicks here. The action bar will
@@ -81,166 +240,84 @@ public class RepositoryActivity extends ActionBarActivity
 		return super.onOptionsItemSelected(item);
 	}
 	
-	private class JSONParseTopTags extends AsyncTask<Void, Void, JSONArray>
-	{	
-		@Override
-		protected JSONArray doInBackground(Void... params) 
+	/**
+	 * Helper Class to perform a search of the repository
+	 * @author Alan Borlie
+	 *
+	 */
+	private class JSONSearch extends AsyncTask<String, Integer, Void>
+	{
+		private RepositoryActivity parent;
+		
+		public JSONSearch(RepositoryActivity activity) 
 		{
-			StringBuffer sb = new StringBuffer();
-			String line = "";
-			int statusCode;
+			this.parent = activity;
+		}
+		@Override
+		protected Void doInBackground(String... params) 
+		{
+			String jsonSearchString;
 			
-			httpClient = new DefaultHttpClient();
-			httpGet = new HttpGet(jsonGetTop4Tags);
-			
-			try
-			{
-				httpResponse = httpClient.execute(httpGet);
-				statusCode = httpResponse.getStatusLine().getStatusCode();
-				if (statusCode == 200)
-				{
-					httpEntity = httpResponse.getEntity();
-					reader = new BufferedReader(new InputStreamReader(httpEntity.getContent()));
-					
-					while ((line = reader.readLine()) != null)
-					{
-						sb.append(line);
-					}
-					return new JSONArray(sb.toString());
-				}
-			}
-			catch (ClientProtocolException e) 
-			{
-				e.printStackTrace();
-			} 
-			catch (IOException e) 
-			{
-			      e.printStackTrace();
-			} 
-			catch (JSONException e) 
-			{
-				e.printStackTrace();
-			} 
-			
+			jsonSearchString = jsonSearch.replace("{query}", params[0]);
+			parent.setCurrentPodcasts(jsonConnect(jsonSearchString));
+			publishProgress(0);
 			return null;
 		}
 		
 		@Override
-		protected void onPostExecute(JSONArray result)
-		{	
-			TextView tv1 = (TextView)findViewById(R.id.textViewTop1);
-			TextView tv2 = (TextView)findViewById(R.id.textViewTop2);
-			TextView tv3 = (TextView)findViewById(R.id.textViewTop3);
-			TextView tv4 = (TextView)findViewById(R.id.textViewTop4);
-			
-			try
-			{
-				tv1.setText(result.getJSONObject(0).getString("tag"));
-				tv2.setText(result.getJSONObject(1).getString("tag"));
-				tv3.setText(result.getJSONObject(2).getString("tag"));
-				tv4.setText(result.getJSONObject(3).getString("tag"));
-			}
-			catch (JSONException e)
-			{
-				e.printStackTrace();
-			}
+		protected void onProgressUpdate(Integer... notUsed)
+		{
+			clearList();
+			populateList(parent.getCurrentPodcasts());
 		}
-		
 	}
 	
-	private class JSONParseTopFifty extends AsyncTask<Void, Void, JSONArray>
+	public void search(View view)
+	{
+		search = (EditText)findViewById(R.id.editTextSearch);
+		new JSONSearch(RepositoryActivity.this).execute(search.getText().toString());
+	}
+	
+	private class JSONParseTopTags extends AsyncTask<Void, Integer, Integer>
 	{	
 		@Override
-		protected JSONArray doInBackground(Void... params) 
+		protected Integer doInBackground(Void... params) 
 		{
-			StringBuffer sb = new StringBuffer();
-			String line = "";
-			int statusCode;
-			
-			httpClient = new DefaultHttpClient();
-			httpGet = new HttpGet(jsonGetTop50);
-			
-			try
-			{
-				httpResponse = httpClient.execute(httpGet);
-				statusCode = httpResponse.getStatusLine().getStatusCode();
-				if (statusCode == 200)
-				{
-					httpEntity = httpResponse.getEntity();
-					reader = new BufferedReader(new InputStreamReader(httpEntity.getContent()));
-					
-					while ((line = reader.readLine()) != null)
-					{
-						sb.append(line);
-					}
-					return new JSONArray(sb.toString());
-				}
-			}
-			catch (ClientProtocolException e) 
-			{
-				e.printStackTrace();
-			} 
-			catch (IOException e) 
-			{
-			      e.printStackTrace();
-			} 
-			catch (JSONException e) 
-			{
-				e.printStackTrace();
-			} 
-			
+			currentPodcasts = jsonConnect(jsonGetTop4Tags);
+			publishProgress(0);
 			return null;
 		}
 		
 		@Override
-		protected void onPostExecute(JSONArray result)
+		protected void onProgressUpdate(Integer... notUsed)
 		{
-			TableRow newRow;
-			TextView tv;
-			ImageView img;
-			
-			for(int i = 0; i < result.length(); i++)
-			{
-				try 
-				{
-					newRow = new TableRow(RepositoryActivity.this);
-					img = new ImageView(RepositoryActivity.this);
-					tv = new TextView(RepositoryActivity.this);
-					
-					// Set up Image View for Album Art
-					Picasso.with(RepositoryActivity.this)
-						.load(result.getJSONObject(i).getString("logo_url"))
-						.resize(100, 100)
-						.into(img);
-										
-					// Set up Text View for Title
-					tv = new TextView(RepositoryActivity.this);
-					tv.setTextColor(-1);
-					tv.setText(result.getJSONObject(i).getString("title"));
-					newRow.addView(img);
-					newRow.addView(tv);
-					
-					// Store the URL in a hidden field
-					final String url= result.getJSONObject(i).getString("url");
-
-					newRow.setOnClickListener(new OnClickListener()
-							{
-								@Override
-								public void onClick(View v) 
-								{
-									new JSONGetDetails().execute(url);
-								}
-							});
-
-					tLayout.addView(newRow);
-					
-				} 
-				catch (JSONException e) 
-				{
-					e.printStackTrace();
-				} 
-			}
+			populateTags();
 		}
+	}
+	
+	private class JSONParseTopPodcasts extends AsyncTask<Void, Integer, Void>
+	{	
+		private RepositoryActivity parent;
+		public JSONParseTopPodcasts(RepositoryActivity activity) 
+		{
+			this.parent = activity;
+		}
+
+		@Override
+		protected Void doInBackground(Void... params) 
+		{
+			parent.setCurrentPodcasts(jsonConnect(jsonGetTop50));
+			//currentPodcasts = jsonConnect(jsonGetTop50);
+			publishProgress(0);
+			return null;
+		}
+		
+		@Override
+		protected void onProgressUpdate(Integer... notUsed)
+		{
+			populateList(parent.getCurrentPodcasts());
+		}
+
 	}
 	
 	private class JSONGetDetails extends AsyncTask<String, Void, JSONObject>
