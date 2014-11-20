@@ -16,7 +16,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
 	// Database Version,
 	//bump the version because we altered the episodes table
-	private static final int DATABASE_VERSION = 2;
+	//added podcast info table for repo related stuff
+	private static final int DATABASE_VERSION = 3;
 	// Database Name
 	private static final String DATABASE_NAME = "PodcastPlayer.db";
 
@@ -32,6 +33,14 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 	public static final String PODCAST_COLUMN_OLDESTFIRST = "oldestFirst";
 	public static final String PODCAST_COLUMN_AUTODOWNLOAD = "autoDownload";
 	public static final String PODCAST_COLUMN_AUTODELETE = "autoDelete";
+	
+	public static final String TABLE_PODCAST_INFO = "podcast_info";
+	public static final String PC_INFO_ID = "pcId";
+	public static final String PC_INFO_NAME = "name";
+	public static final String PC_INFO_DESCRIPTION = "description";
+	public static final String PC_INFO_URL = "url";
+	public static final String PC_INFO_IMAGE_URL = "image_url";
+	public static final String PC_INFO_POSITION = "position";
 
 	public static final String TABLE_EPISODES = "episodes";
 	public static final String EPISODES_COLUMN_EPISODEID = "episodeId";
@@ -55,6 +64,9 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 	private static final String CREATE_TABLE_PODCAST = "CREATE TABLE podcast(podcastId INTEGER PRIMARY KEY AUTOINCREMENT, name TEXT, " +
 			"description TEXT, image TEXT, numEpisodes INTEGER, feedUrl TEXT, dir TEXT, oldestFirst INTEGER, autoDownload INTEGER, " +
 			"autoDelete INTEGER)";
+	//podcast info
+	private static final String CREATE_TABLE_PC_INFO = "CREATE TABLE podcast_info(pcId INTEGER PRIMARY KEY AUTOINCREMENT, name TEXT," +
+			"description TEXT, url TEXT, image_url TEXT, position INTEGER)";
 	// episodes table create statement
 	private static final String CREATE_TABLE_EPISODES = "CREATE TABLE episodes(episodeId INTEGER PRIMARY KEY AUTOINCREMENT, " +
 			"podcastId INTEGER, name TEXT, url TEXT, filepath TEXT, image TEXT, totalTime INTEGER, playedTime INTEGER, newEpisode INTEGER, " +
@@ -76,6 +88,9 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 		// creating required tables
 		db.execSQL(CREATE_TABLE_PODCAST);
 		Log.d(LOG, CREATE_TABLE_PODCAST);
+		
+		db.execSQL(CREATE_TABLE_PC_INFO);
+		Log.d(LOG, CREATE_TABLE_PC_INFO);
 
 		db.execSQL(CREATE_TABLE_EPISODES);
 		Log.d(LOG, CREATE_TABLE_EPISODES);
@@ -91,6 +106,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 	public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
 		// on upgrade drop older tables
 		db.execSQL("DROP TABLE IF EXISTS podcast");
+		db.execSQL("DROP TABLE IF EXISTS podcast_info");
 		db.execSQL("DROP TABLE IF EXISTS episodes");
 		db.execSQL("DROP TABLE IF EXISTS config");
 		onCreate(db);

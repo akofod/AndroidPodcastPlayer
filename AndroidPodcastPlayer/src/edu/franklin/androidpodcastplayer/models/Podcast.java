@@ -5,6 +5,8 @@ import java.util.ArrayList;
 public class Podcast {
 	
 	public static final String PODCASTS = "podcast_subscriptions";
+	public static final String IMAGES = "images";
+	public static final String RSS = "rss_files";
 	private long podcastId;
 	private String name;
 	private String description;

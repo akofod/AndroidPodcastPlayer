@@ -118,9 +118,9 @@ public class RssTestActivity extends ActionBarActivity
 		if(image != null)
 		{
 			String imageName = image.getUrl().substring(image.getUrl().lastIndexOf("/") + 1);
-			downloadFile(podcastHomeDir, imageName, image.getUrl());
+			downloadFile(Podcast.IMAGES, imageName, image.getUrl());
 			Log.d("Raw Rss Sub", "Fetching an " + imageName + " at " + image.getUrl());
-			pc.setImage(fileManager.getAbsoluteFilePath(podcastHomeDir, imageName));
+			pc.setImage(fileManager.getAbsoluteFilePath(Podcast.IMAGES, imageName));
 		}
 		//or just make a dir for this podcast
 		else

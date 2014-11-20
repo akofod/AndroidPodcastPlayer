@@ -49,11 +49,6 @@
             android:name=".UserSettingsActivity">
         </activity>
 
-        <service android:name="edu.franklin.androidpodcastplayer.services.DownloadService" >
-        </service>
-        <service android:name="edu.franklin.androidpodcastplayer.services.FileManager" >
-        </service>
-
         <activity
             android:name=".RepositoryActivity"
             android:label="@string/title_activity_download" >
@@ -62,6 +57,10 @@
         <service android:name=".services.DownloadService" >
         </service>
         <service android:name=".services.FileManager" >
+        </service>
+        <service android:name=".services.RepositoryService" >
+        </service>
+        <service android:name=".services.SubscriptionService" >
         </service>
 
         <activity

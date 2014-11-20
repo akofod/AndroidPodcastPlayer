@@ -9,6 +9,7 @@ import android.graphics.Color;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -25,6 +26,8 @@ import edu.franklin.androidpodcastplayer.data.ConfigData;
 import edu.franklin.androidpodcastplayer.data.EpisodesData;
 import edu.franklin.androidpodcastplayer.data.PodcastData;
 import edu.franklin.androidpodcastplayer.models.Podcast;
+import edu.franklin.androidpodcastplayer.services.DownloadService;
+import edu.franklin.androidpodcastplayer.services.RepositoryService;
 
 public class MainActivity extends ActionBarActivity {
 	TableLayout table1;
@@ -38,6 +41,23 @@ public class MainActivity extends ActionBarActivity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
+		final Class rs = RepositoryService.class;
+		final Context context = this;
+		Runnable runnable = new Runnable()
+		{
+			public void run()
+			{
+				//fetch the top tags
+				Log.i("Main", "Creating Intent");
+				Intent repoIntent = new Intent(context, rs);
+				Log.i("Main", "Starting Intent");
+				startService(repoIntent);
+				Log.i("Main", "Moving on");
+			}
+		};
+		Thread t = new Thread(runnable);
+		t.start();
+		
 		table1 = (TableLayout) findViewById(R.id.table1);
 		this.addRow("header", "Title", "Saved","Auto", 2);
 	
