@@ -63,7 +63,6 @@ public class RepositoryService extends IntentService
 					info.setPosition(i + 1);
 					//now load up the image
 					String imageName = info.getImageUrl().substring(info.getImageUrl().lastIndexOf("/") + 1);
-					String rssName = info.getUrl().substring(info.getUrl().lastIndexOf("/") + 1);
 					//fetch the image if we don't already have it
 					if(!fm.fileExists(Podcast.IMAGES, imageName) && info.getImageUrl() != null && !info.getImageUrl().equalsIgnoreCase("null"))
 					{
@@ -75,10 +74,10 @@ public class RepositoryService extends IntentService
 					{
 						Log.i("RepoService", "Skipping download of " + info.getName() + " image " + " url is " + info.getImageUrl());
 					}
-					if(!fm.fileExists(Podcast.RSS, rssName))
+					if(!fm.fileExists(Podcast.RSS, info.getName()))
 					{
 						DownloadFileTask dl = new DownloadFileTask(this);
-						dl.execute(info.getUrl(), Podcast.RSS, rssName);
+						dl.execute(info.getUrl(), Podcast.RSS, info.getName());
 						dl.get();
 					}
 					//persist the info data
