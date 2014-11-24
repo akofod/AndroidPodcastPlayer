@@ -3,6 +3,7 @@ package edu.franklin.androidpodcastplayer;
 import java.io.File;
 
 import android.R.attr;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
@@ -71,6 +72,10 @@ public class PodcastDetails extends ActionBarActivity
 		if (id == R.id.action_settings) 
 		{
 			return true;
+		}
+		if (id == R.id.action_home) {
+			Intent intent = new Intent(this, MainActivity.class);
+			startActivity(intent);
 		}
 		return super.onOptionsItemSelected(item);
 	}
