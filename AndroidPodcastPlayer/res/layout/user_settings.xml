@@ -19,7 +19,7 @@
         android:textAppearance="?android:attr/textAppearanceLarge" />
 
     <CheckBox
-        android:id="@+id/checkBox1"
+        android:id="@+id/chkSDcard"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignLeft="@+id/podcastTitle"
@@ -28,20 +28,32 @@
         android:text="@string/ext_storage" />
 
     <CheckBox
-        android:id="@+id/checkBox2"
+        android:id="@+id/chkWifi"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/checkBox1"
+        android:layout_alignLeft="@+id/chkSDcard"
         android:layout_centerVertical="true"
         android:text="@string/wifi_only" />
 
     <Button
-        android:id="@+id/button1"
+        android:id="@+id/btnSave"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/checkBox2"
-        android:layout_below="@+id/checkBox2"
-        android:layout_marginTop="44dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignRight="@+id/chkSDcard"
+        android:layout_marginBottom="81dp"
+        android:onClick="onClick_Update"
         android:text="@string/save_changes" />
+
+    <TextView
+        android:id="@+id/txtMsg"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/btnSave"
+        android:layout_alignLeft="@+id/btnSave"
+        android:layout_alignRight="@+id/chkWifi"
+        android:layout_marginBottom="17dp"
+        android:text="   "
+        android:textAppearance="?android:attr/textAppearanceMedium" />
 
 </RelativeLayout>

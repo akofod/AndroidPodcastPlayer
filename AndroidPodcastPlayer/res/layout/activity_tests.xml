@@ -9,7 +9,7 @@
     tools:context="edu.franklin.androidpodcastplayer.TestsActivity" >
 
     <Button
-        android:id="@+id/button1"
+        android:id="@+id/btnSave"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:onClick="launchRssTest"
@@ -19,8 +19,8 @@
         android:id="@+id/buttonTestMedia"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignBaseline="@+id/button1"
-        android:layout_alignBottom="@+id/button1"
+        android:layout_alignBaseline="@+id/btnSave"
+        android:layout_alignBottom="@+id/btnSave"
         android:layout_alignParentRight="true"
         android:onClick="launchMediaTest"
         android:text="@string/title_activity_media" />
@@ -29,8 +29,8 @@
         android:id="@+id/button2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/button1"
-        android:layout_below="@+id/button1"
+        android:layout_alignLeft="@+id/btnSave"
+        android:layout_below="@+id/btnSave"
         android:layout_marginTop="34dp"
         android:onClick="launchRepTest"
         android:text="Test Repository" />
