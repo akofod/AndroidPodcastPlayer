@@ -241,6 +241,10 @@ public class RepositoryActivity extends ActionBarActivity
 		if (id == R.id.action_settings) {
 			return true;
 		}
+		if (id == R.id.action_home) {
+			Intent intent = new Intent(this, MainActivity.class);
+			startActivity(intent);
+		}
 		return super.onOptionsItemSelected(item);
 	}
 	
