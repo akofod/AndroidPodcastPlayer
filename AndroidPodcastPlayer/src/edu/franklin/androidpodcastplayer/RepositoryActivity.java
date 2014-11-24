@@ -16,10 +16,15 @@ import org.json.JSONObject;
 
 import com.squareup.picasso.Picasso;
 
+import edu.franklin.androidpodcastplayer.models.Podcast;
+
 import android.app.AlertDialog;
+import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
+import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -45,9 +50,6 @@ public class RepositoryActivity extends ActionBarActivity
 	
 	private int currentIndex;
 	
-	// JSON Call to get top 4 tags
-	private final String jsonGetTop4Tags = 
-			"https://gpodder.net/api/2/tags/4.json";
 	// JSON Call to get top 50 podcasts
 	private final String jsonGetTop50 =
 			"https://gpodder.net/toplist/50.json";
@@ -77,7 +79,6 @@ public class RepositoryActivity extends ActionBarActivity
 		tLayout = (TableLayout)findViewById(R.id.tableLayout);
 		currentIndex = 0;
 		
-		new JSONParseTopTags().execute();
 		new JSONParseTopPodcasts(RepositoryActivity.this).execute();
 	}
 
@@ -91,13 +92,37 @@ public class RepositoryActivity extends ActionBarActivity
 	{
 		if (currentIndex < getCurrentPodcasts().length())
 		{
-			TableRow newRow = new TableRow(RepositoryActivity.this);
-			TextView text = new TextView(RepositoryActivity.this);
+			TableRow newRow = new TableRow(this);
+			TextView text = new TextView(this);
 			text.setText("Click for More");
 			text.setTextColor(-1);
 			newRow.addView(text);
 			tLayout.addView(newRow);
 		}
+	}
+	
+	public void manualEntry(View view)
+	{
+		AlertDialog.Builder ab = new AlertDialog.Builder(RepositoryActivity.this);
+		ab.setTitle("Enter URL");
+		ab.setMessage("Please Enter the URL for the RSS feed:");
+		
+		final EditText input = new EditText(this);
+		ab.setView(input);
+		ab.setPositiveButton("Subscribe", new DialogInterface.OnClickListener() {
+			public void onClick(DialogInterface dialog, int whichButton) {
+				  String value = input.getText().toString();
+				  // Parsing and subscription logic here
+				  }
+				});
+		
+		ab.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+			  public void onClick(DialogInterface dialog, int whichButton) {
+			    // Canceled.
+			  }
+			});
+
+			ab.show();
 	}
 	
 	private void populateList(JSONArray result)
@@ -158,27 +183,6 @@ public class RepositoryActivity extends ActionBarActivity
 		{
 			currentIndex += 10;
 		}		
-	}
-	
-	private void populateTags()
-	{
-		TextView tv1 = (TextView)findViewById(R.id.textViewTop1);
-		TextView tv2 = (TextView)findViewById(R.id.textViewTop2);
-		TextView tv3 = (TextView)findViewById(R.id.textViewTop3);
-		TextView tv4 = (TextView)findViewById(R.id.textViewTop4);
-		
-		try
-		{
-			tv1.setText(currentPodcasts.getJSONObject(0).getString("tag"));
-			tv2.setText(currentPodcasts.getJSONObject(1).getString("tag"));
-			tv3.setText(currentPodcasts.getJSONObject(2).getString("tag"));
-			tv4.setText(currentPodcasts.getJSONObject(3).getString("tag"));
-			currentPodcasts = null;
-		}
-		catch (JSONException e)
-		{
-			e.printStackTrace();
-		}
 	}
 	
 	@Override
@@ -278,23 +282,6 @@ public class RepositoryActivity extends ActionBarActivity
 		new JSONSearch(RepositoryActivity.this).execute(search.getText().toString());
 	}
 	
-	private class JSONParseTopTags extends AsyncTask<Void, Integer, Integer>
-	{	
-		@Override
-		protected Integer doInBackground(Void... params) 
-		{
-			currentPodcasts = jsonConnect(jsonGetTop4Tags);
-			publishProgress(0);
-			return null;
-		}
-		
-		@Override
-		protected void onProgressUpdate(Integer... notUsed)
-		{
-			populateTags();
-		}
-	}
-	
 	private class JSONParseTopPodcasts extends AsyncTask<Void, Integer, Void>
 	{	
 		private RepositoryActivity parent;
@@ -372,28 +359,32 @@ public class RepositoryActivity extends ActionBarActivity
 		@Override
 		protected void onPostExecute(JSONObject result)
 		{
-			StringBuffer sb = new StringBuffer();
+			AlertDialog.Builder ab = new AlertDialog.Builder(RepositoryActivity.this);
+			StringBuilder sb =  new StringBuilder();
 			try 
-			{	
-				// Get the Img URL
-				sb.append(result.getString("logo_url"));
-				sb.append("/n");
-				// Get The Pod Cast Title
+			{
 				sb.append(result.getString("title"));
-				sb.append("\n");
-				
-				// Get The Podcast Description
+				sb.append("\n\n");
 				sb.append(result.getString("description"));
-				sb.append("\n");
 				
-				// Get the CUrrent Subscribers 
-				sb.append(result.getString("subscribers"));
-				sb.append("\n");
+				TextView content = new TextView(RepositoryActivity.this);
+				content.setText(sb.toString());
+				ab.setView(content);
 				
-				AlertDialog.Builder ab = new AlertDialog.Builder(RepositoryActivity.this);
+				ab.setPositiveButton("Subscribe", new DialogInterface.OnClickListener() {
+					public void onClick(DialogInterface dialog, int whichButton) {
+						  // Parsing and subscription logic here
+						  }
+						});
 				
-				ab.setMessage(sb.toString());
+				ab.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+					  public void onClick(DialogInterface dialog, int whichButton) {
+					    // Canceled.
+					  }
+					});
+
 				ab.show();
+				
 			} 
 			catch (JSONException e) 
 			{
