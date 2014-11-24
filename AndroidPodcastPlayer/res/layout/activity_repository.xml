@@ -11,13 +11,13 @@
 
     <EditText
         android:id="@+id/editTextSearch"
-        android:textColor="@color/white"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_marginLeft="27dp"
         android:layout_toRightOf="@+id/btnSearch"
-        android:ems="10" >
+        android:ems="10"
+        android:textColor="@color/white" >
 
         <requestFocus />
     </EditText>
@@ -26,85 +26,40 @@
         android:id="@+id/btnSearch"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignBaseline="@+id/editTextSearch"
-        android:layout_alignBottom="@+id/editTextSearch"
+        android:layout_above="@+id/btnSubscribe"
         android:layout_alignParentLeft="true"
+        android:onClick="search"
         android:text="@string/search_lable"
         android:textColor="@color/white"
-        android:textSize="18sp"
-        android:onClick="search" />
+        android:textSize="20sp" />
 
-    <TextView
-        android:id="@+id/textViewTopHits"
+    <Button
+        android:id="@+id/btnSubscribe"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/editTextSearch"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="19dp"
-        android:text="@string/top_tags"
+        android:onClick="manualEntry"
+        android:text="@string/new_subscription"
         android:textColor="@color/white"
-        android:textSize="36sp" />
-
-    <TextView
-        android:id="@+id/textViewTop1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_below="@+id/textViewTopHits"
-        android:text="@string/top_tag1"
-        android:textAppearance="?android:attr/textAppearanceMedium"
-        android:textColor="@color/white" />
-
-    <TextView
-        android:id="@+id/textViewTop2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignRight="@+id/editTextSearch"
-        android:layout_below="@+id/textViewTopHits"
-        android:text="@string/top_tag2"
-        android:textAppearance="?android:attr/textAppearanceMedium"
-        android:textColor="@color/white" />
-
-    <TextView
-        android:id="@+id/textViewTop3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/textViewTop1"
-        android:layout_below="@+id/textViewTop1"
-        android:layout_marginTop="14dp"
-        android:text="@string/top_tag3"
-        android:textAppearance="?android:attr/textAppearanceMedium"
-        android:textColor="@color/white" />
-
-    <TextView
-        android:id="@+id/textViewTop4"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignBaseline="@+id/textViewTop3"
-        android:layout_alignBottom="@+id/textViewTop3"
-        android:layout_alignLeft="@+id/textViewTop2"
-        android:text="@string/top_tag4"
-        android:textAppearance="?android:attr/textAppearanceMedium"
-        android:textColor="@color/white" />
+        android:textSize="20sp" />
 
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_alignLeft="@+id/textViewTop3"
         android:layout_alignParentBottom="true"
-        android:layout_alignRight="@+id/textViewTop4"
-        android:layout_below="@+id/textViewTop3">
-        
-	    <TableLayout
-	        android:id="@+id/tableLayout"
-	        android:layout_width="wrap_content"
-	        android:layout_height="wrap_content"
-	        
-	        android:layout_marginTop="29dp"
-	        android:scrollbarAlwaysDrawVerticalTrack="false"
-	        android:scrollbarStyle="outsideOverlay"
-	        android:scrollbars="vertical" >
-	    </TableLayout>
+        android:layout_below="@+id/btnSubscribe" >
+
+        <TableLayout
+            android:id="@+id/tableLayout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="29dp"
+            android:scrollbarAlwaysDrawVerticalTrack="false"
+            android:scrollbarStyle="outsideOverlay"
+            android:scrollbars="vertical" >
+        </TableLayout>
     </ScrollView>
 
 </RelativeLayout>
