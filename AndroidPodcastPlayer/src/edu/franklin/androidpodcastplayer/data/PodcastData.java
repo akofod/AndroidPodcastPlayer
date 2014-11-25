@@ -121,6 +121,15 @@ public class PodcastData {
 		return podcast;
 	}
 	
+	public boolean updateImagePath(Long podId, String imagePath)
+	{
+		ContentValues values = new ContentValues();
+		values.put(DatabaseHelper.PODCAST_COLUMN_IMAGE, dbHelper.escapeString(imagePath));
+		int rows = db.update(DatabaseHelper.TABLE_PODCAST, values, 
+			DatabaseHelper.PODCAST_COLUMN_PODCASTID + " = " + podId.longValue(), null);
+		return rows == 1;
+	}
+	
 	public Podcast getPodcastById(Long id)
 	{
 		Podcast podcast = null;
@@ -151,6 +160,15 @@ public class PodcastData {
 		}
 		cursor.close();
 		return allPodcasts;
+	}
+	
+	public void purgePodcast(Long podId)
+	{
+		//get rid of the episode info
+		episodesData.purgeEpisodes(podId);
+		//now get rid of the podcast
+		dbHelper.getWritableDatabase().delete(DatabaseHelper.TABLE_PODCAST, 
+			DatabaseHelper.PODCAST_COLUMN_PODCASTID + "=" + podId.longValue(), null);
 	}
 
 	public Podcast cursorToPodcast(Cursor cursor) {

@@ -41,22 +41,6 @@ public class MainActivity extends ActionBarActivity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
-		final Class rs = RepositoryService.class;
-		final Context context = this;
-		Runnable runnable = new Runnable()
-		{
-			public void run()
-			{
-				//fetch the top tags
-				Log.i("Main", "Creating Intent");
-				Intent repoIntent = new Intent(context, rs);
-				Log.i("Main", "Starting Intent");
-				startService(repoIntent);
-				Log.i("Main", "Moving on");
-			}
-		};
-		Thread t = new Thread(runnable);
-		t.start();
 		
 		table1 = (TableLayout) findViewById(R.id.table1);
 		this.addRow("header", "Title", "Saved","Auto", 2);

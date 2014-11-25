@@ -19,6 +19,7 @@ import com.squareup.picasso.Picasso;
 import edu.franklin.androidpodcastplayer.models.Podcast;
 
 import android.app.AlertDialog;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.AsyncTask;
@@ -161,13 +162,17 @@ public class RepositoryActivity extends ActionBarActivity
 				
 				// Store the URL in a hidden field
 				final String url= result.getJSONObject(i).getString("url");
-
+				final Context context = this;
+				final String logo_url = result.getJSONObject(i).getString("logo_url");
 				newRow.setOnClickListener(new OnClickListener()
 						{
 							@Override
 							public void onClick(View v) 
 							{
-								new JSONGetDetails().execute(url);
+								Intent podcastIntent = new Intent(context, PodcastDetails.class);
+								podcastIntent.putExtra("url", url);
+								podcastIntent.putExtra("logo_url", logo_url);
+								startActivity(podcastIntent);
 							}
 						});
 
