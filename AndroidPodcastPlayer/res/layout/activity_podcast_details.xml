@@ -21,22 +21,11 @@
         android:layout_width="wrap_content"
         android:layout_height="64dp"
         android:layout_alignLeft="@+id/podcastEpisodes"
-        android:layout_alignRight="@+id/podcastAuthor"
+        android:layout_alignParentRight="true"
         android:layout_alignTop="@+id/podcastImage"
         android:paddingLeft="10dp"
         android:text="Podcast Title"
         android:textAppearance="?android:attr/textAppearanceLarge" />
-
-    <TextView
-        android:id="@+id/podcastAuthor"
-        android:layout_width="wrap_content"
-        android:layout_height="32dp"
-        android:layout_alignLeft="@+id/podcastEpisodes"
-        android:layout_alignParentRight="true"
-        android:layout_below="@+id/podcastTitle"
-        android:paddingLeft="10dp"
-        android:text="Author"
-        android:textAppearance="?android:attr/textAppearanceMedium" />
 
     <TextView
         android:id="@+id/podcastEpisodes"
@@ -49,21 +38,41 @@
         android:text="Episodes"
         android:textAppearance="?android:attr/textAppearanceSmall" />
 
-    <Button
-        android:id="@+id/subscribeButton"
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:id="@+id/podcastLinearLayout"
+        android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/podcastImage"
-        android:layout_alignRight="@+id/podcastEpisodes"
-        android:layout_below="@+id/podcastImage"
-        android:onClick="subscribeToPodcast"
-        android:text="Subscribe" />
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentRight="true"
+        android:layout_below="@id/podcastImage"
+        android:orientation="horizontal" >
+
+        <Button
+            android:id="@+id/subscribeButton"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_weight="1.0"
+            android:onClick="subscribeToPodcast"
+            android:text="Subscribe" />
+
+        <Button
+            android:id="@+id/podcastDetailsButton"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_weight="1.0"
+            android:onClick="showDetails"
+            android:text="Details" />
+
+    </LinearLayout>
 
     <ScrollView
+        android:id="@+id/scrollView1"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="false"
-        android:layout_below="@+id/subscribeButton"
+        android:layout_below="@+id/podcastLinearLayout"
         android:fillViewport="false"
         android:scrollbars="none" >
 
@@ -74,9 +83,20 @@
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:isScrollContainer="true"
-            android:stretchColumns="1">
-            
+            android:stretchColumns="1" >
         </TableLayout>
     </ScrollView>
+
+    <Button
+        android:id="@+id/podcastSettingsButton"
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/podcastEpisodes"
+        android:layout_alignLeft="@+id/podcastTitle"
+        android:layout_alignParentRight="true"
+        android:layout_below="@+id/podcastTitle"
+        android:onClick="handleSettings"
+        android:text="Settings" />
 
 </RelativeLayout>

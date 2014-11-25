@@ -2,6 +2,10 @@ package edu.franklin.androidpodcastplayer;
 
 import java.io.File;
 
+import android.app.AlertDialog;
+import android.app.AlertDialog.Builder;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
@@ -36,9 +40,9 @@ public class PodcastDetails extends ActionBarActivity implements DownloadHandler
 	private TableLayout episodeTable = null;
 	private ImageView view = null;
 	private TextView titleView = null;
-	private TextView authorView = null;
 	private TextView episodeCountView = null;
-	private Button button = null;
+	private Button subscribeButton = null;
+	private Button settingsButton = null;
 	private PodcastData podcastData = new PodcastData(this);
 	private EpisodesData episodeData = new EpisodesData(this);
 	private FileManager fileManager = null;
@@ -57,9 +61,10 @@ public class PodcastDetails extends ActionBarActivity implements DownloadHandler
 		episodeTable = (TableLayout) findViewById(R.id.episodeTable);
 		view = (ImageView)findViewById(R.id.podcastImage);
 		titleView = (TextView)findViewById(R.id.podcastTitle);
-		authorView = (TextView)findViewById(R.id.podcastAuthor);
 		episodeCountView = (TextView)findViewById(R.id.podcastEpisodes);
-		button = (Button)findViewById(R.id.subscribeButton);
+		subscribeButton = (Button)findViewById(R.id.subscribeButton);
+		settingsButton = (Button)findViewById(R.id.podcastSettingsButton);
+		settingsButton.setTextSize(10);
 		episodeData.open();
 		podcastData.open();
 		//grab a podcast and load it. The name of the podcast is passed through the intent"
@@ -132,6 +137,8 @@ public class PodcastDetails extends ActionBarActivity implements DownloadHandler
 		}
 		else
 		{
+			//create a dialog box and allow the user a second chance to back out of
+			//getting rid of this podcast.
 			//wipe the database
 			podcastData.purgePodcast(podcast.getPodcastId());
 			String podcastDir = Podcast.getPodcastDirectory(podcast.getName());
@@ -144,9 +151,41 @@ public class PodcastDetails extends ActionBarActivity implements DownloadHandler
 		setPodcast(podcast);
 	}
 	
-	private void updateButtonText()
+	public void showDetails(View view)
 	{
-		button.setText(subscribed ? "Unsubscribe" : "Subscribe");
+		AlertDialog.Builder detailsDialog = new AlertDialog.Builder(this);
+		detailsDialog.setPositiveButton("Back", new OnClickListener(){
+
+			public void onClick(DialogInterface dialog, int which) 
+			{
+				dialog.dismiss();
+			}
+			
+		});
+		detailsDialog.setMessage(podcast.getDescription());
+		detailsDialog.create().show();
+	}
+	
+	public void handleSettings(View view)
+	{
+		Intent settingsIntent = new Intent(this, SubscriptionSettingsActivity.class);
+		settingsIntent.putExtra("ID", podcast.getPodcastId());
+		//ship it off
+		startActivity(settingsIntent);
+	}
+	
+	private void updateButtons()
+	{
+		if(subscribed)
+		{
+			subscribeButton.setText("Unsubscribe");
+			settingsButton.setVisibility(View.VISIBLE);
+		}
+		else
+		{
+			subscribeButton.setText("Subscribe");
+			settingsButton.setVisibility(View.INVISIBLE);
+		}
 	}
 	
 	private void setPodcast(Podcast podcast)
@@ -176,11 +215,9 @@ public class PodcastDetails extends ActionBarActivity implements DownloadHandler
 			}
 			//set the text views for this podcast
 			titleView.setText(podcast.getName());
-			//no author for now...maybe add one to the parsing and db
-			authorView.setText("");
 			episodeCountView.setText(podcast.getEpisodes().size() + " Episodes");
 			//update the button text
-			updateButtonText();
+			updateButtons();
 			//now make rows for each of the episodes
 			for(Episode e : podcast.getEpisodes())
 			{
