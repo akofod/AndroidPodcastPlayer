@@ -17,7 +17,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 	// Database Version,
 	//bump the version because we altered the episodes table
 	//added podcast info table for repo related stuff
-	private static final int DATABASE_VERSION = 3;
+	//added subscription settings
+	private static final int DATABASE_VERSION = 4;
 	// Database Name
 	private static final String DATABASE_NAME = "PodcastPlayer.db";
 
@@ -58,6 +59,18 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 	public static final String CONFIG_COLUMN_CONFIGID = "configId";
 	public static final String CONFIG_COLUMN_EXTSTORAGE = "extStorage";
 	public static final String CONFIG_COLUM_WIFIONLY = "wifiOnly";
+	
+	public static final String TABLE_SUBSCRIPTION = "subscription";
+	public static final String SUB_ID = "podcastId";
+	public static final String SUB_AUTO = "auto_download";
+	//num episodes to keep
+	public static final String SUB_EPISODES = "episodes";
+	//download newer files first
+	public static final String SUB_NEWEST = "newest_first";
+	//how often (in minutes) to check for updates.
+	public static final String SUB_FREQUENCY = "frequency";
+	//last update done when ?
+	public static final String SUB_LAST_UPDATE = "last_update";
 
 	// Table Create Statements
 	// podcast table create statement
@@ -74,6 +87,9 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 	// config table create statement
 	private static final String CREATE_TABLE_CONFIG = "CREATE TABLE config(configId INTEGER PRIMARY KEY AUTOINCREMENT, " +
 			"extStorage INTEGER, wifiOnly INTEGER)";
+	//subscription info
+	private static final String CREATE_TABLE_SUBSCRIPTION = "CREATE TABLE subscription(podcastId INTEGER REFERENCES podcast(podcastId) ON DELETE CASCADE, auto_download INTEGER, episodes INTEGER," +
+			"newest_first INTEGER, frequency INTEGER, last_update INTEGER)";
 
 	// call superclass SQLiteOpenHelper constructor
 	public DatabaseHelper(Context context) {
@@ -97,6 +113,9 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
 		db.execSQL(CREATE_TABLE_CONFIG);
 		Log.d(LOG, CREATE_TABLE_CONFIG);
+		
+		db.execSQL(CREATE_TABLE_SUBSCRIPTION);
+		Log.d(LOG, CREATE_TABLE_SUBSCRIPTION);
 	}
 
 	/**
@@ -109,6 +128,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 		db.execSQL("DROP TABLE IF EXISTS podcast_info");
 		db.execSQL("DROP TABLE IF EXISTS episodes");
 		db.execSQL("DROP TABLE IF EXISTS config");
+		db.execSQL("DROP TABLE IF EXISTS subscription");
 		onCreate(db);
 	}
 

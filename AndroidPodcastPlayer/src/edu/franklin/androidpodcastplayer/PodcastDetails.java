@@ -4,12 +4,14 @@ import java.io.File;
 
 import android.app.AlertDialog;
 import android.app.AlertDialog.Builder;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -23,6 +25,7 @@ import com.squareup.picasso.Picasso;
 
 import edu.franklin.androidpodcastplayer.data.EpisodesData;
 import edu.franklin.androidpodcastplayer.data.PodcastData;
+import edu.franklin.androidpodcastplayer.data.SubscriptionData;
 import edu.franklin.androidpodcastplayer.models.Channel;
 import edu.franklin.androidpodcastplayer.models.Enclosure;
 import edu.franklin.androidpodcastplayer.models.Episode;
@@ -30,6 +33,7 @@ import edu.franklin.androidpodcastplayer.models.Image;
 import edu.franklin.androidpodcastplayer.models.Item;
 import edu.franklin.androidpodcastplayer.models.Podcast;
 import edu.franklin.androidpodcastplayer.models.Rss;
+import edu.franklin.androidpodcastplayer.models.Subscription;
 import edu.franklin.androidpodcastplayer.services.FileManager;
 import edu.franklin.androidpodcastplayer.tasks.DownloadFileTask;
 import edu.franklin.androidpodcastplayer.tasks.DownloadHandler;
@@ -45,6 +49,7 @@ public class PodcastDetails extends ActionBarActivity implements DownloadHandler
 	private Button settingsButton = null;
 	private PodcastData podcastData = new PodcastData(this);
 	private EpisodesData episodeData = new EpisodesData(this);
+	private SubscriptionData subData = new SubscriptionData(this, podcastData);
 	private FileManager fileManager = null;
 	private Podcast podcast = null;
 	private String url = null;
@@ -67,6 +72,7 @@ public class PodcastDetails extends ActionBarActivity implements DownloadHandler
 		settingsButton.setTextSize(10);
 		episodeData.open();
 		podcastData.open();
+		subData.open();
 		//grab a podcast and load it. The name of the podcast is passed through the intent"
 		url = getIntent().getExtras().getString("url");
 		logo_url = getIntent().getExtras().getString("logo_url");
@@ -168,10 +174,38 @@ public class PodcastDetails extends ActionBarActivity implements DownloadHandler
 	
 	public void handleSettings(View view)
 	{
-		Intent settingsIntent = new Intent(this, SubscriptionSettingsActivity.class);
-		settingsIntent.putExtra("ID", podcast.getPodcastId());
-		//ship it off
-		startActivity(settingsIntent);
+		//fetch the subscription for this podcast
+		Subscription sub = subData.getSubscriptionById(podcast.getPodcastId());
+		//set it into the view
+		final SettingsDialog subscriptionSettings = new SettingsDialog(this);
+		subscriptionSettings.setSubscription(sub);
+		//build a popup window
+		final AlertDialog.Builder builder = new AlertDialog.Builder(this);
+		builder.setTitle(podcast.getName() + " Settings");
+		builder.setView(subscriptionSettings);
+		//handle cancel and save actions
+		builder.setPositiveButton("Save", new OnClickListener()
+		{
+			public void onClick(DialogInterface dialog, int which) 
+			{
+				saveSubscriptionData(subscriptionSettings.getSubscription());
+				dialog.dismiss();
+			}
+		});
+		builder.setNegativeButton("Cancel", new OnClickListener()
+		{
+			public void onClick(DialogInterface dialog, int which) 
+			{
+				dialog.dismiss();
+			}
+		});
+		//now show the settings dialog to the user
+		builder.create().show();
+	}
+	
+	private void saveSubscriptionData(final Subscription sub)
+	{
+		subData.updateSubscription(sub);
 	}
 	
 	private void updateButtons()
@@ -317,6 +351,7 @@ public class PodcastDetails extends ActionBarActivity implements DownloadHandler
 			resize(128, 128).centerCrop().into(view);
 			if(subscribed)
 			{
+				Log.i("PodcastDetails", "Updating the stored image path to " + path);
 				podcastData.updateImagePath(podcast.getPodcastId(), path);
 			}
 		}

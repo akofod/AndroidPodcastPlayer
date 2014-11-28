@@ -10,6 +10,7 @@ import android.database.sqlite.SQLiteDatabase;
 import android.util.Log;
 import edu.franklin.androidpodcastplayer.models.Episode;
 import edu.franklin.androidpodcastplayer.models.Podcast;
+import edu.franklin.androidpodcastplayer.models.Subscription;
 
 public class PodcastData {
 
@@ -22,6 +23,7 @@ public class PodcastData {
 			DatabaseHelper.PODCAST_COLUMN_OLDESTFIRST, DatabaseHelper.PODCAST_COLUMN_AUTODOWNLOAD, 
 			DatabaseHelper.PODCAST_COLUMN_AUTODELETE};
 	private EpisodesData episodesData;
+	private SubscriptionData subData;
 
 	// Logcat tag
 	private static final String LOG = "PodcastData";
@@ -34,6 +36,7 @@ public class PodcastData {
 	public PodcastData(Context context) {
 		dbHelper = new DatabaseHelper(context);
 		episodesData =  new EpisodesData(context);
+		subData = new SubscriptionData(context, this);
 	}
 
 	/**
@@ -43,6 +46,7 @@ public class PodcastData {
 	 */
 	public void open() throws SQLException {
 		db = dbHelper.getWritableDatabase();
+		subData.open();
 	}
 
 	/**
@@ -50,6 +54,7 @@ public class PodcastData {
 	 */
 	public void close() {
 		dbHelper.close();
+		subData.close();
 	}
 	
 	public Podcast createPodcast(Podcast podcast) 
@@ -98,6 +103,8 @@ public class PodcastData {
 			if(cursor.moveToFirst())
 			{
 				pd = cursorToPodcast(cursor);
+				//if we made the podcast, go ahead and make the subscription as well
+				subData.createSubscription(pd);
 			}
 			cursor.close();
 		}

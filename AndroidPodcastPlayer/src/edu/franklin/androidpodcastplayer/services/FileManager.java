@@ -141,6 +141,7 @@ public class FileManager
 	
 	private boolean copyFile(String absolutePath, String dir, String file, boolean remove)
 	{
+		Log.i("copyFile", absolutePath + " to " + getAbsoluteFilePath(dir, file));
 		try
 		{
 			File source = new File(absolutePath);

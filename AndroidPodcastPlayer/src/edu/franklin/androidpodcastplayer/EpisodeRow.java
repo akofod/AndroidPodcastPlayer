@@ -1,7 +1,5 @@
 package edu.franklin.androidpodcastplayer;
 
-import android.R.attr;
-import android.R.color;
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.app.DownloadManager;
@@ -12,7 +10,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.database.Cursor;
-import android.graphics.Typeface;
 import android.net.Uri;
 import android.text.TextUtils.TruncateAt;
 import android.util.Log;
@@ -230,6 +227,9 @@ public class EpisodeRow extends TableRow
 	{
 		public void onReceive(Context context, Intent intent) 
 		{
+			//if we aren't downloading anything, bail...we don't care about the notification
+			if(downloadId == 0) return;
+			
 			final Intent rIntent = intent;
 			Runnable r = new Runnable()
 			{

@@ -34,7 +34,7 @@ public class DownloadFileTask extends AsyncTask<String, Void, String>
 		url = params[0];
 		dir = params[1];
 		file = params[2];
-		
+		Log.i("DL", "Downloading file into " + fm.getAbsoluteFilePath(dir, file));
 		File outFile = new File(fm.getAbsoluteFilePath(dir, file));
 		try
 		{
