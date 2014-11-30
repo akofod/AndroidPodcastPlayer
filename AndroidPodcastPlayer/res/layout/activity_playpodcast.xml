@@ -13,14 +13,13 @@
          android:layout_height="wrap_content"
          android:layout_alignLeft="@+id/imageViewAlbumArt"
          android:text="@string/now_playing"
-         android:textSize="12sp"
-          />
+         android:textSize="12sp"/>
      
      <SeekBar
          android:id="@+id/seekVolume"
          android:layout_width="match_parent"
          android:layout_height="wrap_content"
-         android:layout_alignLeft="@+id/imageViewAlbumArt"
+         android:layout_alignLeft="@+id/textViewTimeElapsed"
          android:layout_alignTop="@id/textViewNowPlaying"
          android:layout_marginBottom="15dp"
          android:layout_marginTop="15dp" />
@@ -67,33 +66,41 @@
     
    <ImageButton
        android:id="@+id/imageButtonRewind"
-       android:layout_width="wrap_content"
-       android:layout_height="wrap_content"
+       android:layout_width="72dp"
+       android:layout_height="72dp"
        android:layout_alignParentBottom="true"
        android:layout_alignParentLeft="true"
        android:layout_marginBottom="14dp"
+       android:contentDescription="@string/rewind_button_image"
        android:onClick="rewind"
-       android:src="@android:drawable/ic_media_rew"
-       android:contentDescription="@string/rewind_button_image" />
+       android:src="@drawable/ic_media_rew" />
     
    <ImageButton
        android:id="@+id/imageButtonForward"
-       android:layout_width="wrap_content"
-       android:layout_height="wrap_content"
+       android:layout_width="72dp"
+       android:layout_height="72dp"
        android:layout_alignRight="@+id/imageViewAlbumArt"
        android:layout_below="@+id/seekBarTimer"
+       android:contentDescription="@string/forward_button_image"
        android:onClick="forward"
-       android:src="@android:drawable/ic_media_ff"
-       android:contentDescription="@string/forward_button_image" />
+       android:src="@drawable/ic_media_ff" />
 
    <ImageButton
        android:id="@+id/imageButtonPlayPause"
-       android:layout_width="wrap_content"
-       android:layout_height="wrap_content"
-       android:layout_below="@+id/textViewIOverall"
+       android:layout_width="72dp"
+       android:layout_height="72dp"
+       android:layout_alignTop="@+id/imageButtonForward"
        android:layout_centerHorizontal="true"
        android:contentDescription="@string/play_pause_button_image"
        android:onClick="MediaControl"
        android:src="@drawable/ic_media_play" />
+
+   <ImageView
+       android:id="@+id/imageVolume"
+       android:layout_width="33dp"
+       android:layout_height="33dp"
+       android:layout_alignTop="@+id/seekVolume"
+       android:layout_toLeftOf="@+id/seekVolume"
+       android:src="@drawable/ic_volume_small" />
    
 </RelativeLayout>
