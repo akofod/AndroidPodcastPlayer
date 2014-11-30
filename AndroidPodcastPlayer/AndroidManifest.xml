@@ -51,7 +51,7 @@
 
         <activity
             android:name=".RepositoryActivity"
-            android:label="@string/title_activity_download" >
+            android:label="@string/title_activity_directory" >
         </activity>
 
         <service android:name=".services.DownloadService" >

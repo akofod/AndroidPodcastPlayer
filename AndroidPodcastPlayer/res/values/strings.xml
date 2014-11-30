@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="app_name">AndroidPodcastPlayer</string>
-    <string name="hello_world">Hello world! How are you today?</string>
+    <string name="app_name">Podcast Player</string>
     <string name="hello_rss">Howdy, Rss:) Enter a URL and press the button.</string>
     <string name="hello_fileManager">Hello, File Manager:)</string>
     <string name="dm_url">Enter a url to fetch</string>
@@ -13,10 +12,10 @@
     <string name="new_subscription">New Subscription RSS Feed URL</string>
     <string name="rss_feed_url">RSS Feed URL</string>
     <string name="title_activity_rss_test">RssTestActivity</string>
-    <string name="title_activity_media_test">MediaPlayerTestActivity</string>
+    <string name="title_activity_media_test">Podcast Player</string>
     <string name="action_tests">Tests</string>
-    <string name="title_activity_tests">TestsActivity</string>
-    <string name="title_activity_media">TestsMedia</string>
+    <string name="title_activity_tests">Tests</string>
+    <string name="title_activity_media">Test Media</string>
     <string name="title_activity_download">TestDownloadManager</string>
     <string name="title_activity_dsubscription_settings">TestSubscriptionSettings</string>
     <string name="now_playing">Now Playing:</string>
@@ -52,4 +51,5 @@
     <string name="btn_usr_settings">User Settings</string>
     <string name="txtStatus">\"\"</string>
     <string name="action_home">Home</string>
+    <string name="title_activity_directory">Podcast Directory</string>
 </resources>
