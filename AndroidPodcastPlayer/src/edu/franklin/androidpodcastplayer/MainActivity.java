@@ -15,6 +15,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup.LayoutParams;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TableLayout;
 import android.widget.TableRow;
@@ -41,7 +42,7 @@ public class MainActivity extends ActionBarActivity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
-		
+		this.activateButton();
 		table1 = (TableLayout) findViewById(R.id.table1);
 		this.addRow("header", "Title", "Saved","Auto", 2);
 	
@@ -150,11 +151,20 @@ public class MainActivity extends ActionBarActivity {
 		row.setOnClickListener(new OnClickListener() {				
 			@Override
 			public void onClick(View v) {
-				System.out.println("clicked " + rowTitle);	
 				intent.putExtra("podcastName",rowTitle);
 				startActivity(intent);
 			}
 		});
 		table1.addView(row);
 	}
+	private void activateButton(){
+		 Button button = (Button)findViewById(R.id.bottom_button);
+		final Intent intent = new Intent(this, RepositoryActivity.class);
+		    button.setOnClickListener(new Button.OnClickListener() {
+		        public void onClick(View v) {
+		        	startActivity(intent);
+		        	}
+		});
+	}
+	
 }

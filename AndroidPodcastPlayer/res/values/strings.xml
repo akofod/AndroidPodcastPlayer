@@ -52,4 +52,5 @@
     <string name="txtStatus">\"\"</string>
     <string name="action_home">Home</string>
     <string name="title_activity_directory">Podcast Directory</string>
+    <string name="add_podcast">Add New Podcast</string>
 </resources>

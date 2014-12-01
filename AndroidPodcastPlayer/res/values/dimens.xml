@@ -9,5 +9,6 @@
     <dimen name="zero">0dp</dimen>
     <dimen name="button1">140dp</dimen>
     <dimen name="button2">150dp</dimen>
+    <dimen name="normal">9pt</dimen>
 
 </resources>
