@@ -112,8 +112,11 @@ public class RepositoryActivity extends ActionBarActivity
 		ab.setView(input);
 		ab.setPositiveButton("Subscribe", new DialogInterface.OnClickListener() {
 			public void onClick(DialogInterface dialog, int whichButton) {
-				  String value = input.getText().toString();
-				  // Parsing and subscription logic here
+				  String url = input.getText().toString();
+				  Intent podcastIntent = new Intent(getBaseContext(), PodcastDetails.class);
+					podcastIntent.putExtra("url", url);
+					podcastIntent.putExtra("logo_url", "");
+					startActivity(podcastIntent);
 				  }
 				});
 		
