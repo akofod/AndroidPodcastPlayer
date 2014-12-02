@@ -55,6 +55,8 @@ public class PlayPodcastActivity extends ActionBarActivity
 	// Timers
 	private long currentTime = 0;
 	private long overallTime = 0;
+	private EpisodesData data = null;
+	private Episode episode = null;
 	private boolean episodeLoaded = false;
 	
 	@Override
@@ -63,6 +65,7 @@ public class PlayPodcastActivity extends ActionBarActivity
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_playpodcast);
 		setControls();
+		data = new EpisodesData(this);
 		if(getIntent().getExtras() != null)
 		{
 			podcastId = getIntent().getExtras().getLong("ID");
@@ -90,6 +93,23 @@ public class PlayPodcastActivity extends ActionBarActivity
 		
 		setTimerControl("CURRENT", currentTime);
 		setTimerControl("OVERALL", overallTime);
+	}
+	
+	public void onAttachedToWindow()
+	{
+		super.onAttachedToWindow();
+		data.open();
+	}
+	
+	public void onDetachedFromWindow()
+	{
+		if(episode != null)
+		{
+			data.setNewFlag(podcastId, episode.getEpisodeId(), false);
+			data.updatePlayedTime(podcastId, episode.getEpisodeId(), currentTime);
+		}
+		data.close();
+		super.onDetachedFromWindow();
 	}
 	
 	@Override
@@ -284,7 +304,7 @@ public class PlayPodcastActivity extends ActionBarActivity
 			// set up timers
 			overallTime = episode.getTotalTime();
 			currentTime = episode.getPlayedTime();
-			
+			mediaPlayer.seekTo((int)(currentTime * 1000));
 			setTitle(episode.getName());
 		} 
 		catch (Exception e) 
@@ -296,8 +316,7 @@ public class PlayPodcastActivity extends ActionBarActivity
 	//fetch the episode from the database
 	public void getMediaInfo(long id, String name)
 	{
-		EpisodesData episodeData = new EpisodesData(getApplicationContext());
-		Episode episode = episodeData.retrieveEpisodeByName(id, name);
+		episode = data.retrieveEpisodeByName(id, name);
 		Log.i("Player", "Fetching episode using " + id + ":" + name + " and got back " + episode);
 		PodcastData podcastData = new PodcastData(getApplicationContext());
 		Podcast podcast = podcastData.getPodcastById(id);

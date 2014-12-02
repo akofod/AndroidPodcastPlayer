@@ -330,7 +330,7 @@ public class PodcastDetails extends ActionBarActivity implements DownloadHandler
 				String filePath = fileManager.getAbsoluteFilePath(dir, file);
 				File episodeFile = new File(filePath);
 				e.setFilepath(episodeFile.exists() && episodeFile.length() > 0 ? filePath : "");
-				e.setNewEpisode(true);
+				e.setNewEpisode(false);
 				e.setPlayedTime(0);
 				//Use the duration if it was provided by the file.
 				e.setTotalTime(item.getDuration());

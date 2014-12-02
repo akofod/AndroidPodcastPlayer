@@ -29,6 +29,7 @@ import edu.franklin.androidpodcastplayer.data.PodcastData;
 import edu.franklin.androidpodcastplayer.models.Podcast;
 import edu.franklin.androidpodcastplayer.services.DownloadService;
 import edu.franklin.androidpodcastplayer.services.RepositoryService;
+import edu.franklin.androidpodcastplayer.services.SubscriptionService;
 
 public class MainActivity extends ActionBarActivity {
 	TableLayout table1;
@@ -43,6 +44,7 @@ public class MainActivity extends ActionBarActivity {
 		super.onCreate(savedInstanceState);
 		//initialize the download service
 		DownloadService.getInstance().initialize(this);
+		SubscriptionService.getInstance().initialize(this);
 		setContentView(R.layout.activity_main);
 		this.activateButton();
 		table1 = (TableLayout) findViewById(R.id.table1);
@@ -72,6 +74,7 @@ public class MainActivity extends ActionBarActivity {
 	public void onDestroy()
 	{
 		DownloadService.getInstance().close();
+		SubscriptionService.getInstance().close();
 		super.onDestroy();
 	}
 	

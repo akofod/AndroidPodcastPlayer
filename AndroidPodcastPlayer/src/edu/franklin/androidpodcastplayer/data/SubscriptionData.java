@@ -51,7 +51,6 @@ public class SubscriptionData
 	public void close() 
 	{
 		dbHelper.close();
-		podData.close();
 	}
 	
 	public Subscription getSubscriptionById(long id)

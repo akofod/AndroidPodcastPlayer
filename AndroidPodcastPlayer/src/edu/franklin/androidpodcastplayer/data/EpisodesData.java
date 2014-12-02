@@ -123,6 +123,25 @@ public class EpisodesData {
 			DatabaseHelper.EPISODES_COLUMN_EPISODEID + " = " + epId.longValue()	, null);
 		return rows == 1;
 	}
+	
+	public boolean setNewFlag(Long podId, Long epId, boolean isNew)
+	{
+		ContentValues values = new ContentValues();
+		values.put(DatabaseHelper.EPISODES_COLUMN_NEW, isNew ? 1 : 0);
+		int rows = db.update(DatabaseHelper.TABLE_EPISODES, values, 
+			DatabaseHelper.EPISODES_COLUMN_PODCASTID + " = " + podId.longValue() + " AND " +
+			DatabaseHelper.EPISODES_COLUMN_EPISODEID + " = " + epId.longValue()	, null);
+		return rows == 1;
+	}
+	
+	public void updatePlayedTime(Long podId, Long epId, long time)
+	{
+		ContentValues values = new ContentValues();
+		values.put(DatabaseHelper.EPISODES_COLUMN_PLAYEDTIME, time);
+		db.update(DatabaseHelper.TABLE_EPISODES, values, 
+			DatabaseHelper.EPISODES_COLUMN_PODCASTID + " = " + podId.longValue() + " AND " +
+			DatabaseHelper.EPISODES_COLUMN_EPISODEID + " = " + epId.longValue()	, null);
+	}
 
 	private Episode cursorToEpisode(Cursor cursor) {
 		Episode episode = new Episode();

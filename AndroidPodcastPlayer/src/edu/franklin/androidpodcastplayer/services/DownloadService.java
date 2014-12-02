@@ -163,6 +163,7 @@ public class DownloadService
 		                			if(ep != null)
 		                			{
 		                				episodeData.updateFilePath(pc.getPodcastId(), ep.getEpisodeId(), fileManager.getAbsoluteFilePath(dl.getDir(), dl.getFile()));
+		                				episodeData.setNewFlag(pc.getPodcastId(), ep.getEpisodeId(), true);
 		                			}
 	                			}
 		                		Log.d("Download", dl.getFile() + " has been downloaded to " + fileManager.getAbsoluteFilePath(dl.getDir(), dl.getFile())); 
