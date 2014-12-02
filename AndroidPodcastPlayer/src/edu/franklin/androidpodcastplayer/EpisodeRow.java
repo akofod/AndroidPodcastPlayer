@@ -35,6 +35,7 @@ public class EpisodeRow extends TableRow
 	private FileManager fileManager = null;
 	private long downloadId = 0L;
 	private Timer timer = new Timer();
+	private float density = 0;
 	
 	@SuppressLint("NewApi") public EpisodeRow(Context context, Episode e, Podcast pc, EpisodesData data) 
 	{
@@ -43,15 +44,15 @@ public class EpisodeRow extends TableRow
 		parentActivity = (Activity)context;
 		this.podcast = pc;
 		this.downloadData = new DownloadData(context);
-		
+		this.density = getResources().getDisplayMetrics().density;
 		//create the relative layout to hold the rest
 		RelativeLayout rl = new RelativeLayout(context);
-		rl.setLayoutParams(new LayoutParams(LayoutParams.WRAP_CONTENT, 50));
+		rl.setLayoutParams(new LayoutParams(LayoutParams.WRAP_CONTENT, (int)(50 * density)));
 		
 		button = new Button(context);
 		button.setId(3);
 		button.setTextSize(10);
-		RelativeLayout.LayoutParams buttonLayout = new RelativeLayout.LayoutParams(LayoutParams.WRAP_CONTENT, 40);
+		RelativeLayout.LayoutParams buttonLayout = new RelativeLayout.LayoutParams(LayoutParams.WRAP_CONTENT, (int)(40 * density));
 		buttonLayout.addRule(RelativeLayout.ALIGN_PARENT_RIGHT, 1);
 		rl.addView(button, buttonLayout);
 		button.setOnClickListener(new OnClickListener()
@@ -84,7 +85,7 @@ public class EpisodeRow extends TableRow
 		
 		downloadProgress = new ProgressBar(context);
 		downloadProgress.setId(4);
-		RelativeLayout.LayoutParams progressLayout = new RelativeLayout.LayoutParams(LayoutParams.WRAP_CONTENT, 40);
+		RelativeLayout.LayoutParams progressLayout = new RelativeLayout.LayoutParams(LayoutParams.WRAP_CONTENT, (int)(density * 40));
 		progressLayout.addRule(RelativeLayout.ALIGN_PARENT_RIGHT, 3);
 		//assume not visible unless we are actually downloading something
 		downloadProgress.setVisibility(INVISIBLE);
