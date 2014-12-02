@@ -41,6 +41,8 @@ public class MainActivity extends ActionBarActivity {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
+		//initialize the download service
+		DownloadService.getInstance().initialize(this);
 		setContentView(R.layout.activity_main);
 		this.activateButton();
 		table1 = (TableLayout) findViewById(R.id.table1);
@@ -65,6 +67,12 @@ public class MainActivity extends ActionBarActivity {
 			}
 		}
 
+	}
+	
+	public void onDestroy()
+	{
+		DownloadService.getInstance().close();
+		super.onDestroy();
 	}
 	
 	

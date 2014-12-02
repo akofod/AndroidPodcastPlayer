@@ -1,16 +1,11 @@
 package edu.franklin.androidpodcastplayer;
 
+import java.util.Timer;
+import java.util.TimerTask;
 import android.annotation.SuppressLint;
 import android.app.Activity;
-import android.app.DownloadManager;
-import android.app.DownloadManager.Query;
-import android.app.DownloadManager.Request;
-import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
-import android.content.IntentFilter;
-import android.database.Cursor;
-import android.net.Uri;
 import android.text.TextUtils.TruncateAt;
 import android.util.Log;
 import android.view.View;
@@ -19,9 +14,12 @@ import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
+import edu.franklin.androidpodcastplayer.data.DownloadData;
 import edu.franklin.androidpodcastplayer.data.EpisodesData;
+import edu.franklin.androidpodcastplayer.models.Download;
 import edu.franklin.androidpodcastplayer.models.Episode;
 import edu.franklin.androidpodcastplayer.models.Podcast;
+import edu.franklin.androidpodcastplayer.services.DownloadService;
 import edu.franklin.androidpodcastplayer.services.FileManager;
 
 public class EpisodeRow extends TableRow 
@@ -33,16 +31,10 @@ public class EpisodeRow extends TableRow
 	private ProgressBar downloadProgress = null;
 	private Podcast podcast = null;
 	private Episode episode = null;
-	private EpisodesData data = null;
-	private String fileName = null;
-	//in case the user wants to fetch the episode
-	private DownloadManager dm = null;
+	private DownloadData downloadData = null;
 	private FileManager fileManager = null;
 	private long downloadId = 0L;
-	
-	//Screen dimensions for more exact positioning
-	private int screenHeight;
-	private int screenWidth;
+	private Timer timer = new Timer();
 	
 	@SuppressLint("NewApi") public EpisodeRow(Context context, Episode e, Podcast pc, EpisodesData data) 
 	{
@@ -50,7 +42,7 @@ public class EpisodeRow extends TableRow
 		fileManager = new FileManager(context);
 		parentActivity = (Activity)context;
 		this.podcast = pc;
-		this.data = data;
+		this.downloadData = new DownloadData(context);
 		
 		//create the relative layout to hold the rest
 		RelativeLayout rl = new RelativeLayout(context);
@@ -101,19 +93,14 @@ public class EpisodeRow extends TableRow
 		//now add the view to the table row parent
 		addView(rl);
 		setEpisode(e);
-	}
-	
-	public void onAttachedToWindow()
-	{
-		super.onAttachedToWindow();
-		dm = (DownloadManager)getContext().getSystemService(Context.DOWNLOAD_SERVICE);
-		getContext().registerReceiver(receiver, new IntentFilter(DownloadManager.ACTION_DOWNLOAD_COMPLETE));
-	}
-	
-	public void onDetachedFromWindow()
-	{
-		super.onDetachedFromWindow();
-		getContext().unregisterReceiver(receiver);
+		//now see if this episode is being downloaded so we can update the button visibility
+		downloadData.open();
+		Download dl = downloadData.getDownload(podcast.getName(), e.getName());
+		if(dl != null)
+		{
+			downloadId = dl.getDownloadId();
+			waitForDownload();
+		}
 	}
 	
 	public void setEpisode(Episode e)
@@ -126,9 +113,26 @@ public class EpisodeRow extends TableRow
 		updateButtonText();
 	}
 	
+	public void onAttachedToWindow()
+	{
+		super.onAttachedToWindow();
+	}
+	
+	public void onDetachedFromWindow()
+	{
+		try
+		{
+			timer.cancel();
+		}
+		catch(Exception e)
+		{
+			//
+		}
+		super.onDetachedFromWindow();
+	}
+	
 	private void updateButtonText()
 	{
-		downloadProgress.setVisibility(INVISIBLE);
 		if(filePresent())
 		{
 			button.setText("Play");
@@ -147,40 +151,46 @@ public class EpisodeRow extends TableRow
 		{
 			//play it by invoking the MediaPlayer
 			Intent intent = new Intent(getContext(), PlayPodcastActivity.class);
-			intent.putExtra("ID", episode.getPodcastId());
 			intent.putExtra("NAME", episode.getName());
+			if(podcast.getPodcastId() != 0L)
+			{
+				intent.putExtra("ID", episode.getPodcastId());
+			}
+			else
+			{
+				intent.putExtra("FILE", episode.getFilepath());
+				intent.putExtra("TOTAL", episode.getTotalTime());
+				intent.putExtra("IMAGE", podcast.getImage());
+			}
 			getContext().startActivity(intent);
 		}
 		//download it
 		else
 		{
-			String link = episode.getUrl();
-			String eName = link.substring(link.lastIndexOf("/") + 1);
-			downloadFile(Podcast.getPodcastDirectory(podcast.getName()), eName, link);
-			episode.setFilepath(fileManager.getAbsoluteFilePath(Podcast.getPodcastDirectory(podcast.getName()), eName));
-			Log.d("Rss----", "Episode file path is now " + episode.getFilepath());
+			downloadId = DownloadService.getInstance().downloadEpisode(podcast, episode);
+			//update the filepath reference in the episode
+			String filename = episode.getUrl().substring(episode.getUrl().lastIndexOf("/") + 1);
+			episode.setFilepath(fileManager.getAbsoluteFilePath(Podcast.getPodcastDirectory(podcast.getName()), filename));
+			waitForDownload();
 		}
 	}
 	
-	public void downloadFile(final String dir, final String file, final String url)
+	public void waitForDownload()
 	{
-		//hide the button...
-		button.setVisibility(INVISIBLE);
-		//show the progress
-		downloadProgress.setVisibility(VISIBLE);
-		Runnable downloadRunnable = new Runnable()
+		updateButtonsOnUiThread(true);
+		//start a timer to check the progress
+		timer.scheduleAtFixedRate(new TimerTask()
 		{
 			public void run()
 			{
-				Log.d("Rss------", "Downloading " + dir + ":" + file + " located at : " + url);
-				Uri uri = Uri.parse(url);
-				fileName = file;
-				Request request = new Request(uri);
-				downloadId = dm.enqueue(request);
+				Download dl = downloadData.getDownload(downloadId);
+				if(dl == null)
+				{
+					updateButtonsOnUiThread(false);
+					timer.cancel();
+				}
 			}
-		};
-		Thread t = new Thread(downloadRunnable);
-		t.start();
+		}, 1000, 1000);
 	}
 	
 	private boolean filePresent()
@@ -207,76 +217,19 @@ public class EpisodeRow extends TableRow
 		return "-";
 	}
 	
-	private void updateButtonsOnUiThread()
+	private void updateButtonsOnUiThread(final boolean downloading)
 	{
 		Runnable runnable = new Runnable()
 		{
 			public void run()
 			{
 				//get rid of the progress bar
-        		downloadProgress.setVisibility(INVISIBLE);
+        		downloadProgress.setVisibility(downloading ? VISIBLE : INVISIBLE);
         		//show the button so they can play their file
-        		button.setVisibility(VISIBLE);
+        		button.setVisibility(!downloading ? VISIBLE : INVISIBLE);
         		updateButtonText();
 			}
 		};
 		parentActivity.runOnUiThread(runnable);
 	}
-	
-	private BroadcastReceiver receiver = new BroadcastReceiver() 
-	{
-		public void onReceive(Context context, Intent intent) 
-		{
-			//if we aren't downloading anything, bail...we don't care about the notification
-			if(downloadId == 0) return;
-			
-			final Intent rIntent = intent;
-			Runnable r = new Runnable()
-			{
-				public void run()
-				{
-					String action = rIntent.getAction();
-					Log.d("Episode Download", "Got back an action " + action);
-		            if (DownloadManager.ACTION_DOWNLOAD_COMPLETE.equals(action)) 
-		            {
-		                long id = rIntent.getLongExtra(DownloadManager.EXTRA_DOWNLOAD_ID, 0);
-		                if(id != downloadId)
-		                {
-		                	return;
-		                }
-		                Query query = new Query();
-		                query.setFilterById(downloadId);
-		                Cursor c = dm.query(query);
-		                //anything to look at?
-		                if(c.getCount() > 0)
-		                {
-		                	//set initial cursor spot
-		                	c.moveToFirst();
-		            		int statusIndex = c.getColumnIndex(DownloadManager.COLUMN_STATUS);
-		                    int status = c.getInt(statusIndex);
-		                    int fileLocationIndex = c.getColumnIndex(DownloadManager.COLUMN_LOCAL_FILENAME);
-		                    String fileLocation = c.getString(fileLocationIndex);
-		                    Log.d("Episode Download", "Status of " + fileLocation + " is " + status);
-		                    if (DownloadManager.STATUS_SUCCESSFUL == status) 
-		                    {
-		                		//put the downloaded file into our storage
-		                		fileManager.moveFile(fileLocation, Podcast.getPodcastDirectory(podcast.getName()), fileName);
-		                    	dm.remove(downloadId);
-		                    	//now update the filepath in the episode object
-		                    	boolean updated = data.updateFilePath(podcast.getPodcastId(), episode.getEpisodeId(), episode.getFilepath());
-		                    	if(updated)
-		                    	{
-			                    	updateButtonsOnUiThread();	
-		                    	}
-		                    }
-		                }
-		                //now close up the cursor
-		                c.close();
-		            }
-				}
-			};
-			Thread t = new Thread(r);
-			t.start();
-		}
-	};
 }

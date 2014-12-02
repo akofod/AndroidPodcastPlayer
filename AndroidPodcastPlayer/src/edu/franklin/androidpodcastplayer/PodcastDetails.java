@@ -140,6 +140,7 @@ public class PodcastDetails extends ActionBarActivity implements DownloadHandler
 			//try to rebuild the podcast and insert the podcast into the db
 			podcast = rssToPodcast(rss, true);
 			Toast.makeText(getApplicationContext(), "You are now subscribed to this podcast", Toast.LENGTH_SHORT).show();
+			subscribed = true;
 		}
 		else
 		{
@@ -152,6 +153,9 @@ public class PodcastDetails extends ActionBarActivity implements DownloadHandler
 			fileManager.deleteDir(podcastDir);
 			Toast.makeText(getApplicationContext(), "You are no longer subscribed to this podcast", Toast.LENGTH_SHORT).show();
 			subscribed = false;
+			//TODO - if we unsubscribe from a podcast that was already in the db...
+			// then we try to subscribe again. we are going to barf as the RSS is gone...
+			// we may need to test for this and simply reinitialize the rss from the Podcast url
 		}
 		//reset the podcast
 		setPodcast(podcast);
@@ -252,6 +256,8 @@ public class PodcastDetails extends ActionBarActivity implements DownloadHandler
 			episodeCountView.setText(podcast.getEpisodes().size() + " Episodes");
 			//update the button text
 			updateButtons();
+			//purge the old view stuff maybe?
+			episodeTable.removeAllViews();
 			//now make rows for each of the episodes
 			for(Episode e : podcast.getEpisodes())
 			{
@@ -318,8 +324,12 @@ public class PodcastDetails extends ActionBarActivity implements DownloadHandler
 					link = enc.getUrl().length() > 0 ? enc.getUrl() : link;
 				}
 				e.setUrl(link);
-				//we haven't downloaded it yet
-				e.setFilepath("");
+				//we haven't downloaded it yet...or have we
+				String dir = Podcast.getPodcastDirectory(pc.getName());
+				String file = link.substring(link.lastIndexOf("/") + 1);
+				String filePath = fileManager.getAbsoluteFilePath(dir, file);
+				File episodeFile = new File(filePath);
+				e.setFilepath(episodeFile.exists() && episodeFile.length() > 0 ? filePath : "");
 				e.setNewEpisode(true);
 				e.setPlayedTime(0);
 				//Use the duration if it was provided by the file.

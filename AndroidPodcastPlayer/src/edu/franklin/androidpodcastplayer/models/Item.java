@@ -245,17 +245,9 @@ public class Item extends XmlSerializable
 	        }
 	        else if(name.endsWith(DURATION))
 	        {
-	        	long dur = 0L;
 	        	String duration = getNextString(xml, ns, name);
-	        	if(duration != null && duration != "0")
-	        	{
-	        		String[] tokens = duration.split(":");
-	        		for(int i = 0; i < tokens.length; i++)
-	        		{
-	        			dur = (dur * 60) + (Integer.parseInt(tokens[i])); 
-	        		}
-	        		setDuration(dur);
-	        	}
+        		setDuration(Episode.stringToLong(duration));
+	        	
 //	        	Log.d("Duration Test", "Looks like the duration of this guy is " + duration + " and the dur is " + dur);
 	        }
 	        else

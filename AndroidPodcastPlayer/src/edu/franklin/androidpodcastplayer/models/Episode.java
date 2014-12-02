@@ -108,4 +108,29 @@ public class Episode {
 				+ ", playedTime=" + playedTime + ", newEpisode=" + newEpisode
 				+ ", completed=" + completed + "]";
 	}
+	
+	public static String longToString(long time)
+	{
+		int hours = time > 0 ? (int)(time / (60 * 60)) : 0;
+		time -= (hours * 60 * 60);
+		int minutes = time > 0 ? (int)(time / 60) : 0;
+		time -= (minutes * 60);
+		int seconds = (int)time;
+		String timeString = String.format("%02d:%02d:%02d", hours, minutes, seconds);
+		return timeString;
+	}
+	
+	public static long stringToLong(String string)
+	{
+		long time = 0;
+		if(string != null && !string.equals("0") && string.contains(":"))
+		{
+			String[] tokens = string.split(":");
+    		for(int i = 0; i < tokens.length; i++)
+    		{
+    			time = (time * 60) + (Integer.parseInt(tokens[i])); 
+    		}
+		}
+		return time;
+	}
 }

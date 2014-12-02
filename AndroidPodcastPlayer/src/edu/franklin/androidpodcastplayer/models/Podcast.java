@@ -7,6 +7,8 @@ public class Podcast {
 	public static final String PODCASTS = "podcast_subscriptions";
 	public static final String IMAGES = "images";
 	public static final String RSS = "rss_files";
+	//lets use this to allow users to download an episode and play it before subscribing
+	public static final long TRIAL_PODCAST_ID = 123456789;
 	private long podcastId;
 	private String name;
 	private String description;

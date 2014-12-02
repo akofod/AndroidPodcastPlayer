@@ -18,7 +18,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 	//bump the version because we altered the episodes table
 	//added podcast info table for repo related stuff
 	//added subscription settings
-	private static final int DATABASE_VERSION = 4;
+	private static final int DATABASE_VERSION = 5;
 	// Database Name
 	private static final String DATABASE_NAME = "PodcastPlayer.db";
 
@@ -71,6 +71,20 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 	public static final String SUB_FREQUENCY = "frequency";
 	//last update done when ?
 	public static final String SUB_LAST_UPDATE = "last_update";
+	
+	//a table to keep track of the episodes that are being downloaded in case
+	//the app is closed before downloads finish
+	public static final String TABLE_DOWNLOADS = "downloads";
+	//the id that is provided by the download manager when the download is initiated
+	public static final String DL_ID = "downloadId";
+	//the podcast id
+	public static final String DL_PODCAST_NAME = "podcastName";
+	//the episode id
+	public static final String DL_EPISODE_NAME = "episodeName";
+	//where this file is meant to be stored
+	public static final String DL_DIRECTORY = "directory";
+	//where the file is meant to be called
+	public static final String DL_FILE = "file";
 
 	// Table Create Statements
 	// podcast table create statement
@@ -90,6 +104,9 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 	//subscription info
 	private static final String CREATE_TABLE_SUBSCRIPTION = "CREATE TABLE subscription(podcastId INTEGER REFERENCES podcast(podcastId) ON DELETE CASCADE, auto_download INTEGER, episodes INTEGER," +
 			"newest_first INTEGER, frequency INTEGER, last_update INTEGER)";
+	//downloads that are still working or have been requested
+	private static final String CREATE_TABLE_DOWNLOADS = "CREATE TABLE downloads(downloadId INTEGER," +
+			"podcastName TEXT, episodeName TEXT, directory TEXT, file TEXT)";
 
 	// call superclass SQLiteOpenHelper constructor
 	public DatabaseHelper(Context context) {
@@ -116,6 +133,9 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 		
 		db.execSQL(CREATE_TABLE_SUBSCRIPTION);
 		Log.d(LOG, CREATE_TABLE_SUBSCRIPTION);
+		
+		db.execSQL(CREATE_TABLE_DOWNLOADS);
+		Log.d(LOG, CREATE_TABLE_DOWNLOADS);
 	}
 
 	/**
@@ -129,6 +149,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 		db.execSQL("DROP TABLE IF EXISTS episodes");
 		db.execSQL("DROP TABLE IF EXISTS config");
 		db.execSQL("DROP TABLE IF EXISTS subscription");
+		db.execSQL("DROP TABLE IF EXISTS downloads");
 		onCreate(db);
 	}
 

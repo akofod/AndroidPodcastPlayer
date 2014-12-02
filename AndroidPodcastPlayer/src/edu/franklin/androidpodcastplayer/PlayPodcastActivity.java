@@ -67,8 +67,22 @@ public class PlayPodcastActivity extends ActionBarActivity
 		{
 			podcastId = getIntent().getExtras().getLong("ID");
 			episodeName = getIntent().getExtras().getString("NAME");
-			Log.i("Player", "Loading media player with podcastID " + podcastId + " and episode name " + episodeName);
-			getMediaInfo(podcastId, episodeName);	
+			//load from subscribed episode if we can
+			if(podcastId != 0L)
+			{
+				Log.i("Player", "Loading media player with podcastID " + podcastId + " and episode name " + episodeName);
+				getMediaInfo(podcastId, episodeName);
+			}
+			//or load a saved off episode that has been downloaded by the user.
+			//this could happen if the user wants to take the podcast for a testdrive
+			else
+			{
+				String episodePath = getIntent().getExtras().getString("FILE");
+				String imagePath = getIntent().getExtras().getString("IMAGE");
+				Long time = getIntent().getExtras().getLong("TOTAL");
+				Episode ep = this.createFakeEpisode(episodeName, episodePath, time);
+				getMediaInfo(ep, imagePath);
+			}
 			setTimeControl();
 			setVolumeControl();
 			appHandler.postDelayed(UpdateProgress, 250);
@@ -112,6 +126,7 @@ public class PlayPodcastActivity extends ActionBarActivity
 		}
 		else
 		{
+			Log.i("Player", "Starting playback");
 			mediaPlayer.start();
 			playPauseButton.setImageResource(R.drawable.ic_media_pause);
 		}
@@ -157,21 +172,12 @@ public class PlayPodcastActivity extends ActionBarActivity
 	{
 		if(timer.equalsIgnoreCase("CURRENT"))
 		{
-			timeElapsedText.setText(String.format("%02d:%02d:%02d", 
-					TimeUnit.SECONDS.toHours(currentTime), 
-					TimeUnit.SECONDS.toMinutes(currentTime),
-					TimeUnit.SECONDS.toSeconds(currentTime) -
-					TimeUnit.MINUTES.toSeconds(TimeUnit.SECONDS.toMinutes(currentTime))));
+			timeElapsedText.setText(Episode.longToString(currentTime));
 		}
 		else if(timer.equalsIgnoreCase("OVERALL"))
 		{
-			overallTimeText.setText(String.format("%02d:%02d:%02d", 
-					TimeUnit.SECONDS.toHours(overallTime), 
-					TimeUnit.SECONDS.toMinutes(overallTime),
-					TimeUnit.SECONDS.toSeconds(overallTime) -
-					TimeUnit.MINUTES.toSeconds(TimeUnit.SECONDS.toMinutes(overallTime))));
+			overallTimeText.setText(Episode.longToString(overallTime));
 		}
-		
 	}
 
 	/**
@@ -249,16 +255,19 @@ public class PlayPodcastActivity extends ActionBarActivity
 		}
 	};
 	
-	public void getMediaInfo(long id, String name)
+	public Episode createFakeEpisode(String name, String filePath, long totalTime)
 	{
-		EpisodesData episodeData = new EpisodesData(getApplicationContext());
-		Episode episode = episodeData.retrieveEpisodeByName(id, name);
-		Log.i("Player", "Fetching episode using " + id + ":" + name + " and got back " + episode);
-		PodcastData podcastData = new PodcastData(getApplicationContext());
-		Podcast podcast = podcastData.getPodcastById(id);
+		Episode episode = new Episode();
+		episode.setPodcastId(0);
+		episode.setName(name);
+		episode.setFilepath(filePath);
+		episode.setTotalTime(totalTime);
+		return episode;
+	}
+	
+	public void getMediaInfo(Episode episode, String imagePath)
+	{
 		episodeLoaded = episode != null;
-		//set the image for the podcast if we have it
-		String imagePath = podcast.getImage();
 		//load the image using an image loader
 		if(imagePath.length() > 0)
 		{
@@ -278,20 +287,22 @@ public class PlayPodcastActivity extends ActionBarActivity
 			
 			setTitle(episode.getName());
 		} 
-		catch (IllegalArgumentException e) 
+		catch (Exception e) 
 		{
-			e.printStackTrace();
+			Log.e("Player", "Problem playing episode ", e);
 		} 
-		catch (SecurityException e) 
-		{
-			e.printStackTrace();
-		} 
-		catch (IllegalStateException e) 
-		{
-			e.printStackTrace();
-		} catch (IOException e) 
-		{
-			e.printStackTrace();
-		}
+	}
+	
+	//fetch the episode from the database
+	public void getMediaInfo(long id, String name)
+	{
+		EpisodesData episodeData = new EpisodesData(getApplicationContext());
+		Episode episode = episodeData.retrieveEpisodeByName(id, name);
+		Log.i("Player", "Fetching episode using " + id + ":" + name + " and got back " + episode);
+		PodcastData podcastData = new PodcastData(getApplicationContext());
+		Podcast podcast = podcastData.getPodcastById(id);
+		//set the image for the podcast if we have it
+		String imagePath = podcast.getImage();
+		getMediaInfo(episode, imagePath);
 	}
 }

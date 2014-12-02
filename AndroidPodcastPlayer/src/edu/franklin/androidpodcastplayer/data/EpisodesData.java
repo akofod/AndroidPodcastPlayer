@@ -3,7 +3,6 @@ package edu.franklin.androidpodcastplayer.data;
 import java.util.ArrayList;
 
 import edu.franklin.androidpodcastplayer.models.Episode;
-import edu.franklin.androidpodcastplayer.models.Podcast;
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
