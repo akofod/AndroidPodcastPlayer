@@ -26,6 +26,7 @@ import com.squareup.picasso.Picasso;
 import edu.franklin.androidpodcastplayer.data.ConfigData;
 import edu.franklin.androidpodcastplayer.data.EpisodesData;
 import edu.franklin.androidpodcastplayer.data.PodcastData;
+import edu.franklin.androidpodcastplayer.data.SubscriptionData;
 import edu.franklin.androidpodcastplayer.models.Podcast;
 import edu.franklin.androidpodcastplayer.services.DownloadService;
 import edu.franklin.androidpodcastplayer.services.RepositoryService;
@@ -37,6 +38,7 @@ public class MainActivity extends ActionBarActivity {
 	ConfigData configData = new ConfigData(context);
 	PodcastData podcastData = new PodcastData(this);
 	EpisodesData episodesData = new EpisodesData(this);
+	SubscriptionData subData = new SubscriptionData(this, podcastData);
 	ArrayList<Podcast> podcasts;
 
 	@Override
@@ -52,18 +54,19 @@ public class MainActivity extends ActionBarActivity {
 	
 		configData.open();
 		podcastData.open();
+		subData.open();
 		episodesData.open();
 		
 		podcasts = podcastData.getAllPodcasts();		
 		if(podcasts.size()>0){
 			for(Podcast currentPodcast: podcasts){
-				String automaticallyDownload = currentPodcast.isAutoDownload()?"yes":"No";
+				String automaticallyDownload = subData.getSubscriptionById(currentPodcast.getPodcastId()).isAutoDownload() ? "Yes" : "No";
 				
 				//Handle null values
 				String Url = currentPodcast.getImage()== null?"":currentPodcast.getImage();
 				String name = currentPodcast.getName()== null?"":currentPodcast.getName();
 				String savedEpisodes = currentPodcast.getEpisodes()== null?
-						"":String.valueOf(currentPodcast.getEpisodes().size());
+						"":String.valueOf(currentPodcast.getNumEpisodes());
                 //Use the values to populate the table
 				this.addRow(Url,name ,savedEpisodes	,automaticallyDownload, 5);	
 			}

@@ -137,6 +137,18 @@ public class PodcastData {
 		return rows == 1;
 	}
 	
+	public void updateSavedCount(long id)
+	{
+		Cursor c = db.query(DatabaseHelper.TABLE_EPISODES, new String[]{DatabaseHelper.EPISODES_COLUMN_FILEPATH}, 
+			DatabaseHelper.EPISODES_COLUMN_PODCASTID + "=" + id + " AND length(" + DatabaseHelper.EPISODES_COLUMN_FILEPATH + ") > 5", null, null, null, null);
+		//96l184
+		long savedEpisodes = c.getCount();
+		ContentValues values = new ContentValues();
+		values.put(DatabaseHelper.PODCAST_COLUMN_NUMEPISODES, savedEpisodes);
+		db.update(DatabaseHelper.TABLE_PODCAST, values, 
+			DatabaseHelper.PODCAST_COLUMN_PODCASTID + " = " + id, null);
+	}
+	
 	public Podcast getPodcastById(Long id)
 	{
 		Podcast podcast = null;

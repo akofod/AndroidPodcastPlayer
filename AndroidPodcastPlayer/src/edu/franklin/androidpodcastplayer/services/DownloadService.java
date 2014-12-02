@@ -165,6 +165,8 @@ public class DownloadService
 		                				episodeData.updateFilePath(pc.getPodcastId(), ep.getEpisodeId(), fileManager.getAbsoluteFilePath(dl.getDir(), dl.getFile()));
 		                				episodeData.setNewFlag(pc.getPodcastId(), ep.getEpisodeId(), true);
 		                			}
+		                			//now we can update the saved count
+		                			podData.updateSavedCount(pc.getPodcastId());
 	                			}
 		                		Log.d("Download", dl.getFile() + " has been downloaded to " + fileManager.getAbsoluteFilePath(dl.getDir(), dl.getFile())); 
 		                    	dm.remove(downloadId);
