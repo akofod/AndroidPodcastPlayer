@@ -3,12 +3,15 @@ package edu.franklin.androidpodcastplayer;
 import java.io.File;
 import java.util.Timer;
 import java.util.TimerTask;
+
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Canvas;
+import android.graphics.Color;
+import android.graphics.Paint;
 import android.text.TextUtils.TruncateAt;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ProgressBar;
@@ -63,7 +66,7 @@ public class EpisodeRow extends TableRow
 				handleEpisode(v);
 			}
 		});
-
+		
 		titleView = new TextView(context);
 		titleView.setId(1);
 		titleView.setTextSize(12);
@@ -112,6 +115,11 @@ public class EpisodeRow extends TableRow
 		durationView.setText(getDurationString(e.getTotalTime()));
 		//also hang onto the reference
 		episode = e;
+		if(episode.isNewEpisode())
+		{
+			titleView.setTextColor(Color.BLUE);
+			durationView.setTextColor(Color.BLUE);
+		}
 		updateButtonText();
 	}
 	
@@ -143,6 +151,7 @@ public class EpisodeRow extends TableRow
 		{
 			button.setText("Download");
 		}
+		//newEpisodeIndicator.setVisibility(episode.isNewEpisode() ? View.VISIBLE : View.INVISIBLE);
 	}
 	
 	//we get here by button pressing
