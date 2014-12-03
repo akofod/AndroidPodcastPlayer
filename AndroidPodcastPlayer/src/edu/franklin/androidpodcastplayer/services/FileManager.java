@@ -6,6 +6,7 @@ import java.io.FileOutputStream;
 
 import android.content.Context;
 import android.net.Uri;
+import android.os.Environment;
 import android.util.Log;
 
 public class FileManager
@@ -218,11 +219,9 @@ public class FileManager
 	private String getBasePath()
 	{
 		//Initialize the path with some good value.
-		//If we are just using internal storage, external storage, or shared external...
-		//only one of these can be set at a time...probably a radio button in 
-		//a shared user pref or something.
-		boolean useInternal = true;
-		boolean useExternal = false;
+		//if external storage is available, try to use it...if it is not default to internal
+		boolean useInternal = !Environment.getExternalStorageState().equals(Environment.MEDIA_MOUNTED);
+		boolean useExternal = true;
 		boolean useExternalShared = false;
 		
 		String path = null;
@@ -237,7 +236,7 @@ public class FileManager
 		}
 		else if(useExternal)
 		{
-			
+			path = context.getExternalFilesDir(Environment.DIRECTORY_PODCASTS).getAbsolutePath();
 		}
 		return path;
 	}

@@ -1,5 +1,6 @@
 package edu.franklin.androidpodcastplayer;
 
+import java.io.File;
 import java.util.Timer;
 import java.util.TimerTask;
 import android.annotation.SuppressLint;
@@ -196,6 +197,12 @@ public class EpisodeRow extends TableRow
 	
 	private boolean filePresent()
 	{
+		//if the episode path has been set, try to use that
+		if(episode.getFilepath().length() > 5)
+		{
+			File file = new File(episode.getFilepath());
+			return file.exists() && file.length() > 0;
+		}
 		String link = episode.getUrl();
 		String eName = link.substring(link.lastIndexOf("/") + 1);
 		return fileManager.fileExists(Podcast.getPodcastDirectory(podcast.getName()), eName);
