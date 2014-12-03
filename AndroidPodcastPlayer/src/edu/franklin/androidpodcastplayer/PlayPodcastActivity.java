@@ -249,7 +249,7 @@ public class PlayPodcastActivity extends ActionBarActivity
 			@Override
 			public void onStopTrackingTouch(SeekBar seekBar) 
 			{
-				if(episodeLoaded) mediaPlayer.seekTo(timeElapsedControl.getProgress());
+				mediaPlayer.seekTo(seekBar.getProgress() * 1000);
 			}
 
 			@Override
@@ -257,7 +257,10 @@ public class PlayPodcastActivity extends ActionBarActivity
 			
 			@Override
 			public void onProgressChanged(SeekBar seekBar, int progress,
-					boolean fromUser) {}
+					boolean fromUser) 
+			{
+				
+			}
 		});
 	}
 	
@@ -269,7 +272,7 @@ public class PlayPodcastActivity extends ActionBarActivity
 			{
 				mediaPlayer.stop();
 			}
-			setTimerControl("CURRENT",currentTime);
+			timeElapsedText.setText(Episode.longToString(currentTime));
 			timeElapsedControl.setProgress((int)currentTime);
 			appHandler.postDelayed(this, 500);
 		}
