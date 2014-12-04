@@ -78,27 +78,31 @@ public class PodcastDetails extends ActionBarActivity implements DownloadHandler
 		logo_url = getIntent().getExtras().getString("logo_url");
 		if(url != null)
 		{
-			try
-			{
-				rss = new Rss();
-				rss.initializeFromUrl(url);
-				podcast = rssToPodcast(rss, false);
-			}
-			catch(Exception e)
-			{
-				Log.e("PodcastDetails", "Could not fetch the RSS from " + url, e);
-				Toast.makeText(this, "Could not parse the RSS at location " + url + ", check the logs", Toast.LENGTH_LONG).show();
-				return;
-			}
+			setRss(url);
+			podcast = rssToPodcast(rss, false);
 		}
 		else
 		{
 			String podcastName = getIntent().getExtras().getString("podcastName");
 			podcast = podcastData.retrievePodcastByName(podcastName);
 			subscribed = true;
+			setRss(podcast.getFeedUrl());
 		}
 
 		setPodcast(podcast);
+	}
+	
+	private void setRss(String url)
+	{
+		try
+		{
+			rss = new Rss();
+			rss.initializeFromUrl(url);
+		}
+		catch(Exception e)
+		{
+			Log.e("PodcastDetails", "Could not fetch the RSS from " + url, e);
+		}
 	}
 	
 	protected void onStop()
@@ -298,7 +302,7 @@ public class PodcastDetails extends ActionBarActivity implements DownloadHandler
 		pc.setName(podcastTitle);
 		pc.setDescription(channel.getDescription());
 		pc.setNumEpisodes(0L);
-		pc.setFeedUrl(channel.getLink());
+		pc.setFeedUrl(url != null ? url : channel.getLink());
 		pc.setDir(fileManager.getAbsoluteFilePath(podcastHomeDir, null));
 		//that should be enough to persist this guy
 		if(subscribe) pc = podcastData.createPodcast(pc);
