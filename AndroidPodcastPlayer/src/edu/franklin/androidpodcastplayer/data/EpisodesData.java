@@ -134,10 +134,21 @@ public class EpisodesData {
 		return rows == 1;
 	}
 	
+	public void updateComplete(Long podId, Long epId)
+	{
+		ContentValues values = new ContentValues();
+		values.put(DatabaseHelper.EPISODES_COLUMN_COMPLETED, 1);
+		Log.i("Database", "Writing " + values.toString());
+		db.update(DatabaseHelper.TABLE_EPISODES, values, 
+				DatabaseHelper.EPISODES_COLUMN_PODCASTID + " = " + podId.longValue() + " AND " +
+				DatabaseHelper.EPISODES_COLUMN_EPISODEID + " = " + epId.longValue()	, null);
+	}
+	
 	public void updatePlayedTime(Long podId, Long epId, long time)
 	{
 		ContentValues values = new ContentValues();
 		values.put(DatabaseHelper.EPISODES_COLUMN_PLAYEDTIME, time);
+		Log.i("Database", "Writing " + values.toString());
 		db.update(DatabaseHelper.TABLE_EPISODES, values, 
 			DatabaseHelper.EPISODES_COLUMN_PODCASTID + " = " + podId.longValue() + " AND " +
 			DatabaseHelper.EPISODES_COLUMN_EPISODEID + " = " + epId.longValue()	, null);
