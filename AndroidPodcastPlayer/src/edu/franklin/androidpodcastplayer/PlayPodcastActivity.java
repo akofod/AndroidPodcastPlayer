@@ -60,6 +60,24 @@ public class PlayPodcastActivity extends ActionBarActivity
 	private boolean episodeLoaded = false;
 	
 	@Override
+	protected void onPause()
+	{
+		super.onPause();
+		if (mediaPlayer.isPlaying())
+		{
+			Log.i("Player", "Pausing playback");
+			mediaPlayer.pause();
+			playPauseButton.setImageResource(R.drawable.ic_media_play);
+		}
+		else
+		{
+			playPauseButton.setImageResource(R.drawable.ic_media_pause);
+		}
+		writeTimeElapsed();
+		this.finish();
+	}
+	
+	@Override
 	protected void onCreate(Bundle savedInstanceState) 
 	{
 		super.onCreate(savedInstanceState);
@@ -95,23 +113,6 @@ public class PlayPodcastActivity extends ActionBarActivity
 		setTimerControl("OVERALL", overallTime);
 	}
 	
-	public void onAttachedToWindow()
-	{
-		super.onAttachedToWindow();
-		data.open();
-	}
-	
-	public void onDetachedFromWindow()
-	{
-		if(episode != null)
-		{
-			data.setNewFlag(podcastId, episode.getEpisodeId(), false);
-			data.updatePlayedTime(podcastId, episode.getEpisodeId(), currentTime);
-		}
-		data.close();
-		super.onDetachedFromWindow();
-	}
-	
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 		// Inflate the menu; this adds items to the action bar if it is present.
@@ -141,8 +142,10 @@ public class PlayPodcastActivity extends ActionBarActivity
 		
 		if (mediaPlayer.isPlaying())
 		{
+			Log.i("Player", "Pausing playback");
 			mediaPlayer.pause();
 			playPauseButton.setImageResource(R.drawable.ic_media_play);
+			writeTimeElapsed();
 		}
 		else
 		{
@@ -271,6 +274,10 @@ public class PlayPodcastActivity extends ActionBarActivity
 			if (currentTime == overallTime)
 			{
 				mediaPlayer.stop();
+				currentTime = 0;
+				writeTimeElapsed();
+				episode.setCompleted(true);
+				playPauseButton.setImageResource(R.drawable.ic_media_play);
 			}
 			timeElapsedText.setText(Episode.longToString(currentTime));
 			timeElapsedControl.setProgress((int)currentTime);
@@ -301,12 +308,14 @@ public class PlayPodcastActivity extends ActionBarActivity
 		mediaPlayer = new MediaPlayer();
 		try 
 		{
+			Log.i("MediaPlayer", "Current value of currentTime pre load: " + currentTime);
 			mediaPlayer.setDataSource(episode.getFilepath());
 			mediaPlayer.prepare();
 			
 			// set up timers
 			overallTime = episode.getTotalTime();
 			currentTime = episode.getPlayedTime();
+			Log.i("MediaPlayer", "Current value of currentTime post load: " + currentTime);
 			mediaPlayer.seekTo((int)(currentTime * 1000));
 			setTitle(episode.getName());
 		} 
@@ -326,5 +335,14 @@ public class PlayPodcastActivity extends ActionBarActivity
 		//set the image for the podcast if we have it
 		String imagePath = podcast.getImage();
 		getMediaInfo(episode, imagePath);
+	}
+	
+	private void writeTimeElapsed()
+	{
+		data = new EpisodesData(this);
+		data.open();
+		Log.i("Player", "Writing " + currentTime + " to the database for episode " + episode.getEpisodeId());
+		data.updatePlayedTime(podcastId, episode.getEpisodeId(), currentTime);
+		data.close();
 	}
 }
