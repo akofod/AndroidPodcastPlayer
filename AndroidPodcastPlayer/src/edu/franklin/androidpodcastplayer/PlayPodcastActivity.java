@@ -348,11 +348,14 @@ public class PlayPodcastActivity extends ActionBarActivity
 	
 	private void markEpisodeComplete()
 	{
-		data = new EpisodesData(this);
-		data.open();
-		Log.i("Player", "Writing " + episode.getEpisodeId() + " is complete");
-		data.updateComplete(podcastId, episode.getEpisodeId());
-		data.close();
+		if(podcastId != 0L)
+		{
+			data = new EpisodesData(this);
+			data.open();
+			Log.i("Player", "Writing " + episode.getEpisodeId() + " is complete");
+			data.updateComplete(podcastId, episode.getEpisodeId());
+			data.close();
+		}
 	}
 	
 	private void writeTimeElapsed()
