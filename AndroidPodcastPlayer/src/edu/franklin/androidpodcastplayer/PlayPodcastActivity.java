@@ -32,6 +32,8 @@ public class PlayPodcastActivity extends ActionBarActivity
 	private static int rewindTime = 15000;
 	private static int forwardTime = 15000;
 	
+	private boolean updateTime;
+	
 	private MediaPlayer mediaPlayer;
 	private AudioManager audioManager;
 	
@@ -106,6 +108,7 @@ public class PlayPodcastActivity extends ActionBarActivity
 			}
 			setTimeControl();
 			setVolumeControl();
+			updateTime = true;
 			appHandler.postDelayed(UpdateProgress, 250);
 		}
 		
@@ -253,10 +256,13 @@ public class PlayPodcastActivity extends ActionBarActivity
 			public void onStopTrackingTouch(SeekBar seekBar) 
 			{
 				mediaPlayer.seekTo(seekBar.getProgress() * 1000);
+				updateTime = true;
 			}
 
 			@Override
-			public void onStartTrackingTouch(SeekBar seekBar) {}
+			public void onStartTrackingTouch(SeekBar seekBar) {
+				updateTime = false;
+			}
 			
 			@Override
 			public void onProgressChanged(SeekBar seekBar, int progress,
@@ -271,16 +277,19 @@ public class PlayPodcastActivity extends ActionBarActivity
 		public void run()
 		{
 			currentTime = mediaPlayer.getCurrentPosition() / 1000;
-			if (currentTime == overallTime)
+			if (currentTime >= overallTime)
 			{
 				mediaPlayer.stop();
 				currentTime = 0;
 				writeTimeElapsed();
-				episode.setCompleted(true);
+				markEpisodeComplete();
 				playPauseButton.setImageResource(R.drawable.ic_media_play);
 			}
-			timeElapsedText.setText(Episode.longToString(currentTime));
-			timeElapsedControl.setProgress((int)currentTime);
+			if (updateTime)
+			{
+				timeElapsedText.setText(Episode.longToString(currentTime));
+				timeElapsedControl.setProgress((int)currentTime);
+			}
 			appHandler.postDelayed(this, 500);
 		}
 	};
@@ -335,6 +344,15 @@ public class PlayPodcastActivity extends ActionBarActivity
 		//set the image for the podcast if we have it
 		String imagePath = podcast.getImage();
 		getMediaInfo(episode, imagePath);
+	}
+	
+	private void markEpisodeComplete()
+	{
+		data = new EpisodesData(this);
+		data.open();
+		Log.i("Player", "Writing " + episode.getEpisodeId() + " is complete");
+		data.updateComplete(podcastId, episode.getEpisodeId());
+		data.close();
 	}
 	
 	private void writeTimeElapsed()
