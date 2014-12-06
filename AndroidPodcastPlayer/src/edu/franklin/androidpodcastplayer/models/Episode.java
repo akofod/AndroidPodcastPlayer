@@ -1,6 +1,8 @@
 package edu.franklin.androidpodcastplayer.models;
 
-public class Episode {
+import java.util.Date;
+
+public class Episode implements Comparable<Episode>{
 	
 	private long episodeId;
 	private long podcastId;
@@ -12,12 +14,19 @@ public class Episode {
 	private long playedTime = 0L; //time stamp of the farthest point that the episode has played to
 	private boolean newEpisode = true; //true if the episode has not been played yet
 	private boolean completed = false; //true if the episode has played all the way through
+	private long pubDate = System.currentTimeMillis();
 	
 	public long getEpisodeId() {
 		return episodeId;
 	}
 	public void setEpisodeId(long episodeId) {
 		this.episodeId = episodeId;
+	}
+	public long getPubDate() {
+		return pubDate;
+	}
+	public void setPubDate(long pubDate) {
+		this.pubDate = pubDate;
 	}
 	public long getPodcastId() {
 		return podcastId;
@@ -106,7 +115,12 @@ public class Episode {
 				+ ", name=" + name + ", url=" + url + ", filepath=" + filepath
 				+ ", image=" + image + ", totalTime=" + totalTime
 				+ ", playedTime=" + playedTime + ", newEpisode=" + newEpisode
-				+ ", completed=" + completed + "]";
+				+ ", completed=" + completed + ",pubDate=" + new Date(pubDate) + "]";
+	}
+	
+	public int compareTo(Episode e)
+	{
+		return (int)(this.getPubDate() - e.getPubDate());
 	}
 	
 	public static String longToString(long time)

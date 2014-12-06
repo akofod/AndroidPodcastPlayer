@@ -2,7 +2,11 @@ package edu.franklin.androidpodcastplayer;
 
 import java.io.BufferedReader;
 import java.io.IOException;
+import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.io.Reader;
+import java.io.StringWriter;
+import java.io.Writer;
 
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
@@ -22,6 +26,7 @@ import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.res.Resources;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
@@ -80,7 +85,32 @@ public class RepositoryActivity extends ActionBarActivity
 		tLayout = (TableLayout)findViewById(R.id.tableLayout);
 		currentIndex = 0;
 		
-		new JSONParseTopPodcasts(RepositoryActivity.this).execute();
+		loadRawFile();
+		
+		//new JSONParseTopPodcasts(RepositoryActivity.this).execute();
+	}
+	
+	private void loadRawFile()
+	{
+		Resources resources = getResources();
+		InputStream is = resources.openRawResource(R.raw.top50);
+		Writer writer = new StringWriter();
+		char[] buffer = new char[1024];
+		try 
+		{
+		    Reader reader = new BufferedReader(new InputStreamReader(is, "UTF-8"));
+		    int n;
+		    while ((n = reader.read(buffer)) != -1) {
+		        writer.write(buffer, 0, n);
+		    }
+		    setCurrentPodcasts(new JSONArray(writer.toString()));
+		    populateList(this.getCurrentPodcasts());
+		}
+		catch(Exception e) { }
+		finally 
+		{
+			try{ is.close(); } catch(Exception ex){}
+		}
 	}
 
 	private void clearList()

@@ -2,6 +2,8 @@ package edu.franklin.androidpodcastplayer.models;
 
 import java.util.ArrayList;
 
+import android.util.Log;
+
 public class Podcast {
 	
 	public static final String PODCASTS = "podcast_subscriptions";
@@ -13,6 +15,7 @@ public class Podcast {
 	private String name;
 	private String description;
 	private String image; //the filepath to the podcast image
+	private String imageUrl;
 	private long numEpisodes; //the number of episodes stored on the device
 	private String feedUrl;
 	private String dir; //the file directory for this podcast
@@ -45,6 +48,14 @@ public class Podcast {
 	}
 	public void setImage(String image) {
 		this.image = image;
+	}
+	public String getImageUrl()
+	{
+		return imageUrl;
+	}
+	public void setImageUrl(String imageUrl)
+	{
+		this.imageUrl = imageUrl;
 	}
 	public long getNumEpisodes() {
 		return numEpisodes;
@@ -92,8 +103,10 @@ public class Podcast {
 	public void addEpisode(Episode episode)
 	{
 		//get rid of any old version of this episode
+		Log.i("Pod", "adding an episode " + episode);
 		if(episodes.contains(episode))
 		{
+			Log.i("Pod", "Looks like " + episode + " + is already in the podcast...removing");
 			episodes.remove(episode);
 		}
 		//add it in
@@ -103,5 +116,10 @@ public class Podcast {
 	public static String getPodcastDirectory(String dir)
 	{
 		return Podcast.PODCASTS + "/" + dir;
+	}
+	
+	public boolean imageIsUrl()
+	{
+		return image != null ? image.startsWith("http") : false;
 	}
 }

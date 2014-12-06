@@ -45,9 +45,10 @@ public class MainActivity extends ActionBarActivity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		//initialize the download service
-		DownloadService.getInstance().initialize(this);
-		SubscriptionService.getInstance().initialize(this);
 		setContentView(R.layout.activity_main);
+		//call the initialize the singletons
+		DownloadService.getInstance(this);
+		SubscriptionService.getInstance(this);
 		this.activateButton();
 		table1 = (TableLayout) findViewById(R.id.table1);
 		this.addRow("header", "Title", "Saved","Auto", 2);
@@ -76,8 +77,8 @@ public class MainActivity extends ActionBarActivity {
 	
 	public void onDestroy()
 	{
-		DownloadService.getInstance().close();
-		SubscriptionService.getInstance().close();
+		DownloadService.getInstance(this).close();
+		SubscriptionService.getInstance(this).close();
 		super.onDestroy();
 	}
 	

@@ -126,5 +126,10 @@ public class SubscriptionData
 		sub.setLastUpdate(cursor.getInt(5));
 		return sub;
 	}
+	
+	public void purgeSubscription(long id)
+	{
+		db.delete(DatabaseHelper.TABLE_SUBSCRIPTION, DatabaseHelper.SUB_ID + "=" + id, null);
+	}
 }
 

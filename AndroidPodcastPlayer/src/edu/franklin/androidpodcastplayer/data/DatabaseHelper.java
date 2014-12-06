@@ -18,7 +18,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 	//bump the version because we altered the episodes table
 	//added podcast info table for repo related stuff
 	//added subscription settings
-	private static final int DATABASE_VERSION = 5;
+	//adding pubdate, removing auto increment episode id
+	private static final int DATABASE_VERSION = 6;
 	// Database Name
 	private static final String DATABASE_NAME = "PodcastPlayer.db";
 
@@ -34,6 +35,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 	public static final String PODCAST_COLUMN_OLDESTFIRST = "oldestFirst";
 	public static final String PODCAST_COLUMN_AUTODOWNLOAD = "autoDownload";
 	public static final String PODCAST_COLUMN_AUTODELETE = "autoDelete";
+	public static final String PODCAST_COLUMN_IMAGE_URL = "imageurl";
 	
 	public static final String TABLE_PODCAST_INFO = "podcast_info";
 	public static final String PC_INFO_ID = "pcId";
@@ -54,6 +56,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 	public static final String EPISODES_COLUMN_PLAYEDTIME = "playedTime";
 	public static final String EPISODES_COLUMN_NEW = "newEpisode";
 	public static final String EPISODES_COLUMN_COMPLETED = "completed";
+	public static final String EPISODES_COLUMN_PUB_DATE = "pubdate";
 
 	public static final String TABLE_CONFIG = "config";
 	public static final String CONFIG_COLUMN_CONFIGID = "configId";
@@ -90,14 +93,14 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 	// podcast table create statement
 	private static final String CREATE_TABLE_PODCAST = "CREATE TABLE podcast(podcastId INTEGER PRIMARY KEY AUTOINCREMENT, name TEXT, " +
 			"description TEXT, image TEXT, numEpisodes INTEGER, feedUrl TEXT, dir TEXT, oldestFirst INTEGER, autoDownload INTEGER, " +
-			"autoDelete INTEGER)";
+			"autoDelete INTEGER, imageurl TEXT)";
 	//podcast info
 	private static final String CREATE_TABLE_PC_INFO = "CREATE TABLE podcast_info(pcId INTEGER PRIMARY KEY AUTOINCREMENT, name TEXT," +
 			"description TEXT, url TEXT, image_url TEXT, position INTEGER)";
 	// episodes table create statement
-	private static final String CREATE_TABLE_EPISODES = "CREATE TABLE episodes(episodeId INTEGER PRIMARY KEY AUTOINCREMENT, " +
+	private static final String CREATE_TABLE_EPISODES = "CREATE TABLE episodes(episodeId INTEGER, " +
 			"podcastId INTEGER, name TEXT, url TEXT, filepath TEXT, image TEXT, totalTime INTEGER, playedTime INTEGER, newEpisode INTEGER, " +
-			"completed INTEGER)";
+			"completed INTEGER, pubdate INTEGER)";
 	// config table create statement
 	private static final String CREATE_TABLE_CONFIG = "CREATE TABLE config(configId INTEGER PRIMARY KEY AUTOINCREMENT, " +
 			"extStorage INTEGER, wifiOnly INTEGER)";

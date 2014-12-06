@@ -339,10 +339,13 @@ public class PlayPodcastActivity extends ActionBarActivity
 	
 	private void writeTimeElapsed()
 	{
-		data = new EpisodesData(this);
-		data.open();
-		Log.i("Player", "Writing " + currentTime + " to the database for episode " + episode.getEpisodeId());
-		data.updatePlayedTime(podcastId, episode.getEpisodeId(), currentTime);
-		data.close();
+		if(podcastId != 0L)
+		{
+			data = new EpisodesData(getApplicationContext());
+			data.open();
+			Log.i("Player", "Writing " + currentTime + " to the database for episode " + episode.getEpisodeId());
+			data.updatePlayedTime(podcastId, episode.getEpisodeId(), currentTime);
+			data.close();
+		}
 	}
 }

@@ -1,5 +1,6 @@
 package edu.franklin.androidpodcastplayer.services;
 
+import edu.franklin.androidpodcastplayer.data.EpisodesData;
 import edu.franklin.androidpodcastplayer.data.PodcastData;
 import edu.franklin.androidpodcastplayer.data.SubscriptionData;
 import android.content.Context;
@@ -19,6 +20,7 @@ public class SubscriptionService
 {
 	private PodcastData podData = null;
 	private SubscriptionData subData = null;
+	private EpisodesData epData = null;
 	private Context context = null;
 	boolean initialized = false;
 	private static SubscriptionService INST = null;
@@ -28,12 +30,13 @@ public class SubscriptionService
 		//
 	}
 	
-	public static SubscriptionService getInstance()
+	public static SubscriptionService getInstance(Context context)
 	{
 		if(INST == null)
 		{
 			INST = new SubscriptionService();
 		}
+		INST.initialize(context);
 		return INST;
 	}
 	
@@ -45,6 +48,7 @@ public class SubscriptionService
 			podData.open();
 			subData = new SubscriptionData(context, podData);
 			subData.open();
+			this.context = context;
 		}
 	}
 	
@@ -57,4 +61,6 @@ public class SubscriptionService
 			initialized = false;
 		}
 	}
+	
+	
 }

@@ -19,7 +19,8 @@ public class EpisodesData {
 			DatabaseHelper.EPISODES_COLUMN_URL,
 			DatabaseHelper.EPISODES_COLUMN_FILEPATH, DatabaseHelper.EPISODES_COLUMN_IMAGE, 
 			DatabaseHelper.EPISODES_COLUMN_TOTALTIME, DatabaseHelper.EPISODES_COLUMN_PLAYEDTIME, 
-			DatabaseHelper.EPISODES_COLUMN_NEW, DatabaseHelper.EPISODES_COLUMN_COMPLETED};
+			DatabaseHelper.EPISODES_COLUMN_NEW, DatabaseHelper.EPISODES_COLUMN_COMPLETED,
+			DatabaseHelper.EPISODES_COLUMN_PUB_DATE};
 
 	// Logcat tag
 	private static final String LOG = "EpisodesData";
@@ -56,6 +57,7 @@ public class EpisodesData {
 		if(ep == null)
 		{
 			ContentValues values = new ContentValues();
+			values.put(DatabaseHelper.EPISODES_COLUMN_EPISODEID, episode.getEpisodeId());
 			values.put(DatabaseHelper.EPISODES_COLUMN_NAME, dbHelper.escapeString(episode.getName()));
 			values.put(DatabaseHelper.EPISODES_COLUMN_URL, dbHelper.escapeString(episode.getUrl()));
 			values.put(DatabaseHelper.EPISODES_COLUMN_COMPLETED, (episode.getPlayedTime() == episode.getTotalTime() && episode.getTotalTime() != 0));
@@ -64,9 +66,12 @@ public class EpisodesData {
 			values.put(DatabaseHelper.EPISODES_COLUMN_PLAYEDTIME, episode.getPlayedTime());
 			values.put(DatabaseHelper.EPISODES_COLUMN_PODCASTID, episode.getPodcastId());
 			values.put(DatabaseHelper.EPISODES_COLUMN_TOTALTIME, episode.getTotalTime());
-			long epId = db.insert(DatabaseHelper.TABLE_EPISODES, null, values);
+			values.put(DatabaseHelper.EPISODES_COLUMN_PUB_DATE, episode.getPubDate());
+			long rowId = db.insert(DatabaseHelper.TABLE_EPISODES, null, values);
+			Log.i("ED", "Tried to insert episode and got back row id " + rowId);
 			Cursor cursor = db.query(DatabaseHelper.TABLE_EPISODES, allColumns, 
-					DatabaseHelper.EPISODES_COLUMN_EPISODEID + " = " + epId, null, null, null, null);
+					DatabaseHelper.EPISODES_COLUMN_PODCASTID + " = " + episode.getPodcastId() + " AND " +
+					DatabaseHelper.EPISODES_COLUMN_EPISODEID + " = " + episode.getEpisodeId(), null, null, null, null);
 			if(cursor.moveToFirst())
 			{
 				ep = cursorToEpisode(cursor);
@@ -80,7 +85,8 @@ public class EpisodesData {
 		ArrayList<Episode> episodes = new ArrayList<Episode>();
 		SQLiteDatabase readDB = dbHelper.getReadableDatabase();
 		Cursor cursor = readDB.query(DatabaseHelper.TABLE_EPISODES, allColumns, 
-					DatabaseHelper.EPISODES_COLUMN_PODCASTID + " = " + podcastId, null, null, null, null);
+					DatabaseHelper.EPISODES_COLUMN_PODCASTID + " = " + podcastId, null, null, null, 
+					DatabaseHelper.EPISODES_COLUMN_PUB_DATE + " DESC");
 		cursor.moveToFirst();
 		while(!cursor.isAfterLast()) {
 			Episode episode = cursorToEpisode(cursor);
@@ -165,6 +171,7 @@ public class EpisodesData {
 			completed = true;
 		}
 		episode.setCompleted(completed);
+		episode.setPubDate(cursor.getLong(10));
 		
 		return episode;
 	}

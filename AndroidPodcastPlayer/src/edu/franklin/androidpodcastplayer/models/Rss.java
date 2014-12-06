@@ -26,6 +26,7 @@ public class Rss extends XmlSerializable
 	//an rss feed will contain a single channel
 	private Channel channel = new Channel();
 	private boolean initialized = false;
+	private String url = null;
 	
 	public Rss() throws XmlPullParserException
 	{
@@ -47,6 +48,7 @@ public class Rss extends XmlSerializable
 	public void initializeFromUrl(String urlName) throws IOException, InterruptedException, ExecutionException, XmlPullParserException
 	{
 		AsyncTask<String, Void, String> pageTask = new DownloadWebPageTask().execute(urlName);
+		this.url = urlName;
 		String text = pageTask.get();
 		StringReader reader = new StringReader(text);
 		initializeFromReader(reader);
@@ -161,5 +163,10 @@ public class Rss extends XmlSerializable
 	public String toString() 
 	{
 		return "Rss \nChannel\n" + channel;
+	}
+	
+	public String getUrl()
+	{
+		return url;
 	}
 }

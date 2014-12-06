@@ -56,12 +56,13 @@ public class DownloadService
 		//
 	}
 	
-	public static DownloadService getInstance()
+	public static DownloadService getInstance(Context context)
 	{
 		if(INST == null)
 		{
 			INST = new DownloadService();
 		}
+		INST.initialize(context);
 		return INST;
 	}
 	
@@ -78,6 +79,7 @@ public class DownloadService
 			episodeData.open();
 			podData = new PodcastData(context);
 			podData.open();
+			this.context = context;
 			//now listen for download complete messages
 			context.registerReceiver(receiver, new IntentFilter(DownloadManager.ACTION_DOWNLOAD_COMPLETE));
 		}

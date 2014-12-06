@@ -161,12 +161,9 @@ public class EpisodeRow extends TableRow
 			//play it by invoking the MediaPlayer
 			Intent intent = new Intent(getContext(), PlayPodcastActivity.class);
 			intent.putExtra("NAME", episode.getName());
-			if(podcast.getPodcastId() != 0L)
-			{
-				intent.putExtra("ID", episode.getPodcastId());
-			}
-			else
-			{
+			intent.putExtra("ID", episode.getPodcastId());
+			if(podcast.getPodcastId() == 0L)
+			{	
 				intent.putExtra("FILE", episode.getFilepath());
 				intent.putExtra("TOTAL", episode.getTotalTime());
 				intent.putExtra("IMAGE", podcast.getImage());
@@ -176,7 +173,7 @@ public class EpisodeRow extends TableRow
 		//download it
 		else
 		{
-			downloadId = DownloadService.getInstance().downloadEpisode(podcast, episode);
+			downloadId = DownloadService.getInstance(getContext()).downloadEpisode(podcast, episode);
 			//update the filepath reference in the episode
 			String filename = episode.getUrl().substring(episode.getUrl().lastIndexOf("/") + 1);
 			episode.setFilepath(fileManager.getAbsoluteFilePath(Podcast.getPodcastDirectory(podcast.getName()), filename));

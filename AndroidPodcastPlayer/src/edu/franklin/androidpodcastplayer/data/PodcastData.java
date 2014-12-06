@@ -21,7 +21,7 @@ public class PodcastData {
 			DatabaseHelper.PODCAST_COLUMN_IMAGE, DatabaseHelper.PODCAST_COLUMN_NUMEPISODES, 
 			DatabaseHelper.PODCAST_COLUMN_FEEDURL, DatabaseHelper.PODCAST_COLUMN_DIR, 
 			DatabaseHelper.PODCAST_COLUMN_OLDESTFIRST, DatabaseHelper.PODCAST_COLUMN_AUTODOWNLOAD, 
-			DatabaseHelper.PODCAST_COLUMN_AUTODELETE};
+			DatabaseHelper.PODCAST_COLUMN_AUTODELETE, DatabaseHelper.PODCAST_COLUMN_IMAGE_URL};
 	private EpisodesData episodesData;
 	private SubscriptionData subData;
 
@@ -66,6 +66,7 @@ public class PodcastData {
 			values.put(DatabaseHelper.PODCAST_COLUMN_NAME, dbHelper.escapeString(podcast.getName()));
 			values.put(DatabaseHelper.PODCAST_COLUMN_DESCRIPTION, dbHelper.escapeString(podcast.getDescription()));
 			values.put(DatabaseHelper.PODCAST_COLUMN_IMAGE, dbHelper.escapeString(podcast.getImage()));
+			values.put(DatabaseHelper.PODCAST_COLUMN_IMAGE_URL, dbHelper.escapeString(podcast.getImageUrl()));
 			values.put(DatabaseHelper.PODCAST_COLUMN_NUMEPISODES, podcast.getNumEpisodes());
 			values.put(DatabaseHelper.PODCAST_COLUMN_FEEDURL, dbHelper.escapeString(podcast.getFeedUrl()));
 			values.put(DatabaseHelper.PODCAST_COLUMN_DIR, dbHelper.escapeString(podcast.getDir()));
@@ -218,7 +219,7 @@ public class PodcastData {
 			autoDelete = true;
 		}
 		podcast.setAutoDelete(autoDelete);
-		
+		podcast.setImageUrl(dbHelper.unescapeString(cursor.getString(10)));		
 		ArrayList<Episode> episodes = episodesData.getAllEpisodes(podcastId);
 		podcast.setEpisodes(episodes);
 		

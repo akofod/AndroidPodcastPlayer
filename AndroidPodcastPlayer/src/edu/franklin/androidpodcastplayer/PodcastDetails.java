@@ -37,6 +37,7 @@ import edu.franklin.androidpodcastplayer.models.Subscription;
 import edu.franklin.androidpodcastplayer.services.FileManager;
 import edu.franklin.androidpodcastplayer.tasks.DownloadFileTask;
 import edu.franklin.androidpodcastplayer.tasks.DownloadHandler;
+import edu.franklin.androidpodcastplayer.utilities.PodcastFactory;
 
 public class PodcastDetails extends ActionBarActivity implements DownloadHandler
 {
@@ -79,7 +80,7 @@ public class PodcastDetails extends ActionBarActivity implements DownloadHandler
 		if(url != null)
 		{
 			setRss(url);
-			podcast = rssToPodcast(rss, false);
+			podcast = PodcastFactory.getInstance(this).createPodcast(rss, this, logo_url);
 		}
 		else
 		{
@@ -142,8 +143,7 @@ public class PodcastDetails extends ActionBarActivity implements DownloadHandler
 		if(!subscribed)
 		{
 			//try to rebuild the podcast and insert the podcast into the db
-			podcast = rssToPodcast(rss, true);
-			Toast.makeText(getApplicationContext(), "You are now subscribed to this podcast", Toast.LENGTH_SHORT).show();
+			podcast = PodcastFactory.getInstance(this).subscribeToPodcast(podcast);
 			subscribed = true;
 		}
 		else
@@ -152,14 +152,13 @@ public class PodcastDetails extends ActionBarActivity implements DownloadHandler
 			//getting rid of this podcast.
 			//wipe the database
 			podcastData.purgePodcast(podcast.getPodcastId());
+			subData.purgeSubscription(podcast.getPodcastId());
 			String podcastDir = Podcast.getPodcastDirectory(podcast.getName());
 			//wipe the directory
 			fileManager.deleteDir(podcastDir);
 			Toast.makeText(getApplicationContext(), "You are no longer subscribed to this podcast", Toast.LENGTH_SHORT).show();
 			subscribed = false;
-			//TODO - if we unsubscribe from a podcast that was already in the db...
-			// then we try to subscribe again. we are going to barf as the RSS is gone...
-			// we may need to test for this and simply reinitialize the rss from the Podcast url
+			podcast = PodcastFactory.getInstance(this).createPodcast(rss, this, logo_url);
 		}
 		//reset the podcast
 		setPodcast(podcast);
@@ -265,88 +264,11 @@ public class PodcastDetails extends ActionBarActivity implements DownloadHandler
 			//now make rows for each of the episodes
 			for(Episode e : podcast.getEpisodes())
 			{
+				Log.i("PD", "Loading row " + e.getEpisodeId());
 				EpisodeRow row = new EpisodeRow(this, e, podcast, episodeData);
 				episodeTable.addView(row);
 			}
 		}
-	}
-	
-	private Podcast rssToPodcast(Rss rss, boolean subscribe)
-	{
-		//first things first, grab an image for this guy
-		Channel channel = rss.getChannel();
-		Image image = channel.getImage();
-		String podcastTitle = channel.getTitle();
-		String podcastHomeDir = Podcast.getPodcastDirectory(podcastTitle);
-		Podcast pc = new Podcast();
-		//if the imagePath is set, then use it
-		if(imagePath != null && new File(imagePath).exists())
-		{
-			pc.setImage(imagePath);
-		}
-		//fetch the actual image from the webs
-		//try to download the image attached to the actual rss first.
-		else if(image != null && image.getUrl() != null && image.getUrl().contains("/"))
-		{
-			String imageName = image.getUrl().substring(image.getUrl().lastIndexOf("/") + 1);
-			downloadFile(Podcast.IMAGES, imageName, image.getUrl());
-		}
-		else if(logo_url != null && !logo_url.equals("null"))
-		{
-			String imageName = logo_url.substring(logo_url.lastIndexOf("/") + 1);
-			downloadFile(Podcast.IMAGES, imageName, logo_url);
-		}
-		//make a dir for the podcast and any temp episodes
-		fileManager.mkDir(podcastHomeDir);
-
-		pc.setName(podcastTitle);
-		pc.setDescription(channel.getDescription());
-		pc.setNumEpisodes(0L);
-		pc.setFeedUrl(url != null ? url : channel.getLink());
-		pc.setDir(fileManager.getAbsoluteFilePath(podcastHomeDir, null));
-		//that should be enough to persist this guy
-		if(subscribe) pc = podcastData.createPodcast(pc);
-		else pc.setPodcastId(0);
-		
-		if(pc != null)
-		{
-			//the podcast is in the db...add in the episode info
-			for(Item item : channel.getItemList())
-			{
-				Episode e = new Episode();
-				e.setPodcastId(subscribe ? pc.getPodcastId() : pc.getEpisodes().size());
-				e.setCompleted(false);
-				
-				//item objects don't have images
-				e.setImage("");
-				e.setName(item.getTitle());
-				String link = item.getLink();
-				//if there is an enclosure, use that for the url
-				if(item.getEnclosure() != null)
-				{
-					Enclosure enc = item.getEnclosure();
-					link = enc.getUrl().length() > 0 ? enc.getUrl() : link;
-				}
-				e.setUrl(link);
-				//we haven't downloaded it yet...or have we
-				String dir = Podcast.getPodcastDirectory(pc.getName());
-				String file = link.substring(link.lastIndexOf("/") + 1);
-				String filePath = fileManager.getAbsoluteFilePath(dir, file);
-				File episodeFile = new File(filePath);
-				e.setFilepath(episodeFile.exists() && episodeFile.length() > 0 ? filePath : "");
-				e.setNewEpisode(false);
-				e.setPlayedTime(0);
-				//Use the duration if it was provided by the file.
-				e.setTotalTime(item.getDuration());
-				if(subscribe) e = episodeData.createEpisode(e);
-				
-				if(e != null)
-				{
-					pc.addEpisode(e);
-				}
-			}
-		}
-		return pc;
 	}
 	
 	public void downloadFinished(String dir, String file)
@@ -383,13 +305,5 @@ public class PodcastDetails extends ActionBarActivity implements DownloadHandler
 			//now set the log_url to null...so we don't spiral
 			logo_url = null;
 		}
-	}
-	
-	public void downloadFile(final String dir, final String file, final String url)
-	{
-		Log.i("PodcastDetails", "Downloading " + dir + ":" + file + " from " + url);
-		DownloadFileTask dft = new DownloadFileTask(this);
-		dft.setHandler(this);
-		dft.execute(url, dir, file);
 	}
 }
