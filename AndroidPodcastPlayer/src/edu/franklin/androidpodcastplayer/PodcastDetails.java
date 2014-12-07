@@ -1,6 +1,7 @@
 package edu.franklin.androidpodcastplayer;
 
 import java.io.File;
+import java.util.List;
 
 import android.app.AlertDialog;
 import android.app.AlertDialog.Builder;
@@ -35,6 +36,7 @@ import edu.franklin.androidpodcastplayer.models.Podcast;
 import edu.franklin.androidpodcastplayer.models.Rss;
 import edu.franklin.androidpodcastplayer.models.Subscription;
 import edu.franklin.androidpodcastplayer.services.FileManager;
+import edu.franklin.androidpodcastplayer.services.SubscriptionService;
 import edu.franklin.androidpodcastplayer.tasks.DownloadFileTask;
 import edu.franklin.androidpodcastplayer.tasks.DownloadHandler;
 import edu.franklin.androidpodcastplayer.utilities.PodcastFactory;
@@ -145,6 +147,7 @@ public class PodcastDetails extends ActionBarActivity implements DownloadHandler
 			//try to rebuild the podcast and insert the podcast into the db
 			podcast = PodcastFactory.getInstance(this).subscribeToPodcast(podcast);
 			subscribed = true;
+			handleSettings(view);
 		}
 		else
 		{
@@ -195,7 +198,7 @@ public class PodcastDetails extends ActionBarActivity implements DownloadHandler
 		{
 			public void onClick(DialogInterface dialog, int which) 
 			{
-				saveSubscriptionData(subscriptionSettings.getSubscription());
+				saveSubscriptionData(subscriptionSettings.getSubscription(), true);
 				dialog.dismiss();
 			}
 		});
@@ -203,6 +206,7 @@ public class PodcastDetails extends ActionBarActivity implements DownloadHandler
 		{
 			public void onClick(DialogInterface dialog, int which) 
 			{
+				saveSubscriptionData(subscriptionSettings.getSubscription(), false);
 				dialog.dismiss();
 			}
 		});
@@ -210,9 +214,26 @@ public class PodcastDetails extends ActionBarActivity implements DownloadHandler
 		builder.create().show();
 	}
 	
-	private void saveSubscriptionData(final Subscription sub)
+	private void saveSubscriptionData(final Subscription sub, boolean persistChanges)
 	{
-		subData.updateSubscription(sub);
+		//if the user pressed save, do it
+		if(persistChanges)
+		{
+			subData.updateSubscription(sub);
+		}
+		//either way see if we need to kick off a download
+		//grab the episodes we need to download
+		List<Episode> neededEpisodes = SubscriptionService.getInstance(this).getNeededEpisodes(sub);
+		for(Episode e : neededEpisodes)
+		{
+			View v = episodeTable.findViewById(EpisodeRow.getIdForEpisode(e));
+			Log.i("PD", "The view at " + e.getEpisodeId() + " is " + v);
+			//kick off the download
+			if(v instanceof EpisodeRow)
+			{
+				((EpisodeRow)v).downloadEpisode();
+			}
+		}
 	}
 	
 	private void updateButtons()
@@ -264,7 +285,6 @@ public class PodcastDetails extends ActionBarActivity implements DownloadHandler
 			//now make rows for each of the episodes
 			for(Episode e : podcast.getEpisodes())
 			{
-				Log.i("PD", "Loading row " + e.getEpisodeId());
 				EpisodeRow row = new EpisodeRow(this, e, podcast, episodeData);
 				episodeTable.addView(row);
 			}

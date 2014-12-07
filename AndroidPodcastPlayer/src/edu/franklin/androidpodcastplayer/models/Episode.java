@@ -120,7 +120,7 @@ public class Episode implements Comparable<Episode>{
 	
 	public int compareTo(Episode e)
 	{
-		return (int)(this.getPubDate() - e.getPubDate());
+		return (int)(e.getPubDate() - this.getPubDate());
 	}
 	
 	public static String longToString(long time)

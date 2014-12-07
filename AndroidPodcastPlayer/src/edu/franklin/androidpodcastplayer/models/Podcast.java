@@ -103,10 +103,8 @@ public class Podcast {
 	public void addEpisode(Episode episode)
 	{
 		//get rid of any old version of this episode
-		Log.i("Pod", "adding an episode " + episode);
 		if(episodes.contains(episode))
 		{
-			Log.i("Pod", "Looks like " + episode + " + is already in the podcast...removing");
 			episodes.remove(episode);
 		}
 		//add it in

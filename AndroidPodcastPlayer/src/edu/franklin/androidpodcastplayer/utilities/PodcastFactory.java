@@ -156,9 +156,10 @@ public class PodcastFactory
 			e.setPodcastId(id);
 			Episode ee = epData.createEpisode(e);
 			episodes.add(ee);
-			Log.i("Pod Factory", "Added episode " + ee);
 		}
 		pc.setEpisodes(episodes);
+		//go ahead and update the stored count for this podcast (we may have already downloaded some).
+		podData.updateSavedCount(podcast.getPodcastId());
 		return pc;
 	}
 	
@@ -171,9 +172,12 @@ public class PodcastFactory
 	
 	public void downloadFile(final String dir, final String file, final String url, DownloadHandler handler)
 	{
-		Log.i("PodcastDetails", "Downloading " + dir + ":" + file + " from " + url);
-		DownloadFileTask dft = new DownloadFileTask(context);
-		dft.setHandler(handler);
-		dft.execute(url, dir, file);
+		if(handler != null)
+		{
+			Log.i("PodcastDetails", "Downloading " + dir + ":" + file + " from " + url);
+			DownloadFileTask dft = new DownloadFileTask(context);
+			dft.setHandler(handler);
+			dft.execute(url, dir, file);
+		}
 	}
 }

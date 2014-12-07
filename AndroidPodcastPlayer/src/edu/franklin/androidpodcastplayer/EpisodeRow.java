@@ -10,15 +10,14 @@ import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
 import android.text.TextUtils.TruncateAt;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
-import edu.franklin.androidpodcastplayer.data.DownloadData;
 import edu.franklin.androidpodcastplayer.data.EpisodesData;
-import edu.franklin.androidpodcastplayer.models.Download;
 import edu.franklin.androidpodcastplayer.models.Episode;
 import edu.franklin.androidpodcastplayer.models.Podcast;
 import edu.franklin.androidpodcastplayer.services.DownloadService;
@@ -32,27 +31,30 @@ public class EpisodeRow extends TableRow
 	private Button button = null;
 	private ProgressBar downloadProgress = null;
 	private Podcast podcast = null;
+	private EpisodesData data = null;
 	private Episode episode = null;
-	private DownloadData downloadData = null;
 	private FileManager fileManager = null;
 	private long downloadId = 0L;
 	private Timer timer = new Timer();
 	private float density = 0;
+	private Context context = null;
 	
 	@SuppressLint("NewApi") public EpisodeRow(Context context, Episode e, Podcast pc, EpisodesData data) 
 	{
 		super(context);
+		this.context = context;
+		int baseId = getIdForEpisode(e);
+		this.data = new EpisodesData(context);
 		fileManager = new FileManager(context);
 		parentActivity = (Activity)context;
 		this.podcast = pc;
-		this.downloadData = new DownloadData(context);
 		this.density = getResources().getDisplayMetrics().density;
 		//create the relative layout to hold the rest
 		RelativeLayout rl = new RelativeLayout(context);
 		rl.setLayoutParams(new LayoutParams(LayoutParams.WRAP_CONTENT, (int)(50 * density)));
 		
 		button = new Button(context);
-		button.setId(3);
+		button.setId(baseId + 3);
 		button.setTextSize(10);
 		RelativeLayout.LayoutParams buttonLayout = new RelativeLayout.LayoutParams(LayoutParams.WRAP_CONTENT, (int)(40 * density));
 		buttonLayout.addRule(RelativeLayout.ALIGN_PARENT_RIGHT, 1);
@@ -66,27 +68,27 @@ public class EpisodeRow extends TableRow
 		});
 		
 		titleView = new TextView(context);
-		titleView.setId(1);
+		titleView.setId(baseId + 1);
 		titleView.setTextSize(12);
 		titleView.setEllipsize(TruncateAt.END);
 		titleView.setLines(2);
 		RelativeLayout.LayoutParams titleLayout = new RelativeLayout.LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT);
 		titleLayout.addRule(RelativeLayout.ALIGN_PARENT_LEFT, 1);
 		titleLayout.addRule(RelativeLayout.ALIGN_PARENT_TOP, 1);
-		titleLayout.addRule(RelativeLayout.LEFT_OF, 3);
+		titleLayout.addRule(RelativeLayout.LEFT_OF, baseId + 3);
 		rl.addView(titleView, titleLayout);
 		
 		durationView = new TextView(context);
-		durationView.setId(2);
+		durationView.setId(baseId + 2);
 		durationView.setTextSize(10);
-		durationView.setPadding(0, 12, 0, 5); //TODO: CHANGED
+		durationView.setPadding(0, 12, 0, 5);
 		RelativeLayout.LayoutParams durationLayout = new RelativeLayout.LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT);
 		durationLayout.addRule(RelativeLayout.ALIGN_PARENT_LEFT, 1);
-		durationLayout.addRule(RelativeLayout.ALIGN_PARENT_BOTTOM, 1); //TODO: CHANGED
+		durationLayout.addRule(RelativeLayout.ALIGN_PARENT_BOTTOM, 1);
 		rl.addView(durationView, durationLayout);
 		
 		downloadProgress = new ProgressBar(context);
-		downloadProgress.setId(4);
+		downloadProgress.setId(baseId + 4);
 		RelativeLayout.LayoutParams progressLayout = new RelativeLayout.LayoutParams(LayoutParams.WRAP_CONTENT, (int)(density * 40));
 		progressLayout.addRule(RelativeLayout.ALIGN_PARENT_RIGHT, 3);
 		//assume not visible unless we are actually downloading something
@@ -96,19 +98,34 @@ public class EpisodeRow extends TableRow
 		//now add the view to the table row parent
 		addView(rl);
 		setEpisode(e);
-		//now see if this episode is being downloaded so we can update the button visibility
-		downloadData.open();
-		Download dl = downloadData.getDownload(podcast.getName(), e.getName());
-		if(dl != null)
+	}
+	
+	public static int getIdForEpisode(Episode e)
+	{
+		return (int)(e.getEpisodeId() * 1000);
+	}
+	
+	public void onAttachedToWindow()
+	{
+		super.onAttachedToWindow();
+		int status = DownloadService.getInstance(context).getDownloadStatus(podcast, episode);
+		if(status == DownloadService.DOWNLOADING)
 		{
-			downloadId = dl.getDownloadId();
+			String filename = episode.getUrl().substring(episode.getUrl().lastIndexOf("/") + 1);
+			episode.setFilepath(fileManager.getAbsoluteFilePath(Podcast.getPodcastDirectory(podcast.getName()), filename));
 			waitForDownload();
 		}
 	}
 	
+	public void onDetachedFromWindow()
+	{
+		try{ timer.cancel(); } catch(Exception e) { Log.e("ER", "Could not cancel timer");}
+		super.onDetachedFromWindow();
+	}
+	
 	public void setEpisode(Episode e)
 	{
-		this.setId((int)e.getEpisodeId());
+		this.setId(getIdForEpisode(e));
 		titleView.setText(e.getName());
 		durationView.setText(getDurationString(e.getTotalTime()));
 		//also hang onto the reference
@@ -118,38 +135,29 @@ public class EpisodeRow extends TableRow
 			titleView.setTextColor(Color.BLUE);
 			durationView.setTextColor(Color.BLUE);
 		}
-		updateButtonText();
+		updateButtonText(DownloadService.getInstance(context).getDownloadStatus(podcast, episode));
 	}
 	
-	public void onAttachedToWindow()
+	private void updateButtonText(int status)
 	{
-		super.onAttachedToWindow();
-	}
-	
-	public void onDetachedFromWindow()
-	{
-		try
+		button.setEnabled(true);
+		if(status != DownloadService.DOWNLOADING)
 		{
-			timer.cancel();
+			if(filePresent())
+			{
+				button.setText("Play");
+			}
+			else
+			{
+				button.setText("Download");
+			}
 		}
-		catch(Exception e)
+		else if(status == DownloadService.PAUSED)
 		{
-			//
+			button.setText("Paused");
+			button.setEnabled(false);
 		}
-		super.onDetachedFromWindow();
-	}
-	
-	private void updateButtonText()
-	{
-		if(filePresent())
-		{
-			button.setText("Play");
-		}
-		else
-		{
-			button.setText("Download");
-		}
-		//newEpisodeIndicator.setVisibility(episode.isNewEpisode() ? View.VISIBLE : View.INVISIBLE);
+			
 	}
 	
 	//we get here by button pressing
@@ -173,6 +181,14 @@ public class EpisodeRow extends TableRow
 		//download it
 		else
 		{
+			downloadEpisode();
+		}
+	}
+	
+	public void downloadEpisode()
+	{
+		if(downloadId == 0L)
+		{
 			downloadId = DownloadService.getInstance(getContext()).downloadEpisode(podcast, episode);
 			//update the filepath reference in the episode
 			String filename = episode.getUrl().substring(episode.getUrl().lastIndexOf("/") + 1);
@@ -183,20 +199,28 @@ public class EpisodeRow extends TableRow
 	
 	public void waitForDownload()
 	{
-		updateButtonsOnUiThread(true);
+		updateButtonsOnUiThread(DownloadService.DOWNLOADING);
 		//start a timer to check the progress
+		timer = new Timer();
 		timer.scheduleAtFixedRate(new TimerTask()
 		{
 			public void run()
 			{
-				Download dl = downloadData.getDownload(downloadId);
-				if(dl == null)
+				int status = DownloadService.getInstance(context).getDownloadStatus(podcast, episode);
+				if(status == DownloadService.NOT_DOWNLOADING || status == DownloadService.UNKNOWN)
 				{
-					updateButtonsOnUiThread(false);
+					if(podcast.getPodcastId() != 0L)
+					{
+						//reload the episode?
+						data.open();
+						episode = data.retrieveEpisodeByName(podcast.getPodcastId(), episode.getName());
+						data.close();
+					}
 					timer.cancel();
+					updateButtonsOnUiThread(status);
 				}
 			}
-		}, 1000, 1000);
+		}, 5000, 5000);
 	}
 	
 	private boolean filePresent()
@@ -229,17 +253,28 @@ public class EpisodeRow extends TableRow
 		return "-";
 	}
 	
-	private void updateButtonsOnUiThread(final boolean downloading)
+	private void updateButtonsOnUiThread(final int status)
 	{
 		Runnable runnable = new Runnable()
 		{
 			public void run()
 			{
-				//get rid of the progress bar
-        		downloadProgress.setVisibility(downloading ? VISIBLE : INVISIBLE);
-        		//show the button so they can play their file
-        		button.setVisibility(!downloading ? VISIBLE : INVISIBLE);
-        		updateButtonText();
+				if(status == DownloadService.DOWNLOADING)
+				{
+					downloadProgress.setVisibility(VISIBLE);
+					button.setVisibility(INVISIBLE);
+				}
+				else
+				{
+					downloadProgress.setVisibility(INVISIBLE);
+					button.setVisibility(VISIBLE);
+					if(podcast.getPodcastId() != 0L && new File(episode.getFilepath()).exists() && episode.getPlayedTime() == 0L)
+	        		{
+	        			titleView.setTextColor(Color.BLUE);
+	        			durationView.setTextColor(Color.BLUE);
+	        		}
+				}
+        		updateButtonText(status);
 			}
 		};
 		parentActivity.runOnUiThread(runnable);

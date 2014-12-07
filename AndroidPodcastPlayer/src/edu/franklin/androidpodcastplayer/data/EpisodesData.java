@@ -68,7 +68,6 @@ public class EpisodesData {
 			values.put(DatabaseHelper.EPISODES_COLUMN_TOTALTIME, episode.getTotalTime());
 			values.put(DatabaseHelper.EPISODES_COLUMN_PUB_DATE, episode.getPubDate());
 			long rowId = db.insert(DatabaseHelper.TABLE_EPISODES, null, values);
-			Log.i("ED", "Tried to insert episode and got back row id " + rowId);
 			Cursor cursor = db.query(DatabaseHelper.TABLE_EPISODES, allColumns, 
 					DatabaseHelper.EPISODES_COLUMN_PODCASTID + " = " + episode.getPodcastId() + " AND " +
 					DatabaseHelper.EPISODES_COLUMN_EPISODEID + " = " + episode.getEpisodeId(), null, null, null, null);

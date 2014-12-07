@@ -41,6 +41,10 @@ public class DownloadService
 	public static final String FILE = "filename";
 	public static final String RESULT = "result";
 	public static final String NOTIFICATION = "receiver";
+	public static final int UNKNOWN = DownloadManager.ERROR_UNKNOWN;
+	public static final int DOWNLOADING = DownloadManager.STATUS_RUNNING;
+	public static final int PAUSED = DownloadManager.STATUS_PAUSED;
+	public static final int NOT_DOWNLOADING = DownloadManager.STATUS_SUCCESSFUL;
 	private DownloadManager dm = null;
 	private Context context = null;
 	private FileManager fileManager = null;
@@ -81,6 +85,7 @@ public class DownloadService
 			podData.open();
 			this.context = context;
 			//now listen for download complete messages
+			initialized = true;
 			context.registerReceiver(receiver, new IntentFilter(DownloadManager.ACTION_DOWNLOAD_COMPLETE));
 		}
 	}
@@ -95,29 +100,52 @@ public class DownloadService
 	public long downloadEpisode(Podcast podcast, Episode episode)
 	{
 		long downloadId = 0L;
+		Download dl = data.getDownload(podcast.getName(), episode.getName());
+		//cancel any funky states we may be in from bad downloads.
+		if(dl != null)
+		{
+			dm.remove(dl.getDownloadId());
+		}
 		String url = episode.getUrl();
 		Uri uri = Uri.parse(url);
 		Request request = new Request(uri);
 		downloadId = dm.enqueue(request);
-		Download dl = data.createDownload(downloadId, podcast, episode);
-		Log.i("DL", "Fetching " + dl);
+		dl = data.createDownload(downloadId, podcast, episode);
+		
 		return downloadId;
 	}
 	
-	public int getDownloadStatus(long id)
+	public int getDownloadStatus(Podcast podcast, Episode e)
 	{
-		int status = DownloadManager.ERROR_UNKNOWN;
-		Query query = new Query();
-        query.setFilterById(id);
-        Cursor c = dm.query(query);
-        if(c.getCount() > 0)
-        {
-        	c.moveToFirst();
-        	int index = c.getColumnIndex(DownloadManager.COLUMN_STATUS);
-        	status = c.getInt(index);
-        }
-        c.close();
-        
+		int status = DownloadService.UNKNOWN;
+		Download dl = data.getDownload(podcast.getName(), e.getName());
+		
+		if(dl != null)
+		{
+			Query query = new Query();
+	        query.setFilterById(dl.getDownloadId());
+	        Cursor c = dm.query(query);
+	        if(c.getCount() > 0)
+	        {
+	        	c.moveToFirst();
+	        	int statusIndex = c.getColumnIndex(DownloadManager.COLUMN_STATUS);
+	        	int dlStatus = c.getInt(statusIndex);
+	        	switch(dlStatus)
+	        	{
+		        	case DownloadManager.STATUS_FAILED:
+		        	case DownloadManager.STATUS_SUCCESSFUL:
+		        		status = DownloadService.NOT_DOWNLOADING;
+		        		break;
+		        	case DownloadManager.STATUS_PENDING:
+		        	case DownloadManager.STATUS_RUNNING:
+		        		status = DownloadService.DOWNLOADING;
+		        		break;
+		        	case DownloadManager.STATUS_PAUSED:
+		        		status = DownloadService.PAUSED;
+	        	}
+	        }
+	        c.close();
+		}
 		return status;
 	}
 	
@@ -130,7 +158,6 @@ public class DownloadService
 				public void run()
 				{
 					String action = intent.getAction();
-					Log.d("Download", "Got back an action " + action);
 		            if (DownloadManager.ACTION_DOWNLOAD_COMPLETE.equals(action)) 
 		            {
 		                long downloadId = intent.getLongExtra(DownloadManager.EXTRA_DOWNLOAD_ID, 0);
@@ -152,7 +179,6 @@ public class DownloadService
 		                    int status = c.getInt(statusIndex);
 		                    int fileLocationIndex = c.getColumnIndex(DownloadManager.COLUMN_LOCAL_FILENAME);
 		                    String fileLocation = c.getString(fileLocationIndex);
-		                    Log.d("Download", "Status of " + fileLocation + " is " + status);
 		                    if (DownloadManager.STATUS_SUCCESSFUL == status) 
 		                    {
 		                		//put the downloaded file into our storage
@@ -170,7 +196,6 @@ public class DownloadService
 		                			//now we can update the saved count
 		                			podData.updateSavedCount(pc.getPodcastId());
 	                			}
-		                		Log.d("Download", dl.getFile() + " has been downloaded to " + fileManager.getAbsoluteFilePath(dl.getDir(), dl.getFile())); 
 		                    	dm.remove(downloadId);
 		                    	//get rid of this because we don't need it anymore
 		                    	data.delete(downloadId);

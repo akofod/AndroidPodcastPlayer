@@ -73,7 +73,7 @@ public class DownloadData
 		SQLiteDatabase readDB = dbHelper.getReadableDatabase();
 		Cursor cursor = readDB.query(DatabaseHelper.TABLE_DOWNLOADS, allColumns, 
 				DatabaseHelper.DL_PODCAST_NAME + "= ? AND " + DatabaseHelper.DL_EPISODE_NAME + "= ?",
-				new String[]{podcastName, episodeName}, null, null, null);
+				new String[]{dbHelper.escapeString(podcastName), dbHelper.escapeString(episodeName)}, null, null, null);
 		cursor.moveToFirst();
 		while(!cursor.isAfterLast()) 
 		{
