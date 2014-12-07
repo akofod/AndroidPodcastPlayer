@@ -64,6 +64,7 @@ public class PodcastDetails extends ActionBarActivity implements DownloadHandler
 	protected void onCreate(Bundle savedInstanceState) 
 	{
 		super.onCreate(savedInstanceState);
+		//Log.e("PD", "CREATE");
 		setContentView(R.layout.activity_podcast_details);
 		fileManager = new FileManager(this);
 		episodeTable = (TableLayout) findViewById(R.id.episodeTable);
@@ -73,9 +74,6 @@ public class PodcastDetails extends ActionBarActivity implements DownloadHandler
 		subscribeButton = (Button)findViewById(R.id.subscribeButton);
 		settingsButton = (Button)findViewById(R.id.podcastSettingsButton);
 		settingsButton.setTextSize(10);
-		episodeData.open();
-		podcastData.open();
-		subData.open();
 		//grab a podcast and load it. The name of the podcast is passed through the intent"
 		url = getIntent().getExtras().getString("url");
 		logo_url = getIntent().getExtras().getString("logo_url");
@@ -95,6 +93,36 @@ public class PodcastDetails extends ActionBarActivity implements DownloadHandler
 		setPodcast(podcast);
 	}
 	
+	public void onResume()
+	{
+		//Log.e("PD", "RESUME " + podcast);
+		episodeData.open();
+		podcastData.open();
+		subData.open();
+		int count = episodeTable.getChildCount();
+		for(int i = 0; i < count; i++)
+		{
+			EpisodeRow row = (EpisodeRow)episodeTable.getChildAt(i);
+			row.checkForDownload();
+		}
+		super.onResume();
+	}
+
+	protected void onStop()
+	{
+		//Log.e("PD", "STOP " + podcast);
+		episodeData.close();
+		podcastData.close();
+		subData.close();
+		super.onStop();
+		int count = episodeTable.getChildCount();
+		for(int i = 0; i < count; i++)
+		{
+			EpisodeRow row = (EpisodeRow)episodeTable.getChildAt(i);
+			row.cancelTimer();
+		}
+	}
+	
 	private void setRss(String url)
 	{
 		try
@@ -106,13 +134,6 @@ public class PodcastDetails extends ActionBarActivity implements DownloadHandler
 		{
 			Log.e("PodcastDetails", "Could not fetch the RSS from " + url, e);
 		}
-	}
-	
-	protected void onStop()
-	{
-		//podcastData.close();
-		//episodeData.close();
-		super.onStop();
 	}
 
 	public boolean onCreateOptionsMenu(Menu menu) 
@@ -227,7 +248,7 @@ public class PodcastDetails extends ActionBarActivity implements DownloadHandler
 		for(Episode e : neededEpisodes)
 		{
 			View v = episodeTable.findViewById(EpisodeRow.getIdForEpisode(e));
-			Log.i("PD", "The view at " + e.getEpisodeId() + " is " + v);
+			//Log.i("PD", "The view at " + e.getEpisodeId() + " is " + v);
 			//kick off the download
 			if(v instanceof EpisodeRow)
 			{

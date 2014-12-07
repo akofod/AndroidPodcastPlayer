@@ -52,13 +52,20 @@ public class MainActivity extends ActionBarActivity {
 		SubscriptionService.getInstance(this).updateSubscriptions();
 		this.activateButton();
 		table1 = (TableLayout) findViewById(R.id.table1);
-		this.addRow("header", "Title", "Saved","Auto", 2);
+		layoutTable();
+	}
 	
-		configData.open();
-		podcastData.open();
-		subData.open();
-		episodesData.open();
-		
+	private void layoutTable()
+	{
+		//out with the old
+		int count = table1.getChildCount();
+		for(int i = 0; i < count; i++)
+		{
+			table1.removeViewAt(0);
+		}
+		//create the header row
+		this.addRow("header", "Title", "Saved","Auto", 2);
+		//refresh podcast info
 		podcasts = podcastData.getAllPodcasts();		
 		if(podcasts.size()>0){
 			for(Podcast currentPodcast: podcasts){
@@ -73,7 +80,27 @@ public class MainActivity extends ActionBarActivity {
 				this.addRow(Url,name ,savedEpisodes	,automaticallyDownload, 5);	
 			}
 		}
-
+	}
+	
+	public void onResume()
+	{
+		Log.e("MAIN", "RESUME");
+		configData.open();
+		podcastData.open();
+		subData.open();
+		episodesData.open();
+		layoutTable();
+		super.onResume();
+	}
+	
+	public void onStop()
+	{
+		Log.e("MAIN", "STOP");
+		configData.close();
+		podcastData.close();
+		subData.close();
+		episodesData.close();
+		super.onStop();
 	}
 	
 	public void onDestroy()
@@ -83,7 +110,6 @@ public class MainActivity extends ActionBarActivity {
 		Log.i("Main", "Main Activity Destroyed");
 		super.onDestroy();
 	}
-	
 	
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {

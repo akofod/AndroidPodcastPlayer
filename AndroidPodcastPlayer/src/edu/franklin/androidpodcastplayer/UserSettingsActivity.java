@@ -19,7 +19,6 @@ public class UserSettingsActivity extends ActionBarActivity {
 	protected void onCreate(Bundle savedInstanceState) 
 	{
 		super.onCreate(savedInstanceState);
-		configData.open();
 		configData.init();
 		setContentView(R.layout.user_settings);
 		this.updateCheckboxes();
@@ -30,6 +29,18 @@ public class UserSettingsActivity extends ActionBarActivity {
 // Inflate the menu; this adds items to the action bar if it is present.
 		getMenuInflater().inflate(R.menu.main, menu);
 		return true;
+	}
+	
+	public void onResume()
+	{
+		super.onResume();
+		configData.open();
+	}
+	
+	public void onStop()
+	{
+		super.onStop();
+		configData.close();
 	}
 	
 

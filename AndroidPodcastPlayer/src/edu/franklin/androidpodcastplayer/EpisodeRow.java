@@ -105,9 +105,8 @@ public class EpisodeRow extends TableRow
 		return (int)(e.getEpisodeId() * 1000);
 	}
 	
-	public void onAttachedToWindow()
+	public void checkForDownload()
 	{
-		super.onAttachedToWindow();
 		int status = DownloadService.getInstance(context).getDownloadStatus(podcast, episode);
 		if(status == DownloadService.DOWNLOADING)
 		{
@@ -115,12 +114,15 @@ public class EpisodeRow extends TableRow
 			episode.setFilepath(fileManager.getAbsoluteFilePath(Podcast.getPodcastDirectory(podcast.getName()), filename));
 			waitForDownload();
 		}
+		else
+		{
+			setEpisode(episode);
+		}
 	}
 	
-	public void onDetachedFromWindow()
+	public void cancelTimer()
 	{
 		try{ timer.cancel(); } catch(Exception e) { Log.e("ER", "Could not cancel timer");}
-		super.onDetachedFromWindow();
 	}
 	
 	public void setEpisode(Episode e)
@@ -207,6 +209,7 @@ public class EpisodeRow extends TableRow
 			public void run()
 			{
 				int status = DownloadService.getInstance(context).getDownloadStatus(podcast, episode);
+				//Log.e("ER", "Status is " + status);
 				if(status == DownloadService.NOT_DOWNLOADING || status == DownloadService.UNKNOWN)
 				{
 					if(podcast.getPodcastId() != 0L)

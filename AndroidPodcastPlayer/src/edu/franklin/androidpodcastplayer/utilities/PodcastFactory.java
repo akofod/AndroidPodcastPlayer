@@ -57,6 +57,7 @@ public class PodcastFactory
 			epData = new EpisodesData(context);
 			podData.open();
 			epData.open();
+			this.initialized = true;
 		}
 	}
 	

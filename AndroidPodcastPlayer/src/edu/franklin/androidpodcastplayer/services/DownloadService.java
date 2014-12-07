@@ -95,6 +95,8 @@ public class DownloadService
 		context.unregisterReceiver(receiver);
 		data.close();
 		episodeData.close();
+		podData.close();
+		initialized = false;
 	}
 	
 	public long downloadEpisode(Podcast podcast, Episode episode)
