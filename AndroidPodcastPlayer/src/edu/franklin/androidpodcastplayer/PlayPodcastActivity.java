@@ -354,6 +354,7 @@ public class PlayPodcastActivity extends ActionBarActivity
 			data.open();
 			Log.i("Player", "Writing " + episode.getEpisodeId() + " is complete");
 			data.updateComplete(podcastId, episode.getEpisodeId());
+			data.setNewFlag(podcastId, episode.getEpisodeId(), false);
 			data.close();
 		}
 	}
@@ -366,6 +367,10 @@ public class PlayPodcastActivity extends ActionBarActivity
 			data.open();
 			Log.i("Player", "Writing " + currentTime + " to the database for episode " + episode.getEpisodeId());
 			data.updatePlayedTime(podcastId, episode.getEpisodeId(), currentTime);
+			if(currentTime > (episode.getTotalTime() / 2))
+			{
+				data.setNewFlag(podcastId, episode.getEpisodeId(), false);
+			}
 			data.close();
 		}
 	}
