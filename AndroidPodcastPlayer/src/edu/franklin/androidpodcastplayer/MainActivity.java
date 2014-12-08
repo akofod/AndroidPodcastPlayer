@@ -153,7 +153,7 @@ public class MainActivity extends ActionBarActivity {
 		if(imagePath.length() > 0 && !imagePath.equals("header") )
 		{
 			Picasso.with(this).load(new File(imagePath)).
-			resize(40, 40).centerCrop().into(label_icon);
+			resize(100, 100).centerCrop().into(label_icon);
 		}
 		else if(imagePath.equals("header")){
 			//Do nothing.No image, this is a header			
