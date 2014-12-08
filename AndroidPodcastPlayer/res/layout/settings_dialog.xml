@@ -20,7 +20,7 @@
             android:id="@+id/subscriptionAutoDownloadLabel"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="1.0"
+            android:layout_weight="0.8"
             android:lines="1"
             android:text="Download Automatically: "
             android:textAppearance="?android:attr/textAppearanceMedium" />
@@ -29,7 +29,31 @@
             android:id="@+id/subscriptionAutoDownloadCheckbox"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="1.0" />
+            android:layout_weight="0.2" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/subscriptionAutoDeleteLayout"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:layout_weight="1.0"
+        android:orientation="horizontal" >
+
+        <TextView
+            android:id="@+id/subscriptionAutoDeleteLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.8"
+            android:text="Delete Played Episodes: "
+            android:textAppearance="?android:attr/textAppearanceMedium" />
+
+        <CheckBox
+            android:id="@+id/subscriptionDeleteCompletedCheckbox"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.2" />
+    
     </LinearLayout>
 
     <LinearLayout

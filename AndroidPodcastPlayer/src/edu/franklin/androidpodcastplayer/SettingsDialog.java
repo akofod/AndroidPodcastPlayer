@@ -13,6 +13,7 @@ import android.widget.RadioGroup;
 public class SettingsDialog extends LinearLayout 
 {
 	private CheckBox autoDownload = null;
+	private CheckBox autoDelete = null;
 	private RadioGroup episodeGroup = null;
 	private RadioGroup frequencyGroup = null;
 	private Subscription subscription = null;
@@ -49,6 +50,7 @@ public class SettingsDialog extends LinearLayout
 		inflater.inflate(R.layout.settings_dialog, this);
 		//get the controls we care about
 		autoDownload = (CheckBox)findViewById(R.id.subscriptionAutoDownloadCheckbox);
+		autoDelete = (CheckBox)findViewById(R.id.subscriptionDeleteCompletedCheckbox);
 		episodeGroup = (RadioGroup)findViewById(R.id.subscriptionEpisodeGroup);
 		frequencyGroup = (RadioGroup)findViewById(R.id.subscriptionFrequencyGroup);
 	}
@@ -58,6 +60,7 @@ public class SettingsDialog extends LinearLayout
 		//we clone the subscription so we can support a cancel operation
 		this.subscription = subscription.copy();
 		autoDownload.setChecked(subscription.isAutoDownload());
+		autoDelete.setChecked(subscription.getPodcast().isAutoDelete());
 		//set the selected episode
 		episodeGroup.check(settingToIdMap.get(subscription.getEpisodes()));
 		//set the selected frequency
@@ -67,6 +70,7 @@ public class SettingsDialog extends LinearLayout
 	public Subscription getSubscription()
 	{
 		subscription.setAutoDownload(autoDownload.isChecked());
+		subscription.getPodcast().setAutoDelete(autoDelete.isChecked());
 		subscription.setEpisodes(idToSettingMap.get(episodeGroup.getCheckedRadioButtonId()));
 		subscription.setFrequency(idToSettingMap.get(frequencyGroup.getCheckedRadioButtonId()));
 		return subscription;

@@ -112,6 +112,7 @@ public class SubscriptionData
 	{
 		ContentValues values = getValuesForSubscription(sub);
 		db.update(DatabaseHelper.TABLE_SUBSCRIPTION, values, DatabaseHelper.SUB_ID + "=" + sub.getPodcast().getPodcastId(), null);
+		podData.setAutoDelete(sub.getPodcast().getPodcastId(), sub.getPodcast().isAutoDelete());
 	}
 
 	private Subscription cursorToSubscription(Cursor cursor) 

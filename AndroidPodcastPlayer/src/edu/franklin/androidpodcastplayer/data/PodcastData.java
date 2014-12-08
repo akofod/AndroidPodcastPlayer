@@ -150,6 +150,14 @@ public class PodcastData {
 			DatabaseHelper.PODCAST_COLUMN_PODCASTID + " = " + id, null);
 	}
 	
+	public void setAutoDelete(long id, boolean auto)
+	{
+		ContentValues values = new ContentValues();
+		values.put(DatabaseHelper.PODCAST_COLUMN_AUTODELETE, auto ? 1 : 0);
+		db.update(DatabaseHelper.TABLE_PODCAST, values, 
+			DatabaseHelper.PODCAST_COLUMN_PODCASTID + " = " + id, null);
+	}
+	
 	public Podcast getPodcastById(Long id)
 	{
 		Podcast podcast = null;
