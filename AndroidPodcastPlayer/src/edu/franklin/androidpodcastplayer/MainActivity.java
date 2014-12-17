@@ -2,7 +2,6 @@ package edu.franklin.androidpodcastplayer;
 
 import java.io.File;
 import java.util.ArrayList;
-
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
